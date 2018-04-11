@@ -1,0 +1,569 @@
+<!doctype html><html class="theme-next muse use-motion" lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta http-equiv="content-language" content="zh-cn"><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet"><style>.pace .pace-progress{background:#ff009e;height:2px}.pace .pace-progress-inner{box-shadow:0 0 10px #e6006b,0 0 5px #ff009e}.pace .pace-activity{border-top-color:#ff009e;border-left-color:#ff009e}</style><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css"><meta name="keywords" content="Java,Docker,Spring Boot,Spring,Elasticsearch,"><link rel="alternate" href="/atom.xml" title="ookamiAntD's Blog" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0"><meta name="description" content="微服务架构下，微服务在带来良好的设计和架构理念的同时，也带来了运维上的额外复杂性，尤其是在服务部署和服务监控上。单体应用是集中式的，就一个单体跑在一起，部署和管理的时候非常简单，而微服务是一个网状分布的，有很多服务需要维护和管理，对它进行部署和维护的时候则比较复杂。"><meta name="keywords" content="Java,Docker,Spring Boot,Spring,Elasticsearch"><meta property="og:type" content="article"><meta property="og:title" content="Spring Boot应用集成Docker并结合Kafka、ELK管理Docker日志"><meta property="og:url" content="http://yangbingdong.com/2018/spring-boot-docker-elk/index.html"><meta property="og:site_name" content="ookamiAntD&#39;s Blog"><meta property="og:description" content="微服务架构下，微服务在带来良好的设计和架构理念的同时，也带来了运维上的额外复杂性，尤其是在服务部署和服务监控上。单体应用是集中式的，就一个单体跑在一起，部署和管理的时候非常简单，而微服务是一个网状分布的，有很多服务需要维护和管理，对它进行部署和维护的时候则比较复杂。"><meta property="og:locale" content="en"><meta property="og:image" content="http://ojoba1c98.bkt.clouddn.com/img/spring-cloud-docker-integration/dev-ops"><meta property="og:image" content="http://ojoba1c98.bkt.clouddn.com/img/spring-cloud-docker-integration/portainer.png"><meta property="og:image" content="http://ojoba1c98.bkt.clouddn.com/img/spring-cloud-docker-integration/harbor.png"><meta property="og:image" content="http://ojoba1c98.bkt.clouddn.com/img/spring-cloud-docker-integration/duplicate01.png"><meta property="og:image" content="http://ojoba1c98.bkt.clouddn.com/img/spring-cloud-docker-integration/duplicate02.png"><meta property="og:image" content="http://ojoba1c98.bkt.clouddn.com/img/docker-logs-collect/elk-arch1.png"><meta property="og:image" content="http://ojoba1c98.bkt.clouddn.com/img/docker-logs-collect/kibana.png"><meta property="og:updated_time" content="2018-04-11T03:30:44.486Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Spring Boot应用集成Docker并结合Kafka、ELK管理Docker日志"><meta name="twitter:description" content="微服务架构下，微服务在带来良好的设计和架构理念的同时，也带来了运维上的额外复杂性，尤其是在服务部署和服务监控上。单体应用是集中式的，就一个单体跑在一起，部署和管理的时候非常简单，而微服务是一个网状分布的，有很多服务需要维护和管理，对它进行部署和维护的时候则比较复杂。"><meta name="twitter:image" content="http://ojoba1c98.bkt.clouddn.com/img/spring-cloud-docker-integration/dev-ops"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",sidebar:{position:"right",display:"always"},fancybox:!0,motion:!0,duoshuo:{userId:"undefined",author:"Author"},algolia:{applicationID:"RI3NF6GUI0",apiKey:"3d33fa60ba30d3b17f37220bb1a36749",indexName:"blogIndex",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="http://yangbingdong.com/2018/spring-boot-docker-elk/"><title>Spring Boot应用集成Docker并结合Kafka、ELK管理Docker日志 | ookamiAntD's Blog</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="en"><script type="text/javascript">var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?e9505ac4e11d464329d615553a72b526";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><div class="container one-collumn sidebar-position-right page-post-detail"><div class="headband"></div><a href="https://github.com/masteranthoneyd/blog" rel="external nofollow noopener noreferrer" target="_blank"><img style="position:absolute;top:0;left:0;border:0" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">ookamiAntD's Blog</span> <span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">Easy coding,easy life.</h1></div><div class="site-nav-toggle"><button><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>Tags</a></li><li class="menu-item menu-item-about"><a href="/about" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>About</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook" rel="section"><i class="menu-item-icon fa fa-fw fa-commenting"></i><br>Message</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>Search</a></li></ul><div class="site-search"><div class="popup"><span class="search-icon fa fa-search"></span> <input type="text" id="local-search-input"><div id="local-search-result"></div><span class="popup-btn-close">close</span></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><link itemprop="mainEntityOfPage" href="http://yangbingdong.com/2018/spring-boot-docker-elk/"><span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="ookamiAntD"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar/avatar-admin.jpg"></span><span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="ookamiAntD's Blog"><span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject"><img style="display:none" itemprop="url image" alt="ookamiAntD's Blog" src=""></span></span><header class="post-header"><h2 class="post-title" itemprop="name headline">Spring Boot应用集成Docker并结合Kafka、ELK管理Docker日志</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">Posted on</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-02T13:00:19+08:00">2018-04-02 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">In</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span> </a></span>, <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Programming/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span> </a></span>, <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Programming/Java/Spring-Boot/" itemprop="url" rel="index"><span itemprop="name">Spring Boot</span> </a></span></span><span id="busuanzi_container_page_pv">&nbsp; | &nbsp; 热度&nbsp; <span id="busuanzi_value_page_pv"></span>°C </span><span id="/2018/spring-boot-docker-elk/" class="leancloud_visitors" data-flag-title="Spring Boot应用集成Docker并结合Kafka、ELK管理Docker日志"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-eye"></i> </span><span class="post-meta-item-text">Visitors </span><span class="leancloud-visitors-count"></span></span><br><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-edit"></i> </span><span class="post-meta-item-text">WordCount:</span> <span class="post-count">2,957字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-text">min2read:</span> <span class="post-count">16分钟</span></span></div></header><div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="http://ojoba1c98.bkt.clouddn.com/img/spring-cloud-docker-integration/dev-ops" alt=""></p><blockquote><p>微服务架构下，微服务在带来良好的设计和架构理念的同时，也带来了运维上的额外复杂性，尤其是在服务部署和服务监控上。单体应用是集中式的，就一个单体跑在一起，部署和管理的时候非常简单，而微服务是一个网状分布的，有很多服务需要维护和管理，对它进行部署和维护的时候则比较复杂。</p></blockquote><a id="more"></a><h1 id="Spring-Boot-Docker-Integration"><a href="#Spring-Boot-Docker-Integration" class="headerlink" title="Spring Boot Docker Integration"></a>Spring Boot Docker Integration</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul><li>Docker</li><li>IDE（使用IDEA）</li><li>Maven环境</li><li>Docker私有仓库</li></ul><p>集成Docker需要的插件<code>docker-maven-plugin</code>：<em><a href="https://github.com/spotify/docker-maven-plugin" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/spotify/docker-maven-plugin</a></em></p><h2 id="Maven-setting-xml密码加密配置"><a href="#Maven-setting-xml密码加密配置" class="headerlink" title="Maven setting.xml密码加密配置"></a>Maven setting.xml密码加密配置</h2><p><code>settings.xml</code>配置私有库的访问：</p><p>首先使用你的私有仓库访问密码生成主密码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn --encrypt-master-password &lt;password&gt;</span><br></pre></td></tr></table></figure>
+<p>其次在<code>settings.xml</code>文件的同级目录创建<code>settings-security.xml</code>文件，将主密码写入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;settingsSecurity&gt;</span><br><span class="line">  &lt;master&gt;&#123;Ns0JM49fW9gHMTZ44n*****************=&#125;&lt;/master&gt;</span><br><span class="line">&lt;/settingsSecurity&gt;</span><br></pre></td></tr></table></figure>
+<p>最后使用你的私有仓库访问密码生成服务密码，将生成的密码写入到<code>settings.xml</code>的<code>&lt;services&gt;</code>中（可能会提示目录不存在，解决方法是创建一个<code>.m2</code>目录并把<code>settings-security.xml</code>复制进去）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mvn --encrypt-password &lt;password&gt;</span><br><span class="line">&#123;D9YIyWYvtYsHayLjIenj***********=&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;server&gt;</span><br><span class="line">    &lt;id&gt;docker-registry&lt;/id&gt;</span><br><span class="line">    &lt;username&gt;admin&lt;/username&gt;</span><br><span class="line">    &lt;password&gt;&#123;gKLNhblk/SQHBMooM******************=&#125;&lt;/password&gt;</span><br><span class="line">    &lt;configuration&gt;</span><br><span class="line">        &lt;email&gt;yangbingdong1994@gmail.com&lt;/email&gt;</span><br><span class="line">    &lt;/configuration&gt;</span><br><span class="line">&lt;/server&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="构建基础镜像"><a href="#构建基础镜像" class="headerlink" title="构建基础镜像"></a>构建基础镜像</h2><p>Dockerfile：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">FROM frolvlad/alpine-oraclejdk8:slim</span><br><span class="line">MAINTAINER ybd &lt;yangbingdong1994@gmail.com&gt;</span><br><span class="line">ARG TZ </span><br><span class="line">ARG HTTP_PROXY</span><br><span class="line">ENV TZ=$&#123;TZ:-&quot;Asia/Shanghai&quot;&#125; http_proxy=$&#123;HTTP_PROXY&#125; https_proxy=$&#123;HTTP_PROXY&#125;</span><br><span class="line">RUN apk update &amp;&amp; \</span><br><span class="line">    apk add --no-cache &amp;&amp; \</span><br><span class="line">    apk add curl bash tree tzdata &amp;&amp; \</span><br><span class="line">    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &amp;&amp; \</span><br><span class="line">    echo $TZ &gt; /etc/timezone </span><br><span class="line">ENV http_proxy=</span><br><span class="line">ENV https_proxy=</span><br></pre></td></tr></table></figure>
+<p>构建：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build --build-arg HTTP_PROXY=192.168.6.113:8118 -t yangbingdong/docker-oraclejdk8 .</span><br></pre></td></tr></table></figure>
+<p>其中<code>HTTP_PROXY</code>是sock5代理转过来的http代理，通过<code>--build-arg</code>参数传入，注意<strong>不能</strong>是<code>127.0.0.1</code>或<code>localhost</code>。</p>
+<h2 id="开始集成"><a href="#开始集成" class="headerlink" title="开始集成"></a>开始集成</h2><h3 id="编写Dockerfile"><a href="#编写Dockerfile" class="headerlink" title="编写Dockerfile"></a>编写Dockerfile</h3><p>在<code>src/main</code>下面新建<code>docker</code>文件夹，并创建<code>Dockerfile</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FROM yangbingdong/docker-oraclejdk8:latest</span><br><span class="line">MAINTAINER yangbingdong &lt;yangbingdong1994@gmail.com&gt;</span><br><span class="line">ENV PROJECT_NAME=&quot;@project.build.finalName@.@project.packaging@&quot; JAVA_OPTS=&quot;&quot;</span><br><span class="line">ADD $PROJECT_NAME app.jar</span><br><span class="line">RUN sh -c &apos;touch /app.jar&apos;</span><br><span class="line">CMD [&quot;sh&quot;, &quot;-c&quot;, &quot;java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=$&#123;ACTIVE:-docker&#125; -jar /app.jar&quot;]</span><br><span class="line"># ENTRYPOINT [ &quot;sh&quot;, &quot;-c&quot;, &quot;java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar&quot; ]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>通过<code>@@</code>动态获取打包后的项目名（需要插件，下面会介绍）</li>
+<li><code>Dspring.profiles.active=${ACTIVE:-docker}</code>可以通过docker启动命令<code>-e ACTIVE=docker</code>参数修改配置</li>
+</ul>
+<h3 id="pom文件添加Docker插件"><a href="#pom文件添加Docker插件" class="headerlink" title="pom文件添加Docker插件"></a>pom文件添加Docker插件</h3><p>在完整的<code>pom.xml</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugins&gt;</span><br><span class="line">    &lt;plugin&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;spring-boot.version&#125;&lt;/version&gt;</span><br><span class="line">        &lt;executions&gt;</span><br><span class="line">            &lt;execution&gt;</span><br><span class="line">                &lt;goals&gt;</span><br><span class="line">                    &lt;goal&gt;repackage&lt;/goal&gt;</span><br><span class="line">                &lt;/goals&gt;</span><br><span class="line">            &lt;/execution&gt;</span><br><span class="line">        &lt;/executions&gt;</span><br><span class="line">    &lt;/plugin&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- resources插件，使用@变量@形式获取Maven变量到Dockerfile中 --&gt;</span><br><span class="line">    &lt;plugin&gt;</span><br><span class="line">        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;maven-resources-plugin&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;resources.plugin.version&#125;&lt;/version&gt;</span><br><span class="line">        &lt;executions&gt;</span><br><span class="line">            &lt;execution&gt;</span><br><span class="line">                &lt;id&gt;prepare-dockerfile&lt;/id&gt;</span><br><span class="line">                &lt;phase&gt;validate&lt;/phase&gt;</span><br><span class="line">                &lt;goals&gt;</span><br><span class="line">                    &lt;goal&gt;copy-resources&lt;/goal&gt;</span><br><span class="line">                &lt;/goals&gt;</span><br><span class="line">                &lt;configuration&gt;</span><br><span class="line">                    &lt;!-- 编译后Dockerfile的输出位置 --&gt;</span><br><span class="line">                    &lt;outputDirectory&gt;$&#123;dockerfile.compiled.position&#125;&lt;/outputDirectory&gt;</span><br><span class="line">                    &lt;resources&gt;</span><br><span class="line">                        &lt;!-- Dockerfile位置 --&gt;</span><br><span class="line">                        &lt;resource&gt;</span><br><span class="line">                            &lt;directory&gt;$&#123;project.basedir&#125;/src/main/docker&lt;/directory&gt;</span><br><span class="line">                            &lt;filtering&gt;true&lt;/filtering&gt;</span><br><span class="line">                        &lt;/resource&gt;</span><br><span class="line">                    &lt;/resources&gt;</span><br><span class="line">                &lt;/configuration&gt;</span><br><span class="line">            &lt;/execution&gt;</span><br><span class="line">        &lt;/executions&gt;</span><br><span class="line">    &lt;/plugin&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 集成Docker maven 插件 --&gt;</span><br><span class="line">    &lt;plugin&gt;</span><br><span class="line">        &lt;groupId&gt;com.spotify&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;docker-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;docker-maven-plugin.version&#125;&lt;/version&gt;</span><br><span class="line">        &lt;executions&gt;</span><br><span class="line">            &lt;!-- 打包时构建镜像 --&gt;</span><br><span class="line">            &lt;execution&gt;</span><br><span class="line">                &lt;phase&gt;package&lt;/phase&gt;</span><br><span class="line">                &lt;goals&gt;</span><br><span class="line">                    &lt;goal&gt;build&lt;/goal&gt;</span><br><span class="line">                &lt;/goals&gt;</span><br><span class="line">            &lt;/execution&gt;</span><br><span class="line">            &lt;!-- 部署时推送镜像到私有库 --&gt;</span><br><span class="line">            &lt;execution&gt;</span><br><span class="line">                &lt;id&gt;push-image&lt;/id&gt;</span><br><span class="line">                &lt;phase&gt;install&lt;/phase&gt;</span><br><span class="line">                &lt;goals&gt;</span><br><span class="line">                    &lt;goal&gt;push&lt;/goal&gt;</span><br><span class="line">                &lt;/goals&gt;</span><br><span class="line">                &lt;configuration&gt;</span><br><span class="line">                    &lt;imageName&gt;$&#123;docker.registry.url&#125;/$&#123;docker.registry.name&#125;/$&#123;project.artifactId&#125;:$&#123;docker-latest-tag&#125;&lt;/imageName&gt;</span><br><span class="line">                    &lt;imageName&gt;$&#123;docker.registry.url&#125;/$&#123;docker.registry.name&#125;/$&#123;project.artifactId&#125;:$&#123;project.version&#125;&lt;/imageName&gt;</span><br><span class="line">                &lt;/configuration&gt;</span><br><span class="line">            &lt;/execution&gt;</span><br><span class="line">        &lt;/executions&gt;</span><br><span class="line">        &lt;configuration&gt;</span><br><span class="line">            &lt;!-- 是否构建镜像 --&gt;</span><br><span class="line">            &lt;skipDocker&gt;$&#123;docker.skip.build&#125;&lt;/skipDocker&gt;</span><br><span class="line">            &lt;!--最后镜像产生了两个tag，版本和和最新的--&gt;</span><br><span class="line">            &lt;forceTags&gt;true&lt;/forceTags&gt;</span><br><span class="line">            &lt;imageTags&gt;</span><br><span class="line">                &lt;imageTag&gt;$&#123;project.version&#125;&lt;/imageTag&gt;</span><br><span class="line">                &lt;imageTag&gt;$&#123;docker-latest-tag&#125;&lt;/imageTag&gt;</span><br><span class="line">            &lt;/imageTags&gt;</span><br><span class="line">            &lt;!--install阶段也上传，否则只有deploy阶段上传--&gt;</span><br><span class="line">            &lt;pushImage&gt;$&#123;docker.push.image&#125;&lt;/pushImage&gt;</span><br><span class="line">            &lt;!-- 配置镜像名称，遵循Docker的命名规范： springio/image --&gt;</span><br><span class="line">            &lt;imageName&gt;$&#123;docker.registry.url&#125;/$&#123;docker.registry.name&#125;/$&#123;project.artifactId&#125;&lt;/imageName&gt;</span><br><span class="line">            &lt;!-- Dockerfile位置，由于配置了编译时动态获取Maven变量，真正的Dockerfile位于位于编译后位置 --&gt;</span><br><span class="line">            &lt;dockerDirectory&gt;$&#123;dockerfile.compiled.position&#125;&lt;/dockerDirectory&gt;</span><br><span class="line">            &lt;resources&gt;</span><br><span class="line">                &lt;resource&gt;</span><br><span class="line">                    &lt;targetPath&gt;/&lt;/targetPath&gt;</span><br><span class="line">                    &lt;directory&gt;$&#123;project.build.directory&#125;&lt;/directory&gt;</span><br><span class="line">                    &lt;include&gt;$&#123;project.build.finalName&#125;.jar&lt;/include&gt;</span><br><span class="line">                &lt;/resource&gt;</span><br><span class="line">            &lt;/resources&gt;</span><br><span class="line">            &lt;!-- push到私有的hub --&gt;</span><br><span class="line">            &lt;serverId&gt;docker-registry&lt;/serverId&gt;</span><br><span class="line">            &lt;registryUrl&gt;$&#123;docker.registry.url&#125;&lt;/registryUrl&gt;</span><br><span class="line">        &lt;/configuration&gt;</span><br><span class="line">    &lt;/plugin&gt;</span><br><span class="line">&lt;/plugins&gt;</span><br></pre></td></tr></table></figure>
+<p>主要<code>properties</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;properties&gt;</span><br><span class="line">    &lt;!-- ########## Docker 相关变量 ########## --&gt;</span><br><span class="line">    &lt;resources.plugin.version&gt;3.0.2&lt;/resources.plugin.version&gt;</span><br><span class="line">    &lt;docker-maven-plugin.version&gt;1.0.0&lt;/docker-maven-plugin.version&gt;</span><br><span class="line">    &lt;!-- resource插件编译Dockerfile后的位置--&gt;</span><br><span class="line">    &lt;dockerfile.compiled.position&gt;$&#123;project.build.directory&#125;/docker&lt;/dockerfile.compiled.position&gt;</span><br><span class="line">    &lt;docker.skip.build&gt;true&lt;/docker.skip.build&gt;</span><br><span class="line">    &lt;docker.push.image&gt;false&lt;/docker.push.image&gt;</span><br><span class="line">    &lt;docker.registry.url&gt;192.168.0.202:8080&lt;/docker.registry.url&gt;</span><br><span class="line">    &lt;docker.registry.name&gt;dev-images&lt;/docker.registry.name&gt;</span><br><span class="line">    &lt;docker-latest-tag&gt;latest&lt;/docker-latest-tag&gt;</span><br><span class="line">&lt;/properties&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>说明</strong>：</p>
+<ul>
+<li>这里的<code>serverId</code>要与maven <code>setting.xml</code>里面的一样</li>
+</ul>
+<ul>
+<li>Dockerfile构建文件在<code>src/main/docker</code>中</li>
+<li>如果Dockerfile文件需要maven构建参数（比如需要构建后的打包文件名等），则使用<code>@@</code>占位符（如<code>@project.build.finalName@</code>）原因是Sping Boot 的pom将resource插件的占位符由<code>${}</code>改为<code>@@</code>，非继承Spring Boot 的pom文件，则使用<code>${}</code>占位符</li>
+<li>如果不需要动态生成Dockerfile文件，则可以将Dockerfile资源拷贝部分放入<code>docker-maven-plugin</code>插件的<code>&lt;resources&gt;</code>配置里</li>
+<li><strong><code>spring-boot-maven-plugin</code>插件一定要在其他构建插件之上，否则打包文件会有问题。</strong></li>
+</ul>
+<h3 id="命令构建"><a href="#命令构建" class="headerlink" title="命令构建"></a>命令构建</h3><p>如果<code>&lt;pushImage&gt;false&lt;/pushImage&gt;</code>则install阶段将不提交Docker镜像，只有maven的<code>deploy</code>阶段才提交。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean install</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">[INFO] --- spring-boot-maven-plugin:1.5.9.RELEASE:repackage (default) @ eureka-center-server ---</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- docker-maven-plugin:1.0.0:build (default) @ eureka-center-server ---</span><br><span class="line">[INFO] Using authentication suppliers: [ConfigFileRegistryAuthSupplier, NoOpRegistryAuthSupplier]</span><br><span class="line">[WARNING] Ignoring run because dockerDirectory is set</span><br><span class="line">[INFO] Copying /home/ybd/data/git-repo/bitbucket/ms-iba/eureka-center-server/target/eureka-center-server-0.0.1-SNAPSHOT.jar -&gt; /home/ybd/data/git-repo/bitbucket/ms-iba/eureka-center-server/target/docker/eureka-center-server-0.0.1-SNAPSHOT.jar</span><br><span class="line">[INFO] Copying /home/ybd/data/git-repo/bitbucket/ms-iba/eureka-center-server/target/docker/eureka-center-server-0.0.1-SNAPSHOT.jar -&gt; /home/ybd/data/git-repo/bitbucket/ms-iba/eureka-center-server/target/docker/eureka-center-server-0.0.1-SNAPSHOT.jar</span><br><span class="line">[INFO] Copying /home/ybd/data/git-repo/bitbucket/ms-iba/eureka-center-server/target/docker/Dockerfile -&gt; /home/ybd/data/git-repo/bitbucket/ms-iba/eureka-center-server/target/docker/Dockerfile</span><br><span class="line">[INFO] Building image 192.168.6.113:8888/discover-server/eureka-center-server</span><br><span class="line">Step 1/7 : FROM frolvlad/alpine-oraclejdk8:slim</span><br><span class="line"></span><br><span class="line"> ---&gt; 491f45037124</span><br><span class="line">Step 2/7 : MAINTAINER ybd &lt;yangbingdong1994@gmail.com&gt;</span><br><span class="line"></span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 016c2033bd32</span><br><span class="line">Step 3/7 : VOLUME /tmp</span><br><span class="line"></span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; d2a287b6ed52</span><br><span class="line">Step 4/7 : ENV PROJECT_NAME=&quot;eureka-center-server-0.0.1-SNAPSHOT.jar&quot; JAVA_OPTS=&quot;&quot;</span><br><span class="line"></span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 34565a7de714</span><br><span class="line">Step 5/7 : ADD $PROJECT_NAME app.jar</span><br><span class="line"></span><br><span class="line"> ---&gt; 64d9055ce969</span><br><span class="line">Step 6/7 : RUN sh -c &apos;touch /app.jar&apos;</span><br><span class="line"></span><br><span class="line"> ---&gt; Running in 66f4eb550a57</span><br><span class="line">Removing intermediate container 66f4eb550a57</span><br><span class="line"> ---&gt; 93486965cad9</span><br><span class="line">Step 7/7 : CMD [&quot;sh&quot;, &quot;-c&quot;, &quot;java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=$&#123;ACTIVE:-docker&#125;  -jar /app.jar&quot;]</span><br><span class="line"></span><br><span class="line"> ---&gt; Running in 8b42c471791f</span><br><span class="line">Removing intermediate container 8b42c471791f</span><br><span class="line"> ---&gt; 2eb3dbbab6c5</span><br><span class="line">ProgressMessage&#123;id=null, status=null, stream=null, error=null, progress=null, progressDetail=null&#125;</span><br><span class="line">Successfully built 2eb3dbbab6c5</span><br><span class="line">Successfully tagged 192.168.6.113:8888/discover-server/eureka-center-server:latest</span><br><span class="line">[INFO] Built 192.168.6.113:8888/discover-server/eureka-center-server</span><br><span class="line">[INFO] Tagging 192.168.6.113:8888/discover-server/eureka-center-server with 0.0.1-SNAPSHOT</span><br><span class="line">[INFO] Tagging 192.168.6.113:8888/discover-server/eureka-center-server with latest</span><br><span class="line">[INFO] Pushing 192.168.6.113:8888/discover-server/eureka-center-server</span><br><span class="line">The push refers to repository [192.168.6.113:8888/discover-server/eureka-center-server]</span><br><span class="line">40566d372b69: Pushed </span><br><span class="line">40566d372b69: Layer already exists </span><br><span class="line">4fd38f0d6712: Layer already exists </span><br><span class="line">d7cd646c41bd: Layer already exists </span><br><span class="line">ced237d13962: Layer already exists </span><br><span class="line">2aebd096e0e2: Layer already exists </span><br><span class="line">null: null </span><br><span class="line">null: null </span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-install-plugin:2.4:install (default-install) @ eureka-center-server ---</span><br><span class="line">[INFO] Installing /home/ybd/data/git-repo/bitbucket/ms-iba/eureka-center-server/target/eureka-center-server-0.0.1-SNAPSHOT.jar to /home/ybd/data/application/maven/maven-repo/com/iba/server/eureka-center-server/0.0.1-SNAPSHOT/eureka-center-server-0.0.1-SNAPSHOT.jar</span><br><span class="line">[INFO] Installing /home/ybd/data/git-repo/bitbucket/ms-iba/eureka-center-server/pom.xml to /home/ybd/data/application/maven/maven-repo/com/iba/server/eureka-center-server/0.0.1-SNAPSHOT/eureka-center-server-0.0.1-SNAPSHOT.pom</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[INFO] BUILD SUCCESS</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[INFO] Total time: 15.962 s</span><br><span class="line">[INFO] Finished at: 2017-12-25T13:33:39+08:00</span><br><span class="line">[INFO] Final Memory: 55M/591M</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br></pre></td></tr></table></figure>
+<p>可以看到本地以及私有仓库都多了一个镜像：</p>
+<p><img src="http://ojoba1c98.bkt.clouddn.com/img/spring-cloud-docker-integration/portainer.png" alt=""></p>
+<p><img src="http://ojoba1c98.bkt.clouddn.com/img/spring-cloud-docker-integration/harbor.png" alt=""></p>
+<p><strong>此处有个疑问</strong>，很明显看得出来这里上传了两个一样大小的包，不知道是不是同一个jar包，但id又不一样：</p>
+<p><img src="http://ojoba1c98.bkt.clouddn.com/img/spring-cloud-docker-integration/duplicate01.png" alt=""></p>
+<p><img src="http://ojoba1c98.bkt.clouddn.com/img/spring-cloud-docker-integration/duplicate02.png" alt=""></p>
+<h3 id="运行Docker"><a href="#运行Docker" class="headerlink" title="运行Docker"></a>运行Docker</h3><p>运行程序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name some-server -e ACTIVE=docker -p 8080:8080 -d [IMAGE]</span><br></pre></td></tr></table></figure>
+<h3 id="添加运行时JVM参数"><a href="#添加运行时JVM参数" class="headerlink" title="添加运行时JVM参数"></a>添加运行时JVM参数</h3><p>只需要在Docker启动命令中加上<code>-e &quot;JAVA_OPTS=-Xmx128m&quot;</code>即可</p>
+<h1 id="Kafka、ELK-collect-logs"><a href="#Kafka、ELK-collect-logs" class="headerlink" title="Kafka、ELK collect logs"></a>Kafka、ELK collect logs</h1><p><img src="http://ojoba1c98.bkt.clouddn.com/img/docker-logs-collect/elk-arch1.png" alt=""></p>
+<p>传统的应用可以将日志存到日志中，但集成Docker之后，日志怎么处理？放到容器的某个目录然后挂在出来？这样也可以，但这样就相当于给容器与外界绑定了一个状态，弹性伸缩怎么办？个人还是觉得通过队列与ELK管理Docker日志比较合理，而且Log4j2原生支持Kafka的Appender。</p>
+<h2 id="镜像准备"><a href="#镜像准备" class="headerlink" title="镜像准备"></a>镜像准备</h2><p>Docker Hub中的ELK镜像并不是最新版本的，我们需要到官方的网站获取最新的镜像：<strong><em><a href="https://www.docker.elastic.co" rel="external nofollow noopener noreferrer" target="_blank">https://www.docker.elastic.co</a></em></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker pull zookeeper</span><br><span class="line">docker pull wurstmeister/kafka:1.0.0</span><br><span class="line">docker pull docker.elastic.co/elasticsearch/elasticsearch:6.2.3</span><br><span class="line">docker pull docker.elastic.co/kibana/kibana:6.2.3</span><br><span class="line">docker pull docker.elastic.co/logstash/logstash:6.2.3</span><br></pre></td></tr></table></figure>
+<p>注意ELK版本最好保持一致</p>
+<h2 id="程序Log4j2配置"><a href="#程序Log4j2配置" class="headerlink" title="程序Log4j2配置"></a>程序Log4j2配置</h2><p><strong>SpringBoot版本：2.0</strong></p>
+<p><code>log4j2.xml</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;configuration status=&quot;OFF&quot; monitorInterval=&quot;30&quot;&gt;</span><br><span class="line">    &lt;properties&gt;</span><br><span class="line">        &lt;Property name=&quot;fileName&quot;&gt;logs&lt;/Property&gt;</span><br><span class="line">        &lt;Property name=&quot;fileGz&quot;&gt;logs/7z&lt;/Property&gt;</span><br><span class="line">        &lt;Property name=&quot;PID&quot;&gt;????&lt;/Property&gt;</span><br><span class="line">        &lt;Property name=&quot;LOG_PATTERN&quot;&gt;%d&#123;yyyy-MM-dd HH:mm:ss.SSS&#125; | %5p | $&#123;sys:PID&#125; | %15.15t | %-50.50c&#123;1.&#125; | %5L | %M | %msg%n%xwEx</span><br><span class="line">        &lt;/Property&gt;</span><br><span class="line">    &lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">    &lt;Appenders&gt;</span><br><span class="line">        &lt;Console name=&quot;console&quot; target=&quot;SYSTEM_OUT&quot;&gt;</span><br><span class="line">            &lt;ThresholdFilter level=&quot;info&quot; onMatch=&quot;ACCEPT&quot; onMismatch=&quot;DENY&quot;/&gt;</span><br><span class="line">            &lt;PatternLayout pattern=&quot;$&#123;LOG_PATTERN&#125;&quot; charset=&quot;UTF-8&quot;/&gt;</span><br><span class="line">        &lt;/Console&gt;</span><br><span class="line"></span><br><span class="line">        &lt;Kafka name=&quot;kafka&quot; topic=&quot;log-collect&quot;&gt;</span><br><span class="line">            &lt;ThresholdFilter level=&quot;info&quot; onMatch=&quot;ACCEPT&quot; onMismatch=&quot;DENY&quot;/&gt;</span><br><span class="line">            &lt;PatternLayout pattern=&quot;$&#123;LOG_PATTERN&#125;&quot; charset=&quot;UTF-8&quot;/&gt;</span><br><span class="line">            &lt;Property name=&quot;bootstrap.servers&quot;&gt;192.168.6.113:9092&lt;/Property&gt;</span><br><span class="line">        &lt;/Kafka&gt;</span><br><span class="line">    &lt;/Appenders&gt;</span><br><span class="line"></span><br><span class="line">    &lt;Loggers&gt;</span><br><span class="line">        &lt;AsyncRoot level=&quot;info&quot; includeLocation=&quot;true&quot;&gt;</span><br><span class="line">            &lt;AppenderRef ref=&quot;console&quot;/&gt;</span><br><span class="line">            &lt;AppenderRef ref=&quot;kafka&quot;/&gt;</span><br><span class="line">        &lt;/AsyncRoot&gt;</span><br><span class="line">    &lt;/Loggers&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>bootstrap.servers</code>是kafka的地址，接入Docker network之后可以配置成<code>kafka:9092</code></li>
+<li><code>topic</code>要与下面Logstash的一致</li>
+<li>更多配置请看官网</li>
+</ul>
+<p>打印日志：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">@Slf4j</span><br><span class="line">@Component</span><br><span class="line">public class LogIntervalSender &#123;</span><br><span class="line">	private AtomicInteger atomicInteger = new AtomicInteger(0);</span><br><span class="line"></span><br><span class="line">	@Scheduled(fixedDelay = 2000)</span><br><span class="line">	public void doScheduled() &#123;</span><br><span class="line">		try &#123;</span><br><span class="line">			int i = atomicInteger.incrementAndGet();</span><br><span class="line">			randomThrowException(i);</span><br><span class="line">			log.info(&quot;&#123;&#125; send a message: the sequence is &#123;&#125; , random uuid is &#123;&#125;&quot;, currentThread().getName(), i, randomUUID());</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			log.error(&quot;catch an exception:&quot;, e);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private void randomThrowException(int i) &#123;</span><br><span class="line">		if (i % 10 == 0) &#123;</span><br><span class="line">			throw new RuntimeException(&quot;this is a random exception, sequence = &quot; + i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Kafka-Compose"><a href="#Kafka-Compose" class="headerlink" title="Kafka Compose"></a>Kafka Compose</h2><p>这里直接使用docker-compose（需要先创建外部网络）:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;3.4&apos;</span><br><span class="line">services:</span><br><span class="line">  zoo:</span><br><span class="line">    image: zookeeper:latest</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;2181:2181&quot;</span><br><span class="line">    restart: always</span><br><span class="line">    deploy:</span><br><span class="line">      mode: replicated</span><br><span class="line">      replicas: 1</span><br><span class="line">      restart_policy:</span><br><span class="line">        condition: on-failure</span><br><span class="line">        delay: 60s</span><br><span class="line">        max_attempts: 5</span><br><span class="line">      placement:</span><br><span class="line">        constraints:</span><br><span class="line">          - node.hostname == ybd-PC</span><br><span class="line">    networks: </span><br><span class="line">      - backend</span><br><span class="line"></span><br><span class="line">  kafka:</span><br><span class="line">    image: wurstmeister/kafka:1.0.0</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;9092:9092&quot;</span><br><span class="line">    environment:</span><br><span class="line">      KAFKA_ADVERTISED_HOST_NAME: 192.168.6.113</span><br><span class="line">      KAFKA_ZOOKEEPER_CONNECT: zoo:2181</span><br><span class="line">    volumes:</span><br><span class="line">      - /var/run/docker.sock:/var/run/docker.sock</span><br><span class="line">    depends_on:</span><br><span class="line">      - zoo</span><br><span class="line">    restart: always</span><br><span class="line">    networks: </span><br><span class="line">      - backend</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  backend:</span><br><span class="line">    external:</span><br><span class="line">      name: backend</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>KAFKA_ADVERTISED_HOST_NAME</code>是内网IP，本地调试用，Spring Boot应用使用Docker network可忽略这个</li>
+</ul>
+<h2 id="ELK-Compose"><a href="#ELK-Compose" class="headerlink" title="ELK Compose"></a>ELK Compose</h2><p><code>logstash.conf</code>配置文件(<strong>注意下面的topics要与上面log4j2.xml中的一样</strong>):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">    kafka &#123;</span><br><span class="line">        bootstrap_servers =&gt; [&quot;kafka:9092&quot;]</span><br><span class="line">        auto_offset_reset =&gt; &quot;latest&quot;</span><br><span class="line">#        consumer_threads =&gt; 5</span><br><span class="line">        topics =&gt; [&quot;log-collect&quot;]</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line">filter &#123;</span><br><span class="line">  #Only matched data are send to output.</span><br><span class="line">&#125;</span><br><span class="line">output &#123;</span><br><span class="line">    stdout &#123;</span><br><span class="line">      codec =&gt; rubydebug &#123; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    elasticsearch &#123;</span><br><span class="line">        action =&gt; &quot;index&quot;                #The operation on ES</span><br><span class="line">        codec  =&gt; rubydebug</span><br><span class="line">        hosts  =&gt; [&quot;elasticsearch:9200&quot;]      #ElasticSearch host, can be array.</span><br><span class="line">        index  =&gt; &quot;logstash-%&#123;+YYYY.MM.dd&#125;&quot;      #The index to write data to.</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>docker-compose.yml</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;3.4&apos;</span><br><span class="line">services:</span><br><span class="line">  elasticsearch:</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:6.2.3</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;9200:9200&quot;</span><br><span class="line">    restart: always</span><br><span class="line">    environment:</span><br><span class="line">      - discovery.type=single-node</span><br><span class="line">      - ES_JAVA_OPTS=-Xms512m -Xmx512m</span><br><span class="line">    networks:</span><br><span class="line">      - backend</span><br><span class="line"></span><br><span class="line">  kibana:</span><br><span class="line">    image: docker.elastic.co/kibana/kibana:6.2.3</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;5601:5601&quot;</span><br><span class="line">    restart: always</span><br><span class="line">    networks:</span><br><span class="line">      - backend</span><br><span class="line">    environment:</span><br><span class="line">      - ELASTICSEARCH_URL=http://elasticsearch:9200</span><br><span class="line">    depends_on:</span><br><span class="line">      - elasticsearch</span><br><span class="line"></span><br><span class="line">  logstash:</span><br><span class="line">    image: docker.elastic.co/logstash/logstash:6.2.3</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;4560:4560&quot;</span><br><span class="line">    restart: always</span><br><span class="line">    volumes:</span><br><span class="line">      - /docker/elk/logstash/config/logstash.conf:/etc/logstash.conf</span><br><span class="line">    networks:</span><br><span class="line">      - backend</span><br><span class="line">    depends_on:</span><br><span class="line">      - elasticsearch</span><br><span class="line">    entrypoint:</span><br><span class="line">      - logstash</span><br><span class="line">      - -f</span><br><span class="line">      - /etc/logstash.conf</span><br><span class="line"></span><br><span class="line"># docker network create -d=overlay --attachable backend</span><br><span class="line">networks:</span><br><span class="line">  backend:</span><br><span class="line">    external:</span><br><span class="line">      name: backend</span><br></pre></td></tr></table></figure>
+<p><img src="http://ojoba1c98.bkt.clouddn.com/img/docker-logs-collect/kibana.png" alt=""></p>
+<p>通过这种方式管理容器应用的日志很舒服。</p>
+      
+    </div>
+
+<div style="text-align:center;color:#ccc;font-size:14px">---------------- The End ----------------</div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display:block;padding:10px 0;margin:20px auto;width:100%;text-align:center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat/gongzhonghao.jpg" alt="ookamiAntD wechat" style="width:200px;max-width:100%">
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+
+  <div style="padding:10px 0;margin:20px auto;width:90%;text-align:center">
+    <div>谢谢大爷～</div>
+    <button id="rewardButton" disable="enable" onclick='var qr=document.getElementById("QR");"none"===qr.style.display?qr.style.display="block":qr.style.display="none"'>
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display:none">
+      
+        <div id="wechat" style="display:inline-block">
+          <img id="wechat_qr" src="/images/donate/wechat.png" alt="ookamiAntD WeChat Pay">
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display:inline-block">
+          <img id="alipay_qr" src="/images/donate/alipay.jpg" alt="ookamiAntD Alipay">
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+<div>
+	  
+	    <p id="div-border-left-red">
+		Author：<b>ookamiAntD Yang</b><br>
+		Link：<a href="/2018/spring-boot-docker-elk/" title="Spring Boot应用集成Docker并结合Kafka、ELK管理Docker日志">http://yangbingdong.com/2018/spring-boot-docker-elk/</a><br>
+		Contact：<a>yangbingdong1994@gmail.com</a><br>
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow noopener noreferrer"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br>
+	    <b>转载请注明出处，谢谢！</b>
+	    </p>
+	  
+	</div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
+          
+            <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
+          
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
+          
+            <a href="/tags/Elasticsearch/" rel="tag"># Elasticsearch</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/write-your-own-blockchain/" rel="next" title="转载—自己动手写区块链">
+                <i class="fa fa-chevron-left"></i> 转载—自己动手写区块链
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<div class="-hoofoo-share-title">分享到：</div>
+<div class="-hoofoo-share-buttons">
+    <div class="-mob-share-weibo -hoofoo-share-weibo -hoofoo-share-ui-button"><i class="fa fa-weibo" aria-hidden="true"></i></div>
+    <div class="-mob-share-weixin -hoofoo-share-weixin -hoofoo-share-ui-button"><i class="fa fa-weixin" aria-hidden="true"></i></div>
+    <div class="-mob-share-qq -hoofoo-share-qq -hoofoo-share-ui-button"><i class="fa fa-qq" aria-hidden="true"></i></div>
+    <div class="-mob-share-twitter -hoofoo-share-twitter -hoofoo-share-ui-button"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+    <div class="-hoofoo-share-more -hoofoo-share-ui-button -mob-share-open"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></div>
+</div>
+<div class="-mob-share-ui" style="display:none">
+    <ul class="-mob-share-list">
+        <li class="-mob-share-weibo"><p>新浪微博</p></li>
+        <li class="-mob-share-weixin"><p>微信</p></li>
+        <li class="-mob-share-qzone"><p>QQ空间</p></li>
+        <li class="-mob-share-qq"><p>QQ好友</p></li>
+        <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+        <li class="-mob-share-renren"><p>人人网</p></li>
+        <li class="-mob-share-kaixin"><p>开心网</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-youdao"><p>有道云笔记</p></li>
+        <li class="-mob-share-mingdao"><p>明道</p></li>
+        <li class="-mob-share-pengyou"><p>朋友网</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+        <li class="-mob-share-pocket"><p>Pocket</p></li>
+        <li class="-mob-share-google"><p>Google+</p></li>
+        <li class="-mob-share-tumblr"><p>Tumblr</p></li>
+        <li class="-mob-share-instapaper"><p>Instapaper</p></li>
+        <li class="-mob-share-linkedin"><p>Linkedin</p></li>
+    </ul>
+    <div class="-mob-share-close">取消</div>
+</div>
+<div class="-mob-share-ui-bg"></div>
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=21aa3b13ad233"></script>
+
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+<div style="text-align:center">
+  
+
+</div>
+      <div id="disqus_proxy_thread"></div>
+      <div id="disqus_thread"></div>
+      
+          <script type="text/javascript">window.disqusProxy={username:"ookamiantd",server:"disqus-proxy.yangbingdong.com",port:"5509",defaultAvatar:"/images/avatar/avatar-default.jpg",adminAvatar:"/images/avatar/avatar-admin.jpg",identifier:"2018/spring-boot-docker-elk/"},window.disqus_config=function(){this.page.url="http://yangbingdong.com/2018/spring-boot-docker-elk/",this.page.identifier="2018/spring-boot-docker-elk/"},window.onload=function(){var a=document.createElement("script");a.src="/static/js/main.0d0338ae.js",a.async=!0,document.body.appendChild(a)}</script>
+          <link rel="stylesheet" href="/static/css/main.0603c539.css">
+      
+
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar/avatar-admin.jpg" alt="ookamiAntD">
+          <p class="site-author-name" itemprop="name">ookamiAntD</p>
+          <p class="site-description motion-element" itemprop="description">码渣 | rocker | 二次元 | 美剧 | 宅</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/masteranthoneyd" target="_blank" rel="external nofollow noopener noreferrer" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/profile.php?id=100014869064462" target="_blank" rel="external nofollow noopener noreferrer" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/ookamiAntD" target="_blank" rel="external nofollow noopener noreferrer" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow noopener noreferrer">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa fa-fw fa-globe"></i>
+              大神们的博客
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://ycwalker.com/" title="ciqulover" target="_blank" rel="external nofollow noopener noreferrer">ciqulover</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://codepub.cn" title="IT草根" target="_blank" rel="external nofollow noopener noreferrer">IT草根</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://crossoverjie.top/" title="crossoverJie's Blog" target="_blank" rel="external nofollow noopener noreferrer">crossoverJie's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yemengying.com/" title="Giraffe's Home" target="_blank" rel="external nofollow noopener noreferrer">Giraffe's Home</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="300" height="80" src="//music.163.com/outchain/player?type=2&id=32364704&auto=0&height=66" style="margin-top:20px"></iframe>
+
+
+      </section>
+
+      
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-Boot-Docker-Integration"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot Docker Integration</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">1.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Maven-setting-xml密码加密配置"><span class="nav-number">1.2.</span> <span class="nav-text">Maven setting.xml密码加密配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建基础镜像"><span class="nav-number">1.3.</span> <span class="nav-text">构建基础镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始集成"><span class="nav-number">1.4.</span> <span class="nav-text">开始集成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编写Dockerfile"><span class="nav-number">1.4.1.</span> <span class="nav-text">编写Dockerfile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pom文件添加Docker插件"><span class="nav-number">1.4.2.</span> <span class="nav-text">pom文件添加Docker插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令构建"><span class="nav-number">1.4.3.</span> <span class="nav-text">命令构建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行Docker"><span class="nav-number">1.4.4.</span> <span class="nav-text">运行Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加运行时JVM参数"><span class="nav-number">1.4.5.</span> <span class="nav-text">添加运行时JVM参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Kafka、ELK-collect-logs"><span class="nav-number">2.</span> <span class="nav-text">Kafka、ELK collect logs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#镜像准备"><span class="nav-number">2.1.</span> <span class="nav-text">镜像准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序Log4j2配置"><span class="nav-number">2.2.</span> <span class="nav-text">程序Log4j2配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kafka-Compose"><span class="nav-number">2.3.</span> <span class="nav-text">Kafka Compose</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ELK-Compose"><span class="nav-number">2.4.</span> <span class="nav-text">ELK Compose</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+	
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-flash"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hosted by <a href="https://pages.coding.me" style="font-weight:700" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></span>
+</div>
+
+
+<div class="powered-by">
+    Personal Site
+</div>
+
+<div class="theme-info">
+  Blog -
+ookamiAntD | <span class="post-count">共170.5k字</span>
+</div>
+
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user">本站访客数</i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye">本站总访问量</i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">function run_disqus_script(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="//"+disqus_shortname+".disqus.com/"+e,(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(t)}var disqus_shortname="ookamiantd",disqus_identifier="2018/spring-boot-docker-elk/",disqus_title="Spring Boot应用集成Docker并结合Kafka、ELK管理Docker日志",disqus={load:function(){"object"!=typeof DISQUS&&(!function(){var e=document.createElement("script");e.async=!0,e.type="text/javascript",e.src="//"+disqus_shortname+".disqus.com/embed.js",(document.getElementsByTagName("HEAD")[0]||document.getElementsByTagName("BODY")[0]).appendChild(e)}(),$("#load-disqus").html("评论加载中，请确保你有梯子，若评论长时间未加载则你可能翻墙失败...").fadeOut(9e3))}}</script>
+  
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">function proceedsearch(){$("body").append('<div class="popoverlay">').css("overflow","hidden"),$(".popup").toggle()}var isfetched=!1,search_path="search.xml";0==search_path.length&&(search_path="search.xml");var path="/"+search_path,searchFunc=function(e,t,a){"use strict";$.ajax({url:e,dataType:"xml",async:!0,success:function(e){isfetched=!0,$(".popup").detach().appendTo(".header-inner");var r=$("entry",e).map(function(){return{title:$("title",this).text(),content:$("content",this).text(),url:$("url",this).text()}}).get(),c=document.getElementById(t),n=document.getElementById(a);c.addEventListener("input",function(){var e=0,t='<ul class="search-result-list">',a=this.value.trim().toLowerCase().split(/[\s\-]+/);n.innerHTML="",this.value.trim().length>1&&r.forEach(function(r){var c=!1,n=r.title.trim().toLowerCase(),s=r.content.trim().replace(/<[^>]+>/g,"").toLowerCase(),o=decodeURIComponent(r.url),i=-1,l=-1,p=-1;if(""!=n&&a.forEach(function(e,t){i=n.indexOf(e),l=s.indexOf(e),(i>=0||l>=0)&&(c=!0,0==t&&(p=l))}),c){e+=1,t+="<li><a href='"+o+"' class='search-result-title'>"+n+"</a>";var h=r.content.trim().replace(/<[^>]+>/g,"");if(p>=0){var u=p-20,d=p+80;u<0&&(u=0),0==u&&(d=50),d>h.length&&(d=h.length);var f=h.substring(u,d);a.forEach(function(e){var t=new RegExp(e,"gi");f=f.replace(t,'<b class="search-keyword">'+e+"</b>")}),t+='<p class="search-result">'+f+"...</p>"}t+="</li>"}}),t+="</ul>",0==e&&(t='<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'),""==a&&(t='<div id="no-result"><i class="fa fa-search fa-5x" /></div>'),n.innerHTML=t}),proceedsearch()}})};$(".popup-trigger").click(function(e){e.stopPropagation(),0==isfetched?searchFunc(path,"local-search-input","local-search-result"):proceedsearch()}),$(".popup-btn-close").click(function(e){$(".popup").hide(),$(".popoverlay").remove(),$("body").css("overflow","")}),$(".popup").click(function(e){e.stopPropagation()})</script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("usE0s6JGUeOiMcsVoRuHuv2B-gzGzoHsz","ewm6NEF07r83HbnOr63ptuKH")</script>
+  <script>function showTime(e){var t=new AV.Query(e),n=[],o=$(".leancloud_visitors");o.each(function(){n.push($(this).attr("id").trim())}),t.containedIn("url",n),t.find().done(function(e){if(0!==e.length){for(c=0;c<e.length;c++){var t=e[c],i=t.get("url"),s=t.get("time"),l=document.getElementById(i);$(l).find(".leancloud-visitors-count").text(s)}for(var c=0;c<n.length;c++){var i=n[c],l=document.getElementById(i),r=$(l).find(".leancloud-visitors-count");""==r.text()&&r.text(0)}}else o.find(".leancloud-visitors-count").text(0)}).fail(function(e,t){console.log("Error: "+t.code+" "+t.message)})}function addCount(e){var t=$(".leancloud_visitors"),n=t.attr("id").trim(),o=t.attr("data-flag-title").trim(),i=new AV.Query(e);i.equalTo("url",n),i.find({success:function(t){if(t.length>0){var i=t[0];i.fetchWhenSave(!0),i.increment("time"),i.save(null,{success:function(e){$(document.getElementById(n)).find(".leancloud-visitors-count").text(e.get("time"))},error:function(e,t){console.log("Failed to save Visitor num, with error message: "+t.message)}})}else{var s=new e,l=new AV.ACL;l.setPublicReadAccess(!0),l.setPublicWriteAccess(!0),s.setACL(l),s.set("title",o),s.set("url",n),s.set("time",1),s.save(null,{success:function(e){$(document.getElementById(n)).find(".leancloud-visitors-count").text(e.get("time"))},error:function(e,t){console.log("Failed to create")}})}},error:function(e){console.log("Error:"+e.code+" "+e.message)}})}$(function(){var e=AV.Object.extend("Counter");1==$(".leancloud_visitors").length?addCount(e):$(".post-title-link").length>1&&showTime(e)})</script>
+
+
+
+  
+<script>!function(){var t=document.createElement("script"),e=window.location.protocol.split(":")[0];t.src="https"===e?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}()</script>
+
+
+  
+
+
+  <script type="text/javascript" color="255,0,204" opacity="0.5" zindex="-2" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+
+
+<script type="text/javascript">$("body").delegate(".-mob-share-weixin-qrcode-bg","click",function(){$(".-mob-share-weixin-qrcode-close").trigger("click")})</script></body></html>
