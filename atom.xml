@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yangbingdong.com/"/>
-  <updated>2018-04-25T09:01:26.545Z</updated>
+  <updated>2018-06-02T10:18:54.696Z</updated>
   <id>http://yangbingdong.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yangbingdong.com/2018/spring-boot-docker-elk/"/>
     <id>http://yangbingdong.com/2018/spring-boot-docker-elk/</id>
     <published>2018-04-02T05:00:19.000Z</published>
-    <updated>2018-04-25T09:01:26.545Z</updated>
+    <updated>2018-06-02T10:18:54.696Z</updated>
     
     <summary type="html">
     
@@ -53,7 +53,7 @@
     <link href="http://yangbingdong.com/2018/write-your-own-blockchain/"/>
     <id>http://yangbingdong.com/2018/write-your-own-blockchain/</id>
     <published>2018-03-05T09:38:08.000Z</published>
-    <updated>2018-04-25T09:01:00.945Z</updated>
+    <updated>2018-04-26T02:01:07.216Z</updated>
     
     <summary type="html">
     
@@ -77,7 +77,7 @@
     <link href="http://yangbingdong.com/2018/spring-boot-mvc-validation/"/>
     <id>http://yangbingdong.com/2018/spring-boot-mvc-validation/</id>
     <published>2018-02-26T08:30:58.000Z</published>
-    <updated>2018-04-25T09:18:42.923Z</updated>
+    <updated>2018-05-22T07:51:15.307Z</updated>
     
     <summary type="html">
     
@@ -105,7 +105,7 @@
     <link href="http://yangbingdong.com/2018/spring-boot-learning-hodgepodge/"/>
     <id>http://yangbingdong.com/2018/spring-boot-learning-hodgepodge/</id>
     <published>2018-02-25T07:25:35.000Z</published>
-    <updated>2018-04-25T09:00:35.081Z</updated>
+    <updated>2018-04-27T03:30:21.604Z</updated>
     
     <summary type="html">
     
@@ -133,7 +133,7 @@
     <link href="http://yangbingdong.com/2018/mysql-related-learning/"/>
     <id>http://yangbingdong.com/2018/mysql-related-learning/</id>
     <published>2018-02-16T07:16:18.000Z</published>
-    <updated>2018-03-22T05:38:41.004Z</updated>
+    <updated>2018-05-07T09:08:40.174Z</updated>
     
     <summary type="html">
     
@@ -199,7 +199,7 @@
     <link href="http://yangbingdong.com/2018/docker-visual-management-and-orchestrate-tools/"/>
     <id>http://yangbingdong.com/2018/docker-visual-management-and-orchestrate-tools/</id>
     <published>2018-01-02T04:57:52.000Z</published>
-    <updated>2018-03-14T06:38:23.178Z</updated>
+    <updated>2018-05-30T10:35:05.962Z</updated>
     
     <summary type="html">
     
@@ -449,7 +449,7 @@
     <link href="http://yangbingdong.com/2017/note-of-learning-idea-under-ubuntu/"/>
     <id>http://yangbingdong.com/2017/note-of-learning-idea-under-ubuntu/</id>
     <published>2017-04-17T10:00:00.000Z</published>
-    <updated>2018-03-14T06:38:23.182Z</updated>
+    <updated>2018-05-29T02:38:33.507Z</updated>
     
     <summary type="html">
     
@@ -624,11 +624,11 @@
     <link href="http://yangbingdong.com/2017/ubuntu-todo-after-install/"/>
     <id>http://yangbingdong.com/2017/ubuntu-todo-after-install/</id>
     <published>2017-01-12T15:04:36.000Z</published>
-    <updated>2018-04-25T08:29:12.893Z</updated>
+    <updated>2018-06-02T06:45:31.785Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;http://ojoba1c98.bkt.clouddn.com/img/gnome/activities-overview.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;blockquote&gt;&lt;p&gt;鉴于 &lt;a href=&quot;https://linux.cn/article-9183-1.html&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Ubuntu 18.04 LTS&lt;/a&gt; 版本即将到来，本篇的16.04也将升级到18.04 GNOME 版本&lt;/p&gt;&lt;p&gt;可能会存在兼容问题，本篇将持续更新&lt;/p&gt;&lt;/blockquote&gt;
+      &lt;p&gt;&lt;img src=&quot;http://ojoba1c98.bkt.clouddn.com/img/gnome/activities-overview.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;blockquote&gt;&lt;p&gt;鉴于 &lt;a href=&quot;https://linux.cn/article-9183-1.html&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Ubuntu 18.04 LTS&lt;/a&gt; 版本已经来临，本篇的16.04也将升级到18.04 版本&lt;/p&gt;&lt;p&gt;可能会存在兼容问题，本篇将持续更新&lt;/p&gt;&lt;/blockquote&gt;
     
     </summary>
     
