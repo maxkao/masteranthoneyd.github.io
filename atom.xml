@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yangbingdong.com/"/>
-  <updated>2018-06-02T10:18:54.696Z</updated>
+  <updated>2018-08-10T11:27:55.353Z</updated>
   <id>http://yangbingdong.com/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Spring Cloud Stack Learning</title>
+    <link href="http://yangbingdong.com/2018/spring-cloud-stack-learning/"/>
+    <id>http://yangbingdong.com/2018/spring-cloud-stack-learning/</id>
+    <published>2018-06-09T08:55:08.000Z</published>
+    <updated>2018-08-10T11:27:55.353Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ojoba1c98.bkt.clouddn.com/img/spring-cloud-docker-integration/spring-cloud-stack.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h1 id=&quot;Preface&quot;&gt;&lt;a href=&quot;#Preface&quot; class=&quot;headerlink&quot; title=&quot;Preface&quot;&gt;&lt;/a&gt;Preface&lt;/h1&gt;&lt;blockquote&gt;&lt;p&gt;Spring Cloud 是一系列框架的有序集合。它利用 Spring Boot 的开发便利性巧妙地简化了分布式系统基础设施的开发，如服务发现注册、配置中心、消息总线、负载均衡、断路器、数据监控等，都可以用 Spring Boot 的开发风格做到一键启动和部署。Spring 并没有重复制造轮子，它只是将目前各家公司开发的比较成熟、经得起实际考验的服务框架组合起来，通过 Spring Boot 风格进行再封装屏蔽掉了复杂的配置和实现原理，最终给开发者留出了一套简单易懂、易部署和易维护的分布式系统开发工具包。&lt;/p&gt;&lt;p&gt;至于各种框架组件的相关概念以及入门教程网上一大把，此篇博文主要记录个人在使用Spring Cloud构建微服务的一些配置以及踩坑…&lt;/p&gt;&lt;p&gt;集成Docker部分请看 &lt;strong&gt;&lt;em&gt;&lt;a href=&quot;/2018/spring-boot-docker-elk/&quot;&gt;Spring Boot Docker Integration&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Programming" scheme="http://yangbingdong.com/categories/Programming/"/>
+    
+      <category term="Java" scheme="http://yangbingdong.com/categories/Programming/Java/"/>
+    
+      <category term="Spring Cloud" scheme="http://yangbingdong.com/categories/Programming/Java/Spring-Cloud/"/>
+    
+    
+      <category term="Java" scheme="http://yangbingdong.com/tags/Java/"/>
+    
+      <category term="Spring Cloud" scheme="http://yangbingdong.com/tags/Spring-Cloud/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Spring Boot应用集成Docker并结合Kafka、ELK管理Docker日志</title>
     <link href="http://yangbingdong.com/2018/spring-boot-docker-elk/"/>
     <id>http://yangbingdong.com/2018/spring-boot-docker-elk/</id>
     <published>2018-04-02T05:00:19.000Z</published>
-    <updated>2018-06-02T10:18:54.696Z</updated>
+    <updated>2018-07-31T09:11:53.321Z</updated>
     
     <summary type="html">
     
@@ -105,7 +131,7 @@
     <link href="http://yangbingdong.com/2018/spring-boot-learning-hodgepodge/"/>
     <id>http://yangbingdong.com/2018/spring-boot-learning-hodgepodge/</id>
     <published>2018-02-25T07:25:35.000Z</published>
-    <updated>2018-04-27T03:30:21.604Z</updated>
+    <updated>2018-07-30T11:30:59.344Z</updated>
     
     <summary type="html">
     
@@ -199,7 +225,7 @@
     <link href="http://yangbingdong.com/2018/docker-visual-management-and-orchestrate-tools/"/>
     <id>http://yangbingdong.com/2018/docker-visual-management-and-orchestrate-tools/</id>
     <published>2018-01-02T04:57:52.000Z</published>
-    <updated>2018-06-05T07:02:13.064Z</updated>
+    <updated>2018-08-07T02:45:17.893Z</updated>
     
     <summary type="html">
     
@@ -315,7 +341,7 @@
     <link href="http://yangbingdong.com/2017/docker-learning/"/>
     <id>http://yangbingdong.com/2017/docker-learning/</id>
     <published>2017-09-07T07:55:07.000Z</published>
-    <updated>2018-06-05T07:01:49.268Z</updated>
+    <updated>2018-07-30T03:54:45.569Z</updated>
     
     <summary type="html">
     
@@ -401,7 +427,7 @@
     <link href="http://yangbingdong.com/2017/use-vps-cross-wall-by-shadowsocks-under-ubuntu/"/>
     <id>http://yangbingdong.com/2017/use-vps-cross-wall-by-shadowsocks-under-ubuntu/</id>
     <published>2017-04-19T10:15:57.000Z</published>
-    <updated>2018-03-14T06:38:23.190Z</updated>
+    <updated>2018-08-09T08:43:36.030Z</updated>
     
     <summary type="html">
     
@@ -449,7 +475,7 @@
     <link href="http://yangbingdong.com/2017/note-of-learning-idea-under-ubuntu/"/>
     <id>http://yangbingdong.com/2017/note-of-learning-idea-under-ubuntu/</id>
     <published>2017-04-17T10:00:00.000Z</published>
-    <updated>2018-05-29T02:38:33.507Z</updated>
+    <updated>2018-07-30T07:30:09.016Z</updated>
     
     <summary type="html">
     
@@ -545,7 +571,7 @@
     <link href="http://yangbingdong.com/2017/ubuntu-dev-environment-to-build/"/>
     <id>http://yangbingdong.com/2017/ubuntu-dev-environment-to-build/</id>
     <published>2017-01-20T03:31:22.000Z</published>
-    <updated>2018-03-14T07:21:11.615Z</updated>
+    <updated>2018-07-27T01:25:40.736Z</updated>
     
     <summary type="html">
     
@@ -624,11 +650,11 @@
     <link href="http://yangbingdong.com/2017/ubuntu-todo-after-install/"/>
     <id>http://yangbingdong.com/2017/ubuntu-todo-after-install/</id>
     <published>2017-01-12T15:04:36.000Z</published>
-    <updated>2018-06-02T06:45:31.785Z</updated>
+    <updated>2018-08-03T09:08:27.316Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;http://ojoba1c98.bkt.clouddn.com/img/gnome/activities-overview.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;blockquote&gt;&lt;p&gt;鉴于 &lt;a href=&quot;https://linux.cn/article-9183-1.html&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Ubuntu 18.04 LTS&lt;/a&gt; 版本已经来临，本篇的16.04也将升级到18.04 版本&lt;/p&gt;&lt;p&gt;可能会存在兼容问题，本篇将持续更新&lt;/p&gt;&lt;/blockquote&gt;
+      &lt;p&gt;&lt;img src=&quot;http://ojoba1c98.bkt.clouddn.com/img/gnome/activities-overview.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;blockquote&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt;&lt;a href=&quot;https://www.ubuntu.com/download/desktop&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Ubuntu 18.04 LTS&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt; 版本回归GNOME环境，果断升级…&lt;/p&gt;&lt;/blockquote&gt;
     
     </summary>
     
