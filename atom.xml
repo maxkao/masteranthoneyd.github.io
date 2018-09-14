@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yangbingdong.com/"/>
-  <updated>2018-08-10T11:27:55.353Z</updated>
+  <updated>2018-08-30T04:06:44.368Z</updated>
   <id>http://yangbingdong.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yangbingdong.com/2018/spring-cloud-stack-learning/"/>
     <id>http://yangbingdong.com/2018/spring-cloud-stack-learning/</id>
     <published>2018-06-09T08:55:08.000Z</published>
-    <updated>2018-08-10T11:27:55.353Z</updated>
+    <updated>2018-08-30T04:06:44.368Z</updated>
     
     <summary type="html">
     
@@ -43,11 +43,11 @@
   </entry>
   
   <entry>
-    <title>Spring Boot应用集成Docker并结合Kafka、ELK管理Docker日志</title>
+    <title>Spring Boot应用集成Docker并结合Log4j2、Kafka、ELK管理Docker日志</title>
     <link href="http://yangbingdong.com/2018/spring-boot-docker-elk/"/>
     <id>http://yangbingdong.com/2018/spring-boot-docker-elk/</id>
     <published>2018-04-02T05:00:19.000Z</published>
-    <updated>2018-08-20T08:54:55.667Z</updated>
+    <updated>2018-09-14T13:08:10.546Z</updated>
     
     <summary type="html">
     
@@ -131,7 +131,7 @@
     <link href="http://yangbingdong.com/2018/spring-boot-learning-hodgepodge/"/>
     <id>http://yangbingdong.com/2018/spring-boot-learning-hodgepodge/</id>
     <published>2018-02-25T07:25:35.000Z</published>
-    <updated>2018-07-30T11:30:59.344Z</updated>
+    <updated>2018-09-13T03:48:35.938Z</updated>
     
     <summary type="html">
     
@@ -225,7 +225,7 @@
     <link href="http://yangbingdong.com/2018/docker-visual-management-and-orchestrate-tools/"/>
     <id>http://yangbingdong.com/2018/docker-visual-management-and-orchestrate-tools/</id>
     <published>2018-01-02T04:57:52.000Z</published>
-    <updated>2018-08-17T08:20:53.184Z</updated>
+    <updated>2018-08-30T02:56:16.786Z</updated>
     
     <summary type="html">
     
@@ -427,11 +427,11 @@
     <link href="http://yangbingdong.com/2017/use-vps-cross-wall-by-shadowsocks-under-ubuntu/"/>
     <id>http://yangbingdong.com/2017/use-vps-cross-wall-by-shadowsocks-under-ubuntu/</id>
     <published>2017-04-19T10:15:57.000Z</published>
-    <updated>2018-08-20T06:50:31.313Z</updated>
+    <updated>2018-09-04T02:23:28.607Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;http://ojoba1c98.bkt.clouddn.com/img/vps/whats-shadowsocks-04.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h1 id=&quot;Preface&quot;&gt;&lt;a href=&quot;#Preface&quot; class=&quot;headerlink&quot; title=&quot;Preface&quot;&gt;&lt;/a&gt;Preface&lt;/h1&gt;&lt;blockquote&gt;&lt;p&gt;最近在玩&lt;strong&gt;&lt;em&gt;&lt;a href=&quot;http://baike.baidu.com/link?url=ehKAXxj45AdvSmxPRwiao9anB3Tej-jwgKXWMkTuA43M2479GPT-FkH6zMhI59Eip_iY5abNL2jODlGC4WiLW_&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;VPS&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt;，作为没有Google就活不下去的开发人员，翻山越岭已是日常= =…使用别人的VPN或者Sock5代理显然是不安全的，个人信息随时被截获，那么拥有一台自己VPS也是必需的，价格也可以很便宜（绝对不是在打广告）&lt;/p&gt;&lt;/blockquote&gt;
+      &lt;p&gt;&lt;img src=&quot;http://ojoba1c98.bkt.clouddn.com/img/vps/whats-shadowsocks-04.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h1 id=&quot;Preface&quot;&gt;&lt;a href=&quot;#Preface&quot; class=&quot;headerlink&quot; title=&quot;Preface&quot;&gt;&lt;/a&gt;Preface&lt;/h1&gt;&lt;blockquote&gt;&lt;p&gt;最近在玩&lt;strong&gt;&lt;em&gt;&lt;a href=&quot;http://baike.baidu.com/link?url=ehKAXxj45AdvSmxPRwiao9anB3Tej-jwgKXWMkTuA43M2479GPT-FkH6zMhI59Eip_iY5abNL2jODlGC4WiLW_&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;VPS&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt;，作为没有Google就活不下去的开发人员，翻山越岭已是日常= =…使用别人的VPN或者Sock5代理显然是不安全的，个人信息随时被截获，那么拥有一台自己VPS也是必需的，价格也可以很便宜（绝对不是在打广告）&lt;/p&gt;&lt;p&gt;如果是要使用Linode作为VPS的并且还没注册的朋友，可以填上我的邀请码: &lt;code&gt;79e24952d46644605b071a55c4fda3b23e1d1a5a&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
     
     </summary>
     
@@ -475,7 +475,7 @@
     <link href="http://yangbingdong.com/2017/note-of-learning-idea-under-ubuntu/"/>
     <id>http://yangbingdong.com/2017/note-of-learning-idea-under-ubuntu/</id>
     <published>2017-04-17T10:00:00.000Z</published>
-    <updated>2018-07-30T07:30:09.016Z</updated>
+    <updated>2018-09-11T07:32:13.473Z</updated>
     
     <summary type="html">
     
@@ -650,7 +650,7 @@
     <link href="http://yangbingdong.com/2017/ubuntu-todo-after-install/"/>
     <id>http://yangbingdong.com/2017/ubuntu-todo-after-install/</id>
     <published>2017-01-12T15:04:36.000Z</published>
-    <updated>2018-08-21T03:24:41.180Z</updated>
+    <updated>2018-09-11T02:56:27.918Z</updated>
     
     <summary type="html">
     
