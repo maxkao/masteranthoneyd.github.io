@@ -1,3 +1,3 @@
+http://yangbingdong.com/2018/distribution-lock/
+http://yangbingdong.com/2018/spring-boot-learning-testing/
 http://yangbingdong.com/2018/spring-cloud-stack-learning/
-http://yangbingdong.com/2018/spring-boot-docker-elk/
-http://yangbingdong.com/2018/write-your-own-blockchain/

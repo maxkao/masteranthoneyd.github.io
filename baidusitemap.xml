@@ -4,22 +4,24 @@
 
     
   <url>
-    <loc>http://yangbingdong.com/2018/spring-boot-docker-elk/</loc>
-    <lastmod>2018-09-14T14:01:25.342Z</lastmod>
+    <loc>http://yangbingdong.com/2018/spring-boot-learning-testing/</loc>
+    <lastmod>2018-09-28T03:03:26.921Z</lastmod>
     <data>
         <display>
-        <title>Spring Boot应用集成Docker并结合Log4j2、Kafka、ELK管理Docker日志</title>
-        <pubTime>2018-04-02T05:00:19.000Z</pubTime>
+        <title>Spring Boot学习之测试篇</title>
+        <pubTime>2018-08-28T02:16:40.000Z</pubTime>
         
         <tag>Java</tag>
          
-        <tag>Docker</tag>
-         
         <tag>Spring Boot</tag>
          
-        <tag>Spring</tag>
+        <tag>AssertJ</tag>
          
-        <tag>Elasticsearch</tag>
+        <tag>JMH</tag>
+         
+        <tag>Gatling</tag>
+         
+        <tag>ContPerf</tag>
          
          
            
@@ -38,8 +40,62 @@
 
     
   <url>
+    <loc>http://yangbingdong.com/2018/distribution-lock/</loc>
+    <lastmod>2018-09-28T02:19:44.982Z</lastmod>
+    <data>
+        <display>
+        <title>分布式锁的几种实现方式</title>
+        <pubTime>2018-09-15T09:19:33.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>Redis</tag>
+         
+        <tag>Zookeeper</tag>
+         
+        <tag>Spring Boot</tag>
+         
+        <tag>Spring</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
+          
+             
+              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2017/java-8-tutorial/</loc>
+    <lastmod>2018-09-27T07:51:46.347Z</lastmod>
+    <data>
+        <display>
+        <title>Java8 Noob Tutorial</title>
+        <pubTime>2017-05-03T10:23:06.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
+          
+             
+              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yangbingdong.com/2017/ubuntu-todo-after-install/</loc>
-    <lastmod>2018-09-14T13:33:03.486Z</lastmod>
+    <lastmod>2018-09-25T08:13:42.695Z</lastmod>
     <data>
         <display>
         <title>Ubuntu主题美化、个性化设置与常用软件</title>
@@ -54,6 +110,69 @@
           
              
               <breadCrumb title="Ubuntu" url="http://yangbingdong.com/categories/OperatingSystem/Ubuntu/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2017/ubuntu-dev-environment-to-build/</loc>
+    <lastmod>2018-09-21T03:27:34.557Z</lastmod>
+    <data>
+        <display>
+        <title>Ubuntu的Java开发环境基本搭建</title>
+        <pubTime>2017-01-20T03:31:22.000Z</pubTime>
+        
+        <tag>Ubuntu</tag>
+         
+        <tag>IDE</tag>
+         
+        <tag>JDK</tag>
+         
+        <tag>Tomcat</tag>
+         
+         
+           
+             
+              <breadCrumb title="OperatingSystem" url="http://yangbingdong.com/categories/OperatingSystem/"/>
+          
+             
+              <breadCrumb title="Ubuntu" url="http://yangbingdong.com/categories/OperatingSystem/Ubuntu/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2018/spring-boot-docker-elk/</loc>
+    <lastmod>2018-09-17T02:19:34.568Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Boot应用集成Docker并结合Log4j2、Kafka、ELK管理Docker日志</title>
+        <pubTime>2018-04-02T05:00:19.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>Spring Boot</tag>
+         
+        <tag>Spring</tag>
+         
+        <tag>Docker</tag>
+         
+        <tag>Elasticsearch</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
+          
+             
+              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
+          
+             
+              <breadCrumb title="Spring Boot" url="http://yangbingdong.com/categories/Programming/Java/Spring-Boot/"/>
           
         </display>
     </data>
@@ -263,35 +382,6 @@
 
     
   <url>
-    <loc>http://yangbingdong.com/2017/ubuntu-dev-environment-to-build/</loc>
-    <lastmod>2018-08-21T01:26:17.842Z</lastmod>
-    <data>
-        <display>
-        <title>Ubuntu的Java开发环境基本搭建</title>
-        <pubTime>2017-01-20T03:31:22.000Z</pubTime>
-        
-        <tag>Ubuntu</tag>
-         
-        <tag>IDE</tag>
-         
-        <tag>JDK</tag>
-         
-        <tag>Tomcat</tag>
-         
-         
-           
-             
-              <breadCrumb title="OperatingSystem" url="http://yangbingdong.com/categories/OperatingSystem/"/>
-          
-             
-              <breadCrumb title="Ubuntu" url="http://yangbingdong.com/categories/OperatingSystem/Ubuntu/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yangbingdong.com/2017/note-of-linux-command/</loc>
     <lastmod>2018-08-16T05:45:24.836Z</lastmod>
     <data>
@@ -459,28 +549,6 @@
     
     
   <url>
-    <loc>http://yangbingdong.com/2017/self-hosted-build-ngrok-server/</loc>
-    <lastmod>2018-03-14T06:38:23.186Z</lastmod>
-    <data>
-        <display>
-        <title>VPS自搭建Ngrok内网穿透服务</title>
-        <pubTime>2017-04-26T10:44:20.000Z</pubTime>
-        
-        <tag>VPS</tag>
-         
-        <tag>Ngrok</tag>
-         
-         
-           
-             
-              <breadCrumb title="VPS" url="http://yangbingdong.com/categories/VPS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yangbingdong.com/2017/ubuntu-myeclipse-crack/</loc>
     <lastmod>2018-03-14T06:38:23.186Z</lastmod>
     <data>
@@ -496,6 +564,28 @@
            
              
               <breadCrumb title="IDE" url="http://yangbingdong.com/categories/IDE/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2017/self-hosted-build-ngrok-server/</loc>
+    <lastmod>2018-03-14T06:38:23.186Z</lastmod>
+    <data>
+        <display>
+        <title>VPS自搭建Ngrok内网穿透服务</title>
+        <pubTime>2017-04-26T10:44:20.000Z</pubTime>
+        
+        <tag>VPS</tag>
+         
+        <tag>Ngrok</tag>
+         
+         
+           
+             
+              <breadCrumb title="VPS" url="http://yangbingdong.com/categories/VPS/"/>
           
         </display>
     </data>
@@ -535,29 +625,6 @@
         <tag>Java</tag>
          
         <tag>Spring5</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
-          
-             
-              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yangbingdong.com/2017/java-dev-ten-mistake-and-some-advice/</loc>
-    <lastmod>2018-03-14T06:38:23.178Z</lastmod>
-    <data>
-        <display>
-        <title>Java开发人员最常犯的10个错误以及35个代码性能优化小结</title>
-        <pubTime>2017-03-07T12:40:46.000Z</pubTime>
-        
-        <tag>Java</tag>
          
          
            
@@ -618,39 +685,14 @@
 
     
   <url>
-    <loc>http://yangbingdong.com/2017/java-8-tutorial/</loc>
+    <loc>http://yangbingdong.com/2017/java-dev-ten-mistake-and-some-advice/</loc>
     <lastmod>2018-03-14T06:38:23.178Z</lastmod>
     <data>
         <display>
-        <title>Java8 Noob Tutorial</title>
-        <pubTime>2017-05-03T10:23:06.000Z</pubTime>
+        <title>Java开发人员最常犯的10个错误以及35个代码性能优化小结</title>
+        <pubTime>2017-03-07T12:40:46.000Z</pubTime>
         
         <tag>Java</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
-          
-             
-              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yangbingdong.com/2017/design-pattern-uml-and-six-principle/</loc>
-    <lastmod>2018-03-14T06:38:23.174Z</lastmod>
-    <data>
-        <display>
-        <title>设计模式原则与UML类图</title>
-        <pubTime>2017-10-18T01:22:07.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>Design Pattern</tag>
          
          
            
@@ -712,6 +754,31 @@
            
              
               <breadCrumb title="Hexo" url="http://yangbingdong.com/categories/Hexo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2017/design-pattern-uml-and-six-principle/</loc>
+    <lastmod>2018-03-14T06:38:23.174Z</lastmod>
+    <data>
+        <display>
+        <title>设计模式原则与UML类图</title>
+        <pubTime>2017-10-18T01:22:07.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>Design Pattern</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
+          
+             
+              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
           
         </display>
     </data>

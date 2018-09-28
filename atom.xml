@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yangbingdong.com/"/>
-  <updated>2018-08-30T04:06:44.368Z</updated>
+  <updated>2018-09-28T02:19:44.982Z</updated>
   <id>http://yangbingdong.com/</id>
   
   <author>
@@ -15,6 +15,70 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>分布式锁的几种实现方式</title>
+    <link href="http://yangbingdong.com/2018/distribution-lock/"/>
+    <id>http://yangbingdong.com/2018/distribution-lock/</id>
+    <published>2018-09-15T09:19:33.000Z</published>
+    <updated>2018-09-28T02:19:44.982Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ojoba1c98.bkt.clouddn.com/img/distribute-lock/distribute-lock-banner.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h1 id=&quot;Preface&quot;&gt;&lt;a href=&quot;#Preface&quot; class=&quot;headerlink&quot; title=&quot;Preface&quot;&gt;&lt;/a&gt;Preface&lt;/h1&gt;&lt;blockquote&gt;&lt;p&gt;在现代互联网，通常都是伴随着分布式、高并发等，在某些业务中例如下订单扣减库存，如果不对库存资源做临界处理，在并发量大的时候会出现库存不准确的情况。在单个服务的情况下可以通过Java自带的一些锁对临界资源进行处理，例如&lt;code&gt;synchronized&lt;/code&gt;、&lt;code&gt;Reentrantlock&lt;/code&gt;，甚至是通过无锁技术（比如&lt;code&gt;RangeBuffer&lt;/code&gt;）都可以实现同一个JVM内的锁。But，在&lt;strong&gt;能够弹性伸缩的分布式环境&lt;/strong&gt;下，Java内置的锁显然不能够满足需求，需要借助外部进程实现分布式锁。&lt;/p&gt;&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Programming" scheme="http://yangbingdong.com/categories/Programming/"/>
+    
+      <category term="Java" scheme="http://yangbingdong.com/categories/Programming/Java/"/>
+    
+    
+      <category term="Java" scheme="http://yangbingdong.com/tags/Java/"/>
+    
+      <category term="Redis" scheme="http://yangbingdong.com/tags/Redis/"/>
+    
+      <category term="Zookeeper" scheme="http://yangbingdong.com/tags/Zookeeper/"/>
+    
+      <category term="Spring Boot" scheme="http://yangbingdong.com/tags/Spring-Boot/"/>
+    
+      <category term="Spring" scheme="http://yangbingdong.com/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Boot学习之测试篇</title>
+    <link href="http://yangbingdong.com/2018/spring-boot-learning-testing/"/>
+    <id>http://yangbingdong.com/2018/spring-boot-learning-testing/</id>
+    <published>2018-08-28T02:16:40.000Z</published>
+    <updated>2018-09-28T03:03:26.921Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ojoba1c98.bkt.clouddn.com/img/spring-boot-testing/java-testing.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h1 id=&quot;Preface&quot;&gt;&lt;a href=&quot;#Preface&quot; class=&quot;headerlink&quot; title=&quot;Preface&quot;&gt;&lt;/a&gt;Preface&lt;/h1&gt;&lt;blockquote&gt;&lt;p&gt;测试已经是贯穿我们程序员的日常开发流程了，无论写个main方法，还是使用测试框架Junit、AssertJ，或者压测，都是我们日常开发的一部分。也有很多互联网公司推崇TDD（测试驱动开发）的。&lt;/p&gt;&lt;p&gt;下面主要介绍&lt;code&gt;AssertJ&lt;/code&gt;、&lt;code&gt;JMH&lt;/code&gt;、&lt;code&gt;Gatling&lt;/code&gt;以及&lt;code&gt;ContPerf&lt;/code&gt;。&lt;/p&gt;&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Programming" scheme="http://yangbingdong.com/categories/Programming/"/>
+    
+      <category term="Java" scheme="http://yangbingdong.com/categories/Programming/Java/"/>
+    
+      <category term="Spring Boot" scheme="http://yangbingdong.com/categories/Programming/Java/Spring-Boot/"/>
+    
+    
+      <category term="Java" scheme="http://yangbingdong.com/tags/Java/"/>
+    
+      <category term="Spring Boot" scheme="http://yangbingdong.com/tags/Spring-Boot/"/>
+    
+      <category term="AssertJ" scheme="http://yangbingdong.com/tags/AssertJ/"/>
+    
+      <category term="JMH" scheme="http://yangbingdong.com/tags/JMH/"/>
+    
+      <category term="Gatling" scheme="http://yangbingdong.com/tags/Gatling/"/>
+    
+      <category term="ContPerf" scheme="http://yangbingdong.com/tags/ContPerf/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring Cloud Stack Learning</title>
@@ -47,7 +111,7 @@
     <link href="http://yangbingdong.com/2018/spring-boot-docker-elk/"/>
     <id>http://yangbingdong.com/2018/spring-boot-docker-elk/</id>
     <published>2018-04-02T05:00:19.000Z</published>
-    <updated>2018-09-14T14:01:25.342Z</updated>
+    <updated>2018-09-17T02:19:34.568Z</updated>
     
     <summary type="html">
     
@@ -64,11 +128,11 @@
     
       <category term="Java" scheme="http://yangbingdong.com/tags/Java/"/>
     
-      <category term="Docker" scheme="http://yangbingdong.com/tags/Docker/"/>
-    
       <category term="Spring Boot" scheme="http://yangbingdong.com/tags/Spring-Boot/"/>
     
       <category term="Spring" scheme="http://yangbingdong.com/tags/Spring/"/>
+    
+      <category term="Docker" scheme="http://yangbingdong.com/tags/Docker/"/>
     
       <category term="Elasticsearch" scheme="http://yangbingdong.com/tags/Elasticsearch/"/>
     
@@ -361,7 +425,7 @@
     <link href="http://yangbingdong.com/2017/java-8-tutorial/"/>
     <id>http://yangbingdong.com/2017/java-8-tutorial/</id>
     <published>2017-05-03T10:23:06.000Z</published>
-    <updated>2018-03-14T06:38:23.178Z</updated>
+    <updated>2018-09-27T07:51:46.347Z</updated>
     
     <summary type="html">
     
@@ -571,7 +635,7 @@
     <link href="http://yangbingdong.com/2017/ubuntu-dev-environment-to-build/"/>
     <id>http://yangbingdong.com/2017/ubuntu-dev-environment-to-build/</id>
     <published>2017-01-20T03:31:22.000Z</published>
-    <updated>2018-08-21T01:26:17.842Z</updated>
+    <updated>2018-09-21T03:27:34.557Z</updated>
     
     <summary type="html">
     
@@ -650,7 +714,7 @@
     <link href="http://yangbingdong.com/2017/ubuntu-todo-after-install/"/>
     <id>http://yangbingdong.com/2017/ubuntu-todo-after-install/</id>
     <published>2017-01-12T15:04:36.000Z</published>
-    <updated>2018-09-14T13:33:03.486Z</updated>
+    <updated>2018-09-25T08:13:42.695Z</updated>
     
     <summary type="html">
     
