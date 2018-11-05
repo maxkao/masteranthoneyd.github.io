@@ -1,4 +1,4 @@
-<!doctype html><html class="theme-next muse use-motion" lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta http-equiv="content-language" content="zh-cn"><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet"><style>.pace .pace-progress{background:#ff009e;height:2px}.pace .pace-progress-inner{box-shadow:0 0 10px #e6006b,0 0 5px #ff009e}.pace .pace-activity{border-top-color:#ff009e;border-left-color:#ff009e}</style><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css"><meta name="keywords" content="VPS,Ngrok,"><link rel="alternate" href="/atom.xml" title="ookamiAntD's Blog" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0"><meta name="description" content="前言Ngrok可以干嘛？我们经常会有 “把本机开发中的 web 项目给朋友看一下” 或 “测试一下支付宝、微信的支付功能” 这种临时需求，为此专门购买个域名然后在 VPS或云主机 上部署一遍就有点太浪费了。那么这时候，Ngrok就是个很好的东西，它可以实现我们的这种需求。而且 Ngrok 官网本身还提供了公共服务，只需"><meta name="keywords" content="VPS,Ngrok"><meta property="og:type" content="article"><meta property="og:title" content="VPS自搭建Ngrok内网穿透服务"><meta property="og:url" content="http://yangbingdong.com/2017/self-hosted-build-ngrok-server/index.html"><meta property="og:site_name" content="ookamiAntD&#39;s Blog"><meta property="og:description" content="前言Ngrok可以干嘛？我们经常会有 “把本机开发中的 web 项目给朋友看一下” 或 “测试一下支付宝、微信的支付功能” 这种临时需求，为此专门购买个域名然后在 VPS或云主机 上部署一遍就有点太浪费了。那么这时候，Ngrok就是个很好的东西，它可以实现我们的这种需求。而且 Ngrok 官网本身还提供了公共服务，只需要注册一个帐号，运行它的客户端，就可以快速把内网映射出去。不过这么好的服务，没多"><meta property="og:locale" content="en"><meta property="og:image" content="http://ojoba1c98.bkt.clouddn.com/ngrok.png"><meta property="og:image" content="http://ojoba1c98.bkt.clouddn.com/DNSPod.png"><meta property="og:image" content="http://ojoba1c98.bkt.clouddn.com/ngrok-server-startup.png"><meta property="og:image" content="http://ojoba1c98.bkt.clouddn.com/ngrok-client-startup01.png"><meta property="og:updated_time" content="2018-03-14T06:38:23.186Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="VPS自搭建Ngrok内网穿透服务"><meta name="twitter:description" content="前言Ngrok可以干嘛？我们经常会有 “把本机开发中的 web 项目给朋友看一下” 或 “测试一下支付宝、微信的支付功能” 这种临时需求，为此专门购买个域名然后在 VPS或云主机 上部署一遍就有点太浪费了。那么这时候，Ngrok就是个很好的东西，它可以实现我们的这种需求。而且 Ngrok 官网本身还提供了公共服务，只需要注册一个帐号，运行它的客户端，就可以快速把内网映射出去。不过这么好的服务，没多"><meta name="twitter:image" content="http://ojoba1c98.bkt.clouddn.com/ngrok.png"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",sidebar:{position:"right",display:"always"},fancybox:!0,motion:!0,duoshuo:{userId:"undefined",author:"Author"},algolia:{applicationID:"RI3NF6GUI0",apiKey:"3d33fa60ba30d3b17f37220bb1a36749",indexName:"blogIndex",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="http://yangbingdong.com/2017/self-hosted-build-ngrok-server/"><title>VPS自搭建Ngrok内网穿透服务 | ookamiAntD's Blog</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="en"><script type="text/javascript">var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?e9505ac4e11d464329d615553a72b526";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><div class="container one-collumn sidebar-position-right page-post-detail"><div class="headband"></div><a href="https://github.com/masteranthoneyd/blog" rel="external nofollow noopener noreferrer" target="_blank"><img style="position:absolute;top:0;left:0;border:0" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">ookamiAntD's Blog</span> <span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">Easy coding,easy life.</h1></div><div class="site-nav-toggle"><button><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>Tags</a></li><li class="menu-item menu-item-about"><a href="/about" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>About</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook" rel="section"><i class="menu-item-icon fa fa-fw fa-commenting"></i><br>Message</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>Search</a></li></ul><div class="site-search"><div class="popup"><span class="search-icon fa fa-search"></span> <input type="text" id="local-search-input"><div id="local-search-result"></div><span class="popup-btn-close">close</span></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><link itemprop="mainEntityOfPage" href="http://yangbingdong.com/2017/self-hosted-build-ngrok-server/"><span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="ookamiAntD"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar/avatar-admin.jpg"></span><span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="ookamiAntD's Blog"><span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject"><img style="display:none" itemprop="url image" alt="ookamiAntD's Blog" src=""></span></span><header class="post-header"><h2 class="post-title" itemprop="name headline">VPS自搭建Ngrok内网穿透服务</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">Posted on</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-26T18:44:20+08:00">2017-04-26 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">In</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/VPS/" itemprop="url" rel="index"><span itemprop="name">VPS</span> </a></span></span><span id="/2017/self-hosted-build-ngrok-server/" class="leancloud_visitors" data-flag-title="VPS自搭建Ngrok内网穿透服务"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-eye"></i> </span><span class="post-meta-item-text">Visitors </span><span class="leancloud-visitors-count"></span></span><br><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-edit"></i> </span><span class="post-meta-item-text">WordCount:</span> <span class="post-count">1,982字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-text">min2read:</span> <span class="post-count">9分钟</span></span></div></header><div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="http://ojoba1c98.bkt.clouddn.com/ngrok.png" alt=""></p><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote><p>Ngrok可以干嘛？我们经常会有 “把本机开发中的 web 项目给朋友看一下” 或 “测试一下支付宝、微信的支付功能” 这种临时需求，为此<strong>专门</strong>购买个域名然后在 VPS或云主机 上<strong>部署一遍</strong>就有点太<strong>浪费</strong>了。那么这时候，<strong>Ngrok</strong>就是个很好的东西，它可以实现我们的这种需求。而且 Ngrok 官网本身还提供了公共服务，只需要注册一个帐号，运行它的客户端，就可以快速把内网映射出去。不过这么好的服务，没多久就被<strong>墙</strong>了~幸好Ngrok是<strong>开源</strong>的，那么我们可以自己搭建一个Ngrok！</p></blockquote><a id="more"></a><h1 id="域名泛解析"><a href="#域名泛解析" class="headerlink" title="域名泛解析"></a>域名泛解析</h1><p>因为内网穿透需要用到多级域名，这里，博主的这个域名是在<strong><em><a href="https://www.namesilo.com/" rel="external nofollow noopener noreferrer" target="_blank">Namesilo</a></em></strong>购买的，然后转到DNSPod解析：<br><img src="http://ojoba1c98.bkt.clouddn.com/DNSPod.png" alt=""><br>如图所示，我搞买的域名是<code>yangbingdong.com</code>,将<code>ngrok.yangbingdong.com</code>通过<code>A</code>记录解析导VPS的ip地址，再将<code>*.ngrok.yangbingdong.com</code>通过<code>CNAME</code>解析导<code>ngrok.yangbingdong.com</code>，完成泛解析。</p><h1 id="服务端安装"><a href="#服务端安装" class="headerlink" title="服务端安装"></a>服务端安装</h1><h2 id="安装GO环境"><a href="#安装GO环境" class="headerlink" title="安装GO环境"></a>安装GO环境</h2><blockquote><p>这里博主选择通过下载最新版解压安装。</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get -y install build-essential mercurial git</span><br><span class="line">wget https://storage.googleapis.com/golang/go1.8.1.linux-amd64.tar.gz</span><br><span class="line">tar -C /usr/local -xzf go1.8.1.linux-amd64.tar.gz</span><br><span class="line">mkdir $HOME/go</span><br><span class="line">echo 'export GOROOT=/usr/local/go' &gt;&gt; /etc/profile.d/go.sh</span><br><span class="line">echo 'export GOPATH=$HOME/go' &gt;&gt; /etc/profile.d/go.sh</span><br><span class="line">echo 'export PATH=$PATH:$GOROOT/bin:$GOPATH/bin' &gt;&gt; /etc/profile.d/go.sh</span><br><span class="line">source /etc/profile.d/go.sh</span><br></pre></td></tr></table></figure>
+<!doctype html><html class="theme-next muse use-motion" lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta http-equiv="content-language" content="zh-cn"><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet"><style>.pace .pace-progress{background:#ff009e;height:2px}.pace .pace-progress-inner{box-shadow:0 0 10px #e6006b,0 0 5px #ff009e}.pace .pace-activity{border-top-color:#ff009e;border-left-color:#ff009e}</style><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css"><meta name="keywords" content="VPS,Ngrok,"><link rel="alternate" href="/atom.xml" title="ookamiAntD's Blog" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0"><meta name="description" content="前言Ngrok可以干嘛？我们经常会有 “把本机开发中的 web 项目给朋友看一下” 或 “测试一下支付宝、微信的支付功能” 这种临时需求，为此专门购买个域名然后在 VPS或云主机 上部署一遍就有点太浪费了。那么这时候，Ngrok就是个很好的东西，它可以实现我们的这种需求。而且 Ngrok 官网本身还提供了公共服务，只需"><meta name="keywords" content="VPS,Ngrok"><meta property="og:type" content="article"><meta property="og:title" content="VPS自搭建Ngrok内网穿透服务"><meta property="og:url" content="http://yangbingdong.com/2017/self-hosted-build-ngrok-server/index.html"><meta property="og:site_name" content="ookamiAntD&#39;s Blog"><meta property="og:description" content="前言Ngrok可以干嘛？我们经常会有 “把本机开发中的 web 项目给朋友看一下” 或 “测试一下支付宝、微信的支付功能” 这种临时需求，为此专门购买个域名然后在 VPS或云主机 上部署一遍就有点太浪费了。那么这时候，Ngrok就是个很好的东西，它可以实现我们的这种需求。而且 Ngrok 官网本身还提供了公共服务，只需要注册一个帐号，运行它的客户端，就可以快速把内网映射出去。不过这么好的服务，没多"><meta property="og:locale" content="en"><meta property="og:image" content="http://img.yangbingdong.com/ngrok.png"><meta property="og:image" content="http://img.yangbingdong.com/DNSPod.png"><meta property="og:image" content="http://img.yangbingdong.com/ngrok-server-startup.png"><meta property="og:image" content="http://img.yangbingdong.com/ngrok-client-startup01.png"><meta property="og:updated_time" content="2018-11-05T10:17:52.424Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="VPS自搭建Ngrok内网穿透服务"><meta name="twitter:description" content="前言Ngrok可以干嘛？我们经常会有 “把本机开发中的 web 项目给朋友看一下” 或 “测试一下支付宝、微信的支付功能” 这种临时需求，为此专门购买个域名然后在 VPS或云主机 上部署一遍就有点太浪费了。那么这时候，Ngrok就是个很好的东西，它可以实现我们的这种需求。而且 Ngrok 官网本身还提供了公共服务，只需要注册一个帐号，运行它的客户端，就可以快速把内网映射出去。不过这么好的服务，没多"><meta name="twitter:image" content="http://img.yangbingdong.com/ngrok.png"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",sidebar:{position:"right",display:"always"},fancybox:!0,motion:!0,duoshuo:{userId:"undefined",author:"Author"},algolia:{applicationID:"RI3NF6GUI0",apiKey:"3d33fa60ba30d3b17f37220bb1a36749",indexName:"blogIndex",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="http://yangbingdong.com/2017/self-hosted-build-ngrok-server/"><title>VPS自搭建Ngrok内网穿透服务 | ookamiAntD's Blog</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="en"><script type="text/javascript">var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?e9505ac4e11d464329d615553a72b526";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><div class="container one-collumn sidebar-position-right page-post-detail"><div class="headband"></div><a href="https://github.com/masteranthoneyd/blog" rel="external nofollow noopener noreferrer" target="_blank"><img style="position:absolute;top:0;left:0;border:0" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">ookamiAntD's Blog</span> <span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">Easy coding,easy life.</h1></div><div class="site-nav-toggle"><button><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>Tags</a></li><li class="menu-item menu-item-about"><a href="/about" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>About</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook" rel="section"><i class="menu-item-icon fa fa-fw fa-commenting"></i><br>Message</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>Search</a></li></ul><div class="site-search"><div class="popup"><span class="search-icon fa fa-search"></span> <input type="text" id="local-search-input"><div id="local-search-result"></div><span class="popup-btn-close">close</span></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><link itemprop="mainEntityOfPage" href="http://yangbingdong.com/2017/self-hosted-build-ngrok-server/"><span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="ookamiAntD"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar/avatar-admin.jpg"></span><span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="ookamiAntD's Blog"><span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject"><img style="display:none" itemprop="url image" alt="ookamiAntD's Blog" src=""></span></span><header class="post-header"><h2 class="post-title" itemprop="name headline">VPS自搭建Ngrok内网穿透服务</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">Posted on</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-26T18:44:20+08:00">2017-04-26 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">In</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/VPS/" itemprop="url" rel="index"><span itemprop="name">VPS</span> </a></span></span><span id="/2017/self-hosted-build-ngrok-server/" class="leancloud_visitors" data-flag-title="VPS自搭建Ngrok内网穿透服务"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-eye"></i> </span><span class="post-meta-item-text">Visitors </span><span class="leancloud-visitors-count"></span></span><br><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-edit"></i> </span><span class="post-meta-item-text">WordCount:</span> <span class="post-count">1,982字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-text">min2read:</span> <span class="post-count">9分钟</span></span></div></header><div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="http://img.yangbingdong.com/ngrok.png" alt=""></p><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote><p>Ngrok可以干嘛？我们经常会有 “把本机开发中的 web 项目给朋友看一下” 或 “测试一下支付宝、微信的支付功能” 这种临时需求，为此<strong>专门</strong>购买个域名然后在 VPS或云主机 上<strong>部署一遍</strong>就有点太<strong>浪费</strong>了。那么这时候，<strong>Ngrok</strong>就是个很好的东西，它可以实现我们的这种需求。而且 Ngrok 官网本身还提供了公共服务，只需要注册一个帐号，运行它的客户端，就可以快速把内网映射出去。不过这么好的服务，没多久就被<strong>墙</strong>了~幸好Ngrok是<strong>开源</strong>的，那么我们可以自己搭建一个Ngrok！</p></blockquote><a id="more"></a><h1 id="域名泛解析"><a href="#域名泛解析" class="headerlink" title="域名泛解析"></a>域名泛解析</h1><p>因为内网穿透需要用到多级域名，这里，博主的这个域名是在<strong><em><a href="https://www.namesilo.com/" rel="external nofollow noopener noreferrer" target="_blank">Namesilo</a></em></strong>购买的，然后转到DNSPod解析：<br><img src="http://img.yangbingdong.com/DNSPod.png" alt=""><br>如图所示，我搞买的域名是<code>yangbingdong.com</code>,将<code>ngrok.yangbingdong.com</code>通过<code>A</code>记录解析导VPS的ip地址，再将<code>*.ngrok.yangbingdong.com</code>通过<code>CNAME</code>解析导<code>ngrok.yangbingdong.com</code>，完成泛解析。</p><h1 id="服务端安装"><a href="#服务端安装" class="headerlink" title="服务端安装"></a>服务端安装</h1><h2 id="安装GO环境"><a href="#安装GO环境" class="headerlink" title="安装GO环境"></a>安装GO环境</h2><blockquote><p>这里博主选择通过下载最新版解压安装。</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get -y install build-essential mercurial git</span><br><span class="line">wget https://storage.googleapis.com/golang/go1.8.1.linux-amd64.tar.gz</span><br><span class="line">tar -C /usr/local -xzf go1.8.1.linux-amd64.tar.gz</span><br><span class="line">mkdir $HOME/go</span><br><span class="line">echo 'export GOROOT=/usr/local/go' &gt;&gt; /etc/profile.d/go.sh</span><br><span class="line">echo 'export GOPATH=$HOME/go' &gt;&gt; /etc/profile.d/go.sh</span><br><span class="line">echo 'export PATH=$PATH:$GOROOT/bin:$GOPATH/bin' &gt;&gt; /etc/profile.d/go.sh</span><br><span class="line">source /etc/profile.d/go.sh</span><br></pre></td></tr></table></figure>
 <h2 id="安装Ngrok"><a href="#安装Ngrok" class="headerlink" title="安装Ngrok"></a>安装Ngrok</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/src/</span><br><span class="line">git clone https://github.com/tutumcloud/ngrok.git ngrok</span><br><span class="line">export GOPATH=/usr/local/src/ngrok/</span><br></pre></td></tr></table></figure>
 <p>生成自签名SSL证书，ngrok为ssl加密连接：<br></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">cd ngrok</span><br><span class="line">NGROK_DOMAIN="ngrok.yangbingdong.com"</span><br><span class="line">openssl genrsa -out rootCA.key 2048</span><br><span class="line">openssl req -x509 -new -nodes -key rootCA.key -subj "/CN=$NGROK_DOMAIN" -days 5000 -out rootCA.pem</span><br><span class="line">openssl genrsa -out device.key 2048</span><br><span class="line">openssl req -new -key device.key -subj "/CN=$NGROK_DOMAIN" -out device.csr</span><br><span class="line">openssl x509 -req -in device.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out device.crt -days 5000</span><br><span class="line">cp rootCA.pem assets/client/tls/ngrokroot.crt</span><br><span class="line">cp device.crt assets/server/tls/snakeoil.crt </span><br><span class="line">cp device.key assets/server/tls/snakeoil.key</span><br><span class="line">GOOS=linux GOARCH=amd64</span><br><span class="line">make clean</span><br><span class="line">make release-server release-client</span><br></pre></td></tr></table></figure><p></p>
 <p>注意：<strong>上面的<code>ngrok.yangbingdong.com</code>换成自己的域名</strong>。</p>
@@ -7,7 +7,7 @@
 <li>如果要编译linux,<code>GOOS=linux</code>;如果要编译window,<code>GOOS=windows</code></li>
 </ul>
 <h2 id="启动server"><a href="#启动server" class="headerlink" title="启动server"></a>启动server</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/src/ngrok/bin &amp;&amp; ./ngrokd -domain="ngrok.yangbingdong.com" -httpAddr=":8002" -httpsAddr=":8003" -tunnelAddr=":4000"</span><br></pre></td></tr></table></figure>
-<p><strong><code>ngrok.yangbingdong.com</code>换成自己的域名</strong>。其他端口可自己配置。<br>顺利的话，可以正常编译，在<code>bin</code>下面可以看到「ngrokd」和「ngrok」，其中「ngrokd」是服务端执行程序，「ngrok」是客户端执行程序<br><img src="http://ojoba1c98.bkt.clouddn.com/ngrok-server-startup.png" alt=""></p>
+<p><strong><code>ngrok.yangbingdong.com</code>换成自己的域名</strong>。其他端口可自己配置。<br>顺利的话，可以正常编译，在<code>bin</code>下面可以看到「ngrokd」和「ngrok」，其中「ngrokd」是服务端执行程序，「ngrok」是客户端执行程序<br><img src="http://img.yangbingdong.com/ngrok-server-startup.png" alt=""></p>
 <h2 id="后台运行："><a href="#后台运行：" class="headerlink" title="后台运行："></a>后台运行：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/src/ngrok/bin &amp;&amp; nohup ./ngrokd -domain="ngrok.yangbingdong.com" -httpAddr=":8002" -httpsAddr=":8003" -tunnelAddr=":4000"  &gt; /dev/null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">apt-get install screen</span><br><span class="line">screen -S 任意名字（例如：keepngork）</span><br><span class="line">然后运行ngrok启动命令</span><br><span class="line">最后按快捷键</span><br><span class="line">ctrl+A+D</span><br><span class="line">既可以保持ngrok后台运行</span><br></pre></td></tr></table></figure>
 <h2 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/init.d/ngrok_start:</span><br><span class="line">cd /usr/local/src/ngrok/bin</span><br><span class="line">./ngrokd -domain="ngrok.yangbingdong.com" -httpAddr=":8002" -httpsAddr=":8003" -tunnelAddr=":4000"</span><br><span class="line"></span><br><span class="line">chmod 755 /etc/init.d/ngrok_start</span><br></pre></td></tr></table></figure>
@@ -15,7 +15,7 @@
 <p><strong>将<code>12.34.56.78</code>换成自己的VPS ip</strong>。</p>
 <h2 id="启动客户端"><a href="#启动客户端" class="headerlink" title="启动客户端"></a>启动客户端</h2><p>写一个简单的配置文件，随意命名如 ngrok.cfg：<br></p><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">server_addr:</span> ngrok.yangbingdong.<span class="string">com:</span><span class="number">4000</span></span><br><span class="line"><span class="string">trust_host_root_certs:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure><p></p>
 <p>然后启动：<br></p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./ngrok -subdomain ybd <span class="attribute">-config</span>=ngrok.cfg 8080</span><br></pre></td></tr></table></figure><p></p>
-<p>其中<code>ybd</code>是自定义的域名前缀，<code>ngrok.cfg</code>是上面创建的配置文件，<code>8080</code>是本地需要映射到外网的端口。<br>没有意外的话访问<code>ybd.ngrok.yangbingdong.com:8002</code>就会映射到本机的<code>8080</code>端口了。<br><img src="http://ojoba1c98.bkt.clouddn.com/ngrok-client-startup01.png" alt=""></p>
+<p>其中<code>ybd</code>是自定义的域名前缀，<code>ngrok.cfg</code>是上面创建的配置文件，<code>8080</code>是本地需要映射到外网的端口。<br>没有意外的话访问<code>ybd.ngrok.yangbingdong.com:8002</code>就会映射到本机的<code>8080</code>端口了。<br><img src="http://img.yangbingdong.com/ngrok-client-startup01.png" alt=""></p>
 <p>控制台：</p>
 <p>就是上图的<code>Web Interface</code>，通过这个界面可以看到远端转发过来的 http 详情，包括完整的 request/response 信息，相当于附带了一个抓包工具。</p>
 <p>另外，Ngrok支持多种协议，启动的时候可以指定通过<code>-proto</code>指定协议，例如：</p>
@@ -255,7 +255,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -264,7 +264,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -407,152 +407,5 @@
 </div>
 
 
-<div class="powered-by">
-    Personal Site
-</div>
 
-<div class="theme-info">
-  Blog -
-ookamiAntD | <span class="post-count">共204.0k字</span>
-</div>
-
-
-
-        
-
-<div class="busuanzi-count">
-
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv"><i class="fa fa-user">本站访客数</i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
-  
-
-  
-    <span class="site-pv"><i class="fa fa-eye">本站总访问量</i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
-  
-  
-</div>
-
-
-
-        
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-<script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-
-
-  
-
-    <script type="text/javascript">function run_disqus_script(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="//"+disqus_shortname+".disqus.com/"+e,(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(t)}var disqus_shortname="ookamiantd",disqus_identifier="2017/self-hosted-build-ngrok-server/",disqus_title="VPS自搭建Ngrok内网穿透服务",disqus={load:function(){"object"!=typeof DISQUS&&(!function(){var e=document.createElement("script");e.async=!0,e.type="text/javascript",e.src="//"+disqus_shortname+".disqus.com/embed.js",(document.getElementsByTagName("HEAD")[0]||document.getElementsByTagName("BODY")[0]).appendChild(e)}(),$("#load-disqus").html("评论加载中，请确保你有梯子，若评论长时间未加载则你可能翻墙失败...").fadeOut(9e3))}}</script>
-  
-
-
-
-
-
-
-
-
-
-  
-  
-  <script type="text/javascript">function proceedsearch(){$("body").append('<div class="popoverlay">').css("overflow","hidden"),$(".popup").toggle()}var isfetched=!1,search_path="search.xml";0==search_path.length&&(search_path="search.xml");var path="/"+search_path,searchFunc=function(e,t,a){"use strict";$.ajax({url:e,dataType:"xml",async:!0,success:function(e){isfetched=!0,$(".popup").detach().appendTo(".header-inner");var r=$("entry",e).map(function(){return{title:$("title",this).text(),content:$("content",this).text(),url:$("url",this).text()}}).get(),c=document.getElementById(t),n=document.getElementById(a);c.addEventListener("input",function(){var e=0,t='<ul class="search-result-list">',a=this.value.trim().toLowerCase().split(/[\s\-]+/);n.innerHTML="",this.value.trim().length>1&&r.forEach(function(r){var c=!1,n=r.title.trim().toLowerCase(),s=r.content.trim().replace(/<[^>]+>/g,"").toLowerCase(),o=decodeURIComponent(r.url),i=-1,l=-1,p=-1;if(""!=n&&a.forEach(function(e,t){i=n.indexOf(e),l=s.indexOf(e),(i>=0||l>=0)&&(c=!0,0==t&&(p=l))}),c){e+=1,t+="<li><a href='"+o+"' class='search-result-title'>"+n+"</a>";var h=r.content.trim().replace(/<[^>]+>/g,"");if(p>=0){var u=p-20,d=p+80;u<0&&(u=0),0==u&&(d=50),d>h.length&&(d=h.length);var f=h.substring(u,d);a.forEach(function(e){var t=new RegExp(e,"gi");f=f.replace(t,'<b class="search-keyword">'+e+"</b>")}),t+='<p class="search-result">'+f+"...</p>"}t+="</li>"}}),t+="</ul>",0==e&&(t='<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'),""==a&&(t='<div id="no-result"><i class="fa fa-search fa-5x" /></div>'),n.innerHTML=t}),proceedsearch()}})};$(".popup-trigger").click(function(e){e.stopPropagation(),0==isfetched?searchFunc(path,"local-search-input","local-search-result"):proceedsearch()}),$(".popup-btn-close").click(function(e){$(".popup").hide(),$(".popoverlay").remove(),$("body").css("overflow","")}),$(".popup").click(function(e){e.stopPropagation()})</script>
-
-
-  
-
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("usE0s6JGUeOiMcsVoRuHuv2B-gzGzoHsz","ewm6NEF07r83HbnOr63ptuKH")</script>
-  <script>function showTime(e){var t=new AV.Query(e),n=[],o=$(".leancloud_visitors");o.each(function(){n.push($(this).attr("id").trim())}),t.containedIn("url",n),t.find().done(function(e){if(0!==e.length){for(c=0;c<e.length;c++){var t=e[c],i=t.get("url"),s=t.get("time"),l=document.getElementById(i);$(l).find(".leancloud-visitors-count").text(s)}for(var c=0;c<n.length;c++){var i=n[c],l=document.getElementById(i),r=$(l).find(".leancloud-visitors-count");""==r.text()&&r.text(0)}}else o.find(".leancloud-visitors-count").text(0)}).fail(function(e,t){console.log("Error: "+t.code+" "+t.message)})}function addCount(e){var t=$(".leancloud_visitors"),n=t.attr("id").trim(),o=t.attr("data-flag-title").trim(),i=new AV.Query(e);i.equalTo("url",n),i.find({success:function(t){if(t.length>0){var i=t[0];i.fetchWhenSave(!0),i.increment("time"),i.save(null,{success:function(e){$(document.getElementById(n)).find(".leancloud-visitors-count").text(e.get("time"))},error:function(e,t){console.log("Failed to save Visitor num, with error message: "+t.message)}})}else{var s=new e,l=new AV.ACL;l.setPublicReadAccess(!0),l.setPublicWriteAccess(!0),s.setACL(l),s.set("title",o),s.set("url",n),s.set("time",1),s.save(null,{success:function(e){$(document.getElementById(n)).find(".leancloud-visitors-count").text(e.get("time"))},error:function(e,t){console.log("Failed to create")}})}},error:function(e){console.log("Error:"+e.code+" "+e.message)}})}$(function(){var e=AV.Object.extend("Counter");1==$(".leancloud_visitors").length?addCount(e):$(".post-title-link").length>1&&showTime(e)})</script>
-
-
-
-  
-<script>!function(){var t=document.createElement("script"),e=window.location.protocol.split(":")[0];t.src="https"===e?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}()</script>
-
-
-  
-
-
-  <script type="text/javascript" color="255,0,204" opacity="0.5" zindex="-2" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
-
-
-
-<script type="text/javascript">$("body").delegate(".-mob-share-weixin-qrcode-bg","click",function(){$(".-mob-share-weixin-qrcode-close").trigger("click")})</script>
-
-
-
-
-<script type="text/javascript" src="/js/src/dytitle.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":88,"height":88,"position":"left"},"mobile":{"show":false},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script></body></html>
+<script type="text/javascript" src="/js/src/dytitle.js"></script></div></footer></div><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":88,"height":88,"position":"left"},"mobile":{"show":false},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script></body></html>

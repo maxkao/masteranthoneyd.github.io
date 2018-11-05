@@ -1,4 +1,4 @@
-<!doctype html><html class="theme-next muse use-motion" lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta http-equiv="content-language" content="zh-cn"><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet"><style>.pace .pace-progress{background:#ff009e;height:2px}.pace .pace-progress-inner{box-shadow:0 0 10px #e6006b,0 0 5px #ff009e}.pace .pace-activity{border-top-color:#ff009e;border-left-color:#ff009e}</style><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css"><meta name="keywords" content="Github,Git,"><link rel="alternate" href="/atom.xml" title="ookamiAntD's Blog" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0"><meta name="description" content="前言What is Git?Git是目前世界上最先进的分布式版本控制系统（没有之一），而且是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目一直以来，博主开发项目用的版本管理系用都是SVN[1]，其实早就听闻过Git，一直没用过，后来接触Github和Hexo博客框架，才真正意义上开始接触Git"><meta name="keywords" content="Github,Git"><meta property="og:type" content="article"><meta property="og:title" content="Git学习笔记"><meta property="og:url" content="http://yangbingdong.com/2017/note-of-learning-git/index.html"><meta property="og:site_name" content="ookamiAntD&#39;s Blog"><meta property="og:description" content="前言What is Git?Git是目前世界上最先进的分布式版本控制系统（没有之一），而且是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目一直以来，博主开发项目用的版本管理系用都是SVN[1]，其实早就听闻过Git，一直没用过，后来接触Github和Hexo博客框架，才真正意义上开始接触Git，感受就是高端大气上档次！"><meta property="og:locale" content="en"><meta property="og:image" content="http://ojoba1c98.bkt.clouddn.com/img/git/git-operations.png"><meta property="og:image" content="http://ojoba1c98.bkt.clouddn.com/img/git/gitBranch.png"><meta property="og:image" content="http://ojoba1c98.bkt.clouddn.com/img/git/gitBranch01.png"><meta property="og:image" content="http://ojoba1c98.bkt.clouddn.com/img/git/gitConflict.png"><meta property="og:image" content="http://ojoba1c98.bkt.clouddn.com/img/git/gitFixConflict.png"><meta property="og:image" content="http://ojoba1c98.bkt.clouddn.com/img/git/gitCommand.png"><meta property="og:updated_time" content="2018-03-14T06:38:23.182Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Git学习笔记"><meta name="twitter:description" content="前言What is Git?Git是目前世界上最先进的分布式版本控制系统（没有之一），而且是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目一直以来，博主开发项目用的版本管理系用都是SVN[1]，其实早就听闻过Git，一直没用过，后来接触Github和Hexo博客框架，才真正意义上开始接触Git，感受就是高端大气上档次！"><meta name="twitter:image" content="http://ojoba1c98.bkt.clouddn.com/img/git/git-operations.png"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",sidebar:{position:"right",display:"always"},fancybox:!0,motion:!0,duoshuo:{userId:"undefined",author:"Author"},algolia:{applicationID:"RI3NF6GUI0",apiKey:"3d33fa60ba30d3b17f37220bb1a36749",indexName:"blogIndex",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="http://yangbingdong.com/2017/note-of-learning-git/"><title>Git学习笔记 | ookamiAntD's Blog</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="en"><script type="text/javascript">var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?e9505ac4e11d464329d615553a72b526";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><div class="container one-collumn sidebar-position-right page-post-detail"><div class="headband"></div><a href="https://github.com/masteranthoneyd/blog" rel="external nofollow noopener noreferrer" target="_blank"><img style="position:absolute;top:0;left:0;border:0" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">ookamiAntD's Blog</span> <span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">Easy coding,easy life.</h1></div><div class="site-nav-toggle"><button><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>Tags</a></li><li class="menu-item menu-item-about"><a href="/about" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>About</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook" rel="section"><i class="menu-item-icon fa fa-fw fa-commenting"></i><br>Message</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>Search</a></li></ul><div class="site-search"><div class="popup"><span class="search-icon fa fa-search"></span> <input type="text" id="local-search-input"><div id="local-search-result"></div><span class="popup-btn-close">close</span></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><link itemprop="mainEntityOfPage" href="http://yangbingdong.com/2017/note-of-learning-git/"><span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="ookamiAntD"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar/avatar-admin.jpg"></span><span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="ookamiAntD's Blog"><span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject"><img style="display:none" itemprop="url image" alt="ookamiAntD's Blog" src=""></span></span><header class="post-header"><h2 class="post-title" itemprop="name headline">Git学习笔记</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">Posted on</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-18T12:42:52+08:00">2017-01-18 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">In</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Git-Github/" itemprop="url" rel="index"><span itemprop="name">Git/Github</span> </a></span></span><span id="/2017/note-of-learning-git/" class="leancloud_visitors" data-flag-title="Git学习笔记"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-eye"></i> </span><span class="post-meta-item-text">Visitors </span><span class="leancloud-visitors-count"></span></span><br><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-edit"></i> </span><span class="post-meta-item-text">WordCount:</span> <span class="post-count">3,564字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-text">min2read:</span> <span class="post-count">14分钟</span></span></div></header><div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="http://ojoba1c98.bkt.clouddn.com/img/git/git-operations.png" alt=""></p><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>What is Git?<br>Git是目前世界上最先进的分布式版本控制系统（没有之一），而且是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目<br>一直以来，博主开发项目用的版本管理系用都是SVN<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top-right hint--error hint--large" aria-label="集中式版本管理系统之一
+<!doctype html><html class="theme-next muse use-motion" lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta http-equiv="content-language" content="zh-cn"><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet"><style>.pace .pace-progress{background:#ff009e;height:2px}.pace .pace-progress-inner{box-shadow:0 0 10px #e6006b,0 0 5px #ff009e}.pace .pace-activity{border-top-color:#ff009e;border-left-color:#ff009e}</style><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css"><meta name="keywords" content="Github,Git,"><link rel="alternate" href="/atom.xml" title="ookamiAntD's Blog" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0"><meta name="description" content="前言What is Git?Git是目前世界上最先进的分布式版本控制系统（没有之一），而且是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目一直以来，博主开发项目用的版本管理系用都是SVN[1]，其实早就听闻过Git，一直没用过，后来接触Github和Hexo博客框架，才真正意义上开始接触Git"><meta name="keywords" content="Github,Git"><meta property="og:type" content="article"><meta property="og:title" content="Git学习笔记"><meta property="og:url" content="http://yangbingdong.com/2017/note-of-learning-git/index.html"><meta property="og:site_name" content="ookamiAntD&#39;s Blog"><meta property="og:description" content="前言What is Git?Git是目前世界上最先进的分布式版本控制系统（没有之一），而且是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目一直以来，博主开发项目用的版本管理系用都是SVN[1]，其实早就听闻过Git，一直没用过，后来接触Github和Hexo博客框架，才真正意义上开始接触Git，感受就是高端大气上档次！"><meta property="og:locale" content="en"><meta property="og:image" content="http://img.yangbingdong.com/img/git/git-operations.png"><meta property="og:image" content="http://img.yangbingdong.com/img/git/gitBranch.png"><meta property="og:image" content="http://img.yangbingdong.com/img/git/gitBranch01.png"><meta property="og:image" content="http://img.yangbingdong.com/img/git/gitConflict.png"><meta property="og:image" content="http://img.yangbingdong.com/img/git/gitFixConflict.png"><meta property="og:image" content="http://img.yangbingdong.com/img/git/gitCommand.png"><meta property="og:updated_time" content="2018-11-05T10:17:52.424Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Git学习笔记"><meta name="twitter:description" content="前言What is Git?Git是目前世界上最先进的分布式版本控制系统（没有之一），而且是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目一直以来，博主开发项目用的版本管理系用都是SVN[1]，其实早就听闻过Git，一直没用过，后来接触Github和Hexo博客框架，才真正意义上开始接触Git，感受就是高端大气上档次！"><meta name="twitter:image" content="http://img.yangbingdong.com/img/git/git-operations.png"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",sidebar:{position:"right",display:"always"},fancybox:!0,motion:!0,duoshuo:{userId:"undefined",author:"Author"},algolia:{applicationID:"RI3NF6GUI0",apiKey:"3d33fa60ba30d3b17f37220bb1a36749",indexName:"blogIndex",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="http://yangbingdong.com/2017/note-of-learning-git/"><title>Git学习笔记 | ookamiAntD's Blog</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="en"><script type="text/javascript">var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?e9505ac4e11d464329d615553a72b526";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><div class="container one-collumn sidebar-position-right page-post-detail"><div class="headband"></div><a href="https://github.com/masteranthoneyd/blog" rel="external nofollow noopener noreferrer" target="_blank"><img style="position:absolute;top:0;left:0;border:0" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">ookamiAntD's Blog</span> <span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">Easy coding,easy life.</h1></div><div class="site-nav-toggle"><button><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>Tags</a></li><li class="menu-item menu-item-about"><a href="/about" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>About</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook" rel="section"><i class="menu-item-icon fa fa-fw fa-commenting"></i><br>Message</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>Search</a></li></ul><div class="site-search"><div class="popup"><span class="search-icon fa fa-search"></span> <input type="text" id="local-search-input"><div id="local-search-result"></div><span class="popup-btn-close">close</span></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><link itemprop="mainEntityOfPage" href="http://yangbingdong.com/2017/note-of-learning-git/"><span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="ookamiAntD"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar/avatar-admin.jpg"></span><span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="ookamiAntD's Blog"><span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject"><img style="display:none" itemprop="url image" alt="ookamiAntD's Blog" src=""></span></span><header class="post-header"><h2 class="post-title" itemprop="name headline">Git学习笔记</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">Posted on</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-18T12:42:52+08:00">2017-01-18 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">In</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Git-Github/" itemprop="url" rel="index"><span itemprop="name">Git/Github</span> </a></span></span><span id="/2017/note-of-learning-git/" class="leancloud_visitors" data-flag-title="Git学习笔记"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-eye"></i> </span><span class="post-meta-item-text">Visitors </span><span class="leancloud-visitors-count"></span></span><br><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-edit"></i> </span><span class="post-meta-item-text">WordCount:</span> <span class="post-count">3,564字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-text">min2read:</span> <span class="post-count">14分钟</span></span></div></header><div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="http://img.yangbingdong.com/img/git/git-operations.png" alt=""></p><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>What is Git?<br>Git是目前世界上最先进的分布式版本控制系统（没有之一），而且是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目<br>一直以来，博主开发项目用的版本管理系用都是SVN<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top-right hint--error hint--large" aria-label="集中式版本管理系统之一
 ">[1]</span></a></sup>，其实早就听闻过Git，一直没用过，后来接触Github和Hexo博客框架，才真正意义上开始接触Git，感受就是高端大气上档次！</p><a id="more"></a><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Git是Linux系统的开发者Linus在2005年的时候，BitKeeper<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top-right hint--error hint--large" aria-label="一个商业的版本控制系统">[2]</span></a></sup>的东家BitMover公司回收了Linux社区的免费使用权的情况下，在仅仅的两周内Linus用C写出了一个分布式版本控制系统，这就是Git（超级牛X）！从此，Linux系统的源码已经由Git管理了。逐渐地，Git迅速成为最流行的分布式版本控制系统，尤其是在Github上线之后，无数开源项目开始迁移至GitHub，包括jQuery，PHP，Ruby等等</p><h1 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h1><p>在<strong>Debian</strong>或者<strong>Ubuntu Linux</strong>下的Git安装非常简单，直接一条命令搞定<br></p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install git</span><br></pre></td></tr></table></figure><p></p>
 <p><strong>Windows</strong>下的模拟环境安装起来比较复杂，那么可以用牛人封装好的模拟环境加Git，叫<strong>msysgit</strong>，只需要下载一个exe然后双击安装<br>可从<em><a href="https://git-for-windows.github.io/" rel="external nofollow noopener noreferrer" target="_blank">https://git-for-windows.github.io/</a></em> 下载，或者从<em><a href="https://pan.baidu.com/s/1kU5OCOB#list/path=%2Fpub%2Fgit" rel="external nofollow noopener noreferrer" target="_blank">廖雪峰老师的镜像</a></em> 下载，然后按默认选项安装<br>安装完成后，在开始菜单里找到“Git”-&gt;“Git Bash”，蹦出一个类似命令行窗口的东西，就说明Git安装成功</p>
 <p>成功安装之后，还需要配置一下全局个人信息：<br></p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git<span class="built_in"> config </span>--global user.name <span class="string">"Your Name"</span></span><br><span class="line">git<span class="built_in"> config </span>--global user.email <span class="string">"email@example.com"</span></span><br></pre></td></tr></table></figure><p></p>
@@ -55,20 +55,20 @@
 <h2 id="删除tag"><a href="#删除tag" class="headerlink" title="删除tag"></a>删除tag</h2><p>很简单，知道<code>tag</code>名称后：<br></p><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">tag</span> <span class="title">-d</span> v1.<span class="number">0</span></span><br></pre></td></tr></table></figure><p></p>
 <p>删除远程分支：<br></p><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete <span class="keyword">tag</span> <span class="title">&lt;tagname</span>&gt;</span><br></pre></td></tr></table></figure><p></p>
 <h2 id="共享tag"><a href="#共享tag" class="headerlink" title="共享tag"></a>共享tag</h2><p>我们在执行<code>git push</code>的时候，<code>tag</code>是不会上传到服务器的，比如现在的<code>github</code>，创建<code>tag</code>后<code>git push</code>，在<code>github</code>网页上是看不到<code>tag</code>的，为了共享这些<code>tag</code>，你必须这样：<br></p><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">push</span> <span class="built_in">origin</span> --tags</span><br></pre></td></tr></table></figure><p></p>
-<h1 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h1><p>分支相当与平行宇宙，互不干扰，哪天合并了就拥有了所有平行宇宙的特性<br><img src="http://ojoba1c98.bkt.clouddn.com/img/git/gitBranch.png" alt=""></p>
+<h1 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h1><p>分支相当与平行宇宙，互不干扰，哪天合并了就拥有了所有平行宇宙的特性<br><img src="http://img.yangbingdong.com/img/git/gitBranch.png" alt=""></p>
 <h2 id="创建与合并分支"><a href="#创建与合并分支" class="headerlink" title="创建与合并分支"></a>创建与合并分支</h2><ul>
 <li>每次提交，Git都把它们串成一条时间线，这条时间线就是一个分支。截止到目前，只有一条时间线，在Git里，这个分支叫主分支，即 <code>master</code> 分支</li>
 <li>一开始的时候，<code>master</code> 分支是一条线，Git用 <code>master</code> 指向最新的提交，再用 <code>HEAD</code> 指向 <code>master</code> ，就能确定当前分支，以及当前分支的提交点</li>
 <li>当我们创建新的分支，例如 <code>dev</code> 时，Git新建了一个指针叫 <code>dev</code> ，指向 <code>master</code> 相同的提交，再把 <code>HEAD</code> 指向 <code>dev</code> ，就表示当前分支在 <code>dev</code> 上</li>
 <li>Git创建一个分支很快，因为除了增加一个 <code>dev</code> 指针，改改 <code>HEAD</code> 的指向，工作区的文件都没有任何变化</li>
-<li>当 <code>HEAD</code> 指向 <code>dev</code> ，对工作区的修改和提交就是针对 <code>dev</code> 分支了，比如新提交一次后， <code>dev</code> 指针往前移动一步，而 <code>master</code> 指针不变<br><img src="http://ojoba1c98.bkt.clouddn.com/img/git/gitBranch01.png" alt=""></li>
+<li>当 <code>HEAD</code> 指向 <code>dev</code> ，对工作区的修改和提交就是针对 <code>dev</code> 分支了，比如新提交一次后， <code>dev</code> 指针往前移动一步，而 <code>master</code> 指针不变<br><img src="http://img.yangbingdong.com/img/git/gitBranch01.png" alt=""></li>
 </ul>
 <p>查看分支：<code>git branch</code><br>创建分支：<code>git branch &lt;name&gt;</code><br>切换分支：<code>git checkout &lt;name&gt;</code><br>创建+切换分支：<code>git checkout -b &lt;name&gt;</code><br>合并某分支到当前分支：<code>git merge &lt;name&gt;</code><br>删除分支：<code>git branch -d &lt;name&gt;</code></p>
-<h2 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h2><p>合并分支并不是每次都不会出问题，如不同的分支对同一个文件同一行都被修改过，就会出现以下情况<br><img src="http://ojoba1c98.bkt.clouddn.com/img/git/gitConflict.png" alt=""><br>那么再次合并有可能会冲突<br></p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">➜  repo git:(master) git <span class="keyword">merge</span> feature1 </span><br><span class="line">自动合并 <span class="keyword">read</span></span><br><span class="line">冲突（内容）：合并冲突于 <span class="keyword">read</span></span><br><span class="line">自动合并失败，修正冲突然后提交修正的结果。</span><br><span class="line">➜  repo git:(<span class="keyword">master</span>) ✗ git <span class="keyword">status</span> </span><br><span class="line">位于分支 <span class="keyword">master</span></span><br><span class="line">您有尚未合并的路径。</span><br><span class="line">  （解决冲突并运行 <span class="string">"git commit"</span>）</span><br><span class="line"></span><br><span class="line">未合并的路径：</span><br><span class="line">  （使用 <span class="string">"git add &lt;文件&gt;..."</span> 标记解决方案）</span><br><span class="line"></span><br><span class="line">	双方修改：   <span class="keyword">read</span></span><br><span class="line"></span><br><span class="line">修改尚未加入提交（使用 <span class="string">"git add"</span> 和/或 <span class="string">"git commit -a"</span>）</span><br></pre></td></tr></table></figure><p></p>
+<h2 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h2><p>合并分支并不是每次都不会出问题，如不同的分支对同一个文件同一行都被修改过，就会出现以下情况<br><img src="http://img.yangbingdong.com/img/git/gitConflict.png" alt=""><br>那么再次合并有可能会冲突<br></p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">➜  repo git:(master) git <span class="keyword">merge</span> feature1 </span><br><span class="line">自动合并 <span class="keyword">read</span></span><br><span class="line">冲突（内容）：合并冲突于 <span class="keyword">read</span></span><br><span class="line">自动合并失败，修正冲突然后提交修正的结果。</span><br><span class="line">➜  repo git:(<span class="keyword">master</span>) ✗ git <span class="keyword">status</span> </span><br><span class="line">位于分支 <span class="keyword">master</span></span><br><span class="line">您有尚未合并的路径。</span><br><span class="line">  （解决冲突并运行 <span class="string">"git commit"</span>）</span><br><span class="line"></span><br><span class="line">未合并的路径：</span><br><span class="line">  （使用 <span class="string">"git add &lt;文件&gt;..."</span> 标记解决方案）</span><br><span class="line"></span><br><span class="line">	双方修改：   <span class="keyword">read</span></span><br><span class="line"></span><br><span class="line">修改尚未加入提交（使用 <span class="string">"git add"</span> 和/或 <span class="string">"git commit -a"</span>）</span><br></pre></td></tr></table></figure><p></p>
 <p>这种情况必须手动解决然后再次 <code>git add .</code>，<code>git commit -m &quot;commit&quot;</code>，打开文件可看到<br></p><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Git is a version control</span><br><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">Creating a new branch is quick &amp; simple.</span><br><span class="line">=======</span><br><span class="line">Creating a new branch is quick AND simple.</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature1</span><br></pre></td></tr></table></figure><p></p>
 <p>Git用<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>，<code>=======</code>，<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>标记出不同分支的内容，那么经过合意，不好意思，大师兄说了，在座的各位都是垃圾，于是改成<br></p><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Git,</span>too fast too simple</span><br></pre></td></tr></table></figure><p></p>
 <p>再提交<br></p><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  repo git:(<span class="literal">master</span>) ✗ git add <span class="keyword">read</span> </span><br><span class="line">➜  repo git:(<span class="literal">master</span>) ✗ git commit -m <span class="string">"conflict fixed"</span></span><br><span class="line">[<span class="keyword">master</span> <span class="title">8933f88</span>] conflict fixed</span><br><span class="line">➜  repo git:(<span class="literal">master</span>)</span><br></pre></td></tr></table></figure><p></p>
-<p>ok了，再次 <code>add</code> 和 <code>commit</code> ，现在 <code>master</code> 分支和<code>feature1</code>分支变成了这样<br><img src="http://ojoba1c98.bkt.clouddn.com/img/git/gitFixConflict.png" alt=""></p>
+<p>ok了，再次 <code>add</code> 和 <code>commit</code> ，现在 <code>master</code> 分支和<code>feature1</code>分支变成了这样<br><img src="http://img.yangbingdong.com/img/git/gitFixConflict.png" alt=""></p>
 <h2 id="多PC协同开发"><a href="#多PC协同开发" class="headerlink" title="多PC协同开发"></a>多PC协同开发</h2><p>当你从远程仓库克隆时，实际上Git自动把本地的 <code>master</code> 分支和远程的 <code>master</code> 分支对应起来了，并且，远程仓库的默认名称是 <code>origin</code> </p>
 <p>查看远程库的信息：<br>查看简单信息：<code>git remote</code><br>查看详细信息：<code>git remote -v</code><br>查看远程仓库分支：<code>git branch -r</code><br>查看本地分支与远程分支的对应关系：<code>git branch -vv</code></p>
 <p>推送分支<br></p><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git push <span class="keyword">origin </span>&lt;<span class="keyword">branch&gt; </span></span><br><span class="line"></span><br><span class="line">git push -u <span class="keyword">origin </span>&lt;<span class="keyword">branch&gt; </span><span class="comment"># 第一次推送加-u可以把当前分支与远程分支关联起来</span></span><br></pre></td></tr></table></figure><p></p>
@@ -88,7 +88,7 @@
 <blockquote>
 <p><strong><em>参考：<a href="http://www.liaoxuefeng.com/" rel="external nofollow noopener noreferrer" target="_blank">廖雪峰老师的教程</a></em></strong></p>
 </blockquote>
-<p>附命令图一张：<br><img src="http://ojoba1c98.bkt.clouddn.com/img/git/gitCommand.png" alt=""></p>
+<p>附命令图一张：<br><img src="http://img.yangbingdong.com/img/git/gitCommand.png" alt=""></p>
 <div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none;padding-left:0;margin-left:40px"><li id="fn:1"><span style="display:inline-block;vertical-align:top;padding-right:10px;margin-left:-40px">1.</span><span style="display:inline-block;vertical-align:top;margin-left:10px">集中式版本管理系统之一<a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display:inline-block;vertical-align:top;padding-right:10px;margin-left:-40px">2.</span><span style="display:inline-block;vertical-align:top;margin-left:10px">一个商业的版本控制系统<a href="#fnref:2" rev="footnote"> ↩</a></span></li></ol></div></div>
       
     </div>
@@ -293,7 +293,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -302,7 +302,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -445,152 +445,5 @@
 </div>
 
 
-<div class="powered-by">
-    Personal Site
-</div>
 
-<div class="theme-info">
-  Blog -
-ookamiAntD | <span class="post-count">共204.0k字</span>
-</div>
-
-
-
-        
-
-<div class="busuanzi-count">
-
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv"><i class="fa fa-user">本站访客数</i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
-  
-
-  
-    <span class="site-pv"><i class="fa fa-eye">本站总访问量</i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
-  
-  
-</div>
-
-
-
-        
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-<script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-
-
-  
-
-    <script type="text/javascript">function run_disqus_script(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="//"+disqus_shortname+".disqus.com/"+e,(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(t)}var disqus_shortname="ookamiantd",disqus_identifier="2017/note-of-learning-git/",disqus_title="Git学习笔记",disqus={load:function(){"object"!=typeof DISQUS&&(!function(){var e=document.createElement("script");e.async=!0,e.type="text/javascript",e.src="//"+disqus_shortname+".disqus.com/embed.js",(document.getElementsByTagName("HEAD")[0]||document.getElementsByTagName("BODY")[0]).appendChild(e)}(),$("#load-disqus").html("评论加载中，请确保你有梯子，若评论长时间未加载则你可能翻墙失败...").fadeOut(9e3))}}</script>
-  
-
-
-
-
-
-
-
-
-
-  
-  
-  <script type="text/javascript">function proceedsearch(){$("body").append('<div class="popoverlay">').css("overflow","hidden"),$(".popup").toggle()}var isfetched=!1,search_path="search.xml";0==search_path.length&&(search_path="search.xml");var path="/"+search_path,searchFunc=function(e,t,a){"use strict";$.ajax({url:e,dataType:"xml",async:!0,success:function(e){isfetched=!0,$(".popup").detach().appendTo(".header-inner");var r=$("entry",e).map(function(){return{title:$("title",this).text(),content:$("content",this).text(),url:$("url",this).text()}}).get(),c=document.getElementById(t),n=document.getElementById(a);c.addEventListener("input",function(){var e=0,t='<ul class="search-result-list">',a=this.value.trim().toLowerCase().split(/[\s\-]+/);n.innerHTML="",this.value.trim().length>1&&r.forEach(function(r){var c=!1,n=r.title.trim().toLowerCase(),s=r.content.trim().replace(/<[^>]+>/g,"").toLowerCase(),o=decodeURIComponent(r.url),i=-1,l=-1,p=-1;if(""!=n&&a.forEach(function(e,t){i=n.indexOf(e),l=s.indexOf(e),(i>=0||l>=0)&&(c=!0,0==t&&(p=l))}),c){e+=1,t+="<li><a href='"+o+"' class='search-result-title'>"+n+"</a>";var h=r.content.trim().replace(/<[^>]+>/g,"");if(p>=0){var u=p-20,d=p+80;u<0&&(u=0),0==u&&(d=50),d>h.length&&(d=h.length);var f=h.substring(u,d);a.forEach(function(e){var t=new RegExp(e,"gi");f=f.replace(t,'<b class="search-keyword">'+e+"</b>")}),t+='<p class="search-result">'+f+"...</p>"}t+="</li>"}}),t+="</ul>",0==e&&(t='<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'),""==a&&(t='<div id="no-result"><i class="fa fa-search fa-5x" /></div>'),n.innerHTML=t}),proceedsearch()}})};$(".popup-trigger").click(function(e){e.stopPropagation(),0==isfetched?searchFunc(path,"local-search-input","local-search-result"):proceedsearch()}),$(".popup-btn-close").click(function(e){$(".popup").hide(),$(".popoverlay").remove(),$("body").css("overflow","")}),$(".popup").click(function(e){e.stopPropagation()})</script>
-
-
-  
-
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("usE0s6JGUeOiMcsVoRuHuv2B-gzGzoHsz","ewm6NEF07r83HbnOr63ptuKH")</script>
-  <script>function showTime(e){var t=new AV.Query(e),n=[],o=$(".leancloud_visitors");o.each(function(){n.push($(this).attr("id").trim())}),t.containedIn("url",n),t.find().done(function(e){if(0!==e.length){for(c=0;c<e.length;c++){var t=e[c],i=t.get("url"),s=t.get("time"),l=document.getElementById(i);$(l).find(".leancloud-visitors-count").text(s)}for(var c=0;c<n.length;c++){var i=n[c],l=document.getElementById(i),r=$(l).find(".leancloud-visitors-count");""==r.text()&&r.text(0)}}else o.find(".leancloud-visitors-count").text(0)}).fail(function(e,t){console.log("Error: "+t.code+" "+t.message)})}function addCount(e){var t=$(".leancloud_visitors"),n=t.attr("id").trim(),o=t.attr("data-flag-title").trim(),i=new AV.Query(e);i.equalTo("url",n),i.find({success:function(t){if(t.length>0){var i=t[0];i.fetchWhenSave(!0),i.increment("time"),i.save(null,{success:function(e){$(document.getElementById(n)).find(".leancloud-visitors-count").text(e.get("time"))},error:function(e,t){console.log("Failed to save Visitor num, with error message: "+t.message)}})}else{var s=new e,l=new AV.ACL;l.setPublicReadAccess(!0),l.setPublicWriteAccess(!0),s.setACL(l),s.set("title",o),s.set("url",n),s.set("time",1),s.save(null,{success:function(e){$(document.getElementById(n)).find(".leancloud-visitors-count").text(e.get("time"))},error:function(e,t){console.log("Failed to create")}})}},error:function(e){console.log("Error:"+e.code+" "+e.message)}})}$(function(){var e=AV.Object.extend("Counter");1==$(".leancloud_visitors").length?addCount(e):$(".post-title-link").length>1&&showTime(e)})</script>
-
-
-
-  
-<script>!function(){var t=document.createElement("script"),e=window.location.protocol.split(":")[0];t.src="https"===e?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}()</script>
-
-
-  
-
-
-  <script type="text/javascript" color="255,0,204" opacity="0.5" zindex="-2" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
-
-
-
-<script type="text/javascript">$("body").delegate(".-mob-share-weixin-qrcode-bg","click",function(){$(".-mob-share-weixin-qrcode-close").trigger("click")})</script>
-
-
-
-
-<script type="text/javascript" src="/js/src/dytitle.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":88,"height":88,"position":"left"},"mobile":{"show":false},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script></body></html>
+<script type="text/javascript" src="/js/src/dytitle.js"></script></div></footer></div><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":88,"height":88,"position":"left"},"mobile":{"show":false},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script></body></html>
