@@ -1,456 +1,13 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="en">
-<head>
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-<meta http-equiv="content-language" content="zh-cn">
-
-<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
-<style>
-    .pace .pace-progress {
-        background: #ff009e;
-        height: 2px;
-    }
-    .pace .pace-progress-inner {
-         box-shadow: 0 0 10px #e6006b, 0 0 5px #ff009e;
-    }
-    .pace .pace-activity {
-        border-top-color: #ff009e;
-        border-left-color: #ff009e;
-    }
-</style>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="VPS,Nginx,">
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="ookamiAntD's Blog" type="application/atom+xml">
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0">
-
-
-
-
-
-
-<meta name="description" content="前言 走上了VPS这条不归路，就意味着需要会维护以及运营自己的服务器。那么这一章记录一下学习Nginx的一些东西…本文绝大部分内容来自NGINX 网站的官方手册：https://www.nginx.com/resources/admin-guide/installing-nginx-open-source/http:/">
-<meta name="keywords" content="VPS,Nginx">
-<meta property="og:type" content="article">
-<meta property="og:title" content="NGINX初学指南(安装与简单配置)">
-<meta property="og:url" content="http://yangbingdong.com/2017/nginx-noob-guide/index.html">
-<meta property="og:site_name" content="ookamiAntD&#39;s Blog">
-<meta property="og:description" content="前言 走上了VPS这条不归路，就意味着需要会维护以及运营自己的服务器。那么这一章记录一下学习Nginx的一些东西…本文绝大部分内容来自NGINX 网站的官方手册：https://www.nginx.com/resources/admin-guide/installing-nginx-open-source/http://nginx.org/en/docs/beginners_guide.html">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="http://img.yangbingdong.com/NGINX.png">
-<meta property="og:updated_time" content="2018-11-05T10:17:52.424Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NGINX初学指南(安装与简单配置)">
-<meta name="twitter:description" content="前言 走上了VPS这条不归路，就意味着需要会维护以及运营自己的服务器。那么这一章记录一下学习Nginx的一些东西…本文绝大部分内容来自NGINX 网站的官方手册：https://www.nginx.com/resources/admin-guide/installing-nginx-open-source/http://nginx.org/en/docs/beginners_guide.html">
-<meta name="twitter:image" content="http://img.yangbingdong.com/NGINX.png">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"right","display":"always"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 'undefined',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: 'RI3NF6GUI0',
-      apiKey: '3d33fa60ba30d3b17f37220bb1a36749',
-      indexName: 'blogIndex',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yangbingdong.com/2017/nginx-noob-guide/">
-
-
-
-
-
-  <title> NGINX初学指南(安装与简单配置) | ookamiAntD's Blog </title>
-</head>
-
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
-
-  
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?e9505ac4e11d464329d615553a72b526";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-right page-post-detail ">
-    <div class="headband"></div>
-
-	<a href="https://github.com/masteranthoneyd/blog" rel="external nofollow noopener noreferrer" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
-
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">ookamiAntD's Blog</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-    
-      <h1 class="site-subtitle" itemprop="description">Easy coding,easy life.</h1>
-    
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            Archives
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            Categories
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            Tags
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            About
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-guestbook">
-          <a href="/guestbook" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-commenting"></i> <br>
-            
-            Message
-          </a>
-        </li>
-      
-
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
-            
-            Search
-          </a>
-        </li>
-      
-    </ul>
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
-</div>
-
-
-    </div>
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yangbingdong.com/2017/nginx-noob-guide/">
-
-  <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="ookamiAntD">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar/avatar-admin.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="ookamiAntD's Blog">
-    <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="ookamiAntD's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                NGINX初学指南(安装与简单配置)
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-24T16:56:15+08:00">
-                2017-04-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Nginx/" itemprop="url" rel="index">
-                    <span itemprop="name">Nginx</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-
-          
-
-          
-
-          
-
-          
-          
-             <span id="/2017/nginx-noob-guide/" class="leancloud_visitors" data-flag-title="NGINX初学指南(安装与简单配置)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          <br><span class="post-time">
-           <span class="post-meta-item-icon">
-             <i class="fa fa-edit"></i>
-           </span>
-           <span class="post-meta-item-text">WordCount:</span>
-           <span class="post-count">6,331字</span>
-			<span class="post-meta-divider">|</span>
-			<span class="post-meta-item-text">min2read:</span>
-           <span class="post-count">25分钟</span>
-
-         </span>
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="http://img.yangbingdong.com/NGINX.png" alt=""></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
-<p>走上了VPS这条<del>不归路</del>，就意味着需要会维护以及运营自己的服务器。那么这一章记录一下学习Nginx的一些东西…<br>本文绝大部分内容来自NGINX 网站的官方手册：<br><strong><em><a href="https://www.nginx.com/resources/admin-guide/installing-nginx-open-source/" rel="external nofollow noopener noreferrer" target="_blank">https://www.nginx.com/resources/admin-guide/installing-nginx-open-source/</a></em></strong><br><strong><em><a href="http://nginx.org/en/docs/beginners_guide.html" rel="external nofollow noopener noreferrer" target="_blank">http://nginx.org/en/docs/beginners_guide.html</a></em></strong></p>
-</blockquote>
-<a id="more"></a>
-<h1 id="安装NGINX部分"><a href="#安装NGINX部分" class="headerlink" title="安装NGINX部分"></a>安装NGINX部分</h1><h2 id="主干版本VS稳定版本"><a href="#主干版本VS稳定版本" class="headerlink" title="主干版本VS稳定版本"></a>主干版本VS稳定版本</h2><p>NGINX 有两个有效版本：</p>
-<ul>
-<li>主干版本。这个版本中包含了最新的功能和 BUG 修复，并且总是最新的版本。这个版本很可靠，但是也包含了一些实验性质的模块和一定数量的新 BUG。</li>
-<li>稳定版本。这个版本没有最新的功能，但是包含了关键 BUG 的修复。在生产服务器中推荐使用稳定版本。</li>
-</ul>
-<h2 id="预编译包VS源码编译"><a href="#预编译包VS源码编译" class="headerlink" title="预编译包VS源码编译"></a>预编译包VS源码编译</h2><p>NGINX 的主干版本和稳定版本都可以以下两种方式安装：</p>
-<ul>
-<li>预编译包安装。这是一种快捷的安装方式。预编译包中含有几乎所有 NGINX 官方模块并且适用于大多数主流的操作系统。</li>
-<li>通过源码编译安装。这种方式更加灵活：你可以添加包括第三方模块在内的特殊模块以及最新的安全补丁。</li>
-</ul>
-<h2 id="通过源码编译和安装"><a href="#通过源码编译和安装" class="headerlink" title="通过源码编译和安装"></a>通过源码编译和安装</h2><blockquote>
-<p>通过源码编译 NGINX 带给你更多的灵活性：你可以添加包括第三方模块在内的特殊模块以及最新的安全补丁。</p>
-</blockquote>
-<p>先安装一些编译依赖：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get update &amp;&amp; apt-get install -y build-essential libtool</span><br></pre></td></tr></table></figure></p>
-<h3 id="安装-NGINX-依赖"><a href="#安装-NGINX-依赖" class="headerlink" title="安装 NGINX 依赖"></a>安装 NGINX 依赖</h3><p>1、<strong><em><a href="http://pcre.org/" rel="external nofollow noopener noreferrer" target="_blank">PCRC</a></em></strong> 库：被 NGINX <strong><em><a href="https://nginx.org/en/docs/ngx_core_module.html?_ga=2.65941421.2064822644.1493181926-708921149.1492677721" rel="external nofollow noopener noreferrer" target="_blank">Core</a></em></strong> 和 <strong><em><a href="https://nginx.org/en/docs/http/ngx_http_rewrite_module.html?_ga=2.65941421.2064822644.1493181926-708921149.1492677721" rel="external nofollow noopener noreferrer" target="_blank">Rewrite</a></em></strong> 模块需求，并且提供正则表达式支持：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/src &amp;&amp; wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.40.tar.gz &amp;&amp; tar -zxf pcre-8.40.tar.gz &amp;&amp; cd pcre-8.40 &amp;&amp; ./configure &amp;&amp; make &amp;&amp; make install</span><br></pre></td></tr></table></figure></p>
-<p>2、<strong><em><a href="http://www.zlib.net/" rel="external nofollow noopener noreferrer" target="_blank">zlib</a></em></strong> 库：为了头部压缩被 NGINX <strong><em><a href="https://nginx.org/en/docs/http/ngx_http_gzip_module.html?_ga=2.65941421.2064822644.1493181926-708921149.1492677721" rel="external nofollow noopener noreferrer" target="_blank">Gzip</a></em></strong> 模块需求：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/src &amp;&amp; wget http://zlib.net/zlib-1.2.11.tar.gz &amp;&amp; tar -zxf zlib-1.2.11.tar.gz &amp;&amp; cd zlib-1.2.11 &amp;&amp; ./configure &amp;&amp; make &amp;&amp; make install</span><br></pre></td></tr></table></figure></p>
+<!doctype html><html class="theme-next muse use-motion" lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta http-equiv="content-language" content="zh-cn"><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet"><style>.pace .pace-progress{background:#ff009e;height:2px}.pace .pace-progress-inner{box-shadow:0 0 10px #e6006b,0 0 5px #ff009e}.pace .pace-activity{border-top-color:#ff009e;border-left-color:#ff009e}</style><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css"><meta name="keywords" content="VPS,Nginx,"><link rel="alternate" href="/atom.xml" title="ookamiAntD's Blog" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0"><meta name="description" content="前言走上了VPS这条不归路，就意味着需要会维护以及运营自己的服务器。那么这一章记录一下学习Nginx的一些东西…本文绝大部分内容来自NGINX 网站的官方手册：https://www.nginx.com/resources/admin-guide/installing-nginx-open-source/http://"><meta name="keywords" content="VPS,Nginx"><meta property="og:type" content="article"><meta property="og:title" content="NGINX初学指南(安装与简单配置)"><meta property="og:url" content="http://yangbingdong.com/2017/nginx-noob-guide/index.html"><meta property="og:site_name" content="ookamiAntD&#39;s Blog"><meta property="og:description" content="前言走上了VPS这条不归路，就意味着需要会维护以及运营自己的服务器。那么这一章记录一下学习Nginx的一些东西…本文绝大部分内容来自NGINX 网站的官方手册：https://www.nginx.com/resources/admin-guide/installing-nginx-open-source/http://nginx.org/en/docs/beginners_guide.html"><meta property="og:locale" content="en"><meta property="og:image" content="http://img.yangbingdong.com/NGINX.png"><meta property="og:updated_time" content="2018-11-05T10:17:52.424Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="NGINX初学指南(安装与简单配置)"><meta name="twitter:description" content="前言走上了VPS这条不归路，就意味着需要会维护以及运营自己的服务器。那么这一章记录一下学习Nginx的一些东西…本文绝大部分内容来自NGINX 网站的官方手册：https://www.nginx.com/resources/admin-guide/installing-nginx-open-source/http://nginx.org/en/docs/beginners_guide.html"><meta name="twitter:image" content="http://img.yangbingdong.com/NGINX.png"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",sidebar:{position:"right",display:"always"},fancybox:!0,motion:!0,duoshuo:{userId:"undefined",author:"Author"},algolia:{applicationID:"RI3NF6GUI0",apiKey:"3d33fa60ba30d3b17f37220bb1a36749",indexName:"blogIndex",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="http://yangbingdong.com/2017/nginx-noob-guide/"><title>NGINX初学指南(安装与简单配置) | ookamiAntD's Blog</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="en"><script type="text/javascript">var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?e9505ac4e11d464329d615553a72b526";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><div class="container one-collumn sidebar-position-right page-post-detail"><div class="headband"></div><a href="https://github.com/masteranthoneyd/blog" rel="external nofollow noopener noreferrer" target="_blank"><img style="position:absolute;top:0;left:0;border:0" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">ookamiAntD's Blog</span> <span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">Easy coding,easy life.</h1></div><div class="site-nav-toggle"><button><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>Tags</a></li><li class="menu-item menu-item-about"><a href="/about" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>About</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook" rel="section"><i class="menu-item-icon fa fa-fw fa-commenting"></i><br>Message</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>Search</a></li></ul><div class="site-search"><div class="popup"><span class="search-icon fa fa-search"></span> <input type="text" id="local-search-input"><div id="local-search-result"></div><span class="popup-btn-close">close</span></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><link itemprop="mainEntityOfPage" href="http://yangbingdong.com/2017/nginx-noob-guide/"><span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="ookamiAntD"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar/avatar-admin.jpg"></span><span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="ookamiAntD's Blog"><span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject"><img style="display:none" itemprop="url image" alt="ookamiAntD's Blog" src=""></span></span><header class="post-header"><h2 class="post-title" itemprop="name headline">NGINX初学指南(安装与简单配置)</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">Posted on</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-24T16:56:15+08:00">2017-04-24 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">In</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span> </a></span></span><span id="/2017/nginx-noob-guide/" class="leancloud_visitors" data-flag-title="NGINX初学指南(安装与简单配置)"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-eye"></i> </span><span class="post-meta-item-text">Visitors </span><span class="leancloud-visitors-count"></span></span><br><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-edit"></i> </span><span class="post-meta-item-text">WordCount:</span> <span class="post-count">6,331字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-text">min2read:</span> <span class="post-count">25分钟</span></span></div></header><div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="http://img.yangbingdong.com/NGINX.png" alt=""></p><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote><p>走上了VPS这条<del>不归路</del>，就意味着需要会维护以及运营自己的服务器。那么这一章记录一下学习Nginx的一些东西…<br>本文绝大部分内容来自NGINX 网站的官方手册：<br><strong><em><a href="https://www.nginx.com/resources/admin-guide/installing-nginx-open-source/" rel="external nofollow noopener noreferrer" target="_blank">https://www.nginx.com/resources/admin-guide/installing-nginx-open-source/</a></em></strong><br><strong><em><a href="http://nginx.org/en/docs/beginners_guide.html" rel="external nofollow noopener noreferrer" target="_blank">http://nginx.org/en/docs/beginners_guide.html</a></em></strong></p></blockquote><a id="more"></a><h1 id="安装NGINX部分"><a href="#安装NGINX部分" class="headerlink" title="安装NGINX部分"></a>安装NGINX部分</h1><h2 id="主干版本VS稳定版本"><a href="#主干版本VS稳定版本" class="headerlink" title="主干版本VS稳定版本"></a>主干版本VS稳定版本</h2><p>NGINX 有两个有效版本：</p><ul><li>主干版本。这个版本中包含了最新的功能和 BUG 修复，并且总是最新的版本。这个版本很可靠，但是也包含了一些实验性质的模块和一定数量的新 BUG。</li><li>稳定版本。这个版本没有最新的功能，但是包含了关键 BUG 的修复。在生产服务器中推荐使用稳定版本。</li></ul><h2 id="预编译包VS源码编译"><a href="#预编译包VS源码编译" class="headerlink" title="预编译包VS源码编译"></a>预编译包VS源码编译</h2><p>NGINX 的主干版本和稳定版本都可以以下两种方式安装：</p><ul><li>预编译包安装。这是一种快捷的安装方式。预编译包中含有几乎所有 NGINX 官方模块并且适用于大多数主流的操作系统。</li><li>通过源码编译安装。这种方式更加灵活：你可以添加包括第三方模块在内的特殊模块以及最新的安全补丁。</li></ul><h2 id="通过源码编译和安装"><a href="#通过源码编译和安装" class="headerlink" title="通过源码编译和安装"></a>通过源码编译和安装</h2><blockquote><p>通过源码编译 NGINX 带给你更多的灵活性：你可以添加包括第三方模块在内的特殊模块以及最新的安全补丁。</p></blockquote><p>先安装一些编译依赖：<br></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get update &amp;&amp; apt-get install -y build-essential libtool</span><br></pre></td></tr></table></figure><p></p>
+<h3 id="安装-NGINX-依赖"><a href="#安装-NGINX-依赖" class="headerlink" title="安装 NGINX 依赖"></a>安装 NGINX 依赖</h3><p>1、<strong><em><a href="http://pcre.org/" rel="external nofollow noopener noreferrer" target="_blank">PCRC</a></em></strong> 库：被 NGINX <strong><em><a href="https://nginx.org/en/docs/ngx_core_module.html?_ga=2.65941421.2064822644.1493181926-708921149.1492677721" rel="external nofollow noopener noreferrer" target="_blank">Core</a></em></strong> 和 <strong><em><a href="https://nginx.org/en/docs/http/ngx_http_rewrite_module.html?_ga=2.65941421.2064822644.1493181926-708921149.1492677721" rel="external nofollow noopener noreferrer" target="_blank">Rewrite</a></em></strong> 模块需求，并且提供正则表达式支持：<br></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/src &amp;&amp; wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.40.tar.gz &amp;&amp; tar -zxf pcre-8.40.tar.gz &amp;&amp; cd pcre-8.40 &amp;&amp; ./configure &amp;&amp; make &amp;&amp; make install</span><br></pre></td></tr></table></figure><p></p>
+<p>2、<strong><em><a href="http://www.zlib.net/" rel="external nofollow noopener noreferrer" target="_blank">zlib</a></em></strong> 库：为了头部压缩被 NGINX <strong><em><a href="https://nginx.org/en/docs/http/ngx_http_gzip_module.html?_ga=2.65941421.2064822644.1493181926-708921149.1492677721" rel="external nofollow noopener noreferrer" target="_blank">Gzip</a></em></strong> 模块需求：<br></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/src &amp;&amp; wget http://zlib.net/zlib-1.2.11.tar.gz &amp;&amp; tar -zxf zlib-1.2.11.tar.gz &amp;&amp; cd zlib-1.2.11 &amp;&amp; ./configure &amp;&amp; make &amp;&amp; make install</span><br></pre></td></tr></table></figure><p></p>
 <p>3、<strong><em><a href="https://www.openssl.org/" rel="external nofollow noopener noreferrer" target="_blank">OpenSSL</a></em></strong> 库：被 NGINX SSL 模块需求用以支持 HTTPS 协议：</p>
 <blockquote>
 <p>这里博主并不选择源码安装=.=，而是通过apt安装：</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get upgrade</span><br><span class="line">apt-get install -y libssl-dev openssl</span><br></pre></td></tr></table></figure>
-<h3 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h3><p>NGINX 同时提供了稳定版本和主干版本的源码文件。源码文件可以从 NGINX Open Source 下载页面下载：<br><a id="download" href="http://www.nginx.org/en/download.html" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-download"></i><span>Redirect Download Page</span><br></a><br>下载并解压最新的主干版本源码文件，在命令行中输入下面的命令：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/src &amp;&amp; wget http://nginx.org/download/nginx-1.12.0.tar.gz &amp;&amp; tar -zxvf nginx-1.12.0.tar.gz &amp;&amp; cd nginx-1.12.0</span><br></pre></td></tr></table></figure></p>
-<h3 id="配置构建选项"><a href="#配置构建选项" class="headerlink" title="配置构建选项"></a>配置构建选项</h3><p>配置选项要使用 <code>./configure</code> 脚本来设置各种 NGINX 的参数，其中包括源码和配置文件路径、编译器选项，连接处理方法以及模块列表。脚本最终创建了用于编译代码和安装 NGINX 的 Makefile 文件。<br>例如：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --sbin-path=/usr/local/nginx/nginx --conf-path=/usr/local/nginx/nginx.conf --pid-path=/usr/local/nginx/nginx.pid --with-pcre=../pcre-8.40 --with-zlib=../zlib-1.2.11 --with-http_ssl_module --with-stream --with-http_stub_status_module</span><br></pre></td></tr></table></figure></p>
+<h3 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h3><p>NGINX 同时提供了稳定版本和主干版本的源码文件。源码文件可以从 NGINX Open Source 下载页面下载：<br><a id="download" href="http://www.nginx.org/en/download.html" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-download"></i><span>Redirect Download Page</span><br></a><br>下载并解压最新的主干版本源码文件，在命令行中输入下面的命令：<br></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/src &amp;&amp; wget http://nginx.org/download/nginx-1.12.0.tar.gz &amp;&amp; tar -zxvf nginx-1.12.0.tar.gz &amp;&amp; cd nginx-1.12.0</span><br></pre></td></tr></table></figure><p></p>
+<h3 id="配置构建选项"><a href="#配置构建选项" class="headerlink" title="配置构建选项"></a>配置构建选项</h3><p>配置选项要使用 <code>./configure</code> 脚本来设置各种 NGINX 的参数，其中包括源码和配置文件路径、编译器选项，连接处理方法以及模块列表。脚本最终创建了用于编译代码和安装 NGINX 的 Makefile 文件。<br>例如：<br></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --sbin-path=/usr/local/nginx/nginx --conf-path=/usr/local/nginx/nginx.conf --pid-path=/usr/local/nginx/nginx.pid --with-pcre=../pcre-8.40 --with-zlib=../zlib-1.2.11 --with-http_ssl_module --with-stream --with-http_stub_status_module</span><br></pre></td></tr></table></figure><p></p>
 <h4 id="配置-NGINX-路径"><a href="#配置-NGINX-路径" class="headerlink" title="配置 NGINX 路径"></a>配置 NGINX 路径</h4><p>配置脚本允许你设置 NGINX 二进制文件和配置文件的路径以及依赖库 （PCRC 或 SSL）的路径，以便静态链接到 NGINX 二进制文件中。</p>
 <p><code>–prefix=path</code>：<br>定义保存 NGINX 文件的目录。目录也将被用于所有通过 <code>./configure</code> 设置的相对路径和 nginx.conf 配置文件的路径。默认这个路径被设置为 <code>/usr/local/nginx</code>。</p>
 <p><code>–sbin-path=path</code>：<br>设置 NGINX 可执行文件的名称。这个名称仅在安装期间使用。该文件默认的被命名为 <code>prefix/sbin/nginx</code>。</p>
@@ -469,7 +26,7 @@
 <h4 id="指定-NGINX-连接处理方法"><a href="#指定-NGINX-连接处理方法" class="headerlink" title="指定 NGINX 连接处理方法"></a>指定 NGINX 连接处理方法</h4><p>在配置脚本中，你可以重新定义基于事件的轮询方法。查看 <strong><em><a href="https://nginx.org/en/docs/events.html?_ga=2.221072283.2064822644.1493181926-708921149.1492677721" rel="external nofollow noopener noreferrer" target="_blank">Connection Processing Methods</a></em></strong> 了解更多内容。<br><code>–with-select_module</code>,<code>–without-select_module</code>：<br>启用或禁用构建允许 NGINX 使用 select 方法工作的模块。如果平台没有明确支持想 kqueue,epoll,/dev/poll这样更加合适的方法，该模块将被自动构建。</p>
 <p><code>–with-poll_module</code>,<code>–without-poll-module</code>：<br>启用或禁用构建允许 NGINX 使用 poll() 方法工作的模块。如果该平台没有明确支持像 kqueue,epoll,/dev/poll 这样更加更是的方法，该模块将被自动构建。</p>
 <h4 id="NGINX-模块"><a href="#NGINX-模块" class="headerlink" title="NGINX 模块"></a>NGINX 模块</h4><p>模块的 NGINX 常量。模块的设置就如其他构建选项一样被配置在 <code>./configure</code> 脚本中。<br>有一些模块被自动构建——他们不需要在配置脚本中指定。然而，一些默认的模块可以被排除在 NGINX 二进制文件之外，通过在配置脚本中使用 <code>-without-</code> 配置选项。<br>模块默认不包含第三方模块，必须在配置脚本中使用其他的构建选项明确指定才行。这些模块可以被链接到 NGINX 二进制文件，以静态的方式在每次启动 NGINX 被加载，或者如果他们在配置文件中被指定则以动态的方式被加载。</p>
-<h4 id="默认的模块构建"><a href="#默认的模块构建" class="headerlink" title="默认的模块构建"></a>默认的模块构建</h4><p>如果你不需要一个默认的构建模块，你可以通过使用 <code>–without-</code> 前缀的模块名来禁用它：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --sbin-path=/usr/local/nginx/nginx --conf-path=/usr/local/nginx/nginx.conf --pid-path=/usr/local/nginx/nginx.pid --with-http_ssl_module --with-stream --with-pcre=../pcre-8.40 --with-zlib=../zlib-1.2.11 --without-http_empty_gif_module</span><br></pre></td></tr></table></figure></p>
+<h4 id="默认的模块构建"><a href="#默认的模块构建" class="headerlink" title="默认的模块构建"></a>默认的模块构建</h4><p>如果你不需要一个默认的构建模块，你可以通过使用 <code>–without-</code> 前缀的模块名来禁用它：<br></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --sbin-path=/usr/local/nginx/nginx --conf-path=/usr/local/nginx/nginx.conf --pid-path=/usr/local/nginx/nginx.pid --with-http_ssl_module --with-stream --with-pcre=../pcre-8.40 --with-zlib=../zlib-1.2.11 --without-http_empty_gif_module</span><br></pre></td></tr></table></figure><p></p>
 <table>
 <thead>
 <tr>
@@ -585,7 +142,7 @@
 </tbody>
 </table>
 <h4 id="非默认构建的模块"><a href="#非默认构建的模块" class="headerlink" title="非默认构建的模块"></a>非默认构建的模块</h4><p>一些 NGINX 模块<strong>不是默认构建</strong>的。你需要通过添加到 <code>./configure</code> 命令去手动启用他们。<a href="https://nginx.org/en/docs/mail/ngx_mail_core_module.html?_ga=2.225839129.2064822644.1493181926-708921149.1492677721" rel="external nofollow noopener noreferrer" target="_blank">mail</a>,<a href="https://nginx.org/en/docs/stream/ngx_stream_core_module.html?_ga=2.225839129.2064822644.1493181926-708921149.1492677721" rel="external nofollow noopener noreferrer" target="_blank">stream</a>,<a href="https://nginx.org/en/docs/http/ngx_http_geoip_module.html?_ga=2.225839129.2064822644.1493181926-708921149.1492677721" rel="external nofollow noopener noreferrer" target="_blank">geoip</a>,<a href="https://nginx.org/en/docs/http/ngx_http_image_filter_module.html?_ga=2.225839129.2064822644.1493181926-708921149.1492677721" rel="external nofollow noopener noreferrer" target="_blank">image_filter</a>,<a href="https://nginx.org/en/docs/http/ngx_http_perl_module.html?_ga=2.225839129.2064822644.1493181926-708921149.1492677721" rel="external nofollow noopener noreferrer" target="_blank">perl</a>和<a href="https://nginx.org/en/docs/http/ngx_http_xslt_module.html?_ga=2.230180639.2064822644.1493181926-708921149.1492677721" rel="external nofollow noopener noreferrer" target="_blank">xslt</a> 模块可以被动态编译。查看 <strong><em><a href="https://www.nginx.com/resources/admin-guide/installing-nginx-open-source/#modules_dynamic" rel="external nofollow noopener noreferrer" target="_blank">Dynamic Modules</a></em></strong> 来了解更多内容。</p>
-<p>例如，<code>./configure</code> 命令包含了这些模块：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --sbin-path=/usr/local/nginx/nginx --conf-path=/usr/local/nginx/nginx.conf --pid-path=/usr/local/nginx/nginx.pid --with-pcre=../pcre-8.40 --with-zlib=../zlib-1.2.11 --with-http_ssl_module --with-stream --with-mail</span><br></pre></td></tr></table></figure></p>
+<p>例如，<code>./configure</code> 命令包含了这些模块：<br></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --sbin-path=/usr/local/nginx/nginx --conf-path=/usr/local/nginx/nginx.conf --pid-path=/usr/local/nginx/nginx.pid --with-pcre=../pcre-8.40 --with-zlib=../zlib-1.2.11 --with-http_ssl_module --with-stream --with-mail</span><br></pre></td></tr></table></figure><p></p>
 <table>
 <thead>
 <tr>
@@ -709,12 +266,12 @@
 </tbody>
 </table>
 <h4 id="第三方模块"><a href="#第三方模块" class="headerlink" title="第三方模块"></a>第三方模块</h4><p>你可以使用你自己的模块或者第三方模块扩展 NGINX 的功能通过编译 NGINX 源码。一些第三方模块被列举在 <a href="https://nginx.com/resources/wiki/modules/" rel="external nofollow noopener noreferrer" target="_blank">https://nginx.com/resources/wiki/modules/</a> 页面中。使用第三方模块的你将要承担稳定性无法保证的风险。</p>
-<p><strong>静态链接模块</strong><br>被构建在 NGINX 源码中的大多数模块是被静态链接的：他们在编译的时候被构建在 NGINX 源码中，然后被静态的了链接到 NGINX 二进制文件中。这些模块只能在 NGINX 重新编译之后才能禁用。<br>要使用静态链接的第三方模块去编译 NGINX 源码，在配置脚本中要指定 <code>–add-module=option</code> 并且输入模块的路径：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">  ./configure ... --add-module=/usr/build/nginx-rtmp-module</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>动态链接模块</strong><br>NGINX 模块也可以被编译为一个共享对象（<em>.so 文件），然后在运行时动态的加载到 NGINX 中。这样提供了更多的灵活性，作为模块可以在任何时候被加载或反加载通过在 NGINX 配置文件中使用 **</em><a href="https://nginx.org/en/docs/ngx_core_module.html?&amp;_ga=2.111565380.1190757652.1493193149-708921149.1492677721#load_module" rel="external nofollow noopener noreferrer" target="_blank">load_module</a><em>*</em> 指令指定。注意：这种模块必须支持动态链接。<br>要使用动态加载第三方模块编译 NGINX 源码，在配置脚本中要指定 <code>–add-dynamic-module=</code>配置选项和模块的路径。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">  ./configure ... --add-dynamic-module=/path/to/module</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>静态链接模块</strong><br>被构建在 NGINX 源码中的大多数模块是被静态链接的：他们在编译的时候被构建在 NGINX 源码中，然后被静态的了链接到 NGINX 二进制文件中。这些模块只能在 NGINX 重新编译之后才能禁用。<br>要使用静态链接的第三方模块去编译 NGINX 源码，在配置脚本中要指定 <code>–add-module=option</code> 并且输入模块的路径：<br></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">  ./configure ... --add-module=/usr/build/nginx-rtmp-module</span></span><br></pre></td></tr></table></figure><p></p>
+<p><strong>动态链接模块</strong><br>NGINX 模块也可以被编译为一个共享对象（<em>.so 文件），然后在运行时动态的加载到 NGINX 中。这样提供了更多的灵活性，作为模块可以在任何时候被加载或反加载通过在 NGINX 配置文件中使用 **</em><a href="https://nginx.org/en/docs/ngx_core_module.html?&amp;_ga=2.111565380.1190757652.1493193149-708921149.1492677721#load_module" rel="external nofollow noopener noreferrer" target="_blank">load_module</a><em>*</em> 指令指定。注意：这种模块必须支持动态链接。<br>要使用动态加载第三方模块编译 NGINX 源码，在配置脚本中要指定 <code>–add-dynamic-module=</code>配置选项和模块的路径。<br></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">  ./configure ... --add-dynamic-module=/path/to/module</span></span><br></pre></td></tr></table></figure><p></p>
 <p>动态模块的结果文件 .so 在编译结束后在 <code>prefix/modules/</code> 目录中被找到，prefix 是保存服务器文件的目录，如：<code>/usr/local/nginx/modules</code>。要想加载动态模块，在 NGINX 安装完成后使用 <strong><em><a href="https://nginx.org/en/docs/ngx_core_module.html?&amp;_ga=2.136254193.1190757652.1493193149-708921149.1492677721#load_module" rel="external nofollow noopener noreferrer" target="_blank">local_module</a></em></strong> 指令。<br>查看 <strong><em><a href="https://www.nginx.com/blog/dynamic-modules-nginx-1-9-11/" rel="external nofollow noopener noreferrer" target="_blank">Introducing Dynamic Modules in NGINX 1.9.11</a></em></strong> 和 <strong><em><a href="https://www.nginx.com/resources/wiki/extending/" rel="external nofollow noopener noreferrer" target="_blank">Extending NGINX</a> </em></strong>来了解更多内容。</p>
 <h3 id="完成安装"><a href="#完成安装" class="headerlink" title="完成安装"></a>完成安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx --with-pcre=../pcre-8.40 --with-zlib=../zlib-1.2.11 --with-http_stub_status_module --with-http_ssl_module</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-<p>到此NGINX已经安装完成，但是，此时直接敲<code>nginx</code>可能会显示没有找到命令，因为<strong>还没有配置环境变量</strong>：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">touch /etc/profile.d/nginx.sh</span><br><span class="line">echo "PATH=$PATH:/usr/local/nginx/sbin" &gt;&gt; /etc/profile.d/nginx.sh</span><br><span class="line">echo "export PATH" &gt;&gt; /etc/profile.d/nginx.sh</span><br><span class="line">source /etc/profile.d/nginx.sh</span><br></pre></td></tr></table></figure></p>
-<p>完成！查看NGINX:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -v</span><br></pre></td></tr></table></figure></p>
+<p>到此NGINX已经安装完成，但是，此时直接敲<code>nginx</code>可能会显示没有找到命令，因为<strong>还没有配置环境变量</strong>：<br></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">touch /etc/profile.d/nginx.sh</span><br><span class="line">echo "PATH=$PATH:/usr/local/nginx/sbin" &gt;&gt; /etc/profile.d/nginx.sh</span><br><span class="line">echo "export PATH" &gt;&gt; /etc/profile.d/nginx.sh</span><br><span class="line">source /etc/profile.d/nginx.sh</span><br></pre></td></tr></table></figure><p></p>
+<p>完成！查看NGINX:<br></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -v</span><br></pre></td></tr></table></figure><p></p>
 <h2 id="预编译包安装"><a href="#预编译包安装" class="headerlink" title="预编译包安装"></a>预编译包安装</h2><blockquote>
 <p>博主用的就是这种方式，<strong>简单粗暴</strong>！当然上面的方式也是过，但毕竟只是个业余的，手动一个个模块配置上去的话，小白表示搞不定。</p>
 </blockquote>
@@ -722,8 +279,8 @@
 <h3 id="更新并导入升级Key完成安装"><a href="#更新并导入升级Key完成安装" class="headerlink" title="更新并导入升级Key完成安装"></a>更新并导入升级Key完成安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://nginx.org/keys/nginx_signing.key &amp;&amp; apt-key add nginx_signing.key &amp;&amp; apt-get update &amp;&amp; apt-get upgrade &amp;&amp; apt-get install openssl nginx</span><br></pre></td></tr></table></figure>
 <h3 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -V</span><br></pre></td></tr></table></figure>
 <h1 id="NGINX初学"><a href="#NGINX初学" class="headerlink" title="NGINX初学"></a>NGINX初学</h1><h2 id="校验，启动，停止和重新加载配置"><a href="#校验，启动，停止和重新加载配置" class="headerlink" title="校验，启动，停止和重新加载配置"></a>校验，启动，停止和重新加载配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 校验</span></span><br><span class="line">nginx -t </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 停止、退出、重新加载配置、重启</span></span><br><span class="line">nginx -s stop|quit|reload|reopen</span><br></pre></td></tr></table></figure>
-<p>也可以是这样：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -s QUIT 1888 #1888是nginx的PID</span><br></pre></td></tr></table></figure></p>
-<p>要获取全部正在运行中的 nginx 进程列表，可以使用 ps 工具，就像下面这样：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ax | grep nginx</span><br></pre></td></tr></table></figure></p>
+<p>也可以是这样：<br></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -s QUIT 1888 #1888是nginx的PID</span><br></pre></td></tr></table></figure><p></p>
+<p>要获取全部正在运行中的 nginx 进程列表，可以使用 ps 工具，就像下面这样：<br></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ax | grep nginx</span><br></pre></td></tr></table></figure><p></p>
 <p>如果要了解更多的有关信号发送的信息，请查看<strong><em><a href="http://nginx.org/en/docs/control.html" rel="external nofollow noopener noreferrer" target="_blank">控制nginx</a></em></strong>。</p>
 <h2 id="配置文件的结构"><a href="#配置文件的结构" class="headerlink" title="配置文件的结构"></a>配置文件的结构</h2><p>nginx 由被配置文件指定的指令控制的模块组成。指令被分为简单指令和块指令。简单指令有名称和参数组成，通过空格来分隔开，以 <code>;</code> 号来结束。块指令拥有和简单指令一样的结构，但是不用 <code>;</code> 结束而是使用一组被 <code>{}</code> 环绕的额外指令。如果一个块指令在其内部包含了其他指令，则被称为上下文（context），比如：<strong><em><a href="http://nginx.org/en/docs/ngx_core_module.html#events" rel="external nofollow noopener noreferrer" target="_blank">events</a></em></strong>,<strong><em><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#http" rel="external nofollow noopener noreferrer" target="_blank">http</a></em></strong>,<strong><em><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#server" rel="external nofollow noopener noreferrer" target="_blank">server</a></em></strong> 和<strong><em><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#location" rel="external nofollow noopener noreferrer" target="_blank">location</a></em></strong>。</p>
 <p>被放置在配置文件中却不在任何上下文中的指令被认为是在主上下文之内的。<code>events</code> 和 <code>http</code> 指令就属于主上下文， <code>server</code> 在 <code>http</code> 之内，<code>location</code> 在 <code>server</code> 之内。</p>
@@ -779,17 +336,16 @@
 </blockquote>
 <p>顺便写了个安装脚本：<br><strong><em><a href="https://github.com/masteranthoneyd/about-shell/blob/master/nginx-by-source.sh" rel="external nofollow noopener noreferrer" target="_blank">源码版</a></em></strong><br><strong><em><a href="https://github.com/masteranthoneyd/about-shell/blob/master/nginx-by-pre-built-package.sh" rel="external nofollow noopener noreferrer" target="_blank">预编译版</a></em></strong></p>
 <p>人生在于折腾，这几天玩VPS有很大的收获，学会了一些以前不会的命令、写脚本、穿墙、Nginx等等，坚持折腾！<br>PS：链接换成加粗斜体，一个一个地找好累，于是又学会了正则表达式：<code>\[[\w\s]*\]\(https?://[a-z\.\?/_=0-9\s#&amp;-]*\)</code>，一键替换～</p>
-
       
     </div>
 
-<div style="text-align:center;color: #ccc;font-size:14px;">---------------- The End ----------------</div>
+<div style="text-align:center;color:#ccc;font-size:14px">---------------- The End ----------------</div>
 
     <div>
       
         
-<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/wechat/gongzhonghao.jpg" alt="ookamiAntD wechat" style="width: 200px; max-width: 100%;">
+<div id="wechat_subscriber" style="display:block;padding:10px 0;margin:20px auto;width:100%;text-align:center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat/gongzhonghao.jpg" alt="ookamiAntD wechat" style="width:200px;max-width:100%">
     <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
 </div>
 
@@ -802,20 +358,20 @@
         
 
 
-  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div style="padding:10px 0;margin:20px auto;width:90%;text-align:center">
     <div>谢谢大爷～</div>
-    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <button id="rewardButton" disable="enable" onclick='var qr=document.getElementById("QR");"none"===qr.style.display?qr.style.display="block":qr.style.display="none"'>
       <span>赏</span>
     </button>
-    <div id="QR" style="display: none;">
+    <div id="QR" style="display:none">
       
-        <div id="wechat" style="display: inline-block">
+        <div id="wechat" style="display:inline-block">
           <img id="wechat_qr" src="/images/donate/wechat.png" alt="ookamiAntD WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
-        <div id="alipay" style="display: inline-block">
+        <div id="alipay" style="display:inline-block">
           <img id="alipay_qr" src="/images/donate/alipay.jpg" alt="ookamiAntD Alipay">
           <p>支付宝打赏</p>
         </div>
@@ -881,7 +437,7 @@
 
     <div class="post-spread">
       
-        <!--MOB SHARE BEGIN-->
+        
 <div class="-hoofoo-share-title">分享到：</div>
 <div class="-hoofoo-share-buttons">
     <div class="-mob-share-weibo -hoofoo-share-weibo -hoofoo-share-ui-button"><i class="fa fa-weibo" aria-hidden="true"></i></div>
@@ -890,7 +446,7 @@
     <div class="-mob-share-twitter -hoofoo-share-twitter -hoofoo-share-ui-button"><i class="fa fa-twitter" aria-hidden="true"></i></div>
     <div class="-hoofoo-share-more -hoofoo-share-ui-button -mob-share-open"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></div>
 </div>
-<div class="-mob-share-ui" style="display: none">
+<div class="-mob-share-ui" style="display:none">
     <ul class="-mob-share-list">
         <li class="-mob-share-weibo"><p>新浪微博</p></li>
         <li class="-mob-share-weixin"><p>微信</p></li>
@@ -915,7 +471,7 @@
 </div>
 <div class="-mob-share-ui-bg"></div>
 <script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=21aa3b13ad233"></script>
-<!--MOB SHARE END-->
+
 
       
     </div>
@@ -929,33 +485,14 @@
           
   <div class="comments" id="comments">
     
-<div style="text-align:center;">
-  <!-- <button class="btn" id="load-disqus" onclick="disqus.load();">加载 Disqus 评论</button> -->
+<div style="text-align:center">
+  
 
 </div>
       <div id="disqus_proxy_thread"></div>
       <div id="disqus_thread"></div>
       
-          <script type="text/javascript">
-              window.disqusProxy = {
-                username: 'ookamiantd',
-                server: 'disqus-proxy.yangbingdong.com',
-                port: '5509',
-                defaultAvatar: '/images/avatar/avatar-default.jpg',
-                adminAvatar: '/images/avatar/avatar-admin.jpg',
-                identifier: '2017/nginx-noob-guide/'
-              };
-              window.disqus_config = function () {
-                this.page.url = 'http://yangbingdong.com/2017/nginx-noob-guide/';
-                this.page.identifier = '2017/nginx-noob-guide/';
-              };
-              window.onload=function(){
-                var s = document.createElement('script');
-                s.src = "/static/js/main.0d0338ae.js";
-                s.async = true;
-                document.body.appendChild(s);
-              }
-          </script>
+          <script type="text/javascript">window.disqusProxy={username:"ookamiantd",server:"disqus-proxy.yangbingdong.com",port:"5509",defaultAvatar:"/images/avatar/avatar-default.jpg",adminAvatar:"/images/avatar/avatar-admin.jpg",identifier:"2017/nginx-noob-guide/"},window.disqus_config=function(){this.page.url="http://yangbingdong.com/2017/nginx-noob-guide/",this.page.identifier="2017/nginx-noob-guide/"},window.onload=function(){var a=document.createElement("script");a.src="/static/js/main.0d0338ae.js",a.async=!0,document.body.appendChild(a)}</script>
           <link rel="stylesheet" href="/static/css/main.0603c539.css">
       
 
@@ -992,7 +529,7 @@
       
 
       <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar/avatar-admin.jpg" alt="ookamiAntD">
           <p class="site-author-name" itemprop="name">ookamiAntD</p>
           <p class="site-description motion-element" itemprop="description">码渣 | rocker | 二次元 | 美剧 | 宅</p>
@@ -1083,7 +620,7 @@
         
           <div class="links-of-blogroll motion-element links-of-blogroll-block">
             <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
+              <i class="fa fa-fw fa-globe"></i>
               大神们的博客
             </div>
             <ul class="links-of-blogroll-list">
@@ -1109,37 +646,13 @@
         
 
         <div id="days"></div>
-    <script>
-    function show_date_time(){
-        window.setTimeout("show_date_time()", 1000);
-        BirthDay=new Date("01/10/2017 12:34:56");
-        today=new Date();
-        timeold=(today.getTime()-BirthDay.getTime());
-        sectimeold=timeold/1000
-        secondsold=Math.floor(sectimeold);
-        msPerDay=24*60*60*1000
-        e_daysold=timeold/msPerDay
-        daysold=Math.floor(e_daysold);
-        e_hrsold=(e_daysold-daysold)*24;
-        hrsold=setzero(Math.floor(e_hrsold));
-        e_minsold=(e_hrsold-hrsold)*60;
-        minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
-        seconds=setzero(Math.floor((e_minsold-minsold)*60));
-        document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
-    }
-function setzero(i){
-    if (i<10)
-    {i="0" + i};
-    return i;
-}
-show_date_time();
-</script>
+    <script>function show_date_time(){window.setTimeout("show_date_time()",1e3),BirthDay=new Date("01/10/2017 12:34:56"),today=new Date,timeold=today.getTime()-BirthDay.getTime(),sectimeold=timeold/1e3,secondsold=Math.floor(sectimeold),msPerDay=864e5,e_daysold=timeold/msPerDay,daysold=Math.floor(e_daysold),e_hrsold=24*(e_daysold-daysold),hrsold=setzero(Math.floor(e_hrsold)),e_minsold=60*(e_hrsold-hrsold),minsold=setzero(Math.floor(60*(e_hrsold-hrsold))),seconds=setzero(Math.floor(60*(e_minsold-minsold))),document.getElementById("days").innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒"}function setzero(e){return e<10&&(e="0"+e),e}show_date_time()</script>
 
 
       </section>
 
       
-      <!--noindex-->
+      
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
@@ -1153,7 +666,7 @@ show_date_time();
 
           </div>
         </section>
-      <!--/noindex-->
+      
       
 
     </div>
@@ -1165,7 +678,7 @@ show_date_time();
     </main>
 
     <footer id="footer" class="footer">
-	<!-- <img style="position: absolute;top: 0;left: 15%;border: 0;width: 200px;height: 200px;" src="http://ojoba1c98.bkt.clouddn.com/img/coding-flag.png" alt="Coding Flag"> -->
+	
       <div class="footer-inner">
         <div class="copyright">
   
@@ -1174,430 +687,9 @@ show_date_time();
   <span class="with-love">
     <i class="fa fa-flash"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></span>
-</div>
-
-
-<!-- <div class="theme-info">
-    Personal Blog
-</div> --!>
-
-<div class="theme-info">
-  粤ICP备18135202号-1  |  <span class="post-count">共206.0k字</span>
+  <span class="author" itemprop="copyrightHolder">Hosted by <a href="https://pages.coding.me" style="font-weight:700" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></span>
 </div>
 
 
 
-        
-
-<div class="busuanzi-count">
-
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv"><i class="fa fa-user">本站访客数</i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
-  
-
-  
-    <span class="site-pv"><i class="fa fa-eye">本站总访问量</i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
-  
-  
-</div>
-
-
-
-        
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-
-
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'ookamiantd';
-      var disqus_identifier = '2017/nginx-noob-guide/';
-
-      var disqus_title = "NGINX初学指南(安装与简单配置)";
-
-
-      function run_disqus_script(disqus_script) {
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      var disqus = {
-        load : function disqus(){
-          if(typeof DISQUS !== 'object') {
-            (function () {
-            var s = document.createElement('script'); s.async = true;
-            s.type = 'text/javascript';
-            s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-            }());
-            $('#load-disqus').html("评论加载中，请确保你有梯子，若评论长时间未加载则你可能翻墙失败...").fadeOut(9000); ///加载后移除按钮
-          }
-  }
-}
-
-    </script>
-  
-
-
-
-
-
-
-
-
-
-  
-  
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-      search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-      $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function( xmlResponse ) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = $( "entry", xmlResponse ).map(function() {
-            return {
-              title: $( "title", this ).text(),
-              content: $("content",this).text(),
-              url: $( "url" , this).text()
-            };
-          }).get();
-          var $input = document.getElementById(search_id);
-          var $resultContent = document.getElementById(content_id);
-          $input.addEventListener('input', function(){
-            var matchcounts = 0;
-            var str='<ul class=\"search-result-list\">';
-            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-            $resultContent.innerHTML = "";
-            if (this.value.trim().length > 1) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var content_index = [];
-                var data_title = data.title.trim().toLowerCase();
-                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                var data_url = decodeURIComponent(data.url);
-                var index_title = -1;
-                var index_content = -1;
-                var first_occur = -1;
-                // only match artiles with not empty titles and contents
-                if(data_title != '') {
-                  keywords.forEach(function(keyword, i) {
-                    index_title = data_title.indexOf(keyword);
-                    index_content = data_content.indexOf(keyword);
-                    if( index_title >= 0 || index_content >= 0 ){
-                      isMatch = true;
-                      if (i == 0) {
-                        first_occur = index_content;
-                      }
-                    }
-
-                  });
-                }
-                // show search results
-                if (isMatch) {
-                  matchcounts += 1;
-                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                  var content = data.content.trim().replace(/<[^>]+>/g,"");
-                  if (first_occur >= 0) {
-                    // cut out 100 characters
-                    var start = first_occur - 20;
-                    var end = first_occur + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if(start == 0){
-                      end = 50;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    var match_content = content.substring(start, end);
-                    // highlight all keywords
-                    keywords.forEach(function(keyword){
-                      var regS = new RegExp(keyword, "gi");
-                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                    });
-
-                    str += "<p class=\"search-result\">" + match_content +"...</p>"
-                  }
-                  str += "</li>";
-                }
-              })};
-            str += "</ul>";
-            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-            $resultContent.innerHTML = str;
-          });
-          proceedsearch();
-        }
-      });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
-
-
-  
-
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("usE0s6JGUeOiMcsVoRuHuv2B-gzGzoHsz", "ewm6NEF07r83HbnOr63ptuKH");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
-
-  
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
-
-  
-
-
-  <script type="text/javascript" color="255,0,204" opacity='0.5' zIndex="-2" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
-
-
-
-<script type="text/javascript">
-    //微信二维码点击背景关闭
-    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
-         $(".-mob-share-weixin-qrcode-close").trigger("click");
-    }); 
-</script>
-
-
-
-<!--卖萌-->
-<script type="text/javascript" src="/js/src/dytitle.js"></script>
-</div></footer></div><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":88,"height":88,"position":"left"},"mobile":{"show":false},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script></body>
-</html>
+<script type="text/javascript" src="/js/src/dytitle.js"></script></div></footer></div><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":88,"height":88,"position":"left"},"mobile":{"show":false},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script></body></html>

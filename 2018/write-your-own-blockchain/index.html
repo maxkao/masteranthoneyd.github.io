@@ -1,501 +1,4 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="en">
-<head>
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-<meta http-equiv="content-language" content="zh-cn">
-
-<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
-<style>
-    .pace .pace-progress {
-        background: #ff009e;
-        height: 2px;
-    }
-    .pace .pace-progress-inner {
-         box-shadow: 0 0 10px #e6006b, 0 0 5px #ff009e;
-    }
-    .pace .pace-activity {
-        border-top-color: #ff009e;
-        border-left-color: #ff009e;
-    }
-</style>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="Java,Blockchain,">
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="ookamiAntD's Blog" type="application/atom+xml">
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0">
-
-
-
-
-
-
-<meta name="description" content="Preface 区块链（英语：blockchain 或 block chain）是用分布式数据库识别、传播和记载信息的智能化对等网络, 也称为价值互联网。中本聪在2008年，于《比特币白皮书》中提出“区块链”概念，并在2009年创立了比特币社会网络，开发出第一个区块，即“创世区块”。 区块链共享价值体系首先被众多的加密">
-<meta name="keywords" content="Java,Blockchain">
-<meta property="og:type" content="article">
-<meta property="og:title" content="转载—自己动手写区块链">
-<meta property="og:url" content="http://yangbingdong.com/2018/write-your-own-blockchain/index.html">
-<meta property="og:site_name" content="ookamiAntD&#39;s Blog">
-<meta property="og:description" content="Preface 区块链（英语：blockchain 或 block chain）是用分布式数据库识别、传播和记载信息的智能化对等网络, 也称为价值互联网。中本聪在2008年，于《比特币白皮书》中提出“区块链”概念，并在2009年创立了比特币社会网络，开发出第一个区块，即“创世区块”。 区块链共享价值体系首先被众多的加密货币效仿，并在工作量证明上和算法上进行了改进，如采用权益证明和SCrypt算法">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="http://img.yangbingdong.com/img/blockchain/blockchain.jpg">
-<meta property="og:image" content="https://camo.githubusercontent.com/dc61609affa838e8aca79b30ce4313b852457743/687474703a2f2f6f7338776a76796b772e626b742e636c6f7564646e2e636f6d2f323031382d30312d32362d3131323832322e6a7067">
-<meta property="og:image" content="https://camo.githubusercontent.com/cfdfe28f28fe95857fa08d75e41692386fc7b26f/687474703a2f2f6f7338776a76796b772e626b742e636c6f7564646e2e636f6d2f323031382d30312d32362d3131323831392e6a7067">
-<meta property="og:image" content="https://camo.githubusercontent.com/4f314bd52ecbc90b59054cadb5b96de7dc99d237/687474703a2f2f6f7338776a76796b772e626b742e636c6f7564646e2e636f6d2f323031382d30312d32362d3131323832312e6a7067">
-<meta property="og:image" content="http://img.yangbingdong.com/img/blockchain/blockchain01.webp">
-<meta property="og:image" content="http://img.yangbingdong.com/img/blockchain/blockchain02.webp">
-<meta property="og:image" content="http://img.yangbingdong.com/img/blockchain/blockchain03.webp">
-<meta property="og:image" content="http://img.yangbingdong.com/img/blockchain/blockchain04.webp">
-<meta property="og:image" content="http://img.yangbingdong.com/img/blockchain/blockchain5.webp">
-<meta property="og:image" content="http://img.yangbingdong.com/img/blockchain/blockchain06.webp">
-<meta property="og:image" content="http://img.yangbingdong.com/img/blockchain/blockchain07.webp">
-<meta property="og:image" content="http://img.yangbingdong.com/img/blockchain/blockchain08.webp">
-<meta property="og:image" content="http://img.yangbingdong.com/img/blockchain/blockchain09.webp">
-<meta property="og:updated_time" content="2018-11-05T10:17:52.440Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="转载—自己动手写区块链">
-<meta name="twitter:description" content="Preface 区块链（英语：blockchain 或 block chain）是用分布式数据库识别、传播和记载信息的智能化对等网络, 也称为价值互联网。中本聪在2008年，于《比特币白皮书》中提出“区块链”概念，并在2009年创立了比特币社会网络，开发出第一个区块，即“创世区块”。 区块链共享价值体系首先被众多的加密货币效仿，并在工作量证明上和算法上进行了改进，如采用权益证明和SCrypt算法">
-<meta name="twitter:image" content="http://img.yangbingdong.com/img/blockchain/blockchain.jpg">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"right","display":"always"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 'undefined',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: 'RI3NF6GUI0',
-      apiKey: '3d33fa60ba30d3b17f37220bb1a36749',
-      indexName: 'blogIndex',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yangbingdong.com/2018/write-your-own-blockchain/">
-
-
-
-
-
-  <title> 转载—自己动手写区块链 | ookamiAntD's Blog </title>
-</head>
-
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
-
-  
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?e9505ac4e11d464329d615553a72b526";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-right page-post-detail ">
-    <div class="headband"></div>
-
-	<a href="https://github.com/masteranthoneyd/blog" rel="external nofollow noopener noreferrer" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
-
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">ookamiAntD's Blog</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-    
-      <h1 class="site-subtitle" itemprop="description">Easy coding,easy life.</h1>
-    
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            Archives
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            Categories
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            Tags
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            About
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-guestbook">
-          <a href="/guestbook" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-commenting"></i> <br>
-            
-            Message
-          </a>
-        </li>
-      
-
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
-            
-            Search
-          </a>
-        </li>
-      
-    </ul>
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
-</div>
-
-
-    </div>
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yangbingdong.com/2018/write-your-own-blockchain/">
-
-  <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="ookamiAntD">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar/avatar-admin.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="ookamiAntD's Blog">
-    <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="ookamiAntD's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                转载—自己动手写区块链
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-05T17:38:08+08:00">
-                2018-03-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index">
-                    <span itemprop="name">Programming</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-
-          
-
-          
-
-          
-
-          
-          
-             <span id="/2018/write-your-own-blockchain/" class="leancloud_visitors" data-flag-title="转载—自己动手写区块链">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          <br><span class="post-time">
-           <span class="post-meta-item-icon">
-             <i class="fa fa-edit"></i>
-           </span>
-           <span class="post-meta-item-text">WordCount:</span>
-           <span class="post-count">10,067字</span>
-			<span class="post-meta-divider">|</span>
-			<span class="post-meta-item-text">min2read:</span>
-           <span class="post-count">45分钟</span>
-
-         </span>
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="http://img.yangbingdong.com/img/blockchain/blockchain.jpg" alt=""></p>
-<h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><blockquote>
-<p><strong>区块链</strong>（英语：blockchain 或 block chain）是用<a href="https://zh.wikipedia.org/wiki/%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93" rel="external nofollow noopener noreferrer" target="_blank">分布式数据库</a>识别、传播和记载信息的智能化<a href="https://zh.wikipedia.org/wiki/%E5%AF%B9%E7%AD%89%E7%BD%91%E7%BB%9C" rel="external nofollow noopener noreferrer" target="_blank">对等网络</a>, 也称为价值互联网。<a href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E6%9C%AC%E8%81%AA" rel="external nofollow noopener noreferrer" target="_blank">中本聪</a>在2008年，于《<a href="https://zh.wikipedia.org/wiki/%E6%AF%94%E7%89%B9%E5%B8%81" rel="external nofollow noopener noreferrer" target="_blank">比特币</a>白皮书》中提出“区块链”概念，并在2009年创立了<a href="https://zh.wikipedia.org/w/index.php?title=%E6%AF%94%E7%89%B9%E5%B8%81%E7%A4%BE%E4%BC%9A%E7%BD%91%E7%BB%9C&amp;action=edit&amp;redlink=1" rel="external nofollow noopener noreferrer" target="_blank">比特币社会网络</a>，开发出第一个区块，即“创世区块”。</p>
-<p>区块链共享价值体系首先被众多的<a href="https://zh.wikipedia.org/wiki/%E5%8A%A0%E5%AF%86%E8%B2%A8%E5%B9%A3" rel="external nofollow noopener noreferrer" target="_blank">加密货币</a>效仿，并在<a href="https://zh.wikipedia.org/wiki/%E5%B7%A5%E4%BD%9C%E9%87%8F%E8%AD%89%E6%98%8E" rel="external nofollow noopener noreferrer" target="_blank">工作量证明</a>上和算法上进行了改进，如采用<a href="https://zh.wikipedia.org/wiki/%E6%9D%83%E7%9B%8A%E8%AF%81%E6%98%8E" rel="external nofollow noopener noreferrer" target="_blank">权益证明</a>和<a href="https://zh.wikipedia.org/w/index.php?title=SCrypt%E7%AE%97%E6%B3%95&amp;action=edit&amp;redlink=1" rel="external nofollow noopener noreferrer" target="_blank">SCrypt算法</a>。随后，区块链生态系统在全球不断进化，出现了<a href="https://zh.wikipedia.org/wiki/%E9%A6%96%E6%AC%A1%E4%BB%A3%E5%B8%81%E5%8F%91%E5%94%AE" rel="external nofollow noopener noreferrer" target="_blank">首次代币发售</a>ICO；智能合约区块链<a href="https://zh.wikipedia.org/wiki/%E4%BB%A5%E5%A4%AA%E5%9D%8A" rel="external nofollow noopener noreferrer" target="_blank">以太坊</a>；“轻所有权、重使用权”的资产代币化<a href="https://zh.wikipedia.org/wiki/%E5%85%B1%E4%BA%AB%E7%B6%93%E6%BF%9F" rel="external nofollow noopener noreferrer" target="_blank">共享经济</a>； 和<a href="https://zh.wikipedia.org/w/index.php?title=%E5%8C%BA%E5%9D%97%E9%93%BE%E5%9B%BD%E5%AE%B6&amp;action=edit&amp;redlink=1" rel="external nofollow noopener noreferrer" target="_blank">区块链国家</a>。目前，人们正在利用这一共享价值体系，在各行各业开发去中心化电脑程序(Decentralized applications, Dapp)，在全球各地构建<a href="https://zh.wikipedia.org/w/index.php?title=%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96%E8%87%AA%E4%B8%BB%E7%BB%84%E7%BB%87&amp;action=edit&amp;redlink=1" rel="external nofollow noopener noreferrer" target="_blank">去中心化自主组织</a>和去中心化自主社区(Decentralized autonomous society, DAS)。</p>
-<p>——来自维基百科</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="比特币UTXO和去中心化系统的设计"><a href="#比特币UTXO和去中心化系统的设计" class="headerlink" title="比特币UTXO和去中心化系统的设计"></a>比特币UTXO和去中心化系统的设计</h1><blockquote>
-<p>引用来自<strong><em><a href="https://github.com/JoeCao" rel="external nofollow noopener noreferrer" target="_blank">JoeCao</a></em></strong>大神的一段<em><a href="https://github.com/JoeCao/JoeCao.github.io/issues/12" rel="external nofollow noopener noreferrer" target="_blank">文章</a></em></p>
-</blockquote>
-<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>刚进2018年，区块链突然大火，程序员们可能莫名其妙，不就是一个分布式系统么，怎么突然就要改变互联网了？趁着这个东风，我们了解一些区块链基础知识。看看是否可以改变世界。</p>
-<h2 id="UTXO是什么"><a href="#UTXO是什么" class="headerlink" title="UTXO是什么"></a>UTXO是什么</h2><p>是Unspent Transaction Output（未消费交易输出）简写。这绝对是比特币的非常特殊的地方，理解UTXO也就理解了比特币去中心化的含义。</p>
-<p>说起UTXO必须先要介绍交易模型。以我们平时对交易的理解，我给张三转账了一笔100块钱，那就是我的账上的钱少了100，张三账上的钱多了100。我们再把问题稍微复杂一些，我和张三合起来买一个李四的一个商品390块钱。我的账户支付100，张三账户支付300，李四的帐户获得390，支付宝账户获得了10块钱的转账手续费。那么对这比交易的记录应该是这样的：</p>
-<p><a href="https://camo.githubusercontent.com/dc61609affa838e8aca79b30ce4313b852457743/687474703a2f2f6f7338776a76796b772e626b742e636c6f7564646e2e636f6d2f323031382d30312d32362d3131323832322e6a7067" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://camo.githubusercontent.com/dc61609affa838e8aca79b30ce4313b852457743/687474703a2f2f6f7338776a76796b772e626b742e636c6f7564646e2e636f6d2f323031382d30312d32362d3131323832322e6a7067" alt="帐户模型"></a></p>
-<p>这种记账方式常用在财务记账上。不过作为一个去中心化的系统，是没有一个中心化银行管理你的开户、销户、余额的。没有余额，怎么判断你的账上有100块钱？</p>
-<p><a href="https://camo.githubusercontent.com/cfdfe28f28fe95857fa08d75e41692386fc7b26f/687474703a2f2f6f7338776a76796b772e626b742e636c6f7564646e2e636f6d2f323031382d30312d32362d3131323831392e6a7067" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://camo.githubusercontent.com/cfdfe28f28fe95857fa08d75e41692386fc7b26f/687474703a2f2f6f7338776a76796b772e626b742e636c6f7564646e2e636f6d2f323031382d30312d32362d3131323831392e6a7067" alt="如何确认"></a></p>
-<p>此时用户C必须将前面几次交易的比特币输出作为下一个关联交易的输入，具体见下图的no 321笔交易，用户C将前面获得的两次输出，作为输入放在了交易中，然后给自己输出1个比特币的找零（如果不给自己输出找零，那么这个差额就被矿工当成小费了，切记切记）。比特币的程序会判定，如果两个UTXO加在一起不够支付，则交易不成功。</p>
-<p><a href="https://camo.githubusercontent.com/4f314bd52ecbc90b59054cadb5b96de7dc99d237/687474703a2f2f6f7338776a76796b772e626b742e636c6f7564646e2e636f6d2f323031382d30312d32362d3131323832312e6a7067" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://camo.githubusercontent.com/4f314bd52ecbc90b59054cadb5b96de7dc99d237/687474703a2f2f6f7338776a76796b772e626b742e636c6f7564646e2e636f6d2f323031382d30312d32362d3131323832312e6a7067" alt="区块链基础.001"></a></p>
-<p>比特币UTXO使用有点像古代的银锭</p>
-<ul>
-<li>五两的银锭付给别人二两，需要通过夹剪将一整块银锭剪成两块，二两的给别人，三两的留给自己。对比：比特币在输出中重新创建一个新的UTXO作为给自己的找零</li>
-<li>要付给别人五两，手上有几块碎银子单都不足五两，则需要将碎银子一起付给对方。对比：比特币在输入中同时引用多个输出UTXO。</li>
-</ul>
-<p>这样的做法很繁琐，所以银两在古代并不是一个很普遍的支付方式（别被武侠片给骗了，大部分还是用铜钱）。<br>比特币采用UTXO并不能很直观的去理解，但是为什么要用呢？</p>
-<h2 id="使用UTXO的动机"><a href="#使用UTXO的动机" class="headerlink" title="使用UTXO的动机"></a>使用UTXO的动机</h2><p>那么我们站在系统设计的角度猜测一下为什么中本聪会考虑使用UTXO。</p>
-<ul>
-<li>比特币是没有开户的过程的，一个本地计算生成公私钥就能构成一个合法的帐户，甚至有些用户为了一些“靓号”帐户，通过暴力运算生成天量的再也不会使用的帐户。去中心化系统无法跟踪每个账户的生成和销毁，这样的系统里面的帐户数量远大于未消费的输出数量，所以以UTXO来替代跟踪帐户交易的方式，消耗的系统资源会比较少 ；</li>
-<li>比特币有个比较好的特性是匿名性，很多人每次交易就换一对公私钥，交易输出的给自己的找零往往输出到一个另外的帐户下去，UTXO迎合了这种需求。而使用帐户就没那么灵活了。</li>
-<li>如果我使用余额系统，那么在生成一笔交易的时候，我首先要考虑的就是“幂等”问题，因为发出去的交易是给某个帐户加减钱，如果交易因为网络等原因重新发送，变成两笔交易重复扣钱，我就要哭了，这是在区块链里面著名的“重放攻击”。所以交易必须设计一个唯一的标识id让服务器知道这是同一笔交易。但是在去中心化系统中没有一个超级服务器统一分配交易ID，只能本地生成，而且跟踪这些交易ID的状态，也是一个很大的负担，因为我需要将区块链从创世块到现在所有的交易都遍历一遍，才能确定是是否是重复交易。如果用UTXO就可以避免这个问题，UTXO相比交易数少了不止一个数量级，而且UTXO只有两个状态—未消费、被消费，比特币只能有一个操作— 将为消费的UTXO变为已消费状态。不管我发送多少次交易，都会得到一个结果。</li>
-<li>在中本聪倡导每个cpu都是一票的去中心化社区，让每个节点都有能力去做计算是需要特别重视的，否则单个节点的计算能力要求过高，整个系统将向着“中心化”趋势滑下去。</li>
-</ul>
-<p>在比特币的实现中，是把所有的UTXO保存在一个单独的UTXOSet缓存中，截止2017年9月，这个缓存大概2.7Gb，与之对应，整个区块链的交易数据达到140Gb，UTXO缓存像是一个只保存了最终一个状态的git，整体的消耗负担小了很多很多。</p>
-<p>但是中本聪没想到，很多人现在把交易输出的脚本玩出花来了，导致很多UTXO创建出来就是不为消费用的，永远不会被消费掉，节点的负担越来越重。这才有了后续的<strong>BIP改进</strong>以及<strong>以太坊的账户模型</strong>。那又是一个很长的故事了…</p>
-<h1 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h1><blockquote>
-<p>也可以看一下这一篇：<strong><em><a href="https://yemengying.com/2018/02/11/hash-blockchain/" rel="external nofollow noopener noreferrer" target="_blank">https://yemengying.com/2018/02/11/hash-blockchain/</a></em></strong></p>
-</blockquote>
-<p>2018年开始区块链真是火啊。一夜暴富的例子一直在传说。今天我们就自己动手写一个基本的区块链。</p>
-<p>先简单的说一下区块链是个什么（相信你早就知道了）。</p>
-<p>区块链就是一个链表。把一堆区块串起来就是区块链。每个<code>block</code>有自己的数字签名（就是一串不规则看起来叼叼的字符串），同时包含有上一个<code>block</code>的数字签名，然后包含一些其他的<code>data</code>。</p>
-<p>大体就长这样：</p>
-<p><img src="http://img.yangbingdong.com/img/blockchain/blockchain01.webp" alt="img"></p>
-<p>是不是很熟悉，链表。</p>
-<p>好，继续。</p>
-<p>数字签名是什么？就是<code>hash</code>。</p>
-<p>而且每个<code>block</code>含有前一个<code>block</code>的<code>hash</code>值，而且每个<code>block</code>自己的<code>hash</code>也是由前一个的<code>hash</code>计算得来的。如果前一个<code>block</code>（数据块）的数据发生改变，那么前一个的<code>hash</code>值也改变了，由此就会影响到之后的数据块的所有<code>hash</code>值。</p>
-<p>所以，通过计算和对比<code>hash</code>值这种方式我们就可以知道区块链是不是合法的，是不是已经被篡改。</p>
-<p>什么意思呢？意味着只要你修改了区块链中的任何一个块中的数据，都将会改变<code>hash</code>，从而破坏了整个链。</p>
-<p>好，不多说。上代码：</p>
-<h2 id="block块定义"><a href="#block块定义" class="headerlink" title="block块定义"></a><strong>block块定义</strong></h2><p>先新建个block块：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Block</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">String</span> hash;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">String</span> previousHash; </span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">String</span> data; <span class="comment">//our data will be a simple message.</span></span><br><span class="line">   <span class="keyword">private</span> long timeStamp; <span class="comment">//as number of milliseconds since 1/1/1970.</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">//Block Constructor.  </span></span><br><span class="line">   <span class="keyword">public</span> Block(<span class="keyword">String</span> data,<span class="keyword">String</span> previousHash ) &#123;</span><br><span class="line">      <span class="built_in">this</span>.data = data;</span><br><span class="line">      <span class="built_in">this</span>.previousHash = previousHash;</span><br><span class="line">      <span class="built_in">this</span>.timeStamp = <span class="keyword">new</span> <span class="type">Date</span>().getTime();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<!doctype html><html class="theme-next muse use-motion" lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta http-equiv="content-language" content="zh-cn"><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet"><style>.pace .pace-progress{background:#ff009e;height:2px}.pace .pace-progress-inner{box-shadow:0 0 10px #e6006b,0 0 5px #ff009e}.pace .pace-activity{border-top-color:#ff009e;border-left-color:#ff009e}</style><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css"><meta name="keywords" content="Java,Blockchain,"><link rel="alternate" href="/atom.xml" title="ookamiAntD's Blog" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0"><meta name="description" content="Preface区块链（英语：blockchain 或 block chain）是用分布式数据库识别、传播和记载信息的智能化对等网络, 也称为价值互联网。中本聪在2008年，于《比特币白皮书》中提出“区块链”概念，并在2009年创立了比特币社会网络，开发出第一个区块，即“创世区块”。区块链共享价值体系首先被众多的加密货币"><meta name="keywords" content="Java,Blockchain"><meta property="og:type" content="article"><meta property="og:title" content="转载—自己动手写区块链"><meta property="og:url" content="http://yangbingdong.com/2018/write-your-own-blockchain/index.html"><meta property="og:site_name" content="ookamiAntD&#39;s Blog"><meta property="og:description" content="Preface区块链（英语：blockchain 或 block chain）是用分布式数据库识别、传播和记载信息的智能化对等网络, 也称为价值互联网。中本聪在2008年，于《比特币白皮书》中提出“区块链”概念，并在2009年创立了比特币社会网络，开发出第一个区块，即“创世区块”。区块链共享价值体系首先被众多的加密货币效仿，并在工作量证明上和算法上进行了改进，如采用权益证明和SCrypt算法。随后"><meta property="og:locale" content="en"><meta property="og:image" content="http://img.yangbingdong.com/img/blockchain/blockchain.jpg"><meta property="og:image" content="https://camo.githubusercontent.com/dc61609affa838e8aca79b30ce4313b852457743/687474703a2f2f6f7338776a76796b772e626b742e636c6f7564646e2e636f6d2f323031382d30312d32362d3131323832322e6a7067"><meta property="og:image" content="https://camo.githubusercontent.com/cfdfe28f28fe95857fa08d75e41692386fc7b26f/687474703a2f2f6f7338776a76796b772e626b742e636c6f7564646e2e636f6d2f323031382d30312d32362d3131323831392e6a7067"><meta property="og:image" content="https://camo.githubusercontent.com/4f314bd52ecbc90b59054cadb5b96de7dc99d237/687474703a2f2f6f7338776a76796b772e626b742e636c6f7564646e2e636f6d2f323031382d30312d32362d3131323832312e6a7067"><meta property="og:image" content="http://img.yangbingdong.com/img/blockchain/blockchain01.webp"><meta property="og:image" content="http://img.yangbingdong.com/img/blockchain/blockchain02.webp"><meta property="og:image" content="http://img.yangbingdong.com/img/blockchain/blockchain03.webp"><meta property="og:image" content="http://img.yangbingdong.com/img/blockchain/blockchain04.webp"><meta property="og:image" content="http://img.yangbingdong.com/img/blockchain/blockchain5.webp"><meta property="og:image" content="http://img.yangbingdong.com/img/blockchain/blockchain06.webp"><meta property="og:image" content="http://img.yangbingdong.com/img/blockchain/blockchain07.webp"><meta property="og:image" content="http://img.yangbingdong.com/img/blockchain/blockchain08.webp"><meta property="og:image" content="http://img.yangbingdong.com/img/blockchain/blockchain09.webp"><meta property="og:updated_time" content="2018-11-05T10:17:52.440Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="转载—自己动手写区块链"><meta name="twitter:description" content="Preface区块链（英语：blockchain 或 block chain）是用分布式数据库识别、传播和记载信息的智能化对等网络, 也称为价值互联网。中本聪在2008年，于《比特币白皮书》中提出“区块链”概念，并在2009年创立了比特币社会网络，开发出第一个区块，即“创世区块”。区块链共享价值体系首先被众多的加密货币效仿，并在工作量证明上和算法上进行了改进，如采用权益证明和SCrypt算法。随后"><meta name="twitter:image" content="http://img.yangbingdong.com/img/blockchain/blockchain.jpg"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",sidebar:{position:"right",display:"always"},fancybox:!0,motion:!0,duoshuo:{userId:"undefined",author:"Author"},algolia:{applicationID:"RI3NF6GUI0",apiKey:"3d33fa60ba30d3b17f37220bb1a36749",indexName:"blogIndex",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="http://yangbingdong.com/2018/write-your-own-blockchain/"><title>转载—自己动手写区块链 | ookamiAntD's Blog</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="en"><script type="text/javascript">var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?e9505ac4e11d464329d615553a72b526";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><div class="container one-collumn sidebar-position-right page-post-detail"><div class="headband"></div><a href="https://github.com/masteranthoneyd/blog" rel="external nofollow noopener noreferrer" target="_blank"><img style="position:absolute;top:0;left:0;border:0" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">ookamiAntD's Blog</span> <span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">Easy coding,easy life.</h1></div><div class="site-nav-toggle"><button><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>Tags</a></li><li class="menu-item menu-item-about"><a href="/about" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>About</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook" rel="section"><i class="menu-item-icon fa fa-fw fa-commenting"></i><br>Message</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>Search</a></li></ul><div class="site-search"><div class="popup"><span class="search-icon fa fa-search"></span> <input type="text" id="local-search-input"><div id="local-search-result"></div><span class="popup-btn-close">close</span></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><link itemprop="mainEntityOfPage" href="http://yangbingdong.com/2018/write-your-own-blockchain/"><span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="ookamiAntD"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar/avatar-admin.jpg"></span><span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="ookamiAntD's Blog"><span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject"><img style="display:none" itemprop="url image" alt="ookamiAntD's Blog" src=""></span></span><header class="post-header"><h2 class="post-title" itemprop="name headline">转载—自己动手写区块链</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">Posted on</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-05T17:38:08+08:00">2018-03-05 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">In</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span> </a></span>, <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Programming/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span> </a></span></span><span id="/2018/write-your-own-blockchain/" class="leancloud_visitors" data-flag-title="转载—自己动手写区块链"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-eye"></i> </span><span class="post-meta-item-text">Visitors </span><span class="leancloud-visitors-count"></span></span><br><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-edit"></i> </span><span class="post-meta-item-text">WordCount:</span> <span class="post-count">10,067字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-text">min2read:</span> <span class="post-count">45分钟</span></span></div></header><div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="http://img.yangbingdong.com/img/blockchain/blockchain.jpg" alt=""></p><h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><blockquote><p><strong>区块链</strong>（英语：blockchain 或 block chain）是用<a href="https://zh.wikipedia.org/wiki/%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93" rel="external nofollow noopener noreferrer" target="_blank">分布式数据库</a>识别、传播和记载信息的智能化<a href="https://zh.wikipedia.org/wiki/%E5%AF%B9%E7%AD%89%E7%BD%91%E7%BB%9C" rel="external nofollow noopener noreferrer" target="_blank">对等网络</a>, 也称为价值互联网。<a href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E6%9C%AC%E8%81%AA" rel="external nofollow noopener noreferrer" target="_blank">中本聪</a>在2008年，于《<a href="https://zh.wikipedia.org/wiki/%E6%AF%94%E7%89%B9%E5%B8%81" rel="external nofollow noopener noreferrer" target="_blank">比特币</a>白皮书》中提出“区块链”概念，并在2009年创立了<a href="https://zh.wikipedia.org/w/index.php?title=%E6%AF%94%E7%89%B9%E5%B8%81%E7%A4%BE%E4%BC%9A%E7%BD%91%E7%BB%9C&amp;action=edit&amp;redlink=1" rel="external nofollow noopener noreferrer" target="_blank">比特币社会网络</a>，开发出第一个区块，即“创世区块”。</p><p>区块链共享价值体系首先被众多的<a href="https://zh.wikipedia.org/wiki/%E5%8A%A0%E5%AF%86%E8%B2%A8%E5%B9%A3" rel="external nofollow noopener noreferrer" target="_blank">加密货币</a>效仿，并在<a href="https://zh.wikipedia.org/wiki/%E5%B7%A5%E4%BD%9C%E9%87%8F%E8%AD%89%E6%98%8E" rel="external nofollow noopener noreferrer" target="_blank">工作量证明</a>上和算法上进行了改进，如采用<a href="https://zh.wikipedia.org/wiki/%E6%9D%83%E7%9B%8A%E8%AF%81%E6%98%8E" rel="external nofollow noopener noreferrer" target="_blank">权益证明</a>和<a href="https://zh.wikipedia.org/w/index.php?title=SCrypt%E7%AE%97%E6%B3%95&amp;action=edit&amp;redlink=1" rel="external nofollow noopener noreferrer" target="_blank">SCrypt算法</a>。随后，区块链生态系统在全球不断进化，出现了<a href="https://zh.wikipedia.org/wiki/%E9%A6%96%E6%AC%A1%E4%BB%A3%E5%B8%81%E5%8F%91%E5%94%AE" rel="external nofollow noopener noreferrer" target="_blank">首次代币发售</a>ICO；智能合约区块链<a href="https://zh.wikipedia.org/wiki/%E4%BB%A5%E5%A4%AA%E5%9D%8A" rel="external nofollow noopener noreferrer" target="_blank">以太坊</a>；“轻所有权、重使用权”的资产代币化<a href="https://zh.wikipedia.org/wiki/%E5%85%B1%E4%BA%AB%E7%B6%93%E6%BF%9F" rel="external nofollow noopener noreferrer" target="_blank">共享经济</a>； 和<a href="https://zh.wikipedia.org/w/index.php?title=%E5%8C%BA%E5%9D%97%E9%93%BE%E5%9B%BD%E5%AE%B6&amp;action=edit&amp;redlink=1" rel="external nofollow noopener noreferrer" target="_blank">区块链国家</a>。目前，人们正在利用这一共享价值体系，在各行各业开发去中心化电脑程序(Decentralized applications, Dapp)，在全球各地构建<a href="https://zh.wikipedia.org/w/index.php?title=%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96%E8%87%AA%E4%B8%BB%E7%BB%84%E7%BB%87&amp;action=edit&amp;redlink=1" rel="external nofollow noopener noreferrer" target="_blank">去中心化自主组织</a>和去中心化自主社区(Decentralized autonomous society, DAS)。</p><p>——来自维基百科</p></blockquote><a id="more"></a><h1 id="比特币UTXO和去中心化系统的设计"><a href="#比特币UTXO和去中心化系统的设计" class="headerlink" title="比特币UTXO和去中心化系统的设计"></a>比特币UTXO和去中心化系统的设计</h1><blockquote><p>引用来自<strong><em><a href="https://github.com/JoeCao" rel="external nofollow noopener noreferrer" target="_blank">JoeCao</a></em></strong>大神的一段<em><a href="https://github.com/JoeCao/JoeCao.github.io/issues/12" rel="external nofollow noopener noreferrer" target="_blank">文章</a></em></p></blockquote><h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>刚进2018年，区块链突然大火，程序员们可能莫名其妙，不就是一个分布式系统么，怎么突然就要改变互联网了？趁着这个东风，我们了解一些区块链基础知识。看看是否可以改变世界。</p><h2 id="UTXO是什么"><a href="#UTXO是什么" class="headerlink" title="UTXO是什么"></a>UTXO是什么</h2><p>是Unspent Transaction Output（未消费交易输出）简写。这绝对是比特币的非常特殊的地方，理解UTXO也就理解了比特币去中心化的含义。</p><p>说起UTXO必须先要介绍交易模型。以我们平时对交易的理解，我给张三转账了一笔100块钱，那就是我的账上的钱少了100，张三账上的钱多了100。我们再把问题稍微复杂一些，我和张三合起来买一个李四的一个商品390块钱。我的账户支付100，张三账户支付300，李四的帐户获得390，支付宝账户获得了10块钱的转账手续费。那么对这比交易的记录应该是这样的：</p><p><a href="https://camo.githubusercontent.com/dc61609affa838e8aca79b30ce4313b852457743/687474703a2f2f6f7338776a76796b772e626b742e636c6f7564646e2e636f6d2f323031382d30312d32362d3131323832322e6a7067" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://camo.githubusercontent.com/dc61609affa838e8aca79b30ce4313b852457743/687474703a2f2f6f7338776a76796b772e626b742e636c6f7564646e2e636f6d2f323031382d30312d32362d3131323832322e6a7067" alt="帐户模型"></a></p><p>这种记账方式常用在财务记账上。不过作为一个去中心化的系统，是没有一个中心化银行管理你的开户、销户、余额的。没有余额，怎么判断你的账上有100块钱？</p><p><a href="https://camo.githubusercontent.com/cfdfe28f28fe95857fa08d75e41692386fc7b26f/687474703a2f2f6f7338776a76796b772e626b742e636c6f7564646e2e636f6d2f323031382d30312d32362d3131323831392e6a7067" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://camo.githubusercontent.com/cfdfe28f28fe95857fa08d75e41692386fc7b26f/687474703a2f2f6f7338776a76796b772e626b742e636c6f7564646e2e636f6d2f323031382d30312d32362d3131323831392e6a7067" alt="如何确认"></a></p><p>此时用户C必须将前面几次交易的比特币输出作为下一个关联交易的输入，具体见下图的no 321笔交易，用户C将前面获得的两次输出，作为输入放在了交易中，然后给自己输出1个比特币的找零（如果不给自己输出找零，那么这个差额就被矿工当成小费了，切记切记）。比特币的程序会判定，如果两个UTXO加在一起不够支付，则交易不成功。</p><p><a href="https://camo.githubusercontent.com/4f314bd52ecbc90b59054cadb5b96de7dc99d237/687474703a2f2f6f7338776a76796b772e626b742e636c6f7564646e2e636f6d2f323031382d30312d32362d3131323832312e6a7067" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://camo.githubusercontent.com/4f314bd52ecbc90b59054cadb5b96de7dc99d237/687474703a2f2f6f7338776a76796b772e626b742e636c6f7564646e2e636f6d2f323031382d30312d32362d3131323832312e6a7067" alt="区块链基础.001"></a></p><p>比特币UTXO使用有点像古代的银锭</p><ul><li>五两的银锭付给别人二两，需要通过夹剪将一整块银锭剪成两块，二两的给别人，三两的留给自己。对比：比特币在输出中重新创建一个新的UTXO作为给自己的找零</li><li>要付给别人五两，手上有几块碎银子单都不足五两，则需要将碎银子一起付给对方。对比：比特币在输入中同时引用多个输出UTXO。</li></ul><p>这样的做法很繁琐，所以银两在古代并不是一个很普遍的支付方式（别被武侠片给骗了，大部分还是用铜钱）。<br>比特币采用UTXO并不能很直观的去理解，但是为什么要用呢？</p><h2 id="使用UTXO的动机"><a href="#使用UTXO的动机" class="headerlink" title="使用UTXO的动机"></a>使用UTXO的动机</h2><p>那么我们站在系统设计的角度猜测一下为什么中本聪会考虑使用UTXO。</p><ul><li>比特币是没有开户的过程的，一个本地计算生成公私钥就能构成一个合法的帐户，甚至有些用户为了一些“靓号”帐户，通过暴力运算生成天量的再也不会使用的帐户。去中心化系统无法跟踪每个账户的生成和销毁，这样的系统里面的帐户数量远大于未消费的输出数量，所以以UTXO来替代跟踪帐户交易的方式，消耗的系统资源会比较少 ；</li><li>比特币有个比较好的特性是匿名性，很多人每次交易就换一对公私钥，交易输出的给自己的找零往往输出到一个另外的帐户下去，UTXO迎合了这种需求。而使用帐户就没那么灵活了。</li><li>如果我使用余额系统，那么在生成一笔交易的时候，我首先要考虑的就是“幂等”问题，因为发出去的交易是给某个帐户加减钱，如果交易因为网络等原因重新发送，变成两笔交易重复扣钱，我就要哭了，这是在区块链里面著名的“重放攻击”。所以交易必须设计一个唯一的标识id让服务器知道这是同一笔交易。但是在去中心化系统中没有一个超级服务器统一分配交易ID，只能本地生成，而且跟踪这些交易ID的状态，也是一个很大的负担，因为我需要将区块链从创世块到现在所有的交易都遍历一遍，才能确定是是否是重复交易。如果用UTXO就可以避免这个问题，UTXO相比交易数少了不止一个数量级，而且UTXO只有两个状态—未消费、被消费，比特币只能有一个操作— 将为消费的UTXO变为已消费状态。不管我发送多少次交易，都会得到一个结果。</li><li>在中本聪倡导每个cpu都是一票的去中心化社区，让每个节点都有能力去做计算是需要特别重视的，否则单个节点的计算能力要求过高，整个系统将向着“中心化”趋势滑下去。</li></ul><p>在比特币的实现中，是把所有的UTXO保存在一个单独的UTXOSet缓存中，截止2017年9月，这个缓存大概2.7Gb，与之对应，整个区块链的交易数据达到140Gb，UTXO缓存像是一个只保存了最终一个状态的git，整体的消耗负担小了很多很多。</p><p>但是中本聪没想到，很多人现在把交易输出的脚本玩出花来了，导致很多UTXO创建出来就是不为消费用的，永远不会被消费掉，节点的负担越来越重。这才有了后续的<strong>BIP改进</strong>以及<strong>以太坊的账户模型</strong>。那又是一个很长的故事了…</p><h1 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h1><blockquote><p>也可以看一下这一篇：<strong><em><a href="https://yemengying.com/2018/02/11/hash-blockchain/" rel="external nofollow noopener noreferrer" target="_blank">https://yemengying.com/2018/02/11/hash-blockchain/</a></em></strong></p></blockquote><p>2018年开始区块链真是火啊。一夜暴富的例子一直在传说。今天我们就自己动手写一个基本的区块链。</p><p>先简单的说一下区块链是个什么（相信你早就知道了）。</p><p>区块链就是一个链表。把一堆区块串起来就是区块链。每个<code>block</code>有自己的数字签名（就是一串不规则看起来叼叼的字符串），同时包含有上一个<code>block</code>的数字签名，然后包含一些其他的<code>data</code>。</p><p>大体就长这样：</p><p><img src="http://img.yangbingdong.com/img/blockchain/blockchain01.webp" alt="img"></p><p>是不是很熟悉，链表。</p><p>好，继续。</p><p>数字签名是什么？就是<code>hash</code>。</p><p>而且每个<code>block</code>含有前一个<code>block</code>的<code>hash</code>值，而且每个<code>block</code>自己的<code>hash</code>也是由前一个的<code>hash</code>计算得来的。如果前一个<code>block</code>（数据块）的数据发生改变，那么前一个的<code>hash</code>值也改变了，由此就会影响到之后的数据块的所有<code>hash</code>值。</p><p>所以，通过计算和对比<code>hash</code>值这种方式我们就可以知道区块链是不是合法的，是不是已经被篡改。</p><p>什么意思呢？意味着只要你修改了区块链中的任何一个块中的数据，都将会改变<code>hash</code>，从而破坏了整个链。</p><p>好，不多说。上代码：</p><h2 id="block块定义"><a href="#block块定义" class="headerlink" title="block块定义"></a><strong>block块定义</strong></h2><p>先新建个block块：</p><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Block</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">String</span> hash;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">String</span> previousHash; </span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">String</span> data; <span class="comment">//our data will be a simple message.</span></span><br><span class="line">   <span class="keyword">private</span> long timeStamp; <span class="comment">//as number of milliseconds since 1/1/1970.</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">//Block Constructor.  </span></span><br><span class="line">   <span class="keyword">public</span> Block(<span class="keyword">String</span> data,<span class="keyword">String</span> previousHash ) &#123;</span><br><span class="line">      <span class="built_in">this</span>.data = data;</span><br><span class="line">      <span class="built_in">this</span>.previousHash = previousHash;</span><br><span class="line">      <span class="built_in">this</span>.timeStamp = <span class="keyword">new</span> <span class="type">Date</span>().getTime();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>你也看到了我们的<code>Block</code>里有四个字段，<code>hash</code>就是这个块自己的<code>hash</code>值，<code>previousHash</code>就是上一个块的<code>hash</code>值，<code>data</code>就是这个块所持有的数据，<code>timeStamp</code>就是一个时间记录。</p>
 <h2 id="数字签名生成"><a href="#数字签名生成" class="headerlink" title="数字签名生成"></a><strong>数字签名生成</strong></h2><p>接下来我们就需要生成数字签名。</p>
 <p>有很多种的加密算法来生成数字签名。这里我们就选择<code>SHA256</code>。这里先新建一个工具类用来搞定这个件事情：</p>
@@ -657,17 +160,16 @@
 <p>管理共享机密信息的渠道<br>支持政策事务<br>一致地向网络中的对等节点交付事务</p>
 </blockquote>
 <p>如果你在软件区块链堆栈中包括了HyperLedger Fabric，那么我的建议是熟悉其他的HyperLedger项目。根据你的需要，可以选择各种不同的HyperLedger项目，这些项目将保证一个连贯的、可扩展的、易于维护的区块链基础设施。对于许多人来说，区块链将改变整个互联网，难道你不想成为其中的一部分吗?</p>
-
       
     </div>
 
-<div style="text-align:center;color: #ccc;font-size:14px;">---------------- The End ----------------</div>
+<div style="text-align:center;color:#ccc;font-size:14px">---------------- The End ----------------</div>
 
     <div>
       
         
-<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/wechat/gongzhonghao.jpg" alt="ookamiAntD wechat" style="width: 200px; max-width: 100%;">
+<div id="wechat_subscriber" style="display:block;padding:10px 0;margin:20px auto;width:100%;text-align:center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat/gongzhonghao.jpg" alt="ookamiAntD wechat" style="width:200px;max-width:100%">
     <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
 </div>
 
@@ -680,20 +182,20 @@
         
 
 
-  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div style="padding:10px 0;margin:20px auto;width:90%;text-align:center">
     <div>谢谢大爷～</div>
-    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <button id="rewardButton" disable="enable" onclick='var qr=document.getElementById("QR");"none"===qr.style.display?qr.style.display="block":qr.style.display="none"'>
       <span>赏</span>
     </button>
-    <div id="QR" style="display: none;">
+    <div id="QR" style="display:none">
       
-        <div id="wechat" style="display: inline-block">
+        <div id="wechat" style="display:inline-block">
           <img id="wechat_qr" src="/images/donate/wechat.png" alt="ookamiAntD WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
-        <div id="alipay" style="display: inline-block">
+        <div id="alipay" style="display:inline-block">
           <img id="alipay_qr" src="/images/donate/alipay.jpg" alt="ookamiAntD Alipay">
           <p>支付宝打赏</p>
         </div>
@@ -759,7 +261,7 @@
 
     <div class="post-spread">
       
-        <!--MOB SHARE BEGIN-->
+        
 <div class="-hoofoo-share-title">分享到：</div>
 <div class="-hoofoo-share-buttons">
     <div class="-mob-share-weibo -hoofoo-share-weibo -hoofoo-share-ui-button"><i class="fa fa-weibo" aria-hidden="true"></i></div>
@@ -768,7 +270,7 @@
     <div class="-mob-share-twitter -hoofoo-share-twitter -hoofoo-share-ui-button"><i class="fa fa-twitter" aria-hidden="true"></i></div>
     <div class="-hoofoo-share-more -hoofoo-share-ui-button -mob-share-open"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></div>
 </div>
-<div class="-mob-share-ui" style="display: none">
+<div class="-mob-share-ui" style="display:none">
     <ul class="-mob-share-list">
         <li class="-mob-share-weibo"><p>新浪微博</p></li>
         <li class="-mob-share-weixin"><p>微信</p></li>
@@ -793,7 +295,7 @@
 </div>
 <div class="-mob-share-ui-bg"></div>
 <script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=21aa3b13ad233"></script>
-<!--MOB SHARE END-->
+
 
       
     </div>
@@ -807,33 +309,14 @@
           
   <div class="comments" id="comments">
     
-<div style="text-align:center;">
-  <!-- <button class="btn" id="load-disqus" onclick="disqus.load();">加载 Disqus 评论</button> -->
+<div style="text-align:center">
+  
 
 </div>
       <div id="disqus_proxy_thread"></div>
       <div id="disqus_thread"></div>
       
-          <script type="text/javascript">
-              window.disqusProxy = {
-                username: 'ookamiantd',
-                server: 'disqus-proxy.yangbingdong.com',
-                port: '5509',
-                defaultAvatar: '/images/avatar/avatar-default.jpg',
-                adminAvatar: '/images/avatar/avatar-admin.jpg',
-                identifier: '2018/write-your-own-blockchain/'
-              };
-              window.disqus_config = function () {
-                this.page.url = 'http://yangbingdong.com/2018/write-your-own-blockchain/';
-                this.page.identifier = '2018/write-your-own-blockchain/';
-              };
-              window.onload=function(){
-                var s = document.createElement('script');
-                s.src = "/static/js/main.0d0338ae.js";
-                s.async = true;
-                document.body.appendChild(s);
-              }
-          </script>
+          <script type="text/javascript">window.disqusProxy={username:"ookamiantd",server:"disqus-proxy.yangbingdong.com",port:"5509",defaultAvatar:"/images/avatar/avatar-default.jpg",adminAvatar:"/images/avatar/avatar-admin.jpg",identifier:"2018/write-your-own-blockchain/"},window.disqus_config=function(){this.page.url="http://yangbingdong.com/2018/write-your-own-blockchain/",this.page.identifier="2018/write-your-own-blockchain/"},window.onload=function(){var a=document.createElement("script");a.src="/static/js/main.0d0338ae.js",a.async=!0,document.body.appendChild(a)}</script>
           <link rel="stylesheet" href="/static/css/main.0603c539.css">
       
 
@@ -870,7 +353,7 @@
       
 
       <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar/avatar-admin.jpg" alt="ookamiAntD">
           <p class="site-author-name" itemprop="name">ookamiAntD</p>
           <p class="site-description motion-element" itemprop="description">码渣 | rocker | 二次元 | 美剧 | 宅</p>
@@ -961,7 +444,7 @@
         
           <div class="links-of-blogroll motion-element links-of-blogroll-block">
             <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
+              <i class="fa fa-fw fa-globe"></i>
               大神们的博客
             </div>
             <ul class="links-of-blogroll-list">
@@ -987,37 +470,13 @@
         
 
         <div id="days"></div>
-    <script>
-    function show_date_time(){
-        window.setTimeout("show_date_time()", 1000);
-        BirthDay=new Date("01/10/2017 12:34:56");
-        today=new Date();
-        timeold=(today.getTime()-BirthDay.getTime());
-        sectimeold=timeold/1000
-        secondsold=Math.floor(sectimeold);
-        msPerDay=24*60*60*1000
-        e_daysold=timeold/msPerDay
-        daysold=Math.floor(e_daysold);
-        e_hrsold=(e_daysold-daysold)*24;
-        hrsold=setzero(Math.floor(e_hrsold));
-        e_minsold=(e_hrsold-hrsold)*60;
-        minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
-        seconds=setzero(Math.floor((e_minsold-minsold)*60));
-        document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
-    }
-function setzero(i){
-    if (i<10)
-    {i="0" + i};
-    return i;
-}
-show_date_time();
-</script>
+    <script>function show_date_time(){window.setTimeout("show_date_time()",1e3),BirthDay=new Date("01/10/2017 12:34:56"),today=new Date,timeold=today.getTime()-BirthDay.getTime(),sectimeold=timeold/1e3,secondsold=Math.floor(sectimeold),msPerDay=864e5,e_daysold=timeold/msPerDay,daysold=Math.floor(e_daysold),e_hrsold=24*(e_daysold-daysold),hrsold=setzero(Math.floor(e_hrsold)),e_minsold=60*(e_hrsold-hrsold),minsold=setzero(Math.floor(60*(e_hrsold-hrsold))),seconds=setzero(Math.floor(60*(e_minsold-minsold))),document.getElementById("days").innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒"}function setzero(e){return e<10&&(e="0"+e),e}show_date_time()</script>
 
 
       </section>
 
       
-      <!--noindex-->
+      
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
@@ -1031,7 +490,7 @@ show_date_time();
 
           </div>
         </section>
-      <!--/noindex-->
+      
       
 
     </div>
@@ -1043,7 +502,7 @@ show_date_time();
     </main>
 
     <footer id="footer" class="footer">
-	<!-- <img style="position: absolute;top: 0;left: 15%;border: 0;width: 200px;height: 200px;" src="http://ojoba1c98.bkt.clouddn.com/img/coding-flag.png" alt="Coding Flag"> -->
+	
       <div class="footer-inner">
         <div class="copyright">
   
@@ -1052,430 +511,9 @@ show_date_time();
   <span class="with-love">
     <i class="fa fa-flash"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></span>
-</div>
-
-
-<!-- <div class="theme-info">
-    Personal Blog
-</div> --!>
-
-<div class="theme-info">
-  粤ICP备18135202号-1  |  <span class="post-count">共206.0k字</span>
+  <span class="author" itemprop="copyrightHolder">Hosted by <a href="https://pages.coding.me" style="font-weight:700" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></span>
 </div>
 
 
 
-        
-
-<div class="busuanzi-count">
-
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv"><i class="fa fa-user">本站访客数</i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
-  
-
-  
-    <span class="site-pv"><i class="fa fa-eye">本站总访问量</i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
-  
-  
-</div>
-
-
-
-        
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-
-
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'ookamiantd';
-      var disqus_identifier = '2018/write-your-own-blockchain/';
-
-      var disqus_title = "转载—自己动手写区块链";
-
-
-      function run_disqus_script(disqus_script) {
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      var disqus = {
-        load : function disqus(){
-          if(typeof DISQUS !== 'object') {
-            (function () {
-            var s = document.createElement('script'); s.async = true;
-            s.type = 'text/javascript';
-            s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-            }());
-            $('#load-disqus').html("评论加载中，请确保你有梯子，若评论长时间未加载则你可能翻墙失败...").fadeOut(9000); ///加载后移除按钮
-          }
-  }
-}
-
-    </script>
-  
-
-
-
-
-
-
-
-
-
-  
-  
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-      search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-      $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function( xmlResponse ) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = $( "entry", xmlResponse ).map(function() {
-            return {
-              title: $( "title", this ).text(),
-              content: $("content",this).text(),
-              url: $( "url" , this).text()
-            };
-          }).get();
-          var $input = document.getElementById(search_id);
-          var $resultContent = document.getElementById(content_id);
-          $input.addEventListener('input', function(){
-            var matchcounts = 0;
-            var str='<ul class=\"search-result-list\">';
-            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-            $resultContent.innerHTML = "";
-            if (this.value.trim().length > 1) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var content_index = [];
-                var data_title = data.title.trim().toLowerCase();
-                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                var data_url = decodeURIComponent(data.url);
-                var index_title = -1;
-                var index_content = -1;
-                var first_occur = -1;
-                // only match artiles with not empty titles and contents
-                if(data_title != '') {
-                  keywords.forEach(function(keyword, i) {
-                    index_title = data_title.indexOf(keyword);
-                    index_content = data_content.indexOf(keyword);
-                    if( index_title >= 0 || index_content >= 0 ){
-                      isMatch = true;
-                      if (i == 0) {
-                        first_occur = index_content;
-                      }
-                    }
-
-                  });
-                }
-                // show search results
-                if (isMatch) {
-                  matchcounts += 1;
-                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                  var content = data.content.trim().replace(/<[^>]+>/g,"");
-                  if (first_occur >= 0) {
-                    // cut out 100 characters
-                    var start = first_occur - 20;
-                    var end = first_occur + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if(start == 0){
-                      end = 50;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    var match_content = content.substring(start, end);
-                    // highlight all keywords
-                    keywords.forEach(function(keyword){
-                      var regS = new RegExp(keyword, "gi");
-                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                    });
-
-                    str += "<p class=\"search-result\">" + match_content +"...</p>"
-                  }
-                  str += "</li>";
-                }
-              })};
-            str += "</ul>";
-            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-            $resultContent.innerHTML = str;
-          });
-          proceedsearch();
-        }
-      });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
-
-
-  
-
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("usE0s6JGUeOiMcsVoRuHuv2B-gzGzoHsz", "ewm6NEF07r83HbnOr63ptuKH");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
-
-  
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
-
-  
-
-
-  <script type="text/javascript" color="255,0,204" opacity='0.5' zIndex="-2" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
-
-
-
-<script type="text/javascript">
-    //微信二维码点击背景关闭
-    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
-         $(".-mob-share-weixin-qrcode-close").trigger("click");
-    }); 
-</script>
-
-
-
-<!--卖萌-->
-<script type="text/javascript" src="/js/src/dytitle.js"></script>
-</div></footer></div><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":88,"height":88,"position":"left"},"mobile":{"show":false},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script></body>
-</html>
+<script type="text/javascript" src="/js/src/dytitle.js"></script></div></footer></div><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":88,"height":88,"position":"left"},"mobile":{"show":false},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script></body></html>

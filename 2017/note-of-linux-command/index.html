@@ -1,466 +1,20 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="en">
-<head>
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-<meta http-equiv="content-language" content="zh-cn">
-
-<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
-<style>
-    .pace .pace-progress {
-        background: #ff009e;
-        height: 2px;
-    }
-    .pace .pace-progress-inner {
-         box-shadow: 0 0 10px #e6006b, 0 0 5px #ff009e;
-    }
-    .pace .pace-activity {
-        border-top-color: #ff009e;
-        border-left-color: #ff009e;
-    }
-</style>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="Ubuntu,">
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="ookamiAntD's Blog" type="application/atom+xml">
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0">
-
-
-
-
-
-
-<meta name="description" content="Preface =.= 这里只记录一些个人比较常用到的Ubuntu命令">
-<meta name="keywords" content="Ubuntu">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu 常用命令">
-<meta property="og:url" content="http://yangbingdong.com/2017/note-of-linux-command/index.html">
-<meta property="og:site_name" content="ookamiAntD&#39;s Blog">
-<meta property="og:description" content="Preface =.= 这里只记录一些个人比较常用到的Ubuntu命令">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/ubuntu-logo.png">
-<meta property="og:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/command-useradd.png">
-<meta property="og:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/command-usermod.png">
-<meta property="og:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/command-groupadd.png">
-<meta property="og:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/command-groupmod.png">
-<meta property="og:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/apt-get-update-fail.png">
-<meta property="og:updated_time" content="2018-11-05T10:17:52.424Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu 常用命令">
-<meta name="twitter:description" content="Preface =.= 这里只记录一些个人比较常用到的Ubuntu命令">
-<meta name="twitter:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/ubuntu-logo.png">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"right","display":"always"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 'undefined',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: 'RI3NF6GUI0',
-      apiKey: '3d33fa60ba30d3b17f37220bb1a36749',
-      indexName: 'blogIndex',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yangbingdong.com/2017/note-of-linux-command/">
-
-
-
-
-
-  <title> Ubuntu 常用命令 | ookamiAntD's Blog </title>
-</head>
-
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
-
-  
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?e9505ac4e11d464329d615553a72b526";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-right page-post-detail ">
-    <div class="headband"></div>
-
-	<a href="https://github.com/masteranthoneyd/blog" rel="external nofollow noopener noreferrer" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
-
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">ookamiAntD's Blog</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-    
-      <h1 class="site-subtitle" itemprop="description">Easy coding,easy life.</h1>
-    
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            Archives
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            Categories
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            Tags
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            About
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-guestbook">
-          <a href="/guestbook" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-commenting"></i> <br>
-            
-            Message
-          </a>
-        </li>
-      
-
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
-            
-            Search
-          </a>
-        </li>
-      
-    </ul>
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
-</div>
-
-
-    </div>
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yangbingdong.com/2017/note-of-linux-command/">
-
-  <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="ookamiAntD">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar/avatar-admin.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="ookamiAntD's Blog">
-    <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="ookamiAntD's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                Ubuntu 常用命令
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-20T18:05:10+08:00">
-                2017-09-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/OperatingSystem/" itemprop="url" rel="index">
-                    <span itemprop="name">OperatingSystem</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/OperatingSystem/Ubuntu/" itemprop="url" rel="index">
-                    <span itemprop="name">Ubuntu</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-
-          
-
-          
-
-          
-
-          
-          
-             <span id="/2017/note-of-linux-command/" class="leancloud_visitors" data-flag-title="Ubuntu 常用命令">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          <br><span class="post-time">
-           <span class="post-meta-item-icon">
-             <i class="fa fa-edit"></i>
-           </span>
-           <span class="post-meta-item-text">WordCount:</span>
-           <span class="post-count">6,680字</span>
-			<span class="post-meta-divider">|</span>
-			<span class="post-meta-item-text">min2read:</span>
-           <span class="post-count">28分钟</span>
-
-         </span>
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="http://img.yangbingdong.com/img/node-of-ubuntu-command/ubuntu-logo.png" alt=""></p>
-<h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><blockquote>
-<p>=.= 这里只记录一些个人比较常用到的<a href="https://www.ubuntu.com" rel="external nofollow noopener noreferrer" target="_blank"><em>Ubuntu</em></a>命令</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="SSH相关"><a href="#SSH相关" class="headerlink" title="SSH相关"></a>SSH相关</h1><h2 id="安装SSH"><a href="#安装SSH" class="headerlink" title="安装SSH"></a>安装SSH</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> ssh</span><br><span class="line">sudo apt <span class="keyword">install</span> openssh-<span class="keyword">server</span></span><br></pre></td></tr></table></figure>
+<!doctype html><html class="theme-next muse use-motion" lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta http-equiv="content-language" content="zh-cn"><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet"><style>.pace .pace-progress{background:#ff009e;height:2px}.pace .pace-progress-inner{box-shadow:0 0 10px #e6006b,0 0 5px #ff009e}.pace .pace-activity{border-top-color:#ff009e;border-left-color:#ff009e}</style><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css"><meta name="keywords" content="Ubuntu,"><link rel="alternate" href="/atom.xml" title="ookamiAntD's Blog" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0"><meta name="description" content="Preface=.= 这里只记录一些个人比较常用到的Ubuntu命令"><meta name="keywords" content="Ubuntu"><meta property="og:type" content="article"><meta property="og:title" content="Ubuntu 常用命令"><meta property="og:url" content="http://yangbingdong.com/2017/note-of-linux-command/index.html"><meta property="og:site_name" content="ookamiAntD&#39;s Blog"><meta property="og:description" content="Preface=.= 这里只记录一些个人比较常用到的Ubuntu命令"><meta property="og:locale" content="en"><meta property="og:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/ubuntu-logo.png"><meta property="og:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/command-useradd.png"><meta property="og:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/command-usermod.png"><meta property="og:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/command-groupadd.png"><meta property="og:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/command-groupmod.png"><meta property="og:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/apt-get-update-fail.png"><meta property="og:updated_time" content="2018-11-05T10:17:52.424Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Ubuntu 常用命令"><meta name="twitter:description" content="Preface=.= 这里只记录一些个人比较常用到的Ubuntu命令"><meta name="twitter:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/ubuntu-logo.png"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",sidebar:{position:"right",display:"always"},fancybox:!0,motion:!0,duoshuo:{userId:"undefined",author:"Author"},algolia:{applicationID:"RI3NF6GUI0",apiKey:"3d33fa60ba30d3b17f37220bb1a36749",indexName:"blogIndex",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="http://yangbingdong.com/2017/note-of-linux-command/"><title>Ubuntu 常用命令 | ookamiAntD's Blog</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="en"><script type="text/javascript">var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?e9505ac4e11d464329d615553a72b526";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><div class="container one-collumn sidebar-position-right page-post-detail"><div class="headband"></div><a href="https://github.com/masteranthoneyd/blog" rel="external nofollow noopener noreferrer" target="_blank"><img style="position:absolute;top:0;left:0;border:0" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">ookamiAntD's Blog</span> <span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">Easy coding,easy life.</h1></div><div class="site-nav-toggle"><button><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>Tags</a></li><li class="menu-item menu-item-about"><a href="/about" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>About</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook" rel="section"><i class="menu-item-icon fa fa-fw fa-commenting"></i><br>Message</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>Search</a></li></ul><div class="site-search"><div class="popup"><span class="search-icon fa fa-search"></span> <input type="text" id="local-search-input"><div id="local-search-result"></div><span class="popup-btn-close">close</span></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><link itemprop="mainEntityOfPage" href="http://yangbingdong.com/2017/note-of-linux-command/"><span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="ookamiAntD"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar/avatar-admin.jpg"></span><span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="ookamiAntD's Blog"><span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject"><img style="display:none" itemprop="url image" alt="ookamiAntD's Blog" src=""></span></span><header class="post-header"><h2 class="post-title" itemprop="name headline">Ubuntu 常用命令</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">Posted on</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-20T18:05:10+08:00">2017-09-20 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">In</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OperatingSystem/" itemprop="url" rel="index"><span itemprop="name">OperatingSystem</span> </a></span>, <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OperatingSystem/Ubuntu/" itemprop="url" rel="index"><span itemprop="name">Ubuntu</span> </a></span></span><span id="/2017/note-of-linux-command/" class="leancloud_visitors" data-flag-title="Ubuntu 常用命令"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-eye"></i> </span><span class="post-meta-item-text">Visitors </span><span class="leancloud-visitors-count"></span></span><br><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-edit"></i> </span><span class="post-meta-item-text">WordCount:</span> <span class="post-count">6,680字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-text">min2read:</span> <span class="post-count">28分钟</span></span></div></header><div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="http://img.yangbingdong.com/img/node-of-ubuntu-command/ubuntu-logo.png" alt=""></p><h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><blockquote><p>=.= 这里只记录一些个人比较常用到的<a href="https://www.ubuntu.com" rel="external nofollow noopener noreferrer" target="_blank"><em>Ubuntu</em></a>命令</p></blockquote><a id="more"></a><h1 id="SSH相关"><a href="#SSH相关" class="headerlink" title="SSH相关"></a>SSH相关</h1><h2 id="安装SSH"><a href="#安装SSH" class="headerlink" title="安装SSH"></a>安装SSH</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> ssh</span><br><span class="line">sudo apt <span class="keyword">install</span> openssh-<span class="keyword">server</span></span><br></pre></td></tr></table></figure>
 <p>查看启动成功：<code>ps -e|grep ssh</code>，如果看到<code>sshd</code>那代表成功了，如果没有，执行：</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo<span class="regexp">/etc/i</span>nit.d<span class="regexp">/ssh start</span></span><br></pre></td></tr></table></figure>
 <p>ssh的配置文件位于<code>/etc/ssh/sshd_config</code>，修改后需要重启ssh：</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="regexp">/etc/i</span>nit.d<span class="regexp">/sshresart</span></span><br></pre></td></tr></table></figure>
-<h2 id="保持长连接"><a href="#保持长连接" class="headerlink" title="保持长连接"></a>保持长连接</h2><p>只需要在<code>ssh</code>命令后加上发送心跳即可：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -o ServerAliveInterval=<span class="number">30</span> root@<span class="number">123.456</span><span class="number">.88</span> -p <span class="number">2333</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="生成SSH密钥和公钥"><a href="#生成SSH密钥和公钥" class="headerlink" title="生成SSH密钥和公钥"></a>生成SSH密钥和公钥</h2><p>打开终端，使用下面的<code>ssh-keygen</code>来生成<code>RSA</code>密钥和公钥。<code>-t</code>表示type，就是说要生成<code>RSA</code>加密的钥匙：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C "your_email@youremail.com"</span><br></pre></td></tr></table></figure></p>
-<p><code>RSA</code>也是默认的加密类型，所以你也可以只输入<code>ssh-keygen</code>，默认的<code>RSA</code>长度是2048位，如果你非常注重安全，那么可以指定4096位的长度：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -b 4096 -t rsa -C "your_email@youremail.com"</span><br></pre></td></tr></table></figure></p>
-<p>生成SSH Key的过程中会要求你指定一个文件来保存密钥，按<code>Enter</code>键使用默认的文件就行了，然后需要输入一个密码来加密你的SSH Key，密码至少要20位长度，SSH密钥会保存在<code>home</code>目录下的<code>.ssh/id_rsa</code>文件中，SSH公钥保存在<code>.ssh/id_rsa.pub</code>文件中。<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/home/matrix/.ssh/id_rsa): 　<span class="comment">#按Enter键</span></span><br><span class="line">Enter passphrase (empty for no passphrase): 　　<span class="comment">#输入一个密码</span></span><br><span class="line">Enter same passphrase again: 　　<span class="comment">#再次输入密码</span></span><br><span class="line">Your identification has been saved in /home/matrix/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /home/matrix/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">e1:dc:ab:ae:b6:19:b0:19:74:d5:fe:57:3f:32:b4:d0 matrix<span class="meta">@vivid</span></span><br><span class="line">The key's randomart image is:</span><br><span class="line">+---[RSA 4096]----+</span><br><span class="line">|<span class="string"> .. </span>|</span><br><span class="line">|<span class="string"> . . </span>|</span><br><span class="line">|<span class="string"> . . .. . </span>|</span><br><span class="line">|<span class="string"> . . o o.. E .</span>|</span><br><span class="line">|<span class="string"> o S ..o ...</span>|</span><br><span class="line">|<span class="string"> = ..+...</span>|</span><br><span class="line">|<span class="string"> o . . .o .</span>|</span><br><span class="line">|<span class="string"> .o . </span>|</span><br><span class="line">|<span class="string"> .++o </span>|</span><br><span class="line">+-----------------+</span><br></pre></td></tr></table></figure></p>
-<h2 id="文件传输"><a href="#文件传输" class="headerlink" title="文件传输"></a>文件传输</h2><p>姿势：<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># 传输单个文件</span></span><br><span class="line">scp -P <span class="params">&lt;端口&gt;</span> <span class="params">&lt;源文件&gt;</span> <span class="params">&lt;目标文件&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># 传输文件夹</span></span><br><span class="line">scp -P <span class="params">&lt;端口&gt;</span> -r <span class="params">&lt;源文件夹&gt;</span> <span class="params">&lt;目标文件夹&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>注意</strong><code>-P</code>要在前面<br>例如把本地的file复制到远程服务器：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P <span class="number">2333</span> /home/ybd/file root<span class="variable">@123</span>.<span class="number">456.78</span><span class="symbol">:/root/file</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="免密码登录远程服务器"><a href="#免密码登录远程服务器" class="headerlink" title="免密码登录远程服务器"></a>免密码登录远程服务器</h2><h3 id="姿势一"><a href="#姿势一" class="headerlink" title="姿势一"></a>姿势一</h3><p>使用上述<code>scp</code>把公钥<strong>上传</strong>到服务器，然后：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat id_rsa.pub <span class="meta">&gt;&gt; </span>~<span class="regexp">/.ssh/authorized</span>_keys</span><br></pre></td></tr></table></figure></p>
-<h3 id="姿势二"><a href="#姿势二" class="headerlink" title="姿势二"></a>姿势二</h3><p>可以使用<code>ssh-copy-id</code>命令来完成：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id &lt;用户名&gt;@&lt;服务器ip&gt; -p &lt;端口&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="保持长连接"><a href="#保持长连接" class="headerlink" title="保持长连接"></a>保持长连接</h2><p>只需要在<code>ssh</code>命令后加上发送心跳即可：<br></p><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -o ServerAliveInterval=<span class="number">30</span> root@<span class="number">123.456</span><span class="number">.88</span> -p <span class="number">2333</span></span><br></pre></td></tr></table></figure><p></p>
+<h2 id="生成SSH密钥和公钥"><a href="#生成SSH密钥和公钥" class="headerlink" title="生成SSH密钥和公钥"></a>生成SSH密钥和公钥</h2><p>打开终端，使用下面的<code>ssh-keygen</code>来生成<code>RSA</code>密钥和公钥。<code>-t</code>表示type，就是说要生成<code>RSA</code>加密的钥匙：<br></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C "your_email@youremail.com"</span><br></pre></td></tr></table></figure><p></p>
+<p><code>RSA</code>也是默认的加密类型，所以你也可以只输入<code>ssh-keygen</code>，默认的<code>RSA</code>长度是2048位，如果你非常注重安全，那么可以指定4096位的长度：<br></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -b 4096 -t rsa -C "your_email@youremail.com"</span><br></pre></td></tr></table></figure><p></p>
+<p>生成SSH Key的过程中会要求你指定一个文件来保存密钥，按<code>Enter</code>键使用默认的文件就行了，然后需要输入一个密码来加密你的SSH Key，密码至少要20位长度，SSH密钥会保存在<code>home</code>目录下的<code>.ssh/id_rsa</code>文件中，SSH公钥保存在<code>.ssh/id_rsa.pub</code>文件中。<br></p><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/home/matrix/.ssh/id_rsa): 　<span class="comment">#按Enter键</span></span><br><span class="line">Enter passphrase (empty for no passphrase): 　　<span class="comment">#输入一个密码</span></span><br><span class="line">Enter same passphrase again: 　　<span class="comment">#再次输入密码</span></span><br><span class="line">Your identification has been saved in /home/matrix/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /home/matrix/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">e1:dc:ab:ae:b6:19:b0:19:74:d5:fe:57:3f:32:b4:d0 matrix<span class="meta">@vivid</span></span><br><span class="line">The key's randomart image is:</span><br><span class="line">+---[RSA 4096]----+</span><br><span class="line">|<span class="string"> .. </span>|</span><br><span class="line">|<span class="string"> . . </span>|</span><br><span class="line">|<span class="string"> . . .. . </span>|</span><br><span class="line">|<span class="string"> . . o o.. E .</span>|</span><br><span class="line">|<span class="string"> o S ..o ...</span>|</span><br><span class="line">|<span class="string"> = ..+...</span>|</span><br><span class="line">|<span class="string"> o . . .o .</span>|</span><br><span class="line">|<span class="string"> .o . </span>|</span><br><span class="line">|<span class="string"> .++o </span>|</span><br><span class="line">+-----------------+</span><br></pre></td></tr></table></figure><p></p>
+<h2 id="文件传输"><a href="#文件传输" class="headerlink" title="文件传输"></a>文件传输</h2><p>姿势：<br></p><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># 传输单个文件</span></span><br><span class="line">scp -P <span class="params">&lt;端口&gt;</span> <span class="params">&lt;源文件&gt;</span> <span class="params">&lt;目标文件&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># 传输文件夹</span></span><br><span class="line">scp -P <span class="params">&lt;端口&gt;</span> -r <span class="params">&lt;源文件夹&gt;</span> <span class="params">&lt;目标文件夹&gt;</span></span><br></pre></td></tr></table></figure><p></p>
+<p><strong>注意</strong><code>-P</code>要在前面<br>例如把本地的file复制到远程服务器：<br></p><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P <span class="number">2333</span> /home/ybd/file root<span class="variable">@123</span>.<span class="number">456.78</span><span class="symbol">:/root/file</span></span><br></pre></td></tr></table></figure><p></p>
+<h2 id="免密码登录远程服务器"><a href="#免密码登录远程服务器" class="headerlink" title="免密码登录远程服务器"></a>免密码登录远程服务器</h2><h3 id="姿势一"><a href="#姿势一" class="headerlink" title="姿势一"></a>姿势一</h3><p>使用上述<code>scp</code>把公钥<strong>上传</strong>到服务器，然后：<br></p><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat id_rsa.pub <span class="meta">&gt;&gt; </span>~<span class="regexp">/.ssh/authorized</span>_keys</span><br></pre></td></tr></table></figure><p></p>
+<h3 id="姿势二"><a href="#姿势二" class="headerlink" title="姿势二"></a>姿势二</h3><p>可以使用<code>ssh-copy-id</code>命令来完成：<br></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id &lt;用户名&gt;@&lt;服务器ip&gt; -p &lt;端口&gt;</span><br></pre></td></tr></table></figure><p></p>
 <p>输入远程用户的密码后，SSH公钥就会自动上传了，SSH公钥保存在远程Linux服务器的<code>.ssh/authorized_keys</code>文件中。</p>
-<h1 id="别名alias简化命令"><a href="#别名alias简化命令" class="headerlink" title="别名alias简化命令"></a>别名alias简化命令</h1><p>只需要在当前用户目录加上别名命令，但博主用的是<code>zsh</code>，所有配置在<code>.zshrc</code>而不是<code>.bashrc</code><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo "alias vps='ssh -o ServerAliveInterval=30 root@172.104.65.190 -p 2333'" &gt;&gt; ~/.zshrc</span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure></p>
+<h1 id="别名alias简化命令"><a href="#别名alias简化命令" class="headerlink" title="别名alias简化命令"></a>别名alias简化命令</h1><p>只需要在当前用户目录加上别名命令，但博主用的是<code>zsh</code>，所有配置在<code>.zshrc</code>而不是<code>.bashrc</code><br></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo "alias vps='ssh -o ServerAliveInterval=30 root@172.104.65.190 -p 2333'" &gt;&gt; ~/.zshrc</span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure><p></p>
 <p>然后直接输入<code>vps</code>就可以登陆远程服务器了。</p>
-<h1 id="切换用户"><a href="#切换用户" class="headerlink" title="切换用户"></a>切换用户</h1><p>使用<code>su</code>命令切换用户，ex：<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">su - ybd</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="切换用户"><a href="#切换用户" class="headerlink" title="切换用户"></a>切换用户</h1><p>使用<code>su</code>命令切换用户，ex：<br></p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">su - ybd</span></span><br></pre></td></tr></table></figure><p></p>
 <p>这样就切换到了ybd用户<br><code>su -</code>就是<code>su -l</code>(l为login的意思)，<code>l</code>可以省略，所以一般写成<code>su -</code>…..(<del>坑爹</del>)<br>如果不加用户名，默认是 <code>su root</code>切换<code>root</code>用户。<br><strong>注意</strong>：<code>su</code> 和 <code>su -</code>的区别</p>
 <ul>
 <li>前者是直接切换，还<strong>保留了当前位置以及变量</strong></li>
@@ -469,7 +23,7 @@
 <blockquote>
 <p>因为这个原因，写<code>Dockerfile</code>困扰了好一段时间…囧</p>
 </blockquote>
-<p>还有<code>su</code>也可以使用某个用户的身份执行一些命令，ex：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 执行单个命令</span><br><span class="line"><span class="keyword">su</span> - <span class="variable">$&#123;USER_NAME&#125;</span> -c <span class="string">"npm install -g hexo-cli"</span></span><br><span class="line"># 执行<span class="keyword">shell</span>脚本</span><br><span class="line"><span class="keyword">su</span> - <span class="variable">$&#123;USER_NAME&#125;</span> -s /bin/bash <span class="keyword">shell</span>.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure></p>
+<p>还有<code>su</code>也可以使用某个用户的身份执行一些命令，ex：<br></p><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 执行单个命令</span><br><span class="line"><span class="keyword">su</span> - <span class="variable">$&#123;USER_NAME&#125;</span> -c <span class="string">"npm install -g hexo-cli"</span></span><br><span class="line"># 执行<span class="keyword">shell</span>脚本</span><br><span class="line"><span class="keyword">su</span> - <span class="variable">$&#123;USER_NAME&#125;</span> -s /bin/bash <span class="keyword">shell</span>.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure><p></p>
 <p>执行完之后还是保持当前用户。<br>可以通过<code>exit</code>退出当前用户。</p>
 <h1 id="ufw防火墙"><a href="#ufw防火墙" class="headerlink" title="ufw防火墙"></a>ufw防火墙</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>Ubuntu自带ufw，没有可以直接安装：</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="builtin-name">get</span> install ufw</span><br></pre></td></tr></table></figure>
@@ -490,11 +44,11 @@
 <h2 id="修改用户usermod"><a href="#修改用户usermod" class="headerlink" title="修改用户usermod"></a>修改用户usermod</h2><p><img src="http://img.yangbingdong.com/img/node-of-ubuntu-command/command-usermod.png" alt=""></p>
 <h2 id="添加用户组groupadd"><a href="#添加用户组groupadd" class="headerlink" title="添加用户组groupadd"></a>添加用户组groupadd</h2><p><img src="http://img.yangbingdong.com/img/node-of-ubuntu-command/command-groupadd.png" alt=""></p>
 <h2 id="修改用户组"><a href="#修改用户组" class="headerlink" title="修改用户组"></a>修改用户组</h2><p><img src="http://img.yangbingdong.com/img/node-of-ubuntu-command/command-groupmod.png" alt=""></p>
-<p>ex:将test组的名子改成test2<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupmod -n test2 <span class="built_in">test</span></span><br></pre></td></tr></table></figure></p>
-<p>删除组test2<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">groupdel</span> test2</span><br></pre></td></tr></table></figure></p>
-<h2 id="查看组"><a href="#查看组" class="headerlink" title="查看组"></a>查看组</h2><p>查看当前登录用户所在的组：<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">groups</span></span><br></pre></td></tr></table></figure></p>
-<p>查看用户test所在组：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groups <span class="built_in">test</span></span><br></pre></td></tr></table></figure></p>
-<p>查看所有组：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cat</span> /etc/<span class="built_in">group</span></span><br></pre></td></tr></table></figure></p>
+<p>ex:将test组的名子改成test2<br></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupmod -n test2 <span class="built_in">test</span></span><br></pre></td></tr></table></figure><p></p>
+<p>删除组test2<br></p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">groupdel</span> test2</span><br></pre></td></tr></table></figure><p></p>
+<h2 id="查看组"><a href="#查看组" class="headerlink" title="查看组"></a>查看组</h2><p>查看当前登录用户所在的组：<br></p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">groups</span></span><br></pre></td></tr></table></figure><p></p>
+<p>查看用户test所在组：<br></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groups <span class="built_in">test</span></span><br></pre></td></tr></table></figure><p></p>
+<p>查看所有组：<br></p><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cat</span> /etc/<span class="built_in">group</span></span><br></pre></td></tr></table></figure><p></p>
 <h2 id="修改用户名"><a href="#修改用户名" class="headerlink" title="修改用户名"></a>修改用户名</h2><blockquote>
 <p><code>usermod</code>不允许你改变正在线上的使用者帐号名称。当<code>usermod</code>用来改变<code>userID</code>，必须确认这名<code>user</code>没在电脑上执行任何程序，否则会报“<code>usermod: user xxx is currently logged in</code>”错误。<strong>因此必须<code>root</code>用户登录或者其他用户登录然后切换到<code>root</code>身份，而不能在当前用户下切换至<code>root</code>进行修改。</strong></p>
 </blockquote>
@@ -522,18 +76,18 @@
 <h1 id="跟踪日志输出"><a href="#跟踪日志输出" class="headerlink" title="跟踪日志输出"></a>跟踪日志输出</h1><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tail -f &lt;<span class="built_in">log</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta"># 输出最后1000行</span></span><br><span class="line">tail -<span class="number">1000</span> &lt;<span class="built_in">log</span>&gt;</span><br></pre></td></tr></table></figure>
 <h1 id="统计文件夹大小"><a href="#统计文件夹大小" class="headerlink" title="统计文件夹大小"></a>统计文件夹大小</h1><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -hs `ls -al |awk <span class="string">'&#123;print $9&#125;'</span>`</span><br></pre></td></tr></table></figure>
 <p>上面命令可以统计文件夹中所有的文件夹和文件的大小，并且包括隐藏目录。缺点是连上级目录也会统计。</p>
-<p>如果不需要列出上级目录，则把ls命令的-a换成-A，就不会列出点文件了。<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -hs `ls -Al |awk <span class="string">'&#123;print $9&#125;'</span>`</span><br></pre></td></tr></table></figure></p>
-<p>如果不需要列出文件，只需文件夹，则在ls中增加-d参数即可<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">du -hs `ls -Adl |awk <span class="string">'&#123;print $9&#125;'</span>`</span><br><span class="line">或</span><br><span class="line">du -hs `ls -Al |grep ^d|awk <span class="string">'&#123;print $9&#125;'</span>`</span><br></pre></td></tr></table></figure></p>
+<p>如果不需要列出上级目录，则把ls命令的-a换成-A，就不会列出点文件了。<br></p><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -hs `ls -Al |awk <span class="string">'&#123;print $9&#125;'</span>`</span><br></pre></td></tr></table></figure><p></p>
+<p>如果不需要列出文件，只需文件夹，则在ls中增加-d参数即可<br></p><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">du -hs `ls -Adl |awk <span class="string">'&#123;print $9&#125;'</span>`</span><br><span class="line">或</span><br><span class="line">du -hs `ls -Al |grep ^d|awk <span class="string">'&#123;print $9&#125;'</span>`</span><br></pre></td></tr></table></figure><p></p>
 <h1 id="压缩和解压缩"><a href="#压缩和解压缩" class="headerlink" title="压缩和解压缩"></a>压缩和解压缩</h1><p>打包但是不压缩(<code>tar</code>)：<code>tar -cf &lt;压缩包文件名&gt; &lt;要打包的目录&gt;</code><br>打包并压缩(<code>tar.gz</code>)：<code>tar -zcf &lt;压缩包文件名&gt; &lt;要打包的目录&gt;</code></p>
 <p>解压缩<code>tar</code>文件：<code>tar -xvf &lt;压缩包文件&gt;</code><br>解压缩<code>tar.gz</code>文件：<code>tar -zxvf &lt;压缩包文件&gt;</code></p>
 <h1 id="目录操作命令"><a href="#目录操作命令" class="headerlink" title="目录操作命令"></a>目录操作命令</h1><p>在<strong>Windows系统</strong>中，有<code>C</code>、<code>D</code>、<code>E</code>等众多的盘符，每个盘符就是一个根目录。在<code>Linux</code>、<code>Unix</code>、<code>MacOS</code>等系统的<strong>文件系统</strong>中，<strong>只有一个根目录</strong>，那就是<code>root</code>，以一个斜杠代表（<code>/</code>）。</p>
-<h2 id="切换目录：cd"><a href="#切换目录：cd" class="headerlink" title="切换目录：cd"></a>切换目录：<code>cd</code></h2><p>该命令和Windows中没有太大的区别，都表示改变当前的工作目录。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd <span class="tag">&lt;<span class="name">目标目录</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="切换目录：cd"><a href="#切换目录：cd" class="headerlink" title="切换目录：cd"></a>切换目录：<code>cd</code></h2><p>该命令和Windows中没有太大的区别，都表示改变当前的工作目录。<br></p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd <span class="tag">&lt;<span class="name">目标目录</span>&gt;</span></span><br></pre></td></tr></table></figure><p></p>
 <h2 id="显示当前目录：pwd"><a href="#显示当前目录：pwd" class="headerlink" title="显示当前目录：pwd"></a>显示当前目录：<code>pwd</code></h2><p>显示当前目录的路径，返回字符串。在Windows使用cd不带参数的方式代替。该命令同样也没有参数。</p>
-<h2 id="遍历目录：ls"><a href="#遍历目录：ls" class="headerlink" title="遍历目录：ls"></a>遍历目录：<code>ls</code></h2><p>显示当前目录中的内容，常用的命令有：<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">以列表显示当前目录所有的目录和文件</span><br><span class="line"><span class="keyword">ls</span> -l</span><br></pre></td></tr></table></figure></p>
-<p>在<code>Linux</code>、<code>Unix</code>、<code>MacOS</code>等系统中，隐藏文件均是点（.）开头的，下面命令以列表显示当前目录所有的目录和文件，包括隐藏的目录和文件。<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ls</span> -<span class="keyword">al</span></span><br></pre></td></tr></table></figure></p>
-<p>显示所有的目录，包括隐藏的目录，但是不包括文件<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ls -adl</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="复制：cp"><a href="#复制：cp" class="headerlink" title="复制：cp"></a>复制：<code>cp</code></h2><p><code>cp</code>是<code>copy</code>的简称，用于复制文件和目录。复制的时候，源路径和目录路径可以是一个文件，也可以是一个目录。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp <span class="tag">&lt;<span class="name">源路径</span>&gt;</span> <span class="tag">&lt;<span class="name">目标路径</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="移动：mv"><a href="#移动：mv" class="headerlink" title="移动：mv"></a>移动：<code>mv</code></h2><p><code>mv</code>是移动(<code>move</code>)的简称，用于移动文件和目录。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv  <span class="tag">&lt;<span class="name">源路径</span>&gt;</span> <span class="tag">&lt;<span class="name">目标路径</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="遍历目录：ls"><a href="#遍历目录：ls" class="headerlink" title="遍历目录：ls"></a>遍历目录：<code>ls</code></h2><p>显示当前目录中的内容，常用的命令有：<br></p><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">以列表显示当前目录所有的目录和文件</span><br><span class="line"><span class="keyword">ls</span> -l</span><br></pre></td></tr></table></figure><p></p>
+<p>在<code>Linux</code>、<code>Unix</code>、<code>MacOS</code>等系统中，隐藏文件均是点（.）开头的，下面命令以列表显示当前目录所有的目录和文件，包括隐藏的目录和文件。<br></p><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ls</span> -<span class="keyword">al</span></span><br></pre></td></tr></table></figure><p></p>
+<p>显示所有的目录，包括隐藏的目录，但是不包括文件<br></p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ls -adl</span></span><br></pre></td></tr></table></figure><p></p>
+<h2 id="复制：cp"><a href="#复制：cp" class="headerlink" title="复制：cp"></a>复制：<code>cp</code></h2><p><code>cp</code>是<code>copy</code>的简称，用于复制文件和目录。复制的时候，源路径和目录路径可以是一个文件，也可以是一个目录。<br></p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp <span class="tag">&lt;<span class="name">源路径</span>&gt;</span> <span class="tag">&lt;<span class="name">目标路径</span>&gt;</span></span><br></pre></td></tr></table></figure><p></p>
+<h2 id="移动：mv"><a href="#移动：mv" class="headerlink" title="移动：mv"></a>移动：<code>mv</code></h2><p><code>mv</code>是移动(<code>move</code>)的简称，用于移动文件和目录。<br></p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv  <span class="tag">&lt;<span class="name">源路径</span>&gt;</span> <span class="tag">&lt;<span class="name">目标路径</span>&gt;</span></span><br></pre></td></tr></table></figure><p></p>
 <h2 id="删除：rm"><a href="#删除：rm" class="headerlink" title="删除：rm"></a>删除：<code>rm</code></h2><p><code>rm</code>命令可以用于删除目录和文件，但是通过<code>rm</code>删除目录的话，必须加上<code>rm -rf &lt;目录名称&gt;</code>。<br>删除文件直接就是<code>rm &lt;文件名&gt;</code></p>
 <p>注意：<br>在<code>Linux</code>或者<code>Unix</code>系统中，通过<code>rm</code>或者文件管理器删除文件将会从文件系统的目录结构上解除链接(<code>unlink</code>).<br>然而如果文件是被打开的（有一个进程正在使用），那么进程将仍然可以读取该文件，磁盘空间也一直被占用。<br>可以通过<code>lsof</code>命令查看文件是否被打开。详见 列出打开的文件。</p>
 <h2 id="删除目录：rmdir"><a href="#删除目录：rmdir" class="headerlink" title="删除目录：rmdir"></a>删除目录：rmdir</h2><p>删除目录的时候，必须确保目录是空的，否则无法删除。命令格式：<code>rm &lt;目录&gt;</code>。</p>
@@ -548,8 +102,8 @@
 <li>cmd： 对搜索结果进行特定的处理。</li>
 </ul>
 <p>如果什么参数也不加，find默认搜索当前目录及其子目录，并且不过滤任何结果（也就是返回所有文件），将它们全都显示在屏幕上。</p>
-<h3 id="find命令常用选项及实例"><a href="#find命令常用选项及实例" class="headerlink" title="find命令常用选项及实例"></a><strong>find命令常用选项及实例</strong></h3><p><code>-name</code> 按照文件名查找文件。<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">find</span> /dir -name filename  在/dir目录及其子目录下面查找名字为filename的文件</span><br><span class="line"><span class="builtin-name">find</span> . -name <span class="string">"*.c"</span> 在当前目录及其子目录（用“.”表示）中查找任何扩展名为“c”的文件</span><br></pre></td></tr></table></figure></p>
-<p><code>-perm</code> 按照文件权限来查找文件。<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">find</span> . -perm 755 –<span class="builtin-name">print</span> 在当前目录下查找文件权限位为755的文件，即文件属主可以读、写、执行，其他用户可以读、执行的文件</span><br></pre></td></tr></table></figure></p>
+<h3 id="find命令常用选项及实例"><a href="#find命令常用选项及实例" class="headerlink" title="find命令常用选项及实例"></a><strong>find命令常用选项及实例</strong></h3><p><code>-name</code> 按照文件名查找文件。<br></p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">find</span> /dir -name filename  在/dir目录及其子目录下面查找名字为filename的文件</span><br><span class="line"><span class="builtin-name">find</span> . -name <span class="string">"*.c"</span> 在当前目录及其子目录（用“.”表示）中查找任何扩展名为“c”的文件</span><br></pre></td></tr></table></figure><p></p>
+<p><code>-perm</code> 按照文件权限来查找文件。<br></p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">find</span> . -perm 755 –<span class="builtin-name">print</span> 在当前目录下查找文件权限位为755的文件，即文件属主可以读、写、执行，其他用户可以读、执行的文件</span><br></pre></td></tr></table></figure><p></p>
 <p><code>-prune</code> 使用这一选项可以使<code>find</code>命令不在当前指定的目录中查找，如果同时使用<code>-depth</code>选项，那么<code>-prune</code>将被<code>find</code>命令忽略。</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">find</span> /apps -path <span class="string">"/apps/bin"</span> -prune -o –<span class="builtin-name">print</span> 在/apps目录下查找文件，但不希望在/apps/bin目录下查找</span><br><span class="line"><span class="builtin-name">find</span> /usr/sam -path <span class="string">"/usr/sam/dir1"</span> -prune -o –<span class="builtin-name">print</span> 在/usr/sam目录下查找不在dir1子目录之内的所有文件</span><br></pre></td></tr></table></figure>
 <p><code>-depth</code>：在查找文件时，首先查找当前目录中的文件，然后再在其子目录中查找。</p>
@@ -576,7 +130,7 @@
 <li>f - 普通文件。<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">find</span> /etc -type d –<span class="builtin-name">print</span> 在/etc目录下查找所有的目录</span><br><span class="line"><span class="builtin-name">find</span> . ! -type d –<span class="builtin-name">print</span> 在当前目录下查找除目录以外的所有类型的文件</span><br><span class="line"><span class="builtin-name">find</span> /etc -type l –<span class="builtin-name">print</span> 在/etc目录下查找所有的符号链接文件</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><code>-size n[c]</code> 查找文件长度为n块的文件，带有c时表示文件长度以字节计。<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">find</span> . -size +1000000c –<span class="builtin-name">print</span> 在当前目录下查找文件长度大于1 M字节的文件</span><br><span class="line"><span class="builtin-name">find</span> /home/apache -size 100c –<span class="builtin-name">print</span> 在/home/apache目录下查找文件长度恰好为100字节的文件</span><br><span class="line"><span class="builtin-name">find</span> . -size +10 –<span class="builtin-name">print</span> 在当前目录下查找长度超过10块的文件（一块等于512字节）</span><br></pre></td></tr></table></figure></p>
+<p><code>-size n[c]</code> 查找文件长度为n块的文件，带有c时表示文件长度以字节计。<br></p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">find</span> . -size +1000000c –<span class="builtin-name">print</span> 在当前目录下查找文件长度大于1 M字节的文件</span><br><span class="line"><span class="builtin-name">find</span> /home/apache -size 100c –<span class="builtin-name">print</span> 在/home/apache目录下查找文件长度恰好为100字节的文件</span><br><span class="line"><span class="builtin-name">find</span> . -size +10 –<span class="builtin-name">print</span> 在当前目录下查找长度超过10块的文件（一块等于512字节）</span><br></pre></td></tr></table></figure><p></p>
 <p><code>-mount</code> 在查找文件时不跨越文件系统mount点。<br>  <code>find . -name “*.XC” -mount –print</code> 从当前目录开始查找位于本文件系统中文件名以XC结尾的文件（不进入其他文件系统）</p>
 <p><code>-follow</code> 如果find命令遇到符号链接文件，就跟踪至链接所指向的文件</p>
 <p><code>-exec</code> find命令对匹配的文件执行该参数所给出的shell命令。相应命令的形式为<code>command {} \</code>，注意<code>{}</code>和<code>\</code>;之间的空格</p>
@@ -604,7 +158,7 @@
 <li>-V，—version 显示软件版本信息。</li>
 </ul>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ls</span> -<span class="keyword">l</span> | <span class="keyword">grep</span> <span class="string">'^a'</span> 通过管道过滤<span class="keyword">ls</span> -<span class="keyword">l</span>输出的内容，只显示以<span class="keyword">a</span>开头的行。</span><br><span class="line"><span class="keyword">grep</span> <span class="string">'test'</span> d* 显示所有以d开头的文件中包含test的行。</span><br><span class="line"><span class="keyword">grep</span> <span class="string">'test'</span> aa bb <span class="keyword">cc</span> 显示在aa，bb，<span class="keyword">cc</span>文件中匹配test的行。</span><br><span class="line"><span class="keyword">grep</span> <span class="string">'[a-z]'</span> aa 显示所有包含每个字符串至少有<span class="number">5</span>个连续小写字符的字符串的行。</span><br><span class="line"><span class="keyword">grep</span> <span class="string">'w(es)t.*'</span> aa 如果west被匹配，则es就被存储到内存中，并标记为<span class="number">1</span>，然后搜索任意个字符(.*)，这些字符后面紧跟着另外一个es()，找到就显示该行。如果用egrep或<span class="keyword">grep</span> -E，就不用<span class="string">""</span>号进行转义，直接写成<span class="string">'w(es)t.*'</span>就可以了。</span><br><span class="line"><span class="keyword">grep</span> -i pattern <span class="keyword">files</span> ：不区分大小写地搜索。默认情况区分大小写</span><br><span class="line"><span class="keyword">grep</span> -<span class="keyword">l</span> pattern <span class="keyword">files</span> ：只列出匹配的文件名，</span><br><span class="line"><span class="keyword">grep</span> -L pattern <span class="keyword">files</span> ：列出不匹配的文件名，</span><br><span class="line"><span class="keyword">grep</span> -<span class="keyword">w</span> pattern <span class="keyword">files</span> ：只匹配整个单词，而不是字符串的一部分(如匹配‘magic’，而不是‘magical’)，</span><br><span class="line"><span class="keyword">grep</span> -C <span class="keyword">number</span> pattern <span class="keyword">files</span> ：匹配的上下文分别显示[<span class="keyword">number</span>]行，</span><br><span class="line"><span class="keyword">grep</span> pattern1 | pattern2 <span class="keyword">files</span> ：显示匹配 pattern1 或 pattern2 的行，</span><br><span class="line"><span class="keyword">grep</span> pattern1 <span class="keyword">files</span> | <span class="keyword">grep</span> pattern2 ：显示既匹配 pattern1 又匹配 pattern2 的行。</span><br></pre></td></tr></table></figure>
-<p>pattern为所要匹配的字符串，可使用下列模式<br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">. 匹配任意一个字符</span><br><span class="line">* 匹配<span class="number">0</span> 个或多个*前的字符</span><br><span class="line">^ 匹配行开头</span><br><span class="line">$ 匹配行结尾</span><br><span class="line"><span class="string">[]</span> 匹配<span class="string">[ ]</span>中的任意一个字符，<span class="string">[]</span>中可用 - 表示范围，</span><br><span class="line">例如<span class="string">[a-z]</span>表示字母a 至z 中的任意一个</span><br><span class="line">\ 转意字符</span><br></pre></td></tr></table></figure></p>
+<p>pattern为所要匹配的字符串，可使用下列模式<br></p><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">. 匹配任意一个字符</span><br><span class="line">* 匹配<span class="number">0</span> 个或多个*前的字符</span><br><span class="line">^ 匹配行开头</span><br><span class="line">$ 匹配行结尾</span><br><span class="line"><span class="string">[]</span> 匹配<span class="string">[ ]</span>中的任意一个字符，<span class="string">[]</span>中可用 - 表示范围，</span><br><span class="line">例如<span class="string">[a-z]</span>表示字母a 至z 中的任意一个</span><br><span class="line">\ 转意字符</span><br></pre></td></tr></table></figure><p></p>
 <h2 id="xargs命令"><a href="#xargs命令" class="headerlink" title="xargs命令"></a><strong>xargs命令</strong></h2><p>【xargs定位参数位置 | xargs控制参数位置 | 如何定位控制xargs参数位置】<br><strong>背景</strong>：<br>管道 + xargs用于把上游输出转换为下游参数输入。<br>例如 <code>ls *.bak | xargs rm -f</code></p>
 <p><strong>问题</strong>：<br>xargs默认把输入作为参数放到命令的最后，但是很多命令需要自己定位参数的位置，比如拷贝命令<code>cp {上游结果} destFolder</code></p>
 <p><strong>解决方法</strong>：<br>xargs 使用大写字母i 定义参数指示符 <strong>-I &lt;指示符&gt;</strong>，然后用这个参数指示符定位参数插入的位置, 例如：</p>
@@ -704,17 +258,16 @@
 </ul>
 <h2 id="apt-get-update无法下载"><a href="#apt-get-update无法下载" class="headerlink" title="apt-get update无法下载"></a>apt-get update无法下载</h2><p><img src="http://img.yangbingdong.com/img/node-of-ubuntu-command/apt-get-update-fail.png" alt=""></p>
 <p>出现类似情况，可以找到<code>/etc/apt/sources.list.d</code>目录，删除对应的<code>.list</code>文件即可</p>
-
       
     </div>
 
-<div style="text-align:center;color: #ccc;font-size:14px;">---------------- The End ----------------</div>
+<div style="text-align:center;color:#ccc;font-size:14px">---------------- The End ----------------</div>
 
     <div>
       
         
-<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/wechat/gongzhonghao.jpg" alt="ookamiAntD wechat" style="width: 200px; max-width: 100%;">
+<div id="wechat_subscriber" style="display:block;padding:10px 0;margin:20px auto;width:100%;text-align:center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat/gongzhonghao.jpg" alt="ookamiAntD wechat" style="width:200px;max-width:100%">
     <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
 </div>
 
@@ -727,20 +280,20 @@
         
 
 
-  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div style="padding:10px 0;margin:20px auto;width:90%;text-align:center">
     <div>谢谢大爷～</div>
-    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <button id="rewardButton" disable="enable" onclick='var qr=document.getElementById("QR");"none"===qr.style.display?qr.style.display="block":qr.style.display="none"'>
       <span>赏</span>
     </button>
-    <div id="QR" style="display: none;">
+    <div id="QR" style="display:none">
       
-        <div id="wechat" style="display: inline-block">
+        <div id="wechat" style="display:inline-block">
           <img id="wechat_qr" src="/images/donate/wechat.png" alt="ookamiAntD WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
-        <div id="alipay" style="display: inline-block">
+        <div id="alipay" style="display:inline-block">
           <img id="alipay_qr" src="/images/donate/alipay.jpg" alt="ookamiAntD Alipay">
           <p>支付宝打赏</p>
         </div>
@@ -804,7 +357,7 @@
 
     <div class="post-spread">
       
-        <!--MOB SHARE BEGIN-->
+        
 <div class="-hoofoo-share-title">分享到：</div>
 <div class="-hoofoo-share-buttons">
     <div class="-mob-share-weibo -hoofoo-share-weibo -hoofoo-share-ui-button"><i class="fa fa-weibo" aria-hidden="true"></i></div>
@@ -813,7 +366,7 @@
     <div class="-mob-share-twitter -hoofoo-share-twitter -hoofoo-share-ui-button"><i class="fa fa-twitter" aria-hidden="true"></i></div>
     <div class="-hoofoo-share-more -hoofoo-share-ui-button -mob-share-open"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></div>
 </div>
-<div class="-mob-share-ui" style="display: none">
+<div class="-mob-share-ui" style="display:none">
     <ul class="-mob-share-list">
         <li class="-mob-share-weibo"><p>新浪微博</p></li>
         <li class="-mob-share-weixin"><p>微信</p></li>
@@ -838,7 +391,7 @@
 </div>
 <div class="-mob-share-ui-bg"></div>
 <script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=21aa3b13ad233"></script>
-<!--MOB SHARE END-->
+
 
       
     </div>
@@ -852,33 +405,14 @@
           
   <div class="comments" id="comments">
     
-<div style="text-align:center;">
-  <!-- <button class="btn" id="load-disqus" onclick="disqus.load();">加载 Disqus 评论</button> -->
+<div style="text-align:center">
+  
 
 </div>
       <div id="disqus_proxy_thread"></div>
       <div id="disqus_thread"></div>
       
-          <script type="text/javascript">
-              window.disqusProxy = {
-                username: 'ookamiantd',
-                server: 'disqus-proxy.yangbingdong.com',
-                port: '5509',
-                defaultAvatar: '/images/avatar/avatar-default.jpg',
-                adminAvatar: '/images/avatar/avatar-admin.jpg',
-                identifier: '2017/note-of-linux-command/'
-              };
-              window.disqus_config = function () {
-                this.page.url = 'http://yangbingdong.com/2017/note-of-linux-command/';
-                this.page.identifier = '2017/note-of-linux-command/';
-              };
-              window.onload=function(){
-                var s = document.createElement('script');
-                s.src = "/static/js/main.0d0338ae.js";
-                s.async = true;
-                document.body.appendChild(s);
-              }
-          </script>
+          <script type="text/javascript">window.disqusProxy={username:"ookamiantd",server:"disqus-proxy.yangbingdong.com",port:"5509",defaultAvatar:"/images/avatar/avatar-default.jpg",adminAvatar:"/images/avatar/avatar-admin.jpg",identifier:"2017/note-of-linux-command/"},window.disqus_config=function(){this.page.url="http://yangbingdong.com/2017/note-of-linux-command/",this.page.identifier="2017/note-of-linux-command/"},window.onload=function(){var a=document.createElement("script");a.src="/static/js/main.0d0338ae.js",a.async=!0,document.body.appendChild(a)}</script>
           <link rel="stylesheet" href="/static/css/main.0603c539.css">
       
 
@@ -915,7 +449,7 @@
       
 
       <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar/avatar-admin.jpg" alt="ookamiAntD">
           <p class="site-author-name" itemprop="name">ookamiAntD</p>
           <p class="site-description motion-element" itemprop="description">码渣 | rocker | 二次元 | 美剧 | 宅</p>
@@ -1006,7 +540,7 @@
         
           <div class="links-of-blogroll motion-element links-of-blogroll-block">
             <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
+              <i class="fa fa-fw fa-globe"></i>
               大神们的博客
             </div>
             <ul class="links-of-blogroll-list">
@@ -1032,37 +566,13 @@
         
 
         <div id="days"></div>
-    <script>
-    function show_date_time(){
-        window.setTimeout("show_date_time()", 1000);
-        BirthDay=new Date("01/10/2017 12:34:56");
-        today=new Date();
-        timeold=(today.getTime()-BirthDay.getTime());
-        sectimeold=timeold/1000
-        secondsold=Math.floor(sectimeold);
-        msPerDay=24*60*60*1000
-        e_daysold=timeold/msPerDay
-        daysold=Math.floor(e_daysold);
-        e_hrsold=(e_daysold-daysold)*24;
-        hrsold=setzero(Math.floor(e_hrsold));
-        e_minsold=(e_hrsold-hrsold)*60;
-        minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
-        seconds=setzero(Math.floor((e_minsold-minsold)*60));
-        document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
-    }
-function setzero(i){
-    if (i<10)
-    {i="0" + i};
-    return i;
-}
-show_date_time();
-</script>
+    <script>function show_date_time(){window.setTimeout("show_date_time()",1e3),BirthDay=new Date("01/10/2017 12:34:56"),today=new Date,timeold=today.getTime()-BirthDay.getTime(),sectimeold=timeold/1e3,secondsold=Math.floor(sectimeold),msPerDay=864e5,e_daysold=timeold/msPerDay,daysold=Math.floor(e_daysold),e_hrsold=24*(e_daysold-daysold),hrsold=setzero(Math.floor(e_hrsold)),e_minsold=60*(e_hrsold-hrsold),minsold=setzero(Math.floor(60*(e_hrsold-hrsold))),seconds=setzero(Math.floor(60*(e_minsold-minsold))),document.getElementById("days").innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒"}function setzero(e){return e<10&&(e="0"+e),e}show_date_time()</script>
 
 
       </section>
 
       
-      <!--noindex-->
+      
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
@@ -1076,7 +586,7 @@ show_date_time();
 
           </div>
         </section>
-      <!--/noindex-->
+      
       
 
     </div>
@@ -1088,7 +598,7 @@ show_date_time();
     </main>
 
     <footer id="footer" class="footer">
-	<!-- <img style="position: absolute;top: 0;left: 15%;border: 0;width: 200px;height: 200px;" src="http://ojoba1c98.bkt.clouddn.com/img/coding-flag.png" alt="Coding Flag"> -->
+	
       <div class="footer-inner">
         <div class="copyright">
   
@@ -1097,430 +607,9 @@ show_date_time();
   <span class="with-love">
     <i class="fa fa-flash"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></span>
-</div>
-
-
-<!-- <div class="theme-info">
-    Personal Blog
-</div> --!>
-
-<div class="theme-info">
-  粤ICP备18135202号-1  |  <span class="post-count">共206.0k字</span>
+  <span class="author" itemprop="copyrightHolder">Hosted by <a href="https://pages.coding.me" style="font-weight:700" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></span>
 </div>
 
 
 
-        
-
-<div class="busuanzi-count">
-
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv"><i class="fa fa-user">本站访客数</i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
-  
-
-  
-    <span class="site-pv"><i class="fa fa-eye">本站总访问量</i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
-  
-  
-</div>
-
-
-
-        
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-
-
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'ookamiantd';
-      var disqus_identifier = '2017/note-of-linux-command/';
-
-      var disqus_title = "Ubuntu 常用命令";
-
-
-      function run_disqus_script(disqus_script) {
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      var disqus = {
-        load : function disqus(){
-          if(typeof DISQUS !== 'object') {
-            (function () {
-            var s = document.createElement('script'); s.async = true;
-            s.type = 'text/javascript';
-            s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-            }());
-            $('#load-disqus').html("评论加载中，请确保你有梯子，若评论长时间未加载则你可能翻墙失败...").fadeOut(9000); ///加载后移除按钮
-          }
-  }
-}
-
-    </script>
-  
-
-
-
-
-
-
-
-
-
-  
-  
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-      search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-      $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function( xmlResponse ) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = $( "entry", xmlResponse ).map(function() {
-            return {
-              title: $( "title", this ).text(),
-              content: $("content",this).text(),
-              url: $( "url" , this).text()
-            };
-          }).get();
-          var $input = document.getElementById(search_id);
-          var $resultContent = document.getElementById(content_id);
-          $input.addEventListener('input', function(){
-            var matchcounts = 0;
-            var str='<ul class=\"search-result-list\">';
-            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-            $resultContent.innerHTML = "";
-            if (this.value.trim().length > 1) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var content_index = [];
-                var data_title = data.title.trim().toLowerCase();
-                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                var data_url = decodeURIComponent(data.url);
-                var index_title = -1;
-                var index_content = -1;
-                var first_occur = -1;
-                // only match artiles with not empty titles and contents
-                if(data_title != '') {
-                  keywords.forEach(function(keyword, i) {
-                    index_title = data_title.indexOf(keyword);
-                    index_content = data_content.indexOf(keyword);
-                    if( index_title >= 0 || index_content >= 0 ){
-                      isMatch = true;
-                      if (i == 0) {
-                        first_occur = index_content;
-                      }
-                    }
-
-                  });
-                }
-                // show search results
-                if (isMatch) {
-                  matchcounts += 1;
-                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                  var content = data.content.trim().replace(/<[^>]+>/g,"");
-                  if (first_occur >= 0) {
-                    // cut out 100 characters
-                    var start = first_occur - 20;
-                    var end = first_occur + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if(start == 0){
-                      end = 50;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    var match_content = content.substring(start, end);
-                    // highlight all keywords
-                    keywords.forEach(function(keyword){
-                      var regS = new RegExp(keyword, "gi");
-                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                    });
-
-                    str += "<p class=\"search-result\">" + match_content +"...</p>"
-                  }
-                  str += "</li>";
-                }
-              })};
-            str += "</ul>";
-            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-            $resultContent.innerHTML = str;
-          });
-          proceedsearch();
-        }
-      });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
-
-
-  
-
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("usE0s6JGUeOiMcsVoRuHuv2B-gzGzoHsz", "ewm6NEF07r83HbnOr63ptuKH");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
-
-  
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
-
-  
-
-
-  <script type="text/javascript" color="255,0,204" opacity='0.5' zIndex="-2" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
-
-
-
-<script type="text/javascript">
-    //微信二维码点击背景关闭
-    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
-         $(".-mob-share-weixin-qrcode-close").trigger("click");
-    }); 
-</script>
-
-
-
-<!--卖萌-->
-<script type="text/javascript" src="/js/src/dytitle.js"></script>
-</div></footer></div><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":88,"height":88,"position":"left"},"mobile":{"show":false},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script></body>
-</html>
+<script type="text/javascript" src="/js/src/dytitle.js"></script></div></footer></div><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":88,"height":88,"position":"left"},"mobile":{"show":false},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script></body></html>
