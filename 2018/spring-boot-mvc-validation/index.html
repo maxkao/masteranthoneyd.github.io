@@ -85,14 +85,14 @@
 <meta property="og:site_name" content="ookamiAntD&#39;s Blog">
 <meta property="og:description" content="Preface 此篇大部分是对Spring MVC的一个回顾以及JSR303中bean validation规范的学习">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://img.yangbingdong.com/img/spring-boot-learning/spring-boot.png">
-<meta property="og:image" content="http://img.yangbingdong.com/img/spring-boot-learning/spring-mvc-process.jpg">
-<meta property="og:image" content="http://img.yangbingdong.com/img/spring-boot-learning/mvc-process.png">
-<meta property="og:updated_time" content="2018-11-05T10:17:52.432Z">
+<meta property="og:image" content="https://cdn.yangbingdong.com/img/spring-boot-learning/spring-boot.png">
+<meta property="og:image" content="https://cdn.yangbingdong.com/img/spring-boot-learning/spring-mvc-process.jpg">
+<meta property="og:image" content="https://cdn.yangbingdong.com/img/spring-boot-learning/mvc-process.png">
+<meta property="og:updated_time" content="2018-11-06T05:58:45.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Boot学习之MVC与Validation">
 <meta name="twitter:description" content="Preface 此篇大部分是对Spring MVC的一个回顾以及JSR303中bean validation规范的学习">
-<meta name="twitter:image" content="http://img.yangbingdong.com/img/spring-boot-learning/spring-boot.png">
+<meta name="twitter:image" content="https://cdn.yangbingdong.com/img/spring-boot-learning/spring-boot.png">
 
 
 
@@ -447,12 +447,12 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="http://img.yangbingdong.com/img/spring-boot-learning/spring-boot.png" alt=""></p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="https://cdn.yangbingdong.com/img/spring-boot-learning/spring-boot.png" alt=""></p>
 <h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><blockquote>
 <p>此篇大部分是对Spring MVC的一个回顾以及JSR303中bean validation规范的学习</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="Spring-MVC-相关"><a href="#Spring-MVC-相关" class="headerlink" title="Spring MVC 相关"></a>Spring MVC 相关</h1><h2 id="Spring-MVC-流程"><a href="#Spring-MVC-流程" class="headerlink" title="Spring MVC 流程"></a>Spring MVC 流程</h2><p><img src="http://img.yangbingdong.com/img/spring-boot-learning/spring-mvc-process.jpg" alt=""></p>
+<h1 id="Spring-MVC-相关"><a href="#Spring-MVC-相关" class="headerlink" title="Spring MVC 相关"></a>Spring MVC 相关</h1><h2 id="Spring-MVC-流程"><a href="#Spring-MVC-流程" class="headerlink" title="Spring MVC 流程"></a>Spring MVC 流程</h2><p><img src="https://cdn.yangbingdong.com/img/spring-boot-learning/spring-mvc-process.jpg" alt=""></p>
 <p>1、  用户发送请求至前端控制器<code>DispatcherServlet</code>。</p>
 <p>2、  <code>DispatcherServlet</code>收到请求调用<code>HandlerMapping</code>处理器映射器。</p>
 <p>3、  处理器映射器找到具体的处理器(可以根据xml配置、注解进行查找)，生成处理器对象及处理器拦截器(如果有则生成)一并返回给<code>DispatcherServlet</code>。</p>
@@ -535,7 +535,7 @@
 <li><code>Interceptor</code>可以访问<code>Action</code>的上下文，值栈里的对象，而<code>Filter</code>不能。</li>
 <li>在<code>action</code>的生命周期里，<code>Interceptor</code>可以被多次调用，而Filter只能在容器初始化时调用一次。</li>
 </ul>
-<p><img src="http://img.yangbingdong.com/img/spring-boot-learning/mvc-process.png" alt=""></p>
+<p><img src="https://cdn.yangbingdong.com/img/spring-boot-learning/mvc-process.png" alt=""></p>
 <h2 id="RequestBodyAdvice和ResponseBodyAdvice"><a href="#RequestBodyAdvice和ResponseBodyAdvice" class="headerlink" title="RequestBodyAdvice和ResponseBodyAdvice"></a>RequestBodyAdvice和ResponseBodyAdvice</h2><h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
 <li>对Request请求参数解密，对Response返回参数进行加密</li>
 <li>自定义返回信息（业务无关性的）</li>

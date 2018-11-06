@@ -85,17 +85,17 @@
 <meta property="og:site_name" content="ookamiAntD&#39;s Blog">
 <meta property="og:description" content="Preface =.= 这里只记录一些个人比较常用到的Ubuntu命令">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/ubuntu-logo.png">
-<meta property="og:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/command-useradd.png">
-<meta property="og:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/command-usermod.png">
-<meta property="og:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/command-groupadd.png">
-<meta property="og:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/command-groupmod.png">
-<meta property="og:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/apt-get-update-fail.png">
-<meta property="og:updated_time" content="2018-11-05T10:17:52.424Z">
+<meta property="og:image" content="https://cdn.yangbingdong.com/img/node-of-ubuntu-command/ubuntu-logo.png">
+<meta property="og:image" content="https://cdn.yangbingdong.com/img/node-of-ubuntu-command/command-useradd.png">
+<meta property="og:image" content="https://cdn.yangbingdong.com/img/node-of-ubuntu-command/command-usermod.png">
+<meta property="og:image" content="https://cdn.yangbingdong.com/img/node-of-ubuntu-command/command-groupadd.png">
+<meta property="og:image" content="https://cdn.yangbingdong.com/img/node-of-ubuntu-command/command-groupmod.png">
+<meta property="og:image" content="https://cdn.yangbingdong.com/img/node-of-ubuntu-command/apt-get-update-fail.png">
+<meta property="og:updated_time" content="2018-11-06T05:58:45.831Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu 常用命令">
 <meta name="twitter:description" content="Preface =.= 这里只记录一些个人比较常用到的Ubuntu命令">
-<meta name="twitter:image" content="http://img.yangbingdong.com/img/node-of-ubuntu-command/ubuntu-logo.png">
+<meta name="twitter:image" content="https://cdn.yangbingdong.com/img/node-of-ubuntu-command/ubuntu-logo.png">
 
 
 
@@ -439,7 +439,7 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="http://img.yangbingdong.com/img/node-of-ubuntu-command/ubuntu-logo.png" alt=""></p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="https://cdn.yangbingdong.com/img/node-of-ubuntu-command/ubuntu-logo.png" alt=""></p>
 <h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><blockquote>
 <p>=.= 这里只记录一些个人比较常用到的<a href="https://www.ubuntu.com" rel="external nofollow noopener noreferrer" target="_blank"><em>Ubuntu</em></a>命令</p>
 </blockquote>
@@ -483,13 +483,13 @@
 <h2 id="允许特定-IP-端口的组合"><a href="#允许特定-IP-端口的组合" class="headerlink" title="允许特定 IP/ 端口的组合"></a>允许特定 IP/ 端口的组合</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow <span class="keyword">from</span> 123.45.67.89 <span class="keyword">to</span> any<span class="built_in"> port </span>22 proto tcp</span><br></pre></td></tr></table></figure>
 <h2 id="防火墙开启-禁用"><a href="#防火墙开启-禁用" class="headerlink" title="防火墙开启/禁用"></a>防火墙开启/禁用</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 开启</span></span><br><span class="line">sudo ufw enable</span><br><span class="line"><span class="meta">#</span><span class="bash"> 禁用</span></span><br><span class="line">sudo ufw disable</span><br></pre></td></tr></table></figure>
 <h2 id="防火墙重启："><a href="#防火墙重启：" class="headerlink" title="防火墙重启："></a>防火墙重启：</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo ufw reload</span></span><br></pre></td></tr></table></figure>
-<h1 id="用户与用户组相关"><a href="#用户与用户组相关" class="headerlink" title="用户与用户组相关"></a>用户与用户组相关</h1><h2 id="添加用户useradd"><a href="#添加用户useradd" class="headerlink" title="添加用户useradd"></a>添加用户useradd</h2><p><img src="http://img.yangbingdong.com/img/node-of-ubuntu-command/command-useradd.png" alt=""></p>
+<h1 id="用户与用户组相关"><a href="#用户与用户组相关" class="headerlink" title="用户与用户组相关"></a>用户与用户组相关</h1><h2 id="添加用户useradd"><a href="#添加用户useradd" class="headerlink" title="添加用户useradd"></a>添加用户useradd</h2><p><img src="https://cdn.yangbingdong.com/img/node-of-ubuntu-command/command-useradd.png" alt=""></p>
 <p>ex：<br>创建<code>ybd</code>用户并且加入<code>ybd</code>用户组并且创建用户目录：</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useradd -g ybd -m ybd</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">user <span class="builtin-name">add</span> -m -U ybd</span><br></pre></td></tr></table></figure>
 <h2 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">passwd ybd</span></span><br></pre></td></tr></table></figure>
-<h2 id="修改用户usermod"><a href="#修改用户usermod" class="headerlink" title="修改用户usermod"></a>修改用户usermod</h2><p><img src="http://img.yangbingdong.com/img/node-of-ubuntu-command/command-usermod.png" alt=""></p>
-<h2 id="添加用户组groupadd"><a href="#添加用户组groupadd" class="headerlink" title="添加用户组groupadd"></a>添加用户组groupadd</h2><p><img src="http://img.yangbingdong.com/img/node-of-ubuntu-command/command-groupadd.png" alt=""></p>
-<h2 id="修改用户组"><a href="#修改用户组" class="headerlink" title="修改用户组"></a>修改用户组</h2><p><img src="http://img.yangbingdong.com/img/node-of-ubuntu-command/command-groupmod.png" alt=""></p>
+<h2 id="修改用户usermod"><a href="#修改用户usermod" class="headerlink" title="修改用户usermod"></a>修改用户usermod</h2><p><img src="https://cdn.yangbingdong.com/img/node-of-ubuntu-command/command-usermod.png" alt=""></p>
+<h2 id="添加用户组groupadd"><a href="#添加用户组groupadd" class="headerlink" title="添加用户组groupadd"></a>添加用户组groupadd</h2><p><img src="https://cdn.yangbingdong.com/img/node-of-ubuntu-command/command-groupadd.png" alt=""></p>
+<h2 id="修改用户组"><a href="#修改用户组" class="headerlink" title="修改用户组"></a>修改用户组</h2><p><img src="https://cdn.yangbingdong.com/img/node-of-ubuntu-command/command-groupmod.png" alt=""></p>
 <p>ex:将test组的名子改成test2<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupmod -n test2 <span class="built_in">test</span></span><br></pre></td></tr></table></figure></p>
 <p>删除组test2<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">groupdel</span> test2</span><br></pre></td></tr></table></figure></p>
 <h2 id="查看组"><a href="#查看组" class="headerlink" title="查看组"></a>查看组</h2><p>查看当前登录用户所在的组：<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">groups</span></span><br></pre></td></tr></table></figure></p>
@@ -702,7 +702,7 @@
 <li><code>[Service]</code> 区块：启动行为,如何启动，启动类型。</li>
 <li><code>[Install]</code> 区块，定义如何安装这个配置文件，即怎样做到开机启动。</li>
 </ul>
-<h2 id="apt-get-update无法下载"><a href="#apt-get-update无法下载" class="headerlink" title="apt-get update无法下载"></a>apt-get update无法下载</h2><p><img src="http://img.yangbingdong.com/img/node-of-ubuntu-command/apt-get-update-fail.png" alt=""></p>
+<h2 id="apt-get-update无法下载"><a href="#apt-get-update无法下载" class="headerlink" title="apt-get update无法下载"></a>apt-get update无法下载</h2><p><img src="https://cdn.yangbingdong.com/img/node-of-ubuntu-command/apt-get-update-fail.png" alt=""></p>
 <p>出现类似情况，可以找到<code>/etc/apt/sources.list.d</code>目录，删除对应的<code>.list</code>文件即可</p>
 
       
