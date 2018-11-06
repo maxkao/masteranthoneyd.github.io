@@ -127,6 +127,28 @@
 
     
   <url>
+    <loc>http://yangbingdong.com/2017/ubuntu-myeclipse-crack/</loc>
+    <lastmod>2018-11-05T10:17:52.436Z</lastmod>
+    <data>
+        <display>
+        <title>Ubuntu16.04下MyEclipse安装与破解</title>
+        <pubTime>2017-01-11T03:52:00.000Z</pubTime>
+        
+        <tag>Ubuntu</tag>
+         
+        <tag>IDE</tag>
+         
+         
+           
+             
+              <breadCrumb title="IDE" url="http://yangbingdong.com/categories/IDE/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yangbingdong.com/2017/ubuntu-dev-environment-to-build/</loc>
     <lastmod>2018-11-05T10:17:52.436Z</lastmod>
     <data>
@@ -149,28 +171,6 @@
           
              
               <breadCrumb title="Ubuntu" url="http://yangbingdong.com/categories/OperatingSystem/Ubuntu/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yangbingdong.com/2017/ubuntu-myeclipse-crack/</loc>
-    <lastmod>2018-11-05T10:17:52.436Z</lastmod>
-    <data>
-        <display>
-        <title>Ubuntu16.04下MyEclipse安装与破解</title>
-        <pubTime>2017-01-11T03:52:00.000Z</pubTime>
-        
-        <tag>Ubuntu</tag>
-         
-        <tag>IDE</tag>
-         
-         
-           
-             
-              <breadCrumb title="IDE" url="http://yangbingdong.com/categories/IDE/"/>
           
         </display>
     </data>
@@ -208,24 +208,18 @@
 
     
   <url>
-    <loc>http://yangbingdong.com/2018/spring-boot-learning-testing/</loc>
+    <loc>http://yangbingdong.com/2018/spring-boot-mvc-validation/</loc>
     <lastmod>2018-11-05T10:17:52.432Z</lastmod>
     <data>
         <display>
-        <title>Spring Boot学习之测试篇</title>
-        <pubTime>2018-08-28T02:16:40.000Z</pubTime>
+        <title>Spring Boot学习之MVC与Validation</title>
+        <pubTime>2018-02-26T08:30:58.000Z</pubTime>
         
         <tag>Java</tag>
          
         <tag>Spring Boot</tag>
          
-        <tag>AssertJ</tag>
-         
-        <tag>JMH</tag>
-         
-        <tag>Gatling</tag>
-         
-        <tag>ContPerf</tag>
+        <tag>Spring</tag>
          
          
            
@@ -272,18 +266,24 @@
 
     
   <url>
-    <loc>http://yangbingdong.com/2018/spring-boot-mvc-validation/</loc>
+    <loc>http://yangbingdong.com/2018/spring-boot-learning-testing/</loc>
     <lastmod>2018-11-05T10:17:52.432Z</lastmod>
     <data>
         <display>
-        <title>Spring Boot学习之MVC与Validation</title>
-        <pubTime>2018-02-26T08:30:58.000Z</pubTime>
+        <title>Spring Boot学习之测试篇</title>
+        <pubTime>2018-08-28T02:16:40.000Z</pubTime>
         
         <tag>Java</tag>
          
         <tag>Spring Boot</tag>
          
-        <tag>Spring</tag>
+        <tag>AssertJ</tag>
+         
+        <tag>JMH</tag>
+         
+        <tag>Gatling</tag>
+         
+        <tag>ContPerf</tag>
          
          
            
@@ -358,28 +358,6 @@
 
     
   <url>
-    <loc>http://yangbingdong.com/2017/note-of-learning-git/</loc>
-    <lastmod>2018-11-05T10:17:52.424Z</lastmod>
-    <data>
-        <display>
-        <title>Git学习笔记</title>
-        <pubTime>2017-01-18T04:42:52.000Z</pubTime>
-        
-        <tag>Github</tag>
-         
-        <tag>Git</tag>
-         
-         
-           
-             
-              <breadCrumb title="Git/Github" url="http://yangbingdong.com/categories/Git-Github/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yangbingdong.com/2017/note-of-linux-command/</loc>
     <lastmod>2018-11-05T10:17:52.424Z</lastmod>
     <data>
@@ -396,28 +374,6 @@
           
              
               <breadCrumb title="Ubuntu" url="http://yangbingdong.com/categories/OperatingSystem/Ubuntu/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yangbingdong.com/2017/nginx-noob-guide/</loc>
-    <lastmod>2018-11-05T10:17:52.424Z</lastmod>
-    <data>
-        <display>
-        <title>NGINX初学指南(安装与简单配置)</title>
-        <pubTime>2017-04-24T08:56:15.000Z</pubTime>
-        
-        <tag>VPS</tag>
-         
-        <tag>Nginx</tag>
-         
-         
-           
-             
-              <breadCrumb title="Nginx" url="http://yangbingdong.com/categories/Nginx/"/>
           
         </display>
     </data>
@@ -447,24 +403,63 @@
 
     
   <url>
-    <loc>http://yangbingdong.com/2017/jvm-knowledge-collect-01/</loc>
-    <lastmod>2018-11-05T10:17:52.420Z</lastmod>
+    <loc>http://yangbingdong.com/2017/nginx-noob-guide/</loc>
+    <lastmod>2018-11-05T10:17:52.424Z</lastmod>
     <data>
         <display>
-        <title>JVM知识杂汇</title>
-        <pubTime>2017-03-09T05:04:51.000Z</pubTime>
+        <title>NGINX初学指南(安装与简单配置)</title>
+        <pubTime>2017-04-24T08:56:15.000Z</pubTime>
         
-        <tag>Java</tag>
+        <tag>VPS</tag>
          
-        <tag>JVM</tag>
+        <tag>Nginx</tag>
          
          
            
              
-              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
+              <breadCrumb title="Nginx" url="http://yangbingdong.com/categories/Nginx/"/>
           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2017/note-of-learning-git/</loc>
+    <lastmod>2018-11-05T10:17:52.424Z</lastmod>
+    <data>
+        <display>
+        <title>Git学习笔记</title>
+        <pubTime>2017-01-18T04:42:52.000Z</pubTime>
+        
+        <tag>Github</tag>
+         
+        <tag>Git</tag>
+         
+         
+           
              
-              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
+              <breadCrumb title="Git/Github" url="http://yangbingdong.com/categories/Git-Github/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2018/mysql-related-learning/</loc>
+    <lastmod>2018-11-05T10:17:52.420Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL杂记</title>
+        <pubTime>2018-02-16T07:16:18.000Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yangbingdong.com/categories/MySQL/"/>
           
         </display>
     </data>
@@ -497,19 +492,24 @@
 
     
   <url>
-    <loc>http://yangbingdong.com/2018/mysql-related-learning/</loc>
+    <loc>http://yangbingdong.com/2017/jvm-knowledge-collect-01/</loc>
     <lastmod>2018-11-05T10:17:52.420Z</lastmod>
     <data>
         <display>
-        <title>MySQL杂记</title>
-        <pubTime>2018-02-16T07:16:18.000Z</pubTime>
+        <title>JVM知识杂汇</title>
+        <pubTime>2017-03-09T05:04:51.000Z</pubTime>
         
-        <tag>MySQL</tag>
+        <tag>Java</tag>
+         
+        <tag>JVM</tag>
          
          
            
              
-              <breadCrumb title="MySQL" url="http://yangbingdong.com/categories/MySQL/"/>
+              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
+          
+             
+              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
           
         </display>
     </data>
@@ -605,14 +605,16 @@
 
     
   <url>
-    <loc>http://yangbingdong.com/2017/java-8-tutorial/</loc>
+    <loc>http://yangbingdong.com/2017/java-call-by-value/</loc>
     <lastmod>2018-11-05T10:17:52.416Z</lastmod>
     <data>
         <display>
-        <title>Java8 Noob Tutorial</title>
-        <pubTime>2017-05-03T10:23:06.000Z</pubTime>
+        <title>Java基本数据类型传递与引用传递的那点事</title>
+        <pubTime>2017-04-18T07:36:30.000Z</pubTime>
         
         <tag>Java</tag>
+         
+        <tag>Java basics</tag>
          
          
            
@@ -628,16 +630,14 @@
 
     
   <url>
-    <loc>http://yangbingdong.com/2017/java-call-by-value/</loc>
+    <loc>http://yangbingdong.com/2017/java-8-tutorial/</loc>
     <lastmod>2018-11-05T10:17:52.416Z</lastmod>
     <data>
         <display>
-        <title>Java基本数据类型传递与引用传递的那点事</title>
-        <pubTime>2017-04-18T07:36:30.000Z</pubTime>
+        <title>Java8 Noob Tutorial</title>
+        <pubTime>2017-05-03T10:23:06.000Z</pubTime>
         
         <tag>Java</tag>
-         
-        <tag>Java basics</tag>
          
          
            
@@ -729,34 +729,6 @@
 
     
   <url>
-    <loc>http://yangbingdong.com/2017/design-pattern-uml-and-six-principle/</loc>
-    <lastmod>2018-11-05T10:17:52.404Z</lastmod>
-    <data>
-        <display>
-        <title>设计模式原则与UML类图</title>
-        <pubTime>2017-10-18T01:22:07.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>Design Pattern</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
-          
-             
-              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
-          
-             
-              <breadCrumb title="Design Pattern" url="http://yangbingdong.com/categories/Programming/Java/Design-Pattern/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yangbingdong.com/2017/build-blog-hexo-base/</loc>
     <lastmod>2018-11-05T10:17:52.404Z</lastmod>
     <data>
@@ -791,6 +763,34 @@
         <display>
         <title>设计模式之创建型(Creational)</title>
         <pubTime>2018-07-12T06:34:52.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>Design Pattern</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
+          
+             
+              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
+          
+             
+              <breadCrumb title="Design Pattern" url="http://yangbingdong.com/categories/Programming/Java/Design-Pattern/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2017/design-pattern-uml-and-six-principle/</loc>
+    <lastmod>2018-11-05T10:17:52.404Z</lastmod>
+    <data>
+        <display>
+        <title>设计模式原则与UML类图</title>
+        <pubTime>2017-10-18T01:22:07.000Z</pubTime>
         
         <tag>Java</tag>
          

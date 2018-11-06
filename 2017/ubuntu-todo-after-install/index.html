@@ -1,4 +1,480 @@
-<!doctype html><html class="theme-next muse use-motion" lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta http-equiv="content-language" content="zh-cn"><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet"><style>.pace .pace-progress{background:#ff009e;height:2px}.pace .pace-progress-inner{box-shadow:0 0 10px #e6006b,0 0 5px #ff009e}.pace .pace-activity{border-top-color:#ff009e;border-left-color:#ff009e}</style><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css"><meta name="keywords" content="Ubuntu,"><link rel="alternate" href="/atom.xml" title="ookamiAntD's Blog" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0"><meta name="description" content="前言Ubuntu 18.04 LTS 版本回归GNOME环境，果断升级…"><meta name="keywords" content="Ubuntu"><meta property="og:type" content="article"><meta property="og:title" content="Ubuntu主题美化、个性化设置与常用软件"><meta property="og:url" content="http://yangbingdong.com/2017/ubuntu-todo-after-install/index.html"><meta property="og:site_name" content="ookamiAntD&#39;s Blog"><meta property="og:description" content="前言Ubuntu 18.04 LTS 版本回归GNOME环境，果断升级…"><meta property="og:locale" content="en"><meta property="og:image" content="http://img.yangbingdong.com/img/gnome/activities-overview.jpg"><meta property="og:image" content="http://img.yangbingdong.com/img/individuation/source-server.png"><meta property="og:image" content="http://img.yangbingdong.com/img/gnome/gnome-tweak-tool.png"><meta property="og:image" content="http://img.yangbingdong.com/img/gnome/desktop1.png"><meta property="og:image" content="http://img.yangbingdong.com/img/gnome/desktop2.png"><meta property="og:image" content="http://img.yangbingdong.com/img/gnome/dock02.png"><meta property="og:image" content="http://img.yangbingdong.com/img/gnome/dock01.png"><meta property="og:image" content="http://img.yangbingdong.com/img/individuation/user-themes.png"><meta property="og:image" content="http://img.yangbingdong.com/img/individuation/zsh02.png"><meta property="og:image" content="http://img.yangbingdong.com/img/individuation/screenfetch.png"><meta property="og:image" content="http://img.yangbingdong.com/img/gnome/stylish.png"><meta property="og:image" content="http://img.yangbingdong.com/img/individuation/crossover-file.png"><meta property="og:image" content="http://img.yangbingdong.com/img/individuation/crossover.png"><meta property="og:image" content="http://img.yangbingdong.com/img/individuation/Peek%202018-01-22%2015-49.gif"><meta property="og:image" content="http://img.yangbingdong.com/img/individuation/kvm-manager.png"><meta property="og:image" content="http://img.yangbingdong.com/img/individuation/securecrt-crack.png"><meta property="og:image" content="http://img.yangbingdong.com/img/individuation/aria2-ariaNg.jpg"><meta property="og:image" content="http://img.yangbingdong.com/img/individuation/h5ai.jpg"><meta property="og:image" content="http://img.yangbingdong.com/img/individuation/baiduexporter1.jpg"><meta property="og:image" content="http://img.yangbingdong.com/img/individuation/baiduexporter2.jpg"><meta property="og:image" content="http://img.yangbingdong.com/img/individuation/tickeys_v0.2.5.png"><meta property="og:image" content="http://img.yangbingdong.com/img/individuation/I-Nex%20-%20CPU_001.png"><meta property="og:image" content="http://img.yangbingdong.com/img/individuation/System%20Information_002.png"><meta property="og:image" content="http://img.yangbingdong.com/img/individuation/screenfetch.png"><meta property="og:image" content="http://img.yangbingdong.com/img/individuation/cmatrix.png"><meta property="og:updated_time" content="2018-11-05T10:17:52.436Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Ubuntu主题美化、个性化设置与常用软件"><meta name="twitter:description" content="前言Ubuntu 18.04 LTS 版本回归GNOME环境，果断升级…"><meta name="twitter:image" content="http://img.yangbingdong.com/img/gnome/activities-overview.jpg"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",sidebar:{position:"right",display:"always"},fancybox:!0,motion:!0,duoshuo:{userId:"undefined",author:"Author"},algolia:{applicationID:"RI3NF6GUI0",apiKey:"3d33fa60ba30d3b17f37220bb1a36749",indexName:"blogIndex",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="http://yangbingdong.com/2017/ubuntu-todo-after-install/"><title>Ubuntu主题美化、个性化设置与常用软件 | ookamiAntD's Blog</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="en"><script type="text/javascript">var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?e9505ac4e11d464329d615553a72b526";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><div class="container one-collumn sidebar-position-right page-post-detail"><div class="headband"></div><a href="https://github.com/masteranthoneyd/blog" rel="external nofollow noopener noreferrer" target="_blank"><img style="position:absolute;top:0;left:0;border:0" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">ookamiAntD's Blog</span> <span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">Easy coding,easy life.</h1></div><div class="site-nav-toggle"><button><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>Tags</a></li><li class="menu-item menu-item-about"><a href="/about" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>About</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook" rel="section"><i class="menu-item-icon fa fa-fw fa-commenting"></i><br>Message</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>Search</a></li></ul><div class="site-search"><div class="popup"><span class="search-icon fa fa-search"></span> <input type="text" id="local-search-input"><div id="local-search-result"></div><span class="popup-btn-close">close</span></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><link itemprop="mainEntityOfPage" href="http://yangbingdong.com/2017/ubuntu-todo-after-install/"><span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="ookamiAntD"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar/avatar-admin.jpg"></span><span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="ookamiAntD's Blog"><span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject"><img style="display:none" itemprop="url image" alt="ookamiAntD's Blog" src=""></span></span><header class="post-header"><h2 class="post-title" itemprop="name headline">Ubuntu主题美化、个性化设置与常用软件</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">Posted on</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-12T23:04:36+08:00">2017-01-12 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">In</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OperatingSystem/" itemprop="url" rel="index"><span itemprop="name">OperatingSystem</span> </a></span>, <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OperatingSystem/Ubuntu/" itemprop="url" rel="index"><span itemprop="name">Ubuntu</span> </a></span></span><span id="/2017/ubuntu-todo-after-install/" class="leancloud_visitors" data-flag-title="Ubuntu主题美化、个性化设置与常用软件"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-eye"></i> </span><span class="post-meta-item-text">Visitors </span><span class="leancloud-visitors-count"></span></span><br><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-edit"></i> </span><span class="post-meta-item-text">WordCount:</span> <span class="post-count">6,697字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-text">min2read:</span> <span class="post-count">31分钟</span></span></div></header><div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="http://img.yangbingdong.com/img/gnome/activities-overview.jpg" alt=""></p><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote><p><strong><em><a href="https://www.ubuntu.com/download/desktop" rel="external nofollow noopener noreferrer" target="_blank">Ubuntu 18.04 LTS</a></em></strong> 版本回归GNOME环境，果断升级…</p></blockquote><a id="more"></a><h1 id="启动盘制作篇"><a href="#启动盘制作篇" class="headerlink" title="启动盘制作篇"></a>启动盘制作篇</h1><h2 id="Windows中利用UltraISO制作"><a href="#Windows中利用UltraISO制作" class="headerlink" title="Windows中利用UltraISO制作"></a>Windows中利用UltraISO制作</h2><p>在Windows环境下一般是通过 <strong><em><a href="https://www.ultraiso.com/" rel="external nofollow noopener noreferrer" target="_blank">UltraISO</a></em></strong> 制作U盘启动盘（最好是<strong>FAT32</strong>格式），步骤通常如下（安装UltraISO前提下）：</p><ul><li>选择并打开系统镜像（iso）</li><li>选择 <code>启动</code> -&gt; <code>写入硬盘映像</code> ，会弹出一个写入硬盘映像的对话框</li><li>选择对应U盘</li><li>点击 <code>便捷启动</code> -&gt; <code>写入新的驱动器引导扇区</code> -&gt; <code>Syslinux</code></li><li>最后再点击 <code>写入</code> 等待完成即可</li></ul><p>图就不贴了，搜索引擎上一大堆。</p><p>接下来要介绍的是在Linux环境中制作启动盘</p><h2 id="Linux中利用DD命令制作"><a href="#Linux中利用DD命令制作" class="headerlink" title="Linux中利用DD命令制作"></a>Linux中利用DD命令制作</h2><h3 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h3><p>U盘插入电脑后，用<code>lsblk</code>命令查看一下</p><figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ lsblk</span><br><span class="line">NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT</span><br><span class="line">sda      8:0   <span class="number"> 0 </span>111.8G <span class="number"> 0 </span>disk </span><br><span class="line">├─sda1   8:1   <span class="number"> 0 </span>  512M <span class="number"> 0 </span>part /boot/efi</span><br><span class="line">├─sda2   8:2   <span class="number"> 0 </span>   14G <span class="number"> 0 </span>part /usr</span><br><span class="line">├─sda3   8:3   <span class="number"> 0 </span>   14G <span class="number"> 0 </span>part /opt</span><br><span class="line">├─sda4   8:4   <span class="number"> 0 </span>  4.7G <span class="number"> 0 </span>part /boot</span><br><span class="line">└─sda5   8:5   <span class="number"> 0 </span> 78.7G <span class="number"> 0 </span>part /home</span><br><span class="line">sdb      8:16  <span class="number"> 0 </span>931.5G <span class="number"> 0 </span>disk </span><br><span class="line">├─sdb1   8:17  <span class="number"> 0 </span>745.1G <span class="number"> 0 </span>part /</span><br><span class="line">└─sdb2   8:18  <span class="number"> 0 </span>  8.4G <span class="number"> 0 </span>part [SWAP]</span><br><span class="line">sdc      8:32  <span class="number"> 1 </span> 14.5G <span class="number"> 0 </span>disk </span><br><span class="line">└─sdc4   8:36  <span class="number"> 1 </span> 14.5G <span class="number"> 0 </span>part /media/ybd/SSS_X64FRE_</span><br></pre></td></tr></table></figure>
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="content-language" content="zh-cn">
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #ff009e;
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #e6006b, 0 0 5px #ff009e;
+    }
+    .pace .pace-activity {
+        border-top-color: #ff009e;
+        border-left-color: #ff009e;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Ubuntu,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ookamiAntD's Blog" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="前言  Ubuntu 18.04 LTS 版本回归GNOME环境，果断升级…">
+<meta name="keywords" content="Ubuntu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu主题美化、个性化设置与常用软件">
+<meta property="og:url" content="http://yangbingdong.com/2017/ubuntu-todo-after-install/index.html">
+<meta property="og:site_name" content="ookamiAntD&#39;s Blog">
+<meta property="og:description" content="前言  Ubuntu 18.04 LTS 版本回归GNOME环境，果断升级…">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://img.yangbingdong.com/img/gnome/activities-overview.jpg">
+<meta property="og:image" content="http://img.yangbingdong.com/img/individuation/source-server.png">
+<meta property="og:image" content="http://img.yangbingdong.com/img/gnome/gnome-tweak-tool.png">
+<meta property="og:image" content="http://img.yangbingdong.com/img/gnome/desktop1.png">
+<meta property="og:image" content="http://img.yangbingdong.com/img/gnome/desktop2.png">
+<meta property="og:image" content="http://img.yangbingdong.com/img/gnome/dock02.png">
+<meta property="og:image" content="http://img.yangbingdong.com/img/gnome/dock01.png">
+<meta property="og:image" content="http://img.yangbingdong.com/img/individuation/user-themes.png">
+<meta property="og:image" content="http://img.yangbingdong.com/img/individuation/zsh02.png">
+<meta property="og:image" content="http://img.yangbingdong.com/img/individuation/screenfetch.png">
+<meta property="og:image" content="http://img.yangbingdong.com/img/gnome/stylish.png">
+<meta property="og:image" content="http://img.yangbingdong.com/img/individuation/crossover-file.png">
+<meta property="og:image" content="http://img.yangbingdong.com/img/individuation/crossover.png">
+<meta property="og:image" content="http://img.yangbingdong.com/img/individuation/Peek%202018-01-22%2015-49.gif">
+<meta property="og:image" content="http://img.yangbingdong.com/img/individuation/kvm-manager.png">
+<meta property="og:image" content="http://img.yangbingdong.com/img/individuation/securecrt-crack.png">
+<meta property="og:image" content="http://img.yangbingdong.com/img/individuation/aria2-ariaNg.jpg">
+<meta property="og:image" content="http://img.yangbingdong.com/img/individuation/h5ai.jpg">
+<meta property="og:image" content="http://img.yangbingdong.com/img/individuation/baiduexporter1.jpg">
+<meta property="og:image" content="http://img.yangbingdong.com/img/individuation/baiduexporter2.jpg">
+<meta property="og:image" content="http://img.yangbingdong.com/img/individuation/tickeys_v0.2.5.png">
+<meta property="og:image" content="http://img.yangbingdong.com/img/individuation/I-Nex%20-%20CPU_001.png">
+<meta property="og:image" content="http://img.yangbingdong.com/img/individuation/System%20Information_002.png">
+<meta property="og:image" content="http://img.yangbingdong.com/img/individuation/screenfetch.png">
+<meta property="og:image" content="http://img.yangbingdong.com/img/individuation/cmatrix.png">
+<meta property="og:updated_time" content="2018-11-05T10:17:52.436Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu主题美化、个性化设置与常用软件">
+<meta name="twitter:description" content="前言  Ubuntu 18.04 LTS 版本回归GNOME环境，果断升级…">
+<meta name="twitter:image" content="http://img.yangbingdong.com/img/gnome/activities-overview.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: 'RI3NF6GUI0',
+      apiKey: '3d33fa60ba30d3b17f37220bb1a36749',
+      indexName: 'blogIndex',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yangbingdong.com/2017/ubuntu-todo-after-install/">
+
+
+
+
+
+  <title> Ubuntu主题美化、个性化设置与常用软件 | ookamiAntD's Blog </title>
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e9505ac4e11d464329d615553a72b526";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+	<a href="https://github.com/masteranthoneyd/blog" rel="external nofollow noopener noreferrer" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ookamiAntD's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <h1 class="site-subtitle" itemprop="description">Easy coding,easy life.</h1>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-commenting"></i> <br>
+            
+            Message
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yangbingdong.com/2017/ubuntu-todo-after-install/">
+
+  <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="ookamiAntD">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar/avatar-admin.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="ookamiAntD's Blog">
+    <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="ookamiAntD's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                Ubuntu主题美化、个性化设置与常用软件
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-12T23:04:36+08:00">
+                2017-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/OperatingSystem/" itemprop="url" rel="index">
+                    <span itemprop="name">OperatingSystem</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/OperatingSystem/Ubuntu/" itemprop="url" rel="index">
+                    <span itemprop="name">Ubuntu</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+
+          
+
+          
+
+          
+
+          
+          
+             <span id="/2017/ubuntu-todo-after-install/" class="leancloud_visitors" data-flag-title="Ubuntu主题美化、个性化设置与常用软件">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          <br><span class="post-time">
+           <span class="post-meta-item-icon">
+             <i class="fa fa-edit"></i>
+           </span>
+           <span class="post-meta-item-text">WordCount:</span>
+           <span class="post-count">6,697字</span>
+			<span class="post-meta-divider">|</span>
+			<span class="post-meta-item-text">min2read:</span>
+           <span class="post-count">31分钟</span>
+
+         </span>
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="http://img.yangbingdong.com/img/gnome/activities-overview.jpg" alt=""></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p> <strong><em><a href="https://www.ubuntu.com/download/desktop" rel="external nofollow noopener noreferrer" target="_blank">Ubuntu 18.04 LTS</a></em></strong> 版本回归GNOME环境，果断升级…</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="启动盘制作篇"><a href="#启动盘制作篇" class="headerlink" title="启动盘制作篇"></a>启动盘制作篇</h1><h2 id="Windows中利用UltraISO制作"><a href="#Windows中利用UltraISO制作" class="headerlink" title="Windows中利用UltraISO制作"></a>Windows中利用UltraISO制作</h2><p>在Windows环境下一般是通过 <strong><em><a href="https://www.ultraiso.com/" rel="external nofollow noopener noreferrer" target="_blank">UltraISO</a></em></strong> 制作U盘启动盘（最好是<strong>FAT32</strong>格式），步骤通常如下（安装UltraISO前提下）：</p>
+<ul>
+<li>选择并打开系统镜像（iso）</li>
+<li>选择 <code>启动</code> -&gt; <code>写入硬盘映像</code> ，会弹出一个写入硬盘映像的对话框</li>
+<li>选择对应U盘</li>
+<li>点击 <code>便捷启动</code> -&gt; <code>写入新的驱动器引导扇区</code> -&gt; <code>Syslinux</code></li>
+<li>最后再点击 <code>写入</code> 等待完成即可</li>
+</ul>
+<p>图就不贴了，搜索引擎上一大堆。</p>
+<p>接下来要介绍的是在Linux环境中制作启动盘</p>
+<h2 id="Linux中利用DD命令制作"><a href="#Linux中利用DD命令制作" class="headerlink" title="Linux中利用DD命令制作"></a>Linux中利用DD命令制作</h2><h3 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h3><p>U盘插入电脑后，用<code>lsblk</code>命令查看一下</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ lsblk</span><br><span class="line">NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT</span><br><span class="line">sda      8:0   <span class="number"> 0 </span>111.8G <span class="number"> 0 </span>disk </span><br><span class="line">├─sda1   8:1   <span class="number"> 0 </span>  512M <span class="number"> 0 </span>part /boot/efi</span><br><span class="line">├─sda2   8:2   <span class="number"> 0 </span>   14G <span class="number"> 0 </span>part /usr</span><br><span class="line">├─sda3   8:3   <span class="number"> 0 </span>   14G <span class="number"> 0 </span>part /opt</span><br><span class="line">├─sda4   8:4   <span class="number"> 0 </span>  4.7G <span class="number"> 0 </span>part /boot</span><br><span class="line">└─sda5   8:5   <span class="number"> 0 </span> 78.7G <span class="number"> 0 </span>part /home</span><br><span class="line">sdb      8:16  <span class="number"> 0 </span>931.5G <span class="number"> 0 </span>disk </span><br><span class="line">├─sdb1   8:17  <span class="number"> 0 </span>745.1G <span class="number"> 0 </span>part /</span><br><span class="line">└─sdb2   8:18  <span class="number"> 0 </span>  8.4G <span class="number"> 0 </span>part [SWAP]</span><br><span class="line">sdc      8:32  <span class="number"> 1 </span> 14.5G <span class="number"> 0 </span>disk </span><br><span class="line">└─sdc4   8:36  <span class="number"> 1 </span> 14.5G <span class="number"> 0 </span>part /media/ybd/SSS_X64FRE_</span><br></pre></td></tr></table></figure>
 <p>很明显，<code>/media/ybd/SSS_X64FRE_</code>这个挂载的就是U盘，U盘对应的路径是<code>/dev/sdc</code>如果不确定，可以进去看一下文件目录。</p>
 <blockquote>
 <p>找到对应的挂载目录很重要，少有不慎，可能会导致整个系统瘫痪 23333………..</p>
@@ -16,7 +492,7 @@
 <h1 id="系统篇"><a href="#系统篇" class="headerlink" title="系统篇"></a>系统篇</h1><h2 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h2><p>更换最佳源服务器，打开 <strong>软件和更新</strong>（这里我选择阿里的，或者点击右边的 选择最佳服务器）：</p>
 <p><img src="http://img.yangbingdong.com/img/individuation/source-server.png" alt=""></p>
 <h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>之前的16.04是会安装很多用不上的软件，好在18.04版本优化掉了，最小安装保持干净系统</p>
-<p>安装完系统之后，需要更新一些补丁。<code>Ctrl+Alt+T</code>调出终端，执行一下代码：<br></p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt<span class="built_in"> upgrade </span>-y &amp;&amp; sudo apt autoremove</span><br></pre></td></tr></table></figure><p></p>
+<p>安装完系统之后，需要更新一些补丁。<code>Ctrl+Alt+T</code>调出终端，执行一下代码：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt<span class="built_in"> upgrade </span>-y &amp;&amp; sudo apt autoremove</span><br></pre></td></tr></table></figure></p>
 <h2 id="关掉sudo的密码"><a href="#关掉sudo的密码" class="headerlink" title="关掉sudo的密码"></a>关掉sudo的密码</h2><p>先修改默认编辑器为vim（默认为nano）：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">update</span>-alternatives <span class="comment">--config editor</span></span><br></pre></td></tr></table></figure>
 <p>输入vim对应的序号回车即可</p>
@@ -38,7 +514,7 @@
 <h4 id="Flatabulous"><a href="#Flatabulous" class="headerlink" title="Flatabulous"></a>Flatabulous</h4><p><code>Flatabulous</code>主题是一款<code>Ubuntu</code>下扁平化主题.</p>
 <p>执行以下命令安装<code>Flatabulous</code>主题：</p>
 <figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo<span class="built_in"> add-apt-repository </span>ppa:noobslab/themes </span><br><span class="line">sudo apt update </span><br><span class="line">sudo apt install flatabulous-theme</span><br></pre></td></tr></table></figure>
-<p>该主题有配套的图标，安装方式如下：<br></p><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo<span class="built_in"> add-apt-repository </span>ppa:noobslab/icons </span><br><span class="line">sudo apt update </span><br><span class="line">sudo apt install ultra-flat-icons</span><br></pre></td></tr></table></figure><p></p>
+<p>该主题有配套的图标，安装方式如下：<br><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo<span class="built_in"> add-apt-repository </span>ppa:noobslab/icons </span><br><span class="line">sudo apt update </span><br><span class="line">sudo apt install ultra-flat-icons</span><br></pre></td></tr></table></figure></p>
 <h4 id="Arc-Theme"><a href="#Arc-Theme" class="headerlink" title="Arc-Theme"></a>Arc-Theme</h4><blockquote>
 <p><strong><em><a href="https://github.com/horst3180/arc-theme" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/horst3180/arc-theme</a></em></strong></p>
 </blockquote>
@@ -83,7 +559,7 @@
 <h2 id="Oh-My-Zsh"><a href="#Oh-My-Zsh" class="headerlink" title="Oh-My-Zsh"></a>Oh-My-Zsh</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>终端采用<code>zsh</code>和<code>oh-my-zsh</code>，既美观又简单易用，主要是能提高你的逼格！！！</p>
 <p>首先，安装<code>zsh</code>：</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install zsh</span><br></pre></td></tr></table></figure>
-<p>接下来我们需要下载 <code>oh-my-zsh</code> 项目来帮我们配置 <code>zsh</code>，采用<code>wget</code>安装(需要先安装<code>git</code>)<br></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>"</span></span><br></pre></td></tr></table></figure><p></p>
+<p>接下来我们需要下载 <code>oh-my-zsh</code> 项目来帮我们配置 <code>zsh</code>，采用<code>wget</code>安装(需要先安装<code>git</code>)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>"</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="语法高亮"><a href="#语法高亮" class="headerlink" title="语法高亮"></a>语法高亮</h3><p>安装插件<code>highlight</code>，<strong>高亮语法</strong>：</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> ~/.oh-my-zsh/custom/plugins &amp;&amp;\</span><br><span class="line">git clone gi<span class="variable">t:</span>//github.<span class="keyword">com</span>/zsh-users/zsh-<span class="keyword">syntax</span>-highlighting.git</span><br></pre></td></tr></table></figure>
 <p>在<code>Oh-my-zsh</code>的配置文件中<code>~/.zshrc</code>中添加插件</p>
@@ -103,7 +579,7 @@
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install fonts-powerline</span><br></pre></td></tr></table></figure>
 <p>或者通过源码安装：</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github<span class="selector-class">.com</span>:powerline/fonts.git</span><br><span class="line">cd fonts</span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
-<h2 id="安装字体"><a href="#安装字体" class="headerlink" title="安装字体"></a>安装字体</h2><p><code>Ubuntu</code>自带的字体不太好看，所以采用<strong>文泉译微米黑字体</strong>替代，效果会比较好，毕竟是国产字体！<br></p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> fonts-wqy-microhei</span><br></pre></td></tr></table></figure><p></p>
+<h2 id="安装字体"><a href="#安装字体" class="headerlink" title="安装字体"></a>安装字体</h2><p><code>Ubuntu</code>自带的字体不太好看，所以采用<strong>文泉译微米黑字体</strong>替代，效果会比较好，毕竟是国产字体！<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> fonts-wqy-microhei</span><br></pre></td></tr></table></figure></p>
 <p>然后通过<code>gnome-tweak-tool</code>来替换字体</p>
 <h2 id="GRUB-2-美化"><a href="#GRUB-2-美化" class="headerlink" title="GRUB 2 美化"></a>GRUB 2 美化</h2><blockquote>
 <p>由于安装了多系统，恰好Ubuntu的GRUB2提供了切换系统的选择，但是界面不咋样</p>
@@ -134,18 +610,18 @@
 <h3 id="crossover安装与破解"><a href="#crossover安装与破解" class="headerlink" title="crossover安装与破解"></a>crossover安装与破解</h3><p>这个轻聊版是Deepin的作品，要在Ubuntu上使用，就要安装<strong>crossover</strong>，很不幸这玩意是收费的，很幸运的是这玩意是可以破解的。<br>1、安装的工具包下载下来解压后会有三个文件，首先先安装<code>crossover_16.0.0-1.deb</code>，缺少依赖就执行一下<code>sudo apt -f install</code>，安装完后<strong>先不要打开</strong>crossover。<br>2、在命令行输入<code>sudo nautilus</code>打开一个root权限的文件管理器<br>3、把破解文件 (<code>crossover16crack</code>-&gt;<code>winewrapper.exe.so</code>) 替换路径: <code>/opt/cxoffice/lib/wine</code>下的<code>winewrapper.exe.so</code>文件。提示已有文件，点“替换”破解完成。</p>
 <h3 id="Deepin-QQ轻聊版"><a href="#Deepin-QQ轻聊版" class="headerlink" title="Deepin QQ轻聊版"></a>Deepin QQ轻聊版</h3><p>1、用归档管理器打开<code>apps.com.qq.im.light_7.9.14308deepin0_i386.deb</code><br>2、点开 <code>data.tar.xz</code> 找到 <code>./opt/cxoffice/support</code><br>3、把 <code>apps.com.qq.im.light</code> 这个文件夹提取出来<br>4、在命令行输入<code>sudo nautilus</code>打开一个root权限的文件管理器<br>5、然后将这个文件夹复制到系统的 <code>/opt/cxoffice/support</code> 下<br><img src="http://img.yangbingdong.com/img/individuation/crossover-file.png" alt=""><br>6、然后打开 <code>crossover</code> ，发现多了一个容器 ，点击图标即可运行QQ轻聊版<br><img src="http://img.yangbingdong.com/img/individuation/crossover.png" alt=""><br>7、如果运行后出现乱码，把 Windows 系统下的 <code>%systemroot%\fonts\simsun.ttf (simsun.ttc)</code> 复制到容器的对应文件夹就可以</p>
 <h2 id="搜狗输入法安装与崩溃处理"><a href="#搜狗输入法安装与崩溃处理" class="headerlink" title="搜狗输入法安装与崩溃处理"></a>搜狗输入法安装与崩溃处理</h2><h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p>点击下载 Sogou For Linux -&gt; <a id="download" href="http://pinyin.sogou.com/linux/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-download"></i><span> Download Now</span><br></a><br>然后<code>dpkg -i</code> 就可以安装了，中间如有冲突就<code>sudo apt -f install</code>进行修复。</p>
-<h3 id="搜狗输入法不能输入中文解决（linux下常见软件崩溃问题解决方案）"><a href="#搜狗输入法不能输入中文解决（linux下常见软件崩溃问题解决方案）" class="headerlink" title="搜狗输入法不能输入中文解决（linux下常见软件崩溃问题解决方案）"></a>搜狗输入法不能输入中文解决（linux下常见软件崩溃问题解决方案）</h3><p>先关闭<code>fcitx</code>：<br></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">killall fcitx</span><br><span class="line">killall sogou-qinpanel</span><br></pre></td></tr></table></figure><p></p>
-<p>然后<strong>删除搜狗配置文件</strong>，ubuntu下搜狗的配置文件在 ~/.config下的3个文件夹里：<br><code>SogouPY</code>、<code>SogouPY.users</code>、<code>sogou-qimpanel</code><br>删除这3个文件夹，然后重启搜狗：<br></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fcitx</span><br></pre></td></tr></table></figure><p></p>
+<h3 id="搜狗输入法不能输入中文解决（linux下常见软件崩溃问题解决方案）"><a href="#搜狗输入法不能输入中文解决（linux下常见软件崩溃问题解决方案）" class="headerlink" title="搜狗输入法不能输入中文解决（linux下常见软件崩溃问题解决方案）"></a>搜狗输入法不能输入中文解决（linux下常见软件崩溃问题解决方案）</h3><p>先关闭<code>fcitx</code>：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">killall fcitx</span><br><span class="line">killall sogou-qinpanel</span><br></pre></td></tr></table></figure></p>
+<p>然后<strong>删除搜狗配置文件</strong>，ubuntu下搜狗的配置文件在 ~/.config下的3个文件夹里：<br><code>SogouPY</code>、<code>SogouPY.users</code>、<code>sogou-qimpanel</code><br>删除这3个文件夹，然后重启搜狗：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fcitx</span><br></pre></td></tr></table></figure></p>
 <p>解决！</p>
 <h2 id="版本控制系统GUI-SmartGit"><a href="#版本控制系统GUI-SmartGit" class="headerlink" title="版本控制系统GUI-SmartGit"></a>版本控制系统GUI-SmartGit</h2><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo<span class="built_in"> add-apt-repository </span>ppa:eugenesan/ppa</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install smartgithg</span><br></pre></td></tr></table></figure>
-<p>卸载：<br></p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="builtin-name">remove</span> smartgithg</span><br></pre></td></tr></table></figure><p></p>
-<h2 id="Typora-Markdown编辑器"><a href="#Typora-Markdown编辑器" class="headerlink" title="Typora(Markdown编辑器)"></a>Typora(Markdown编辑器)</h2><p><em><a href="https://typora.io/#linux" rel="external nofollow noopener noreferrer" target="_blank">官方</a></em>安装方法如下：<br></p><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># optional, but recommended</span></span><br><span class="line">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE</span><br><span class="line"><span class="comment"># add Typora's repository</span></span><br><span class="line">sudo<span class="built_in"> add-apt-repository </span>'deb http://typora.io linux/'</span><br><span class="line">sudo apt update</span><br><span class="line"><span class="comment"># install typora</span></span><br><span class="line">sudo apt install typora</span><br></pre></td></tr></table></figure><p></p>
+<p>卸载：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="builtin-name">remove</span> smartgithg</span><br></pre></td></tr></table></figure></p>
+<h2 id="Typora-Markdown编辑器"><a href="#Typora-Markdown编辑器" class="headerlink" title="Typora(Markdown编辑器)"></a>Typora(Markdown编辑器)</h2><p><em><a href="https://typora.io/#linux" rel="external nofollow noopener noreferrer" target="_blank">官方</a></em>安装方法如下：<br><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># optional, but recommended</span></span><br><span class="line">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE</span><br><span class="line"><span class="comment"># add Typora's repository</span></span><br><span class="line">sudo<span class="built_in"> add-apt-repository </span>'deb http://typora.io linux/'</span><br><span class="line">sudo apt update</span><br><span class="line"><span class="comment"># install typora</span></span><br><span class="line">sudo apt install typora</span><br></pre></td></tr></table></figure></p>
 <h2 id="GIF制作软件-Peek"><a href="#GIF制作软件-Peek" class="headerlink" title="GIF制作软件 Peek"></a>GIF制作软件 Peek</h2><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo<span class="built_in"> add-apt-repository </span>ppa:peek-developers/stable</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install peek</span><br></pre></td></tr></table></figure>
 <p>终端执行<code>peek</code>即可运行</p>
 <p><img src="http://img.yangbingdong.com/img/individuation/Peek%202018-01-22%2015-49.gif" alt=""></p>
-<h2 id="StarUml"><a href="#StarUml" class="headerlink" title="StarUml"></a>StarUml</h2><p>这个一款绘图工具<br>下载：<strong><em><a href="http://staruml.io/download" rel="external nofollow noopener noreferrer" target="_blank">http://staruml.io/download</a></em></strong><br>安装依赖：<strong><em><a href="https://launchpad.net/ubuntu/trusty/amd64/libgcrypt11/1.5.3-2ubuntu4.5" rel="external nofollow noopener noreferrer" target="_blank">https://launchpad.net/ubuntu/trusty/amd64/libgcrypt11/1.5.3-2ubuntu4.5</a></em></strong><br>然后<code>dpkg</code>安装就好了，如果还有依赖直接<code>apt install -f</code>修复一下就好。<br>安装好之后修改<code>LicenseManagerDomain.js</code><br>查找：<br></p><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -S staruml <span class="string">| grep LicenseManagerDomain.js</span></span><br></pre></td></tr></table></figure><p></p>
-<p>修改：<br></p><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /opt/staruml/www/license/<span class="keyword">node</span><span class="title">/LicenseManagerDomain</span>.js</span><br></pre></td></tr></table></figure><p></p>
-<p>如下：<br></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    "use strict"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> NodeRSA = <span class="built_in">require</span>(<span class="string">'node-rsa'</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">validate</span>(<span class="params">PK, name, product, licenseKey</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> pk, decrypted;</span><br><span class="line">		<span class="keyword">return</span> &#123;  </span><br><span class="line">            name: <span class="string">"yangbingdong"</span>,  </span><br><span class="line">            product: <span class="string">"StarUML"</span>,  </span><br><span class="line">            licenseType: <span class="string">"vip"</span>,  </span><br><span class="line">            quantity: <span class="string">"yangbingdong.com"</span>,  </span><br><span class="line">            licenseKey: <span class="string">"later equals never!"</span>  </span><br><span class="line">        &#125;;  </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            pk = <span class="keyword">new</span> NodeRSA(PK);</span><br><span class="line">            decrypted = pk.decrypt(licenseKey, <span class="string">'utf8'</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> terms = decrypted.trim().split(<span class="string">"\n"</span>);</span><br><span class="line">        <span class="keyword">if</span> (terms[<span class="number">0</span>] === name &amp;&amp; terms[<span class="number">1</span>] === product) &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123; </span><br><span class="line">                name: name, </span><br><span class="line">                product: product, </span><br><span class="line">                licenseType: terms[<span class="number">2</span>],</span><br><span class="line">                quantity: terms[<span class="number">3</span>],</span><br><span class="line">                licenseKey: licenseKey</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ......</span><br></pre></td></tr></table></figure><p></p>
+<h2 id="StarUml"><a href="#StarUml" class="headerlink" title="StarUml"></a>StarUml</h2><p>这个一款绘图工具<br>下载：<strong><em><a href="http://staruml.io/download" rel="external nofollow noopener noreferrer" target="_blank">http://staruml.io/download</a></em></strong><br>安装依赖：<strong><em><a href="https://launchpad.net/ubuntu/trusty/amd64/libgcrypt11/1.5.3-2ubuntu4.5" rel="external nofollow noopener noreferrer" target="_blank">https://launchpad.net/ubuntu/trusty/amd64/libgcrypt11/1.5.3-2ubuntu4.5</a></em></strong><br>然后<code>dpkg</code>安装就好了，如果还有依赖直接<code>apt install -f</code>修复一下就好。<br>安装好之后修改<code>LicenseManagerDomain.js</code><br>查找：<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -S staruml <span class="string">| grep LicenseManagerDomain.js</span></span><br></pre></td></tr></table></figure></p>
+<p>修改：<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /opt/staruml/www/license/<span class="keyword">node</span><span class="title">/LicenseManagerDomain</span>.js</span><br></pre></td></tr></table></figure></p>
+<p>如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    "use strict"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> NodeRSA = <span class="built_in">require</span>(<span class="string">'node-rsa'</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">validate</span>(<span class="params">PK, name, product, licenseKey</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> pk, decrypted;</span><br><span class="line">		<span class="keyword">return</span> &#123;  </span><br><span class="line">            name: <span class="string">"yangbingdong"</span>,  </span><br><span class="line">            product: <span class="string">"StarUML"</span>,  </span><br><span class="line">            licenseType: <span class="string">"vip"</span>,  </span><br><span class="line">            quantity: <span class="string">"yangbingdong.com"</span>,  </span><br><span class="line">            licenseKey: <span class="string">"later equals never!"</span>  </span><br><span class="line">        &#125;;  </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            pk = <span class="keyword">new</span> NodeRSA(PK);</span><br><span class="line">            decrypted = pk.decrypt(licenseKey, <span class="string">'utf8'</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> terms = decrypted.trim().split(<span class="string">"\n"</span>);</span><br><span class="line">        <span class="keyword">if</span> (terms[<span class="number">0</span>] === name &amp;&amp; terms[<span class="number">1</span>] === product) &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123; </span><br><span class="line">                name: name, </span><br><span class="line">                product: product, </span><br><span class="line">                licenseType: terms[<span class="number">2</span>],</span><br><span class="line">                quantity: terms[<span class="number">3</span>],</span><br><span class="line">                licenseKey: licenseKey</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ......</span><br></pre></td></tr></table></figure></p>
 <p>改完打开StarUml -&gt; <code>Help</code> -&gt; <code>Enter License</code>，不是输入任何东西直接确定</p>
 <h2 id="VirtualBox"><a href="#VirtualBox" class="headerlink" title="VirtualBox"></a>VirtualBox</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> virtualbox</span><br></pre></td></tr></table></figure>
 <h2 id="KVM"><a href="#KVM" class="headerlink" title="KVM"></a>KVM</h2><p>KVM要求我们的CPU支持硬件虚拟化(hardware virtualization)．在终端里输入下面的命令来查看CPU是否支持硬件虚拟化：</p>
@@ -167,11 +643,11 @@
 <p>然后按照提示手动输入License即可</p>
 <h2 id="wiznote-为知笔记"><a href="#wiznote-为知笔记" class="headerlink" title="wiznote(为知笔记)"></a>wiznote(为知笔记)</h2><p>一款<code>linux</code>下强大的笔记软件</p>
 <figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo<span class="built_in"> add-apt-repository </span>ppa:wiznote-team </span><br><span class="line">sudo apt update </span><br><span class="line">sudo apt install wiznote</span><br></pre></td></tr></table></figure>
-<h2 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h2><p>系统并没有集成<code>vim</code>，可以执行以下代码安装：<br></p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> vim</span><br></pre></td></tr></table></figure><p></p>
-<h2 id="WPS"><a href="#WPS" class="headerlink" title="WPS"></a>WPS</h2><p>去<em><a href="http://linux.wps.cn/" rel="external nofollow noopener noreferrer" target="_blank">wps官网</a></em> 下载wps for Linux。<br>先不要执行dpkg -i 去执行安装。这个地方有个问题，就是ubuntu 16 版本不支持32位的支持库，所以需要安装一下支持库。<br>32位的支持库名为：ia32-libs<br>安装的时候会提示有替代包，需要安装替代包。<br></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install lib32ncurses5 lib32z1</span><br></pre></td></tr></table></figure><p></p>
-<p>还是不要执行dpkg -i ，因为即使现在安装还是会缺少一个依赖。这个依赖是libpng-12.0。不过这个在默认的apt 仓库里没有。所以需要手动下载一下。<br>下载地址：<strong><em><a href="https://packages.debian.org/zh-cn/wheezy/amd64/libpng12-0/download" rel="external nofollow noopener noreferrer" target="_blank">https://packages.debian.org/zh-cn/wheezy/amd64/libpng12-0/download</a></em></strong><br></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i libpng12-0_1.2.49-1+deb7u2_amd64.deb</span><br></pre></td></tr></table></figure><p></p>
-<p>最后：<br></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i wps-office_10.1.0.5672~a21_amd64.deb</span><br></pre></td></tr></table></figure><p></p>
-<h2 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h2><p>到<em><a href="https://www.google.com/chrome/browser/desktop/index.html" rel="external nofollow noopener noreferrer" target="_blank">chrome官网</a></em> 下载linux版的chrome。<br>不能翻墙的小朋友可以到<strong><em><a href="https://pan.baidu.com/s/1c2uyTEw" rel="external nofollow noopener noreferrer" target="_blank">博主的百度盘</a></em></strong> (密码: 9bpi)<br></p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -<span class="selector-tag">i</span> google-chrome-stable_current_amd64.deb</span><br></pre></td></tr></table></figure><p></p>
+<h2 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h2><p>系统并没有集成<code>vim</code>，可以执行以下代码安装：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> vim</span><br></pre></td></tr></table></figure></p>
+<h2 id="WPS"><a href="#WPS" class="headerlink" title="WPS"></a>WPS</h2><p>去<em><a href="http://linux.wps.cn/" rel="external nofollow noopener noreferrer" target="_blank">wps官网</a></em> 下载wps for Linux。<br>先不要执行dpkg -i 去执行安装。这个地方有个问题，就是ubuntu 16 版本不支持32位的支持库，所以需要安装一下支持库。<br>32位的支持库名为：ia32-libs<br>安装的时候会提示有替代包，需要安装替代包。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install lib32ncurses5 lib32z1</span><br></pre></td></tr></table></figure></p>
+<p>还是不要执行dpkg -i ，因为即使现在安装还是会缺少一个依赖。这个依赖是libpng-12.0。不过这个在默认的apt 仓库里没有。所以需要手动下载一下。<br>下载地址：<strong><em><a href="https://packages.debian.org/zh-cn/wheezy/amd64/libpng12-0/download" rel="external nofollow noopener noreferrer" target="_blank">https://packages.debian.org/zh-cn/wheezy/amd64/libpng12-0/download</a></em></strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i libpng12-0_1.2.49-1+deb7u2_amd64.deb</span><br></pre></td></tr></table></figure></p>
+<p>最后：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i wps-office_10.1.0.5672~a21_amd64.deb</span><br></pre></td></tr></table></figure></p>
+<h2 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h2><p>到<em><a href="https://www.google.com/chrome/browser/desktop/index.html" rel="external nofollow noopener noreferrer" target="_blank">chrome官网</a></em> 下载linux版的chrome。<br>不能翻墙的小朋友可以到<strong><em><a href="https://pan.baidu.com/s/1c2uyTEw" rel="external nofollow noopener noreferrer" target="_blank">博主的百度盘</a></em></strong> (密码: 9bpi)<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -<span class="selector-tag">i</span> google-chrome-stable_current_amd64.deb</span><br></pre></td></tr></table></figure></p>
 <h2 id="XMind-8-Crack"><a href="#XMind-8-Crack" class="headerlink" title="XMind 8 Crack"></a>XMind 8 Crack</h2><h3 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h3><p>一款思维导图软件，再<em><a href="http://www.xmindchina.net/xiazai.html" rel="external nofollow noopener noreferrer" target="_blank">XMind官网</a></em>下载压缩包.</p>
 <p>解压后先执行一下解压包根目录下的<code>setup.sh</code>：</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">sh</span> setup.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
@@ -185,7 +661,7 @@
 <li>打开XMind输入序列号</li>
 </ul>
 <p><strong><code>XMindCrack.jar</code></strong>与<strong>序列号</strong>如果有需要可以私聊博主。</p>
-<h2 id="Shutter"><a href="#Shutter" class="headerlink" title="Shutter"></a>Shutter</h2><p><code>Ubuntu</code>下很强大的一款截图软件<br></p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> shutter</span><br></pre></td></tr></table></figure><p></p>
+<h2 id="Shutter"><a href="#Shutter" class="headerlink" title="Shutter"></a>Shutter</h2><p><code>Ubuntu</code>下很强大的一款截图软件<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> shutter</span><br></pre></td></tr></table></figure></p>
 <p><strong><em>设置快捷键：</em></strong><br>打开系统设置 -&gt; <code>键盘</code> -&gt; <code>快捷键</code> -&gt; <code>自定义快捷键</code> -&gt; <code>点击&quot; + &quot;</code><br>名字随便起，命令：<code>shutter -s</code><br>点击确定，再点禁用，键盘按下<code>ctrl+alt+a</code>，完成设置</p>
 <h3 id="编辑按钮变成程灰色解决方法"><a href="#编辑按钮变成程灰色解决方法" class="headerlink" title="编辑按钮变成程灰色解决方法"></a>编辑按钮变成程灰色解决方法</h3><p>需要3个deb包：</p>
 <p><em><a href="https://launchpad.net/ubuntu/+archive/primary/+files/libgoocanvas-common_1.0.0-1_all.deb" rel="external nofollow noopener noreferrer" target="_blank">libgoocanvas-common</a></em></p>
@@ -224,14 +700,14 @@
 <p>3、打开百度云盘网页版，勾选需要下载的文件，在上方会出现导出下载地选项，通过设置可以修改RCP地址</p>
 <p><img src="http://img.yangbingdong.com/img/individuation/baiduexporter1.jpg" alt=""><br><img src="http://img.yangbingdong.com/img/individuation/baiduexporter2.jpg" alt=""></p>
 <h2 id="Stardict火星译王"><a href="#Stardict火星译王" class="headerlink" title="Stardict火星译王"></a>Stardict火星译王</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> stardict</span><br></pre></td></tr></table></figure>
-<p><strong><em>安装词库：</em></strong><br>进入<em><a href="http://download.huzheng.org/" rel="external nofollow noopener noreferrer" target="_blank">http://download.huzheng.org/</a></em><br>选择所需词库并下载，<code>a</code>为下载的词库名，然后重启<code>stardict</code><br></p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -xjvf <span class="selector-tag">a</span><span class="selector-class">.tar</span><span class="selector-class">.bz2</span></span><br><span class="line">mv <span class="selector-tag">a</span> /usr/share/stardict/dic</span><br></pre></td></tr></table></figure><p></p>
+<p><strong><em>安装词库：</em></strong><br>进入<em><a href="http://download.huzheng.org/" rel="external nofollow noopener noreferrer" target="_blank">http://download.huzheng.org/</a></em><br>选择所需词库并下载，<code>a</code>为下载的词库名，然后重启<code>stardict</code><br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -xjvf <span class="selector-tag">a</span><span class="selector-class">.tar</span><span class="selector-class">.bz2</span></span><br><span class="line">mv <span class="selector-tag">a</span> /usr/share/stardict/dic</span><br></pre></td></tr></table></figure></p>
 <h2 id="Filezilla"><a href="#Filezilla" class="headerlink" title="Filezilla"></a>Filezilla</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> filezilla</span><br><span class="line">sudo apt <span class="keyword">install</span> filezilla-locales</span><br></pre></td></tr></table></figure>
 <h2 id="rar安装与使用"><a href="#rar安装与使用" class="headerlink" title="rar安装与使用"></a>rar安装与使用</h2><h3 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> rar</span><br></pre></td></tr></table></figure>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>解压到当前目录：<br></p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">unrar</span> <span class="selector-tag">e</span> <span class="selector-tag">update</span><span class="selector-class">.rar</span></span><br></pre></td></tr></table></figure><p></p>
-<p>解压到指定目录：<br></p><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unrar x <span class="keyword">update</span>.rar <span class="keyword">update</span>/</span><br></pre></td></tr></table></figure><p></p>
-<p>压缩：<br></p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rar <span class="selector-tag">a</span> pg_healthcheck<span class="selector-class">.rar1</span> pg_healthcheck/</span><br></pre></td></tr></table></figure><p></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>解压到当前目录：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">unrar</span> <span class="selector-tag">e</span> <span class="selector-tag">update</span><span class="selector-class">.rar</span></span><br></pre></td></tr></table></figure></p>
+<p>解压到指定目录：<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unrar x <span class="keyword">update</span>.rar <span class="keyword">update</span>/</span><br></pre></td></tr></table></figure></p>
+<p>压缩：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rar <span class="selector-tag">a</span> pg_healthcheck<span class="selector-class">.rar1</span> pg_healthcheck/</span><br></pre></td></tr></table></figure></p>
 <h2 id="备份工具"><a href="#备份工具" class="headerlink" title="备份工具"></a>备份工具</h2><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo<span class="built_in"> add-apt-repository </span>ppa:nemh/systemback</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install<span class="keyword"> system</span>back</span><br></pre></td></tr></table></figure>
-<h2 id="键盘输入声音特效（Tickys）"><a href="#键盘输入声音特效（Tickys）" class="headerlink" title="键盘输入声音特效（Tickys）"></a>键盘输入声音特效（Tickys）</h2><p><strong><em><a href="http://www.yingdev.com/projects/tickeys" rel="external nofollow noopener noreferrer" target="_blank">官网</a></em></strong> 或者 <strong><em><a href="https://pan.baidu.com/s/1c2uyTEw" rel="external nofollow noopener noreferrer" target="_blank">博主的百度盘</a></em></strong> (密码: 9bpi)<br>下载<code>tickys</code>之后执行:<br></p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> tickys</span><br></pre></td></tr></table></figure><p></p>
+<h2 id="键盘输入声音特效（Tickys）"><a href="#键盘输入声音特效（Tickys）" class="headerlink" title="键盘输入声音特效（Tickys）"></a>键盘输入声音特效（Tickys）</h2><p><strong><em><a href="http://www.yingdev.com/projects/tickeys" rel="external nofollow noopener noreferrer" target="_blank">官网</a></em></strong> 或者 <strong><em><a href="https://pan.baidu.com/s/1c2uyTEw" rel="external nofollow noopener noreferrer" target="_blank">博主的百度盘</a></em></strong> (密码: 9bpi)<br>下载<code>tickys</code>之后执行:<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> tickys</span><br></pre></td></tr></table></figure></p>
 <p>然后通过<code>sudo tickeys</code>来打开 (sudo tickeys -c 打开CLI版本)<br><img src="http://img.yangbingdong.com/img/individuation/tickeys_v0.2.5.png" alt=""></p>
 <h2 id="硬件信息"><a href="#硬件信息" class="headerlink" title="硬件信息"></a>硬件信息</h2><h3 id="I-Nex"><a href="#I-Nex" class="headerlink" title="I-Nex"></a>I-Nex</h3><p>这是一个类似CPU-Z的工具</p>
 <p>下载链接：<strong><em><a href="https://launchpad.net/i-nex/+download" rel="external nofollow noopener noreferrer" target="_blank">https://launchpad.net/i-nex/+download</a></em></strong></p>
@@ -243,8 +719,8 @@
 <h2 id="点击图标最小化"><a href="#点击图标最小化" class="headerlink" title="点击图标最小化"></a>点击图标最小化</h2><p>试了之后发现这种交互也不太好，如果开了多个窗口，全部都一起最小化了…</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gsettings set org<span class="selector-class">.gnome</span><span class="selector-class">.shell</span><span class="selector-class">.extensions</span><span class="selector-class">.dash-to-dock</span> click-action <span class="string">'minimize'</span></span><br></pre></td></tr></table></figure>
 <h2 id="exfat驱动"><a href="#exfat驱动" class="headerlink" title="exfat驱动"></a>exfat驱动</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> exfat-fuse exfat-utils</span><br></pre></td></tr></table></figure>
-<h2 id="设置grub2引导等待时间"><a href="#设置grub2引导等待时间" class="headerlink" title="设置grub2引导等待时间"></a>设置grub2引导等待时间</h2><p><code>Ubuntu</code>系统的<code>Grub2</code>菜单的相关信息在读取<code>/boot/grub/grub.cfg</code>文件，不过<code>Ubuntu</code>官方不建议直接修改这个文件，想要修改<code>Grub2</code>的等待时间还可以修改<code>/etc/deafalt/grub</code>来实现。具体的修改方法如下：<br></p><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit <span class="regexp">/etc/</span><span class="keyword">default</span><span class="regexp">/grub</span></span><br></pre></td></tr></table></figure><p></p>
-<p>将<code>GRUB_TIMEOUT=10</code>中的<code>10</code>改为你想要修改的等待时间，比如<code>3</code>，网上很多的教程都是到这一步，其实是不行的，估计都是乱转一气。到这里还有最重要的一步，就是使用<code>#</code>号将<code>GRUB_HIDDEN_TIMEOUT=0</code>标注,然后再次回到终端，输入下面的命令刷新<code>/boot/grub/grub.cfg</code>文件：<br></p><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">update</span>-grub2</span><br></pre></td></tr></table></figure><p></p>
+<h2 id="设置grub2引导等待时间"><a href="#设置grub2引导等待时间" class="headerlink" title="设置grub2引导等待时间"></a>设置grub2引导等待时间</h2><p><code>Ubuntu</code>系统的<code>Grub2</code>菜单的相关信息在读取<code>/boot/grub/grub.cfg</code>文件，不过<code>Ubuntu</code>官方不建议直接修改这个文件，想要修改<code>Grub2</code>的等待时间还可以修改<code>/etc/deafalt/grub</code>来实现。具体的修改方法如下：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit <span class="regexp">/etc/</span><span class="keyword">default</span><span class="regexp">/grub</span></span><br></pre></td></tr></table></figure></p>
+<p>将<code>GRUB_TIMEOUT=10</code>中的<code>10</code>改为你想要修改的等待时间，比如<code>3</code>，网上很多的教程都是到这一步，其实是不行的，估计都是乱转一气。到这里还有最重要的一步，就是使用<code>#</code>号将<code>GRUB_HIDDEN_TIMEOUT=0</code>标注,然后再次回到终端，输入下面的命令刷新<code>/boot/grub/grub.cfg</code>文件：<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">update</span>-grub2</span><br></pre></td></tr></table></figure></p>
 <h2 id="启动项管理"><a href="#启动项管理" class="headerlink" title="启动项管理"></a>启动项管理</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">gnome-session-properties</span></span><br></pre></td></tr></table></figure>
 <h2 id="统一Win10和Ubuntu18-04双系统的时间"><a href="#统一Win10和Ubuntu18-04双系统的时间" class="headerlink" title="统一Win10和Ubuntu18.04双系统的时间"></a>统一Win10和Ubuntu18.04双系统的时间</h2><p>装了双系统会出现win10中的时间总是慢8个小时（时区不对）</p>
 <figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">统一Wi<span class="symbol">n10</span>和Ubu<span class="symbol">ntu18</span><span class="number">.04</span>双系统的时间</span><br></pre></td></tr></table></figure>
@@ -255,16 +731,17 @@
 <p>够骚气。。。</p>
 <h1 id="Finally"><a href="#Finally" class="headerlink" title="Finally"></a>Finally</h1><p>使用Ubuntu的这一路过来真的是跌跌撞撞，一路摸爬滚打不断谷歌百度解决各种奇怪的系统问题，磨合了也有好长一段日子，重装系统的次数也数不过来了，有一段时间甚至觉得重装系统已是日常，有时候一装就是到凌晨2点。。。给我最大的收获并不是觉得自己用Ubuntu用得多牛X，而是锻炼了自己的耐性，小强般的韧性。曾经一度想放弃Ubuntu，但一路都在边缘徘徊，还是坚持了下来。。。</p>
 <p>本文将定期更新，与时俱进~</p>
+
       
     </div>
 
-<div style="text-align:center;color:#ccc;font-size:14px">---------------- The End ----------------</div>
+<div style="text-align:center;color: #ccc;font-size:14px;">---------------- The End ----------------</div>
 
     <div>
       
         
-<div id="wechat_subscriber" style="display:block;padding:10px 0;margin:20px auto;width:100%;text-align:center">
-    <img id="wechat_subscriber_qcode" src="/images/wechat/gongzhonghao.jpg" alt="ookamiAntD wechat" style="width:200px;max-width:100%">
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat/gongzhonghao.jpg" alt="ookamiAntD wechat" style="width: 200px; max-width: 100%;">
     <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
 </div>
 
@@ -277,20 +754,20 @@
         
 
 
-  <div style="padding:10px 0;margin:20px auto;width:90%;text-align:center">
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
     <div>谢谢大爷～</div>
-    <button id="rewardButton" disable="enable" onclick='var qr=document.getElementById("QR");"none"===qr.style.display?qr.style.display="block":qr.style.display="none"'>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
       <span>赏</span>
     </button>
-    <div id="QR" style="display:none">
+    <div id="QR" style="display: none;">
       
-        <div id="wechat" style="display:inline-block">
+        <div id="wechat" style="display: inline-block">
           <img id="wechat_qr" src="/images/donate/wechat.png" alt="ookamiAntD WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
-        <div id="alipay" style="display:inline-block">
+        <div id="alipay" style="display: inline-block">
           <img id="alipay_qr" src="/images/donate/alipay.jpg" alt="ookamiAntD Alipay">
           <p>支付宝打赏</p>
         </div>
@@ -354,7 +831,7 @@
 
     <div class="post-spread">
       
-        
+        <!--MOB SHARE BEGIN-->
 <div class="-hoofoo-share-title">分享到：</div>
 <div class="-hoofoo-share-buttons">
     <div class="-mob-share-weibo -hoofoo-share-weibo -hoofoo-share-ui-button"><i class="fa fa-weibo" aria-hidden="true"></i></div>
@@ -363,7 +840,7 @@
     <div class="-mob-share-twitter -hoofoo-share-twitter -hoofoo-share-ui-button"><i class="fa fa-twitter" aria-hidden="true"></i></div>
     <div class="-hoofoo-share-more -hoofoo-share-ui-button -mob-share-open"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></div>
 </div>
-<div class="-mob-share-ui" style="display:none">
+<div class="-mob-share-ui" style="display: none">
     <ul class="-mob-share-list">
         <li class="-mob-share-weibo"><p>新浪微博</p></li>
         <li class="-mob-share-weixin"><p>微信</p></li>
@@ -388,7 +865,7 @@
 </div>
 <div class="-mob-share-ui-bg"></div>
 <script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=21aa3b13ad233"></script>
-
+<!--MOB SHARE END-->
 
       
     </div>
@@ -402,14 +879,33 @@
           
   <div class="comments" id="comments">
     
-<div style="text-align:center">
-  
+<div style="text-align:center;">
+  <!-- <button class="btn" id="load-disqus" onclick="disqus.load();">加载 Disqus 评论</button> -->
 
 </div>
       <div id="disqus_proxy_thread"></div>
       <div id="disqus_thread"></div>
       
-          <script type="text/javascript">window.disqusProxy={username:"ookamiantd",server:"disqus-proxy.yangbingdong.com",port:"5509",defaultAvatar:"/images/avatar/avatar-default.jpg",adminAvatar:"/images/avatar/avatar-admin.jpg",identifier:"2017/ubuntu-todo-after-install/"},window.disqus_config=function(){this.page.url="http://yangbingdong.com/2017/ubuntu-todo-after-install/",this.page.identifier="2017/ubuntu-todo-after-install/"},window.onload=function(){var a=document.createElement("script");a.src="/static/js/main.0d0338ae.js",a.async=!0,document.body.appendChild(a)}</script>
+          <script type="text/javascript">
+              window.disqusProxy = {
+                username: 'ookamiantd',
+                server: 'disqus-proxy.yangbingdong.com',
+                port: '5509',
+                defaultAvatar: '/images/avatar/avatar-default.jpg',
+                adminAvatar: '/images/avatar/avatar-admin.jpg',
+                identifier: '2017/ubuntu-todo-after-install/'
+              };
+              window.disqus_config = function () {
+                this.page.url = 'http://yangbingdong.com/2017/ubuntu-todo-after-install/';
+                this.page.identifier = '2017/ubuntu-todo-after-install/';
+              };
+              window.onload=function(){
+                var s = document.createElement('script');
+                s.src = "/static/js/main.0d0338ae.js";
+                s.async = true;
+                document.body.appendChild(s);
+              }
+          </script>
           <link rel="stylesheet" href="/static/css/main.0603c539.css">
       
 
@@ -446,7 +942,7 @@
       
 
       <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar/avatar-admin.jpg" alt="ookamiAntD">
           <p class="site-author-name" itemprop="name">ookamiAntD</p>
           <p class="site-description motion-element" itemprop="description">码渣 | rocker | 二次元 | 美剧 | 宅</p>
@@ -537,7 +1033,7 @@
         
           <div class="links-of-blogroll motion-element links-of-blogroll-block">
             <div class="links-of-blogroll-title">
-              <i class="fa fa-fw fa-globe"></i>
+              <i class="fa  fa-fw fa-globe"></i>
               大神们的博客
             </div>
             <ul class="links-of-blogroll-list">
@@ -563,13 +1059,37 @@
         
 
         <div id="days"></div>
-    <script>function show_date_time(){window.setTimeout("show_date_time()",1e3),BirthDay=new Date("01/10/2017 12:34:56"),today=new Date,timeold=today.getTime()-BirthDay.getTime(),sectimeold=timeold/1e3,secondsold=Math.floor(sectimeold),msPerDay=864e5,e_daysold=timeold/msPerDay,daysold=Math.floor(e_daysold),e_hrsold=24*(e_daysold-daysold),hrsold=setzero(Math.floor(e_hrsold)),e_minsold=60*(e_hrsold-hrsold),minsold=setzero(Math.floor(60*(e_hrsold-hrsold))),seconds=setzero(Math.floor(60*(e_minsold-minsold))),document.getElementById("days").innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒"}function setzero(e){return e<10&&(e="0"+e),e}show_date_time()</script>
+    <script>
+    function show_date_time(){
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date("01/10/2017 12:34:56");
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=setzero(Math.floor(e_hrsold));
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+        seconds=setzero(Math.floor((e_minsold-minsold)*60));
+        document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+    }
+function setzero(i){
+    if (i<10)
+    {i="0" + i};
+    return i;
+}
+show_date_time();
+</script>
 
 
       </section>
 
       
-      
+      <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
@@ -583,7 +1103,7 @@
 
           </div>
         </section>
-      
+      <!--/noindex-->
       
 
     </div>
@@ -595,7 +1115,7 @@
     </main>
 
     <footer id="footer" class="footer">
-	
+	<!-- <img style="position: absolute;top: 0;left: 15%;border: 0;width: 200px;height: 200px;" src="http://ojoba1c98.bkt.clouddn.com/img/coding-flag.png" alt="Coding Flag"> -->
       <div class="footer-inner">
         <div class="copyright">
   
@@ -604,9 +1124,430 @@
   <span class="with-love">
     <i class="fa fa-flash"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Hosted by <a href="https://pages.coding.me" style="font-weight:700" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></span>
+  <span class="author" itemprop="copyrightHolder">Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></span>
+</div>
+
+
+<!-- <div class="theme-info">
+    Personal Blog
+</div> --!>
+
+<div class="theme-info">
+  粤ICP备18135202号-1  |  <span class="post-count">共206.0k字</span>
 </div>
 
 
 
-<script type="text/javascript" src="/js/src/dytitle.js"></script></div></footer></div><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":88,"height":88,"position":"left"},"mobile":{"show":false},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script></body></html>
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user">本站访客数</i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye">本站总访问量</i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'ookamiantd';
+      var disqus_identifier = '2017/ubuntu-todo-after-install/';
+
+      var disqus_title = "Ubuntu主题美化、个性化设置与常用软件";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      var disqus = {
+        load : function disqus(){
+          if(typeof DISQUS !== 'object') {
+            (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+            $('#load-disqus').html("评论加载中，请确保你有梯子，若评论长时间未加载则你可能翻墙失败...").fadeOut(9000); ///加载后移除按钮
+          }
+  }
+}
+
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("usE0s6JGUeOiMcsVoRuHuv2B-gzGzoHsz", "ewm6NEF07r83HbnOr63ptuKH");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+
+  <script type="text/javascript" color="255,0,204" opacity='0.5' zIndex="-2" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+
+
+<script type="text/javascript">
+    //微信二维码点击背景关闭
+    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+         $(".-mob-share-weixin-qrcode-close").trigger("click");
+    }); 
+</script>
+
+
+
+<!--卖萌-->
+<script type="text/javascript" src="/js/src/dytitle.js"></script>
+</div></footer></div><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":88,"height":88,"position":"left"},"mobile":{"show":false},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script></body>
+</html>
