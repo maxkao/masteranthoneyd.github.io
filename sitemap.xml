@@ -65,13 +65,6 @@
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2017/ubuntu-dev-environment-to-build/</loc>
-    
-    <lastmod>2018-11-06T05:58:45.839Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yangbingdong.com/2018/spring-cloud-stack-learning/</loc>
     
     <lastmod>2018-11-06T05:58:45.839Z</lastmod>
@@ -79,9 +72,9 @@
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2018/spring-boot-learning-testing/</loc>
+    <loc>http://yangbingdong.com/2017/ubuntu-dev-environment-to-build/</loc>
     
-    <lastmod>2018-11-06T05:58:45.835Z</lastmod>
+    <lastmod>2018-11-06T05:58:45.839Z</lastmod>
     
   </url>
   
@@ -93,7 +86,14 @@
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2018/spring-boot-docker-elk/</loc>
+    <loc>http://yangbingdong.com/2018/spring-boot-learning-testing/</loc>
+    
+    <lastmod>2018-11-06T05:58:45.835Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yangbingdong.com/2017/self-hosted-build-ngrok-server/</loc>
     
     <lastmod>2018-11-06T05:58:45.831Z</lastmod>
     
@@ -107,14 +107,14 @@
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2017/self-hosted-build-ngrok-server/</loc>
+    <loc>http://yangbingdong.com/2018/spring-boot-docker-elk/</loc>
     
     <lastmod>2018-11-06T05:58:45.831Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2017/note-of-learning-git/</loc>
+    <loc>http://yangbingdong.com/2017/note-of-learning-idea-under-ubuntu/</loc>
     
     <lastmod>2018-11-06T05:58:45.827Z</lastmod>
     
@@ -128,7 +128,7 @@
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2017/note-of-learning-idea-under-ubuntu/</loc>
+    <loc>http://yangbingdong.com/2017/note-of-learning-git/</loc>
     
     <lastmod>2018-11-06T05:58:45.827Z</lastmod>
     
@@ -136,6 +136,13 @@
   
   <url>
     <loc>http://yangbingdong.com/2018/micro-service-ddd-notice/</loc>
+    
+    <lastmod>2018-11-06T05:58:45.823Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yangbingdong.com/2017/new-in-spring-framework-5/</loc>
     
     <lastmod>2018-11-06T05:58:45.823Z</lastmod>
     
@@ -150,13 +157,6 @@
   
   <url>
     <loc>http://yangbingdong.com/2017/jvm-knowledge-collect-01/</loc>
-    
-    <lastmod>2018-11-06T05:58:45.823Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yangbingdong.com/2017/new-in-spring-framework-5/</loc>
     
     <lastmod>2018-11-06T05:58:45.823Z</lastmod>
     
@@ -184,14 +184,14 @@
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2018/docker-visual-management-and-orchestrate-tools/</loc>
+    <loc>http://yangbingdong.com/2017/hello-world/</loc>
     
     <lastmod>2018-11-06T05:58:45.815Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2017/hello-world/</loc>
+    <loc>http://yangbingdong.com/2018/docker-visual-management-and-orchestrate-tools/</loc>
     
     <lastmod>2018-11-06T05:58:45.815Z</lastmod>
     
@@ -219,14 +219,14 @@
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2018/disruptor-learning/</loc>
+    <loc>http://yangbingdong.com/2018/design-pattern-creational/</loc>
     
     <lastmod>2018-11-06T05:58:45.807Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2018/design-pattern-creational/</loc>
+    <loc>http://yangbingdong.com/2018/disruptor-learning/</loc>
     
     <lastmod>2018-11-06T05:58:45.807Z</lastmod>
     
@@ -247,14 +247,14 @@
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/about/index.html</loc>
+    <loc>http://yangbingdong.com/categories/index.html</loc>
     
     <lastmod>2018-03-14T06:38:23.190Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/categories/index.html</loc>
+    <loc>http://yangbingdong.com/about/index.html</loc>
     
     <lastmod>2018-03-14T06:38:23.190Z</lastmod>
     
