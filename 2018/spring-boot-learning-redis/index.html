@@ -77,22 +77,22 @@
 
 
 
-<meta name="description" content="Redis Learning Preface Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。相比Memcached它支持存储的类型相对更多（字符、哈希、集合、有序集合、列表、GEO），同时Redis是线程安全的。2010年3月1">
+<meta name="description" content="Preface Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。相比Memcached它支持存储的类型相对更多（字符、哈希、集合、有序集合、列表、GEO），同时Redis是线程安全的。2010年3月15日起，Redis的开发工作由">
 <meta name="keywords" content="Redis,Spring Boot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis杂记">
 <meta property="og:url" content="http://yangbingdong.com/2018/spring-boot-learning-redis/index.html">
 <meta property="og:site_name" content="ookamiAntD&#39;s Blog">
-<meta property="og:description" content="Redis Learning Preface Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。相比Memcached它支持存储的类型相对更多（字符、哈希、集合、有序集合、列表、GEO），同时Redis是线程安全的。2010年3月15日起，Redis的开发工作由VMware主持，2013年5月开始，Redis的">
+<meta property="og:description" content="Preface Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。相比Memcached它支持存储的类型相对更多（字符、哈希、集合、有序集合、列表、GEO），同时Redis是线程安全的。2010年3月15日起，Redis的开发工作由VMware主持，2013年5月开始，Redis的开发由Pivotal赞助。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://cdn.yangbingdong.com/img/spring-boot-redis/redis-logo.png">
 <meta property="og:image" content="https://cdn.yangbingdong.com/img/javaDevEnv/rdr.png">
 <meta property="og:image" content="https://cdn.yangbingdong.com/img/spring-boot-redis/serialize-performance.png">
 <meta property="og:image" content="https://cdn.yangbingdong.com/img/spring-boot-redis/redis-key-expire-disruptor.png">
-<meta property="og:updated_time" content="2018-11-07T01:21:44.841Z">
+<meta property="og:updated_time" content="2018-11-14T10:18:38.988Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis杂记">
-<meta name="twitter:description" content="Redis Learning Preface Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。相比Memcached它支持存储的类型相对更多（字符、哈希、集合、有序集合、列表、GEO），同时Redis是线程安全的。2010年3月15日起，Redis的开发工作由VMware主持，2013年5月开始，Redis的">
+<meta name="twitter:description" content="Preface Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。相比Memcached它支持存储的类型相对更多（字符、哈希、集合、有序集合、列表、GEO），同时Redis是线程安全的。2010年3月15日起，Redis的开发工作由VMware主持，2013年5月开始，Redis的开发由Pivotal赞助。">
 <meta name="twitter:image" content="https://cdn.yangbingdong.com/img/spring-boot-redis/redis-logo.png">
 
 
@@ -426,7 +426,7 @@
              <i class="fa fa-edit"></i>
            </span>
            <span class="post-meta-item-text">WordCount:</span>
-           <span class="post-count">5,431字</span>
+           <span class="post-count">5,429字</span>
 			<span class="post-meta-divider">|</span>
 			<span class="post-meta-item-text">min2read:</span>
            <span class="post-count">24分钟</span>
@@ -448,7 +448,7 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="Redis-Learning"><a href="#Redis-Learning" class="headerlink" title="Redis Learning"></a>Redis Learning</h1><p><img src="https://cdn.yangbingdong.com/img/spring-boot-redis/redis-logo.png" alt=""></p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="https://cdn.yangbingdong.com/img/spring-boot-redis/redis-logo.png" alt=""></p>
 <h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><blockquote>
 <p>Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。相比<code>Memcached</code>它支持存储的类型相对更多<strong>（字符、哈希、集合、有序集合、列表、GEO）</strong>，<strong>同时Redis是线程安全的</strong>。2010年3月15日起，Redis的开发工作由VMware主持，2013年5月开始，Redis的开发由<code>Pivotal</code>赞助。 </p>
 </blockquote>
@@ -1102,7 +1102,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-Learning"><span class="nav-number">1.</span> <span class="nav-text">Redis Learning</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Preface"><span class="nav-number">2.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装与配置"><span class="nav-number">3.</span> <span class="nav-text">安装与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">3.1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于Docker安装"><span class="nav-number">3.1.1.</span> <span class="nav-text">基于Docker安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ubuntu-Apt安装"><span class="nav-number">3.1.2.</span> <span class="nav-text">Ubuntu Apt安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置相关"><span class="nav-number">3.2.</span> <span class="nav-text">配置相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启远程访问"><span class="nav-number">3.3.</span> <span class="nav-text">开启远程访问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启发布订阅监听"><span class="nav-number">3.4.</span> <span class="nav-text">开启发布订阅监听</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis常用命令"><span class="nav-number">4.</span> <span class="nav-text">Redis常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#连接操作命令"><span class="nav-number">4.1.</span> <span class="nav-text">连接操作命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持久化"><span class="nav-number">4.2.</span> <span class="nav-text">持久化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程服务控制"><span class="nav-number">4.3.</span> <span class="nav-text">远程服务控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对key操作的命令"><span class="nav-number">4.4.</span> <span class="nav-text">对key操作的命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">4.5.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">4.6.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">4.7.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">4.8.</span> <span class="nav-text">Hash</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不同数据类型的常见应用场景"><span class="nav-number">5.</span> <span class="nav-text">不同数据类型的常见应用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String-1"><span class="nav-number">5.1.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对象存储"><span class="nav-number">5.1.1.</span> <span class="nav-text">对象存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计数"><span class="nav-number">5.1.2.</span> <span class="nav-text">计数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式锁"><span class="nav-number">5.1.3.</span> <span class="nav-text">分布式锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#超大数量的布尔统计"><span class="nav-number">5.1.4.</span> <span class="nav-text">超大数量的布尔统计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List-1"><span class="nav-number">5.2.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#显示最新的分页列表"><span class="nav-number">5.2.1.</span> <span class="nav-text">显示最新的分页列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息队列"><span class="nav-number">5.2.2.</span> <span class="nav-text">消息队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-1"><span class="nav-number">5.3.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#共同好友列表（求交集系列）"><span class="nav-number">5.3.1.</span> <span class="nav-text">共同好友列表（求交集系列）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SortedSet"><span class="nav-number">5.4.</span> <span class="nav-text">SortedSet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#排行榜"><span class="nav-number">5.4.1.</span> <span class="nav-text">排行榜</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#慢查询查看"><span class="nav-number">6.</span> <span class="nav-text">慢查询查看</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rdb文件分析"><span class="nav-number">7.</span> <span class="nav-text">rdb文件分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#客户端序列化选择"><span class="nav-number">8.</span> <span class="nav-text">客户端序列化选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring监听Redis-Keyspace-Event"><span class="nav-number">9.</span> <span class="nav-text">Spring监听Redis Keyspace Event</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方式一、通过RedisMessageListenerContainer"><span class="nav-number">9.1.</span> <span class="nav-text">方式一、通过RedisMessageListenerContainer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式二、监听RedisKeyspaceEvent"><span class="nav-number">9.2.</span> <span class="nav-text">方式二、监听RedisKeyspaceEvent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式三、结合Disruptor"><span class="nav-number">9.3.</span> <span class="nav-text">方式三、结合Disruptor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺点"><span class="nav-number">9.4.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Timing-of-expired-events"><span class="nav-number">9.5.</span> <span class="nav-text">Timing of expired events</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装与配置"><span class="nav-number">2.</span> <span class="nav-text">安装与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于Docker安装"><span class="nav-number">2.1.1.</span> <span class="nav-text">基于Docker安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ubuntu-Apt安装"><span class="nav-number">2.1.2.</span> <span class="nav-text">Ubuntu Apt安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置相关"><span class="nav-number">2.2.</span> <span class="nav-text">配置相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启远程访问"><span class="nav-number">2.3.</span> <span class="nav-text">开启远程访问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启发布订阅监听"><span class="nav-number">2.4.</span> <span class="nav-text">开启发布订阅监听</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis常用命令"><span class="nav-number">3.</span> <span class="nav-text">Redis常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#连接操作命令"><span class="nav-number">3.1.</span> <span class="nav-text">连接操作命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持久化"><span class="nav-number">3.2.</span> <span class="nav-text">持久化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程服务控制"><span class="nav-number">3.3.</span> <span class="nav-text">远程服务控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对key操作的命令"><span class="nav-number">3.4.</span> <span class="nav-text">对key操作的命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">3.5.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">3.6.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">3.7.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">3.8.</span> <span class="nav-text">Hash</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不同数据类型的常见应用场景"><span class="nav-number">4.</span> <span class="nav-text">不同数据类型的常见应用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String-1"><span class="nav-number">4.1.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对象存储"><span class="nav-number">4.1.1.</span> <span class="nav-text">对象存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计数"><span class="nav-number">4.1.2.</span> <span class="nav-text">计数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式锁"><span class="nav-number">4.1.3.</span> <span class="nav-text">分布式锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#超大数量的布尔统计"><span class="nav-number">4.1.4.</span> <span class="nav-text">超大数量的布尔统计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List-1"><span class="nav-number">4.2.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#显示最新的分页列表"><span class="nav-number">4.2.1.</span> <span class="nav-text">显示最新的分页列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息队列"><span class="nav-number">4.2.2.</span> <span class="nav-text">消息队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-1"><span class="nav-number">4.3.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#共同好友列表（求交集系列）"><span class="nav-number">4.3.1.</span> <span class="nav-text">共同好友列表（求交集系列）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SortedSet"><span class="nav-number">4.4.</span> <span class="nav-text">SortedSet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#排行榜"><span class="nav-number">4.4.1.</span> <span class="nav-text">排行榜</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#慢查询查看"><span class="nav-number">5.</span> <span class="nav-text">慢查询查看</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rdb文件分析"><span class="nav-number">6.</span> <span class="nav-text">rdb文件分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#客户端序列化选择"><span class="nav-number">7.</span> <span class="nav-text">客户端序列化选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring监听Redis-Keyspace-Event"><span class="nav-number">8.</span> <span class="nav-text">Spring监听Redis Keyspace Event</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方式一、通过RedisMessageListenerContainer"><span class="nav-number">8.1.</span> <span class="nav-text">方式一、通过RedisMessageListenerContainer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式二、监听RedisKeyspaceEvent"><span class="nav-number">8.2.</span> <span class="nav-text">方式二、监听RedisKeyspaceEvent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式三、结合Disruptor"><span class="nav-number">8.3.</span> <span class="nav-text">方式三、结合Disruptor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺点"><span class="nav-number">8.4.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Timing-of-expired-events"><span class="nav-number">8.5.</span> <span class="nav-text">Timing of expired events</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1121,27 +1121,6 @@ show_date_time();
     <footer id="footer" class="footer">
 	<!-- <img style="position: absolute;top: 0;left: 15%;border: 0;width: 200px;height: 200px;" src="http://ojoba1c98.bkt.clouddn.com/img/coding-flag.png" alt="Coding Flag"> -->
       <div class="footer-inner">
-        <div class="copyright">
-  
-  &copy;  2016 - 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-flash"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></span>
-</div>
-
-
-<!-- <div class="theme-info">
-    Personal Blog
-</div> --!>
-
-<div class="theme-info">
-  <a target="_blank" href="http://www.miibeian.gov.cn/" rel="nofollow">粤ICP备18135202号-1</a>  |  <span class="post-count">共211.1k字</span>
-</div>
-
-
-
         
 
 <div class="busuanzi-count">
@@ -1156,6 +1135,34 @@ show_date_time();
     <span class="site-pv"><i class="fa fa-eye">本站总访问量</i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
   
   
+</div>
+
+
+
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-flash"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></span> | <span class="post-count">共211.6k字</span>
+</div>
+
+
+<!-- <div class="theme-info">
+    Personal Blog
+</div> --!>
+
+<div class="theme-info">
+  <a target="_blank" href="http://www.miibeian.gov.cn/" rel="nofollow" style="color:#555;">粤ICP备18135202号-1</a>  
+</div>
+
+
+<div style="width:300px;margin:0 auto;">
+  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602005896" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <img src="https://cdn.yangbingdong.com/img/beian/beian.png" style="float:left;" />
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#555;">粤公网安备 44010602005896号</p></a>
 </div>
 
 

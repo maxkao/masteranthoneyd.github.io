@@ -101,7 +101,9 @@
 <meta property="og:image" content="https://cdn.yangbingdong.com/img/jvm/classlodertest.png">
 <meta property="og:image" content="https://cdn.yangbingdong.com/img/jvm/calssloader.png">
 <meta property="og:image" content="https://cdn.yangbingdong.com/img/jvm/result.png">
-<meta property="og:updated_time" content="2018-11-06T05:58:45.823Z">
+<meta property="og:image" content="https://cdn.yangbingdong.com/img/jvm/jvm-men-thread.webp">
+<meta property="og:image" content="https://cdn.yangbingdong.com/img/jvm/jvm-param.webp">
+<meta property="og:updated_time" content="2018-11-07T02:00:37.561Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM知识杂汇">
 <meta name="twitter:description" content="前言 想要深刻地理解Java，那么就要深入地理解底层——JVM(Java Virtual Machine | Java虚拟机)。JVM（Java Virtual Machine）Java 虚拟机是整个 java 平台的基石，是 java 系统实现硬件无关与操作系统无关的关键部分，是保障用户机器免于恶意代码损害的屏障。Java开发人员不需要了解JVM是如何工作的，但是，了解 JVM 有助于我们更好">
@@ -427,7 +429,7 @@
              <i class="fa fa-edit"></i>
            </span>
            <span class="post-meta-item-text">WordCount:</span>
-           <span class="post-count">13,553字</span>
+           <span class="post-count">13,566字</span>
 			<span class="post-meta-divider">|</span>
 			<span class="post-meta-item-text">min2read:</span>
            <span class="post-count">52分钟</span>
@@ -559,7 +561,10 @@
 <p>32G 内存配置示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JAVA_OPTS=&quot;$JAVA_OPTS  -Xms10g -Xmx10g -XX:PermSize=1g -XX:MaxPermSize=2g -Xshare:off -Xmn1024m</span><br></pre></td></tr></table></figure></p>
 <h3 id="Tomcat线程优化"><a href="#Tomcat线程优化" class="headerlink" title="Tomcat线程优化"></a>Tomcat线程优化</h3><p>在Tomcat配置文件<code>server.xml</code>中的配置中，和连接数相关的参数有：<br><code>maxThreads</code>： Tomcat使用线程来处理接收的每个请求。这个值表示Tomcat可创建的最大的线程数。默认值150。<br><code>acceptCount</code>： 指定当所有可以使用的处理请求的线程数都被使用时，可以放到处理队列中的请求数，超过这个数的请求将不予处理。默认值10。<br><code>minSpareThreads</code>： Tomcat初始化时创建的线程数。默认值25。<br><code>maxSpareThreads</code>： 一旦创建的线程超过这个值，Tomcat就会关闭不再需要的socket线程。默认值75。<br><code>enableLookups</code>： 是否反查域名，默认值为true。为了提高处理能力，应设置为false<br><code>connnectionTimeout</code>： 网络连接超时，默认值60000，单位：毫秒。设置为0表示永不超时，这样设置有隐患的。通常可设置为30000毫秒。<br><code>maxKeepAliveRequests</code>： 保持请求数量，默认值100。 bufferSize： 输入流缓冲大小，默认值2048 bytes。<br><code>compression</code>： 压缩传输，取值on/off/force，默认值off。 其中和最大连接数相关的参数为maxThreads和<code>acceptCount</code>。如果要加大并发连接数，应同时加大这两个参数。<br>32G 内存配置示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Connector port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot;</span><br><span class="line">               connectionTimeout=&quot;20000&quot; maxThreads=&quot;1000&quot; minSpareThreads=&quot;60&quot; maxSpareThreads=&quot;600&quot;  acceptCount=&quot;120&quot; </span><br><span class="line">               redirectPort=&quot;8443&quot; URIEncoding=&quot;utf-8&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
 <h2 id="Eclipse调优"><a href="#Eclipse调优" class="headerlink" title="Eclipse调优"></a>Eclipse调优</h2><p>eclipse.ini配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">-startup</span><br><span class="line">plugins/org.eclipse.equinox.launcher_1.3.100.v20150511-1540.jar</span><br><span class="line">--launcher.library</span><br><span class="line">plugins/org.eclipse.equinox.launcher.win32.win32.x86_64_1.1.300.v20150602-1417</span><br><span class="line">-product</span><br><span class="line">org.eclipse.epp.package.jee.product</span><br><span class="line">--launcher.defaultAction</span><br><span class="line">openFile</span><br><span class="line">--launcher.XXMaxPermSize</span><br><span class="line">512M</span><br><span class="line">-showsplash</span><br><span class="line">org.eclipse.platform</span><br><span class="line">--launcher.XXMaxPermSize</span><br><span class="line">512m</span><br><span class="line">--launcher.defaultAction</span><br><span class="line">openFile</span><br><span class="line">--launcher.appendVmargs</span><br><span class="line">-vmargs</span><br><span class="line">-Dosgi.requiredJavaVersion=1.7</span><br><span class="line">-Xms2048m</span><br><span class="line">-Xmx2048m</span><br><span class="line">-Xverify:none</span><br><span class="line">-XX:+PrintGCDetails                 </span><br><span class="line">-XX:+PrintGCDateStamps</span><br><span class="line">-Xloggc:gc.log</span><br></pre></td></tr></table></figure></p>
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><blockquote>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>附上两张来自 <strong><em><a href="https://mp.weixin.qq.com/s?__biz=MzU3NDY4NzQwNQ==&amp;mid=2247483820&amp;idx=1&amp;sn=8418f0f6a618bb0f0ca0980af09a816f&amp;chksm=fd2fd06eca5859786ab124dd204a7ec9b1ad3ed230b9b531086cc6729a277a05d3e8307b7e0d&amp;scene=21#wechat_redirect" rel="external nofollow noopener noreferrer" target="_blank">无敌码农</a></em></strong> 的图片：</p>
+<p><img src="https://cdn.yangbingdong.com/img/jvm/jvm-men-thread.webp" alt=""></p>
+<p><img src="https://cdn.yangbingdong.com/img/jvm/jvm-param.webp" alt=""></p>
+<blockquote>
 <p><strong>参考并转载于：</strong><br><strong><em><a href="http://blog.csdn.net/seu_calvin/article/details/51404589" rel="external nofollow noopener noreferrer" target="_blank">http://blog.csdn.net/seu_calvin/article/details/51404589</a></em></strong><br><strong><em><a href="http://blog.csdn.net/seu_calvin/article/details/51892567" rel="external nofollow noopener noreferrer" target="_blank">http://blog.csdn.net/seu_calvin/article/details/51892567</a></em></strong><br><strong><em><a href="http://blog.csdn.net/seu_calvin/article/details/52301541" rel="external nofollow noopener noreferrer" target="_blank">http://blog.csdn.net/seu_calvin/article/details/52301541</a></em></strong><br><strong><em><a href="http://www.importnew.com/23774.html" rel="external nofollow noopener noreferrer" target="_blank">http://www.importnew.com/23774.html</a></em></strong><br><strong><em><a href="http://www.importnew.com/23780.html" rel="external nofollow noopener noreferrer" target="_blank">http://www.importnew.com/23774.html</a></em></strong></p>
 </blockquote>
 <p>更多JVM汇总请看：</p>
@@ -953,27 +958,6 @@ show_date_time();
     <footer id="footer" class="footer">
 	<!-- <img style="position: absolute;top: 0;left: 15%;border: 0;width: 200px;height: 200px;" src="http://ojoba1c98.bkt.clouddn.com/img/coding-flag.png" alt="Coding Flag"> -->
       <div class="footer-inner">
-        <div class="copyright">
-  
-  &copy;  2016 - 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-flash"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></span>
-</div>
-
-
-<!-- <div class="theme-info">
-    Personal Blog
-</div> --!>
-
-<div class="theme-info">
-  <a target="_blank" href="http://www.miibeian.gov.cn/" rel="nofollow">粤ICP备18135202号-1</a>  |  <span class="post-count">共211.1k字</span>
-</div>
-
-
-
         
 
 <div class="busuanzi-count">
@@ -988,6 +972,34 @@ show_date_time();
     <span class="site-pv"><i class="fa fa-eye">本站总访问量</i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
   
   
+</div>
+
+
+
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-flash"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></span> | <span class="post-count">共211.6k字</span>
+</div>
+
+
+<!-- <div class="theme-info">
+    Personal Blog
+</div> --!>
+
+<div class="theme-info">
+  <a target="_blank" href="http://www.miibeian.gov.cn/" rel="nofollow" style="color:#555;">粤ICP备18135202号-1</a>  
+</div>
+
+
+<div style="width:300px;margin:0 auto;">
+  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602005896" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <img src="https://cdn.yangbingdong.com/img/beian/beian.png" style="float:left;" />
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#555;">粤公网安备 44010602005896号</p></a>
 </div>
 
 
