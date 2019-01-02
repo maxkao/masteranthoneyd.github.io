@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yangbingdong.com/"/>
-  <updated>2018-11-14T10:18:38.988Z</updated>
+  <updated>2019-01-02T06:30:47.405Z</updated>
   <id>http://yangbingdong.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring与任务调度集成相关</title>
+    <link href="http://yangbingdong.com/2018/spring-boot-scheduler/"/>
+    <id>http://yangbingdong.com/2018/spring-boot-scheduler/</id>
+    <published>2018-12-02T06:23:13.000Z</published>
+    <updated>2019-01-02T06:30:47.405Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://cdn.yangbingdong.com/img/scheduler/scheduler-banner.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Preface&quot;&gt;&lt;a href=&quot;#Preface&quot; class=&quot;headerlink&quot; title=&quot;Preface&quot;&gt;&lt;/a&gt;Preface&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;本篇主要记录&lt;strong&gt;任务调度&lt;/strong&gt;相关框架知识。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Programming" scheme="http://yangbingdong.com/categories/Programming/"/>
+    
+      <category term="Java" scheme="http://yangbingdong.com/categories/Programming/Java/"/>
+    
+      <category term="Spring Boot" scheme="http://yangbingdong.com/categories/Programming/Java/Spring-Boot/"/>
+    
+    
+      <category term="Java" scheme="http://yangbingdong.com/tags/Java/"/>
+    
+      <category term="Spring Boot" scheme="http://yangbingdong.com/tags/Spring-Boot/"/>
+    
+      <category term="Scheduler" scheme="http://yangbingdong.com/tags/Scheduler/"/>
+    
+  </entry>
   
   <entry>
     <title>Redis杂记</title>
@@ -677,7 +708,7 @@
     <link href="http://yangbingdong.com/2017/note-of-learning-idea-under-ubuntu/"/>
     <id>http://yangbingdong.com/2017/note-of-learning-idea-under-ubuntu/</id>
     <published>2017-04-17T10:00:00.000Z</published>
-    <updated>2018-11-06T05:58:45.827Z</updated>
+    <updated>2019-01-02T05:37:52.701Z</updated>
     
     <summary type="html">
     
@@ -782,7 +813,7 @@
     <link href="http://yangbingdong.com/2017/ubuntu-dev-environment-to-build/"/>
     <id>http://yangbingdong.com/2017/ubuntu-dev-environment-to-build/</id>
     <published>2017-01-20T03:31:22.000Z</published>
-    <updated>2018-11-06T05:58:45.839Z</updated>
+    <updated>2018-12-18T09:28:57.241Z</updated>
     
     <summary type="html">
     
@@ -864,7 +895,7 @@
     <link href="http://yangbingdong.com/2017/ubuntu-todo-after-install/"/>
     <id>http://yangbingdong.com/2017/ubuntu-todo-after-install/</id>
     <published>2017-01-12T15:04:36.000Z</published>
-    <updated>2018-11-06T05:58:45.843Z</updated>
+    <updated>2019-01-02T03:54:25.538Z</updated>
     
     <summary type="html">
     

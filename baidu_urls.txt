@@ -1,3 +1,3 @@
+http://yangbingdong.com/2018/spring-boot-scheduler/
 http://yangbingdong.com/2018/spring-boot-learning-redis/
 http://yangbingdong.com/2018/distribution-lock/
-http://yangbingdong.com/2018/spring-boot-learning-testing/

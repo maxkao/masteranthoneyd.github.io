@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yangbingdong.com/2018/spring-boot-scheduler/</loc>
+    
+    <lastmod>2019-01-02T06:30:47.405Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yangbingdong.com/2017/note-of-learning-idea-under-ubuntu/</loc>
+    
+    <lastmod>2019-01-02T05:37:52.701Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yangbingdong.com/2017/ubuntu-todo-after-install/</loc>
+    
+    <lastmod>2019-01-02T03:54:25.538Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yangbingdong.com/2017/ubuntu-dev-environment-to-build/</loc>
+    
+    <lastmod>2018-12-18T09:28:57.241Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yangbingdong.com/2018/spring-boot-docker-elk/</loc>
     
     <lastmod>2018-12-03T10:17:22.223Z</lastmod>
@@ -72,13 +100,6 @@
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2017/ubuntu-todo-after-install/</loc>
-    
-    <lastmod>2018-11-06T05:58:45.843Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yangbingdong.com/2017/ubuntu-myeclipse-crack/</loc>
     
     <lastmod>2018-11-06T05:58:45.843Z</lastmod>
@@ -93,13 +114,6 @@
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2017/ubuntu-dev-environment-to-build/</loc>
-    
-    <lastmod>2018-11-06T05:58:45.839Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yangbingdong.com/2018/spring-cloud-stack-learning/</loc>
     
     <lastmod>2018-11-06T05:58:45.839Z</lastmod>
@@ -107,14 +121,14 @@
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2018/spring-boot-learning-hodgepodge/</loc>
+    <loc>http://yangbingdong.com/2018/spring-boot-learning-testing/</loc>
     
     <lastmod>2018-11-06T05:58:45.835Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2018/spring-boot-learning-testing/</loc>
+    <loc>http://yangbingdong.com/2018/spring-boot-learning-hodgepodge/</loc>
     
     <lastmod>2018-11-06T05:58:45.835Z</lastmod>
     
@@ -128,7 +142,7 @@
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2017/note-of-learning-idea-under-ubuntu/</loc>
+    <loc>http://yangbingdong.com/2017/note-of-learning-git/</loc>
     
     <lastmod>2018-11-06T05:58:45.827Z</lastmod>
     
@@ -142,21 +156,14 @@
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2017/note-of-learning-git/</loc>
-    
-    <lastmod>2018-11-06T05:58:45.827Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yangbingdong.com/2018/micro-service-ddd-notice/</loc>
+    <loc>http://yangbingdong.com/2018/mysql-related-learning/</loc>
     
     <lastmod>2018-11-06T05:58:45.823Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2018/mysql-related-learning/</loc>
+    <loc>http://yangbingdong.com/2018/micro-service-ddd-notice/</loc>
     
     <lastmod>2018-11-06T05:58:45.823Z</lastmod>
     
@@ -170,7 +177,7 @@
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2017/java-call-by-value/</loc>
+    <loc>http://yangbingdong.com/2017/java-8-tutorial/</loc>
     
     <lastmod>2018-11-06T05:58:45.819Z</lastmod>
     
@@ -184,21 +191,21 @@
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2017/java-8-tutorial/</loc>
+    <loc>http://yangbingdong.com/2017/java-call-by-value/</loc>
     
     <lastmod>2018-11-06T05:58:45.819Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2017/hello-world/</loc>
+    <loc>http://yangbingdong.com/2018/docker-visual-management-and-orchestrate-tools/</loc>
     
     <lastmod>2018-11-06T05:58:45.815Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2018/docker-visual-management-and-orchestrate-tools/</loc>
+    <loc>http://yangbingdong.com/2017/hello-world/</loc>
     
     <lastmod>2018-11-06T05:58:45.815Z</lastmod>
     
@@ -247,14 +254,14 @@
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/categories/index.html</loc>
+    <loc>http://yangbingdong.com/about/index.html</loc>
     
     <lastmod>2018-03-14T06:38:23.190Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/about/index.html</loc>
+    <loc>http://yangbingdong.com/categories/index.html</loc>
     
     <lastmod>2018-03-14T06:38:23.190Z</lastmod>
     
