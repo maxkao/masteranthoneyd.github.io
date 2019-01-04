@@ -4,18 +4,136 @@
 
     
   <url>
-    <loc>http://yangbingdong.com/2018/spring-boot-learning-hodgepodge/</loc>
-    <lastmod>2019-01-02T09:58:32.197Z</lastmod>
+    <loc>http://yangbingdong.com/2018/disruptor-learning/</loc>
+    <lastmod>2019-01-04T09:21:14.114Z</lastmod>
     <data>
         <display>
-        <title>Spring Boot学习之杂记篇</title>
-        <pubTime>2018-02-25T07:25:35.000Z</pubTime>
+        <title>极致的追求, 高性能并发框架 Disruptor</title>
+        <pubTime>2018-02-05T07:52:51.000Z</pubTime>
         
         <tag>Java</tag>
          
-        <tag>Spring Boot</tag>
+        <tag>Disruptor</tag>
          
-        <tag>Spring</tag>
+         
+           
+             
+              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
+          
+             
+              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2018/write-your-own-blockchain/</loc>
+    <lastmod>2019-01-04T09:17:19.919Z</lastmod>
+    <data>
+        <display>
+        <title>转载—自己动手写区块链</title>
+        <pubTime>2018-03-05T09:38:08.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>Blockchain</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
+          
+             
+              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2017/ubuntu-todo-after-install/</loc>
+    <lastmod>2019-01-04T09:17:19.915Z</lastmod>
+    <data>
+        <display>
+        <title>Ubuntu主题美化、个性化设置与常用软件</title>
+        <pubTime>2017-01-12T15:04:36.000Z</pubTime>
+        
+        <tag>Ubuntu</tag>
+         
+         
+           
+             
+              <breadCrumb title="OperatingSystem" url="http://yangbingdong.com/categories/OperatingSystem/"/>
+          
+             
+              <breadCrumb title="Ubuntu" url="http://yangbingdong.com/categories/OperatingSystem/Ubuntu/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2017/use-vps-cross-wall-by-shadowsocks-under-ubuntu/</loc>
+    <lastmod>2019-01-04T09:17:19.915Z</lastmod>
+    <data>
+        <display>
+        <title>Access Blocked Sites(科学上网):VPS自搭建ShadowSocks与加速</title>
+        <pubTime>2017-04-19T10:15:57.000Z</pubTime>
+        
+        <tag>VPS</tag>
+         
+        <tag>ShadowSocks</tag>
+         
+         
+           
+             
+              <breadCrumb title="VPS" url="http://yangbingdong.com/categories/VPS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2017/with-reactor-response-encode/</loc>
+    <lastmod>2019-01-04T09:17:19.915Z</lastmod>
+    <data>
+        <display>
+        <title>使用 Reactor 进行反应式编程</title>
+        <pubTime>2017-11-30T00:55:12.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>Reactor</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
+          
+             
+              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2018/spring-cloud-stack-learning/</loc>
+    <lastmod>2019-01-04T09:17:19.911Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud Stack Learning</title>
+        <pubTime>2018-06-09T08:55:08.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>Spring Cloud</tag>
          
          
            
@@ -26,7 +144,7 @@
               <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
           
              
-              <breadCrumb title="Spring Boot" url="http://yangbingdong.com/categories/Programming/Java/Spring-Boot/"/>
+              <breadCrumb title="Spring Cloud" url="http://yangbingdong.com/categories/Programming/Java/Spring-Cloud/"/>
           
         </display>
     </data>
@@ -35,7 +153,7 @@
     
   <url>
     <loc>http://yangbingdong.com/2018/spring-boot-scheduler/</loc>
-    <lastmod>2019-01-02T07:57:35.453Z</lastmod>
+    <lastmod>2019-01-04T09:17:19.911Z</lastmod>
     <data>
         <display>
         <title>Spring与任务调度集成相关</title>
@@ -64,53 +182,8 @@
 
     
   <url>
-    <loc>http://yangbingdong.com/2017/note-of-learning-idea-under-ubuntu/</loc>
-    <lastmod>2019-01-02T05:37:52.701Z</lastmod>
-    <data>
-        <display>
-        <title>Ubuntu下使用IntelliJ IDEA的正确姿势</title>
-        <pubTime>2017-04-17T10:00:00.000Z</pubTime>
-        
-        <tag>Ubuntu</tag>
-         
-        <tag>IDE</tag>
-         
-         
-           
-             
-              <breadCrumb title="IDE" url="http://yangbingdong.com/categories/IDE/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yangbingdong.com/2017/ubuntu-todo-after-install/</loc>
-    <lastmod>2019-01-02T03:54:25.538Z</lastmod>
-    <data>
-        <display>
-        <title>Ubuntu主题美化、个性化设置与常用软件</title>
-        <pubTime>2017-01-12T15:04:36.000Z</pubTime>
-        
-        <tag>Ubuntu</tag>
-         
-         
-           
-             
-              <breadCrumb title="OperatingSystem" url="http://yangbingdong.com/categories/OperatingSystem/"/>
-          
-             
-              <breadCrumb title="Ubuntu" url="http://yangbingdong.com/categories/OperatingSystem/Ubuntu/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yangbingdong.com/2017/ubuntu-dev-environment-to-build/</loc>
-    <lastmod>2018-12-18T09:28:57.241Z</lastmod>
+    <lastmod>2019-01-04T09:17:19.911Z</lastmod>
     <data>
         <display>
         <title>Ubuntu的Java开发环境基本搭建</title>
@@ -138,282 +211,8 @@
 
     
   <url>
-    <loc>http://yangbingdong.com/2018/spring-boot-docker-elk/</loc>
-    <lastmod>2018-12-03T10:17:22.223Z</lastmod>
-    <data>
-        <display>
-        <title>Spring Boot应用集成Docker并结合Log4j2、Kafka、ELK管理Docker日志</title>
-        <pubTime>2018-04-02T05:00:19.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>Spring Boot</tag>
-         
-        <tag>Spring</tag>
-         
-        <tag>Docker</tag>
-         
-        <tag>Elasticsearch</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
-          
-             
-              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
-          
-             
-              <breadCrumb title="Spring Boot" url="http://yangbingdong.com/categories/Programming/Java/Spring-Boot/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yangbingdong.com/2017/note-of-linux-command/</loc>
-    <lastmod>2018-11-22T03:26:27.115Z</lastmod>
-    <data>
-        <display>
-        <title>Ubuntu 常用命令</title>
-        <pubTime>2017-09-20T10:05:10.000Z</pubTime>
-        
-        <tag>Ubuntu</tag>
-         
-         
-           
-             
-              <breadCrumb title="OperatingSystem" url="http://yangbingdong.com/categories/OperatingSystem/"/>
-          
-             
-              <breadCrumb title="Ubuntu" url="http://yangbingdong.com/categories/OperatingSystem/Ubuntu/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yangbingdong.com/2018/spring-boot-mvc-validation/</loc>
-    <lastmod>2018-11-15T02:06:35.957Z</lastmod>
-    <data>
-        <display>
-        <title>Spring Boot学习之MVC与Validation</title>
-        <pubTime>2018-02-26T08:30:58.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>Spring Boot</tag>
-         
-        <tag>Spring</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
-          
-             
-              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
-          
-             
-              <breadCrumb title="Spring Boot" url="http://yangbingdong.com/categories/Programming/Java/Spring-Boot/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yangbingdong.com/2018/spring-boot-learning-redis/</loc>
-    <lastmod>2018-11-14T10:18:38.988Z</lastmod>
-    <data>
-        <display>
-        <title>Redis杂记</title>
-        <pubTime>2018-10-06T08:15:04.000Z</pubTime>
-        
-        <tag>Redis</tag>
-         
-        <tag>Spring Boot</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
-          
-             
-              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
-          
-             
-              <breadCrumb title="Spring Boot" url="http://yangbingdong.com/categories/Programming/Java/Spring-Boot/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yangbingdong.com/2018/design-pattern-creational/</loc>
-    <lastmod>2018-11-14T10:18:19.516Z</lastmod>
-    <data>
-        <display>
-        <title>设计模式之创建型(Creational)</title>
-        <pubTime>2018-07-12T06:34:52.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>Design Pattern</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
-          
-             
-              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
-          
-             
-              <breadCrumb title="Design Pattern" url="http://yangbingdong.com/categories/Programming/Java/Design-Pattern/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yangbingdong.com/2017/jvm-knowledge-collect-01/</loc>
-    <lastmod>2018-11-07T02:00:37.561Z</lastmod>
-    <data>
-        <display>
-        <title>JVM知识杂汇</title>
-        <pubTime>2017-03-09T05:04:51.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>JVM</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
-          
-             
-              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yangbingdong.com/2017/build-blog-hexo-base/</loc>
-    <lastmod>2018-11-06T09:19:34.903Z</lastmod>
-    <data>
-        <display>
-        <title>基于Hexo+Github+Coding搭建个人博客——基础篇(从菜鸟到放弃)</title>
-        <pubTime>2017-01-15T12:44:05.000Z</pubTime>
-        
-        <tag>Hexo</tag>
-         
-        <tag>Node.js</tag>
-         
-        <tag>Github</tag>
-         
-        <tag>Coding</tag>
-         
-        <tag>Git</tag>
-         
-         
-           
-             
-              <breadCrumb title="Hexo" url="http://yangbingdong.com/categories/Hexo/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yangbingdong.com/2017/build-blog-hexo-advanced/</loc>
-    <lastmod>2018-11-06T09:04:20.355Z</lastmod>
-    <data>
-        <display>
-        <title>基于Hexo搭建个人博客——进阶篇(从入门到入土)</title>
-        <pubTime>2017-02-21T15:07:34.000Z</pubTime>
-        
-        <tag>Hexo</tag>
-         
-        <tag>Node.js</tag>
-         
-        <tag>Github</tag>
-         
-        <tag>Coding</tag>
-         
-        <tag>Git</tag>
-         
-         
-           
-             
-              <breadCrumb title="Hexo" url="http://yangbingdong.com/categories/Hexo/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yangbingdong.com/2017/with-reactor-response-encode/</loc>
-    <lastmod>2018-11-06T05:58:45.847Z</lastmod>
-    <data>
-        <display>
-        <title>使用 Reactor 进行反应式编程</title>
-        <pubTime>2017-11-30T00:55:12.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>Reactor</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
-          
-             
-              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yangbingdong.com/2018/write-your-own-blockchain/</loc>
-    <lastmod>2018-11-06T05:58:45.847Z</lastmod>
-    <data>
-        <display>
-        <title>转载—自己动手写区块链</title>
-        <pubTime>2018-03-05T09:38:08.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>Blockchain</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
-          
-             
-              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yangbingdong.com/2017/ubuntu-myeclipse-crack/</loc>
-    <lastmod>2018-11-06T05:58:45.843Z</lastmod>
+    <lastmod>2019-01-04T09:17:19.911Z</lastmod>
     <data>
         <display>
         <title>Ubuntu16.04下MyEclipse安装与破解</title>
@@ -434,58 +233,8 @@
 
     
   <url>
-    <loc>http://yangbingdong.com/2017/use-vps-cross-wall-by-shadowsocks-under-ubuntu/</loc>
-    <lastmod>2018-11-06T05:58:45.843Z</lastmod>
-    <data>
-        <display>
-        <title>Access Blocked Sites(科学上网):VPS自搭建ShadowSocks与加速</title>
-        <pubTime>2017-04-19T10:15:57.000Z</pubTime>
-        
-        <tag>VPS</tag>
-         
-        <tag>ShadowSocks</tag>
-         
-         
-           
-             
-              <breadCrumb title="VPS" url="http://yangbingdong.com/categories/VPS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yangbingdong.com/2018/spring-cloud-stack-learning/</loc>
-    <lastmod>2018-11-06T05:58:45.839Z</lastmod>
-    <data>
-        <display>
-        <title>Spring Cloud Stack Learning</title>
-        <pubTime>2018-06-09T08:55:08.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>Spring Cloud</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
-          
-             
-              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
-          
-             
-              <breadCrumb title="Spring Cloud" url="http://yangbingdong.com/categories/Programming/Java/Spring-Cloud/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yangbingdong.com/2018/spring-boot-learning-testing/</loc>
-    <lastmod>2018-11-06T05:58:45.835Z</lastmod>
+    <lastmod>2019-01-04T09:17:19.907Z</lastmod>
     <data>
         <display>
         <title>Spring Boot学习之测试篇</title>
@@ -520,8 +269,153 @@
 
     
   <url>
+    <loc>http://yangbingdong.com/2018/spring-boot-learning-redis/</loc>
+    <lastmod>2019-01-04T09:17:19.907Z</lastmod>
+    <data>
+        <display>
+        <title>Redis杂记</title>
+        <pubTime>2018-10-06T08:15:04.000Z</pubTime>
+        
+        <tag>Redis</tag>
+         
+        <tag>Spring Boot</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
+          
+             
+              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
+          
+             
+              <breadCrumb title="Spring Boot" url="http://yangbingdong.com/categories/Programming/Java/Spring-Boot/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2018/spring-boot-mvc-validation/</loc>
+    <lastmod>2019-01-04T09:17:19.907Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Boot学习之MVC与Validation</title>
+        <pubTime>2018-02-26T08:30:58.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>Spring Boot</tag>
+         
+        <tag>Spring</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
+          
+             
+              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
+          
+             
+              <breadCrumb title="Spring Boot" url="http://yangbingdong.com/categories/Programming/Java/Spring-Boot/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2018/spring-boot-learning-hodgepodge/</loc>
+    <lastmod>2019-01-04T09:17:19.903Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Boot学习之杂记篇</title>
+        <pubTime>2018-02-25T07:25:35.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>Spring Boot</tag>
+         
+        <tag>Spring</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
+          
+             
+              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
+          
+             
+              <breadCrumb title="Spring Boot" url="http://yangbingdong.com/categories/Programming/Java/Spring-Boot/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2018/spring-boot-docker-elk/</loc>
+    <lastmod>2019-01-04T09:17:19.903Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Boot应用集成Docker并结合Log4j2、Kafka、ELK管理Docker日志</title>
+        <pubTime>2018-04-02T05:00:19.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>Spring Boot</tag>
+         
+        <tag>Spring</tag>
+         
+        <tag>Docker</tag>
+         
+        <tag>Elasticsearch</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
+          
+             
+              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
+          
+             
+              <breadCrumb title="Spring Boot" url="http://yangbingdong.com/categories/Programming/Java/Spring-Boot/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2017/note-of-linux-command/</loc>
+    <lastmod>2019-01-04T09:17:19.899Z</lastmod>
+    <data>
+        <display>
+        <title>Ubuntu 常用命令</title>
+        <pubTime>2017-09-20T10:05:10.000Z</pubTime>
+        
+        <tag>Ubuntu</tag>
+         
+         
+           
+             
+              <breadCrumb title="OperatingSystem" url="http://yangbingdong.com/categories/OperatingSystem/"/>
+          
+             
+              <breadCrumb title="Ubuntu" url="http://yangbingdong.com/categories/OperatingSystem/Ubuntu/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yangbingdong.com/2017/self-hosted-build-ngrok-server/</loc>
-    <lastmod>2018-11-06T05:58:45.831Z</lastmod>
+    <lastmod>2019-01-04T09:17:19.899Z</lastmod>
     <data>
         <display>
         <title>VPS自搭建Ngrok内网穿透服务</title>
@@ -542,21 +436,21 @@
 
     
   <url>
-    <loc>http://yangbingdong.com/2017/note-of-learning-git/</loc>
-    <lastmod>2018-11-06T05:58:45.827Z</lastmod>
+    <loc>http://yangbingdong.com/2017/note-of-learning-idea-under-ubuntu/</loc>
+    <lastmod>2019-01-04T09:17:19.899Z</lastmod>
     <data>
         <display>
-        <title>Git学习笔记</title>
-        <pubTime>2017-01-18T04:42:52.000Z</pubTime>
+        <title>Ubuntu下使用IntelliJ IDEA的正确姿势</title>
+        <pubTime>2017-04-17T10:00:00.000Z</pubTime>
         
-        <tag>Github</tag>
+        <tag>Ubuntu</tag>
          
-        <tag>Git</tag>
+        <tag>IDE</tag>
          
          
            
              
-              <breadCrumb title="Git/Github" url="http://yangbingdong.com/categories/Git-Github/"/>
+              <breadCrumb title="IDE" url="http://yangbingdong.com/categories/IDE/"/>
           
         </display>
     </data>
@@ -565,7 +459,7 @@
     
   <url>
     <loc>http://yangbingdong.com/2017/nginx-noob-guide/</loc>
-    <lastmod>2018-11-06T05:58:45.827Z</lastmod>
+    <lastmod>2019-01-04T09:17:19.895Z</lastmod>
     <data>
         <display>
         <title>NGINX初学指南(安装与简单配置)</title>
@@ -587,7 +481,7 @@
     
   <url>
     <loc>http://yangbingdong.com/2017/new-in-spring-framework-5/</loc>
-    <lastmod>2018-11-06T05:58:45.823Z</lastmod>
+    <lastmod>2019-01-04T09:17:19.895Z</lastmod>
     <data>
         <display>
         <title>Spring5新特征与WebFlux反应式编程</title>
@@ -612,7 +506,7 @@
     
   <url>
     <loc>http://yangbingdong.com/2018/mysql-related-learning/</loc>
-    <lastmod>2018-11-06T05:58:45.823Z</lastmod>
+    <lastmod>2019-01-04T09:17:19.895Z</lastmod>
     <data>
         <display>
         <title>MySQL杂记</title>
@@ -631,45 +525,21 @@
 
     
   <url>
-    <loc>http://yangbingdong.com/2018/micro-service-ddd-notice/</loc>
-    <lastmod>2018-11-06T05:58:45.823Z</lastmod>
+    <loc>http://yangbingdong.com/2017/note-of-learning-git/</loc>
+    <lastmod>2019-01-04T09:17:19.895Z</lastmod>
     <data>
         <display>
-        <title>关于微服务的一些调研零散笔记</title>
-        <pubTime>2018-01-02T08:59:14.000Z</pubTime>
+        <title>Git学习笔记</title>
+        <pubTime>2017-01-18T04:42:52.000Z</pubTime>
         
-        <tag>Java</tag>
+        <tag>Github</tag>
+         
+        <tag>Git</tag>
          
          
            
              
-              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
-          
-             
-              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yangbingdong.com/2017/java-dev-ten-mistake-and-some-advice/</loc>
-    <lastmod>2018-11-06T05:58:45.819Z</lastmod>
-    <data>
-        <display>
-        <title>Java开发人员最常犯的10个错误以及35个代码性能优化小结</title>
-        <pubTime>2017-03-07T12:40:46.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
-          
-             
-              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
+              <breadCrumb title="Git/Github" url="http://yangbingdong.com/categories/Git-Github/"/>
           
         </display>
     </data>
@@ -678,7 +548,7 @@
     
   <url>
     <loc>http://yangbingdong.com/2017/java-8-tutorial/</loc>
-    <lastmod>2018-11-06T05:58:45.819Z</lastmod>
+    <lastmod>2019-01-04T09:17:19.891Z</lastmod>
     <data>
         <display>
         <title>Java8 Noob Tutorial</title>
@@ -700,8 +570,33 @@
 
     
   <url>
+    <loc>http://yangbingdong.com/2017/jvm-knowledge-collect-01/</loc>
+    <lastmod>2019-01-04T09:17:19.891Z</lastmod>
+    <data>
+        <display>
+        <title>JVM知识杂汇</title>
+        <pubTime>2017-03-09T05:04:51.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>JVM</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
+          
+             
+              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yangbingdong.com/2017/java-call-by-value/</loc>
-    <lastmod>2018-11-06T05:58:45.819Z</lastmod>
+    <lastmod>2019-01-04T09:17:19.891Z</lastmod>
     <data>
         <display>
         <title>Java基本数据类型传递与引用传递的那点事</title>
@@ -725,8 +620,54 @@
 
     
   <url>
+    <loc>http://yangbingdong.com/2017/java-dev-ten-mistake-and-some-advice/</loc>
+    <lastmod>2019-01-04T09:17:19.891Z</lastmod>
+    <data>
+        <display>
+        <title>Java开发人员最常犯的10个错误以及35个代码性能优化小结</title>
+        <pubTime>2017-03-07T12:40:46.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
+          
+             
+              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2018/micro-service-ddd-notice/</loc>
+    <lastmod>2019-01-04T09:17:19.891Z</lastmod>
+    <data>
+        <display>
+        <title>关于微服务的一些调研零散笔记</title>
+        <pubTime>2018-01-02T08:59:14.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
+          
+             
+              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yangbingdong.com/2018/docker-visual-management-and-orchestrate-tools/</loc>
-    <lastmod>2018-11-06T05:58:45.815Z</lastmod>
+    <lastmod>2019-01-04T09:17:19.887Z</lastmod>
     <data>
         <display>
         <title>Docker可视化与管理工具</title>
@@ -748,7 +689,7 @@
     
   <url>
     <loc>http://yangbingdong.com/2017/hello-world/</loc>
-    <lastmod>2018-11-06T05:58:45.815Z</lastmod>
+    <lastmod>2019-01-04T09:17:19.887Z</lastmod>
     <data>
         <display>
         <title>Start My Blog Trip — Power By Hexo</title>
@@ -767,8 +708,56 @@
 
     
   <url>
+    <loc>http://yangbingdong.com/2017/docker-learning/</loc>
+    <lastmod>2019-01-04T09:17:19.883Z</lastmod>
+    <data>
+        <display>
+        <title>Docker入坑笔记</title>
+        <pubTime>2017-09-07T07:55:07.000Z</pubTime>
+        
+        <tag>Docker</tag>
+         
+         
+           
+             
+              <breadCrumb title="Docker" url="http://yangbingdong.com/categories/Docker/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2018/design-pattern-creational/</loc>
+    <lastmod>2019-01-04T09:17:19.879Z</lastmod>
+    <data>
+        <display>
+        <title>设计模式之创建型(Creational)</title>
+        <pubTime>2018-07-12T06:34:52.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>Design Pattern</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
+          
+             
+              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
+          
+             
+              <breadCrumb title="Design Pattern" url="http://yangbingdong.com/categories/Programming/Java/Design-Pattern/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yangbingdong.com/2018/distribution-lock/</loc>
-    <lastmod>2018-11-06T05:58:45.811Z</lastmod>
+    <lastmod>2019-01-04T09:17:19.879Z</lastmod>
     <data>
         <display>
         <title>分布式锁的几种实现方式</title>
@@ -798,53 +787,8 @@
 
     
   <url>
-    <loc>http://yangbingdong.com/2017/docker-learning/</loc>
-    <lastmod>2018-11-06T05:58:45.811Z</lastmod>
-    <data>
-        <display>
-        <title>Docker入坑笔记</title>
-        <pubTime>2017-09-07T07:55:07.000Z</pubTime>
-        
-        <tag>Docker</tag>
-         
-         
-           
-             
-              <breadCrumb title="Docker" url="http://yangbingdong.com/categories/Docker/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yangbingdong.com/2018/disruptor-learning/</loc>
-    <lastmod>2018-11-06T05:58:45.807Z</lastmod>
-    <data>
-        <display>
-        <title>极致的追求：高性能并发框架 Disruptor</title>
-        <pubTime>2018-02-05T07:52:51.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>Disruptor</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://yangbingdong.com/categories/Programming/"/>
-          
-             
-              <breadCrumb title="Java" url="http://yangbingdong.com/categories/Programming/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yangbingdong.com/2017/design-pattern-uml-and-six-principle/</loc>
-    <lastmod>2018-11-06T05:58:45.807Z</lastmod>
+    <lastmod>2019-01-04T09:17:19.879Z</lastmod>
     <data>
         <display>
         <title>设计模式原则与UML类图</title>
@@ -864,6 +808,62 @@
           
              
               <breadCrumb title="Design Pattern" url="http://yangbingdong.com/categories/Programming/Java/Design-Pattern/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2017/build-blog-hexo-base/</loc>
+    <lastmod>2019-01-04T09:17:19.875Z</lastmod>
+    <data>
+        <display>
+        <title>基于Hexo+Github+Coding搭建个人博客——基础篇(从菜鸟到放弃)</title>
+        <pubTime>2017-01-15T12:44:05.000Z</pubTime>
+        
+        <tag>Hexo</tag>
+         
+        <tag>Node.js</tag>
+         
+        <tag>Github</tag>
+         
+        <tag>Coding</tag>
+         
+        <tag>Git</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hexo" url="http://yangbingdong.com/categories/Hexo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yangbingdong.com/2017/build-blog-hexo-advanced/</loc>
+    <lastmod>2019-01-04T09:17:19.875Z</lastmod>
+    <data>
+        <display>
+        <title>基于Hexo搭建个人博客——进阶篇(从入门到入土)</title>
+        <pubTime>2017-02-21T15:07:34.000Z</pubTime>
+        
+        <tag>Hexo</tag>
+         
+        <tag>Node.js</tag>
+         
+        <tag>Github</tag>
+         
+        <tag>Coding</tag>
+         
+        <tag>Git</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hexo" url="http://yangbingdong.com/categories/Hexo/"/>
           
         </display>
     </data>
