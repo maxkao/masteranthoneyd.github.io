@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yangbingdong.com/2017/use-vps-cross-wall-by-shadowsocks-under-ubuntu/</loc>
+    
+    <lastmod>2019-03-05T10:38:10.330Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yangbingdong.com/2017/ubuntu-todo-after-install/</loc>
     
     <lastmod>2019-03-04T05:03:59.529Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://yangbingdong.com/2018/mysql-related-learning/</loc>
     
     <lastmod>2019-02-26T10:57:14.022Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yangbingdong.com/2017/use-vps-cross-wall-by-shadowsocks-under-ubuntu/</loc>
-    
-    <lastmod>2019-02-26T10:57:13.982Z</lastmod>
     
   </url>
   
@@ -100,7 +100,7 @@
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2017/hello-world/</loc>
+    <loc>http://yangbingdong.com/2017/java-call-by-value/</loc>
     
     <lastmod>2019-01-04T09:17:19.000Z</lastmod>
     
@@ -114,14 +114,14 @@
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2017/note-of-learning-git/</loc>
+    <loc>http://yangbingdong.com/2017/self-hosted-build-ngrok-server/</loc>
     
     <lastmod>2019-01-04T09:17:19.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2017/self-hosted-build-ngrok-server/</loc>
+    <loc>http://yangbingdong.com/2017/note-of-learning-git/</loc>
     
     <lastmod>2019-01-04T09:17:19.000Z</lastmod>
     
@@ -163,14 +163,14 @@
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2018/design-pattern-creational/</loc>
+    <loc>http://yangbingdong.com/2018/distribution-lock/</loc>
     
     <lastmod>2019-01-04T09:17:19.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2018/distribution-lock/</loc>
+    <loc>http://yangbingdong.com/2018/design-pattern-creational/</loc>
     
     <lastmod>2019-01-04T09:17:19.000Z</lastmod>
     
@@ -233,21 +233,21 @@
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/2017/java-call-by-value/</loc>
+    <loc>http://yangbingdong.com/2017/hello-world/</loc>
     
     <lastmod>2019-01-04T09:17:19.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/about/index.html</loc>
+    <loc>http://yangbingdong.com/categories/index.html</loc>
     
     <lastmod>2018-03-14T06:38:23.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yangbingdong.com/categories/index.html</loc>
+    <loc>http://yangbingdong.com/about/index.html</loc>
     
     <lastmod>2018-03-14T06:38:23.000Z</lastmod>
     
