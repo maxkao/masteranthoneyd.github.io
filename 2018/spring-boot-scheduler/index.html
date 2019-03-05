@@ -80,7 +80,7 @@
 <meta name="description" content="Preface 本篇主要记录任务调度相关框架知识.  任务调度这个在日常开发中非常经典, 比如每天固定时刻同步用户信息、或者是动态的活动开始与结束时间, 亦或者每天早上8点发条短信鼓励一下自己今天努力填坑之类的. . .">
 <meta name="keywords" content="Java,Spring Boot,Scheduler">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring与任务调度集成相关">
+<meta property="og:title" content="Spring与任务调度">
 <meta property="og:url" content="http://yangbingdong.com/2018/spring-boot-scheduler/index.html">
 <meta property="og:site_name" content="ookamiAntD&#39;s Blog">
 <meta property="og:description" content="Preface 本篇主要记录任务调度相关框架知识.  任务调度这个在日常开发中非常经典, 比如每天固定时刻同步用户信息、或者是动态的活动开始与结束时间, 亦或者每天早上8点发条短信鼓励一下自己今天努力填坑之类的. . .">
@@ -89,9 +89,9 @@
 <meta property="og:image" content="https://cdn.yangbingdong.com/img/scheduler/quartz-logo.jpg">
 <meta property="og:image" content="http://www.javarticles.com/wp-content/uploads/2016/03/MainComponents.png">
 <meta property="og:image" content="http://www.javarticles.com/wp-content/uploads/2016/03/QuartzSchedulerModel.png">
-<meta property="og:updated_time" content="2019-01-04T09:17:19.911Z">
+<meta property="og:updated_time" content="2019-02-12T08:07:39.998Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring与任务调度集成相关">
+<meta name="twitter:title" content="Spring与任务调度">
 <meta name="twitter:description" content="Preface 本篇主要记录任务调度相关框架知识.  任务调度这个在日常开发中非常经典, 比如每天固定时刻同步用户信息、或者是动态的活动开始与结束时间, 亦或者每天早上8点发条短信鼓励一下自己今天努力填坑之类的. . .">
 <meta name="twitter:image" content="https://cdn.yangbingdong.com/img/scheduler/scheduler-banner.jpg">
 
@@ -127,7 +127,7 @@
 
 
 
-  <title> Spring与任务调度集成相关 | ookamiAntD's Blog </title>
+  <title> Spring与任务调度 | ookamiAntD's Blog </title>
 </head>
 
 <body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
@@ -329,7 +329,7 @@
             
             
               
-                Spring与任务调度集成相关
+                Spring与任务调度
               
             
           </h2>
@@ -409,7 +409,7 @@
 
           
           
-             <span id="/2018/spring-boot-scheduler/" class="leancloud_visitors" data-flag-title="Spring与任务调度集成相关">
+             <span id="/2018/spring-boot-scheduler/" class="leancloud_visitors" data-flag-title="Spring与任务调度">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -426,10 +426,10 @@
              <i class="fa fa-edit"></i>
            </span>
            <span class="post-meta-item-text">WordCount:</span>
-           <span class="post-count">3,268字</span>
+           <span class="post-count">3,754字</span>
 			<span class="post-meta-divider">|</span>
 			<span class="post-meta-item-text">min2read:</span>
-           <span class="post-count">16分钟</span>
+           <span class="post-count">18分钟</span>
 
          </span>
 
@@ -561,9 +561,13 @@
 <h1 id="时间轮"><a href="#时间轮" class="headerlink" title="时间轮"></a>时间轮</h1><blockquote>
 <p><strong><em><a href="https://github.com/ifesdjeen/hashed-wheel-timer" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/ifesdjeen/hashed-wheel-timer</a></em></strong></p>
 </blockquote>
-<h1 id="分布式任务调度"><a href="#分布式任务调度" class="headerlink" title="分布式任务调度"></a>分布式任务调度</h1><blockquote>
+<h1 id="分布式任务调度"><a href="#分布式任务调度" class="headerlink" title="分布式任务调度"></a>分布式任务调度</h1><h2 id="Elastic-Job"><a href="#Elastic-Job" class="headerlink" title="Elastic Job"></a>Elastic Job</h2><blockquote>
 <p><strong><em><a href="http://elasticjob.io/" rel="external nofollow noopener noreferrer" target="_blank">Elastic Job</a></em></strong></p>
 </blockquote>
+<h3 id="Elastic-Job-与-Sping-Cloud-集成解决依赖冲突问题"><a href="#Elastic-Job-与-Sping-Cloud-集成解决依赖冲突问题" class="headerlink" title="Elastic Job 与 Sping Cloud 集成解决依赖冲突问题"></a>Elastic Job 与 Sping Cloud 集成解决依赖冲突问题</h3><p>由于Elastic Job自身的 <code>curator-client</code>,<code>curator-framework</code>,<code>curator-recipes</code>与Spring Cloud组件中的<code>curator-client</code>,<code>curator-framework</code>,<code>curator-recipes</code>有版本冲突，在启动过程会报如下错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2018-07-06 18:19:34.403 | epms |  WARN | IP: |            main | AnnotationConfigServletWebServerApplicationContext |   558 | refresh | Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &apos;reqAspect&apos; defined in file [/home/ybd/data/git-repo/bitbucket/epms/epms-core/target/classes/com/yanglaoban/epms/core/aop/ReqAspect.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name &apos;disruptorConfig&apos;: Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &apos;delayHandler&apos; defined in file [/home/ybd/data/git-repo/bitbucket/epms/epms-core/target/classes/com/yanglaoban/epms/core/pubsub/disruptor/handler/DelayHandler.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &apos;delayService&apos; defined in file [/home/ybd/data/git-repo/bitbucket/epms/epms-core/target/classes/com/yanglaoban/epms/core/domain/service/DelayService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &apos;elasticJobService&apos; defined in file [/home/ybd/data/git-repo/bitbucket/epms/epms-core/target/classes/com/yanglaoban/epms/core/elasticjob/ElasticJobService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name &apos;regCenter&apos; defined in class path resource [com/yanglaoban/epms/core/elasticjob/config/ElasticJobConfig.class]: Invocation of init method failed; nested exception is java.lang.NoClassDefFoundError: org/apache/curator/connection/StandardConnectionHandlingPolicy</span><br></pre></td></tr></table></figure>
+<p>解决方式是排除Elastic Job中<code>curator</code>相关依赖，重新导入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;properties&gt;</span><br><span class="line">   &lt;elastic-job.version&gt;2.1.5&lt;/elastic-job.version&gt;</span><br><span class="line">   &lt;curator.version&gt;2.10.0&lt;/curator.version&gt;</span><br><span class="line">&lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependencies&gt;</span><br><span class="line">     &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;com.dangdang&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;elastic-job-lite-core&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;$&#123;elastic-job.version&#125;&lt;/version&gt;</span><br><span class="line">            &lt;exclusions&gt;</span><br><span class="line">                &lt;exclusion&gt;</span><br><span class="line">                    &lt;artifactId&gt;curator-client&lt;/artifactId&gt;</span><br><span class="line">                    &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;</span><br><span class="line">                &lt;/exclusion&gt;</span><br><span class="line">                &lt;exclusion&gt;</span><br><span class="line">                    &lt;artifactId&gt;curator-framework&lt;/artifactId&gt;</span><br><span class="line">                    &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;</span><br><span class="line">                &lt;/exclusion&gt;</span><br><span class="line">                &lt;exclusion&gt;</span><br><span class="line">                    &lt;artifactId&gt;curator-recipes&lt;/artifactId&gt;</span><br><span class="line">                    &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;</span><br><span class="line">                &lt;/exclusion&gt;</span><br><span class="line">            &lt;/exclusions&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;curator-framework&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;$&#123;curator.version&#125;&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;curator-client&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;$&#123;curator.version&#125;&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;curator-recipes&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;$&#123;curator.version&#125;&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -615,7 +619,7 @@
 	  
 	    <p id="div-border-left-red">
 		Author：<b>ookamiAntD Yang</b><br>
-		Link：<a href="/2018/spring-boot-scheduler/" title="Spring与任务调度集成相关">http://yangbingdong.com/2018/spring-boot-scheduler/</a><br>
+		Link：<a href="/2018/spring-boot-scheduler/" title="Spring与任务调度">http://yangbingdong.com/2018/spring-boot-scheduler/</a><br>
 		Contact：<a>yangbingdong1994@gmail.com</a><br>
 	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow noopener noreferrer"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br>
 	    <b>转载请注明出处，谢谢！</b>
@@ -641,8 +645,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/spring-boot-learning-redis/" rel="next" title="Redis杂记">
-                <i class="fa fa-chevron-left"></i> Redis杂记
+              <a href="/2018/spring-boot-learning-redis/" rel="next" title="Redis拾遗与Spring Boot整合">
+                <i class="fa fa-chevron-left"></i> Redis拾遗与Spring Boot整合
               </a>
             
           </div>
@@ -931,7 +935,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Quartz"><span class="nav-number">2.</span> <span class="nav-text">Quartz</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主要成员"><span class="nav-number">2.1.</span> <span class="nav-text">主要成员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建流程"><span class="nav-number">2.2.</span> <span class="nav-text">构建流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行模式"><span class="nav-number">2.3.</span> <span class="nav-text">运行模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与Spring集成"><span class="nav-number">2.4.</span> <span class="nav-text">与Spring集成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#xml方式声明Job"><span class="nav-number">2.4.1.</span> <span class="nav-text">xml方式声明Job</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MethodInvokingJobDetailFactoryBean"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">MethodInvokingJobDetailFactoryBean</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QuartzJobBean"><span class="nav-number">2.4.1.2.</span> <span class="nav-text">QuartzJobBean</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JobFactory"><span class="nav-number">2.4.2.</span> <span class="nav-text">JobFactory</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot自动配置"><span class="nav-number">2.5.</span> <span class="nav-text">Spring Boot自动配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Job的增删改"><span class="nav-number">2.6.</span> <span class="nav-text">Job的增删改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他问题"><span class="nav-number">2.7.</span> <span class="nav-text">其他问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Durability"><span class="nav-number">2.7.1.</span> <span class="nav-text">Durability</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Misfire"><span class="nav-number">2.7.2.</span> <span class="nav-text">Misfire</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#maxBatchSize"><span class="nav-number">2.7.3.</span> <span class="nav-text">maxBatchSize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能问题"><span class="nav-number">2.7.4.</span> <span class="nav-text">性能问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-Scheduler"><span class="nav-number">3.</span> <span class="nav-text">Spring Scheduler</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#开启配置"><span class="nav-number">3.1.</span> <span class="nav-text">开启配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Xml方式"><span class="nav-number">3.1.1.</span> <span class="nav-text">Xml方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java配置方式"><span class="nav-number">3.1.2.</span> <span class="nav-text">Java配置方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">3.2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Xml方式-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">Xml方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注解声明方式"><span class="nav-number">3.2.2.</span> <span class="nav-text">注解声明方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cron表达式"><span class="nav-number">4.</span> <span class="nav-text">Cron表达式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时间轮"><span class="nav-number">5.</span> <span class="nav-text">时间轮</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式任务调度"><span class="nav-number">6.</span> <span class="nav-text">分布式任务调度</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Quartz"><span class="nav-number">2.</span> <span class="nav-text">Quartz</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主要成员"><span class="nav-number">2.1.</span> <span class="nav-text">主要成员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建流程"><span class="nav-number">2.2.</span> <span class="nav-text">构建流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行模式"><span class="nav-number">2.3.</span> <span class="nav-text">运行模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与Spring集成"><span class="nav-number">2.4.</span> <span class="nav-text">与Spring集成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#xml方式声明Job"><span class="nav-number">2.4.1.</span> <span class="nav-text">xml方式声明Job</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MethodInvokingJobDetailFactoryBean"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">MethodInvokingJobDetailFactoryBean</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QuartzJobBean"><span class="nav-number">2.4.1.2.</span> <span class="nav-text">QuartzJobBean</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JobFactory"><span class="nav-number">2.4.2.</span> <span class="nav-text">JobFactory</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot自动配置"><span class="nav-number">2.5.</span> <span class="nav-text">Spring Boot自动配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Job的增删改"><span class="nav-number">2.6.</span> <span class="nav-text">Job的增删改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他问题"><span class="nav-number">2.7.</span> <span class="nav-text">其他问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Durability"><span class="nav-number">2.7.1.</span> <span class="nav-text">Durability</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Misfire"><span class="nav-number">2.7.2.</span> <span class="nav-text">Misfire</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#maxBatchSize"><span class="nav-number">2.7.3.</span> <span class="nav-text">maxBatchSize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能问题"><span class="nav-number">2.7.4.</span> <span class="nav-text">性能问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-Scheduler"><span class="nav-number">3.</span> <span class="nav-text">Spring Scheduler</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#开启配置"><span class="nav-number">3.1.</span> <span class="nav-text">开启配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Xml方式"><span class="nav-number">3.1.1.</span> <span class="nav-text">Xml方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java配置方式"><span class="nav-number">3.1.2.</span> <span class="nav-text">Java配置方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">3.2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Xml方式-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">Xml方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注解声明方式"><span class="nav-number">3.2.2.</span> <span class="nav-text">注解声明方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cron表达式"><span class="nav-number">4.</span> <span class="nav-text">Cron表达式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时间轮"><span class="nav-number">5.</span> <span class="nav-text">时间轮</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式任务调度"><span class="nav-number">6.</span> <span class="nav-text">分布式任务调度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Elastic-Job"><span class="nav-number">6.1.</span> <span class="nav-text">Elastic Job</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Elastic-Job-与-Sping-Cloud-集成解决依赖冲突问题"><span class="nav-number">6.1.1.</span> <span class="nav-text">Elastic Job 与 Sping Cloud 集成解决依赖冲突问题</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -975,7 +979,7 @@ show_date_time();
   <span class="with-love">
     <i class="fa fa-flash"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></span> | <span class="post-count">共216.0k字</span>
+  <span class="author" itemprop="copyrightHolder">Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></span> | <span class="post-count">共218.6k字</span>
 </div>
 
 
@@ -1080,7 +1084,7 @@ show_date_time();
       var disqus_shortname = 'ookamiantd';
       var disqus_identifier = '2018/spring-boot-scheduler/';
 
-      var disqus_title = "Spring与任务调度集成相关";
+      var disqus_title = "Spring与任务调度";
 
 
       function run_disqus_script(disqus_script) {

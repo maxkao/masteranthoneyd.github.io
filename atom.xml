@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yangbingdong.com/"/>
-  <updated>2019-01-04T09:17:19.911Z</updated>
+  <updated>2019-02-12T08:07:39.998Z</updated>
   <id>http://yangbingdong.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Spring与任务调度集成相关</title>
+    <title>Spring与任务调度</title>
     <link href="http://yangbingdong.com/2018/spring-boot-scheduler/"/>
     <id>http://yangbingdong.com/2018/spring-boot-scheduler/</id>
     <published>2018-12-02T06:23:13.000Z</published>
-    <updated>2019-01-04T09:17:19.911Z</updated>
+    <updated>2019-02-12T08:07:39.998Z</updated>
     
     <summary type="html">
     
@@ -49,11 +49,11 @@
   </entry>
   
   <entry>
-    <title>Redis杂记</title>
+    <title>Redis拾遗与Spring Boot整合</title>
     <link href="http://yangbingdong.com/2018/spring-boot-learning-redis/"/>
     <id>http://yangbingdong.com/2018/spring-boot-learning-redis/</id>
     <published>2018-10-06T08:15:04.000Z</published>
-    <updated>2019-01-04T09:17:19.907Z</updated>
+    <updated>2019-02-26T10:57:14.022Z</updated>
     
     <summary type="html">
     
@@ -82,7 +82,7 @@
     <link href="http://yangbingdong.com/2018/distribution-lock/"/>
     <id>http://yangbingdong.com/2018/distribution-lock/</id>
     <published>2018-09-15T09:19:33.000Z</published>
-    <updated>2019-01-04T09:17:19.879Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
@@ -115,7 +115,7 @@
     <link href="http://yangbingdong.com/2018/spring-boot-learning-testing/"/>
     <id>http://yangbingdong.com/2018/spring-boot-learning-testing/</id>
     <published>2018-08-28T02:16:40.000Z</published>
-    <updated>2019-01-04T09:17:19.907Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
@@ -153,7 +153,7 @@
     <link href="http://yangbingdong.com/2018/design-pattern-creational/"/>
     <id>http://yangbingdong.com/2018/design-pattern-creational/</id>
     <published>2018-07-12T06:34:52.000Z</published>
-    <updated>2019-01-04T09:17:19.879Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
@@ -183,7 +183,7 @@
     <link href="http://yangbingdong.com/2018/spring-cloud-stack-learning/"/>
     <id>http://yangbingdong.com/2018/spring-cloud-stack-learning/</id>
     <published>2018-06-09T08:55:08.000Z</published>
-    <updated>2019-01-04T09:17:19.911Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
@@ -214,7 +214,7 @@
     <link href="http://yangbingdong.com/2018/spring-boot-docker-elk/"/>
     <id>http://yangbingdong.com/2018/spring-boot-docker-elk/</id>
     <published>2018-04-02T05:00:19.000Z</published>
-    <updated>2019-01-04T09:17:19.903Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
@@ -249,7 +249,7 @@
     <link href="http://yangbingdong.com/2018/write-your-own-blockchain/"/>
     <id>http://yangbingdong.com/2018/write-your-own-blockchain/</id>
     <published>2018-03-05T09:38:08.000Z</published>
-    <updated>2019-01-04T09:17:19.919Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
@@ -278,7 +278,7 @@
     <link href="http://yangbingdong.com/2018/spring-boot-mvc-validation/"/>
     <id>http://yangbingdong.com/2018/spring-boot-mvc-validation/</id>
     <published>2018-02-26T08:30:58.000Z</published>
-    <updated>2019-01-04T09:17:19.907Z</updated>
+    <updated>2019-01-10T10:36:43.000Z</updated>
     
     <summary type="html">
     
@@ -309,7 +309,7 @@
     <link href="http://yangbingdong.com/2018/spring-boot-learning-hodgepodge/"/>
     <id>http://yangbingdong.com/2018/spring-boot-learning-hodgepodge/</id>
     <published>2018-02-25T07:25:35.000Z</published>
-    <updated>2019-01-04T09:17:19.903Z</updated>
+    <updated>2019-02-12T08:07:39.994Z</updated>
     
     <summary type="html">
     
@@ -342,7 +342,7 @@
     <link href="http://yangbingdong.com/2018/mysql-related-learning/"/>
     <id>http://yangbingdong.com/2018/mysql-related-learning/</id>
     <published>2018-02-16T07:16:18.000Z</published>
-    <updated>2019-01-04T09:17:19.895Z</updated>
+    <updated>2019-02-26T10:57:14.022Z</updated>
     
     <summary type="html">
     
@@ -365,7 +365,7 @@
     <link href="http://yangbingdong.com/2018/disruptor-learning/"/>
     <id>http://yangbingdong.com/2018/disruptor-learning/</id>
     <published>2018-02-05T07:52:51.000Z</published>
-    <updated>2019-01-04T09:21:14.114Z</updated>
+    <updated>2019-01-04T09:21:14.000Z</updated>
     
     <summary type="html">
     
@@ -394,7 +394,7 @@
     <link href="http://yangbingdong.com/2018/micro-service-ddd-notice/"/>
     <id>http://yangbingdong.com/2018/micro-service-ddd-notice/</id>
     <published>2018-01-02T08:59:14.000Z</published>
-    <updated>2019-01-04T09:17:19.891Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
@@ -420,7 +420,7 @@
     <link href="http://yangbingdong.com/2018/docker-visual-management-and-orchestrate-tools/"/>
     <id>http://yangbingdong.com/2018/docker-visual-management-and-orchestrate-tools/</id>
     <published>2018-01-02T04:57:52.000Z</published>
-    <updated>2019-01-04T09:17:19.887Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
@@ -446,7 +446,7 @@
     <link href="http://yangbingdong.com/2017/with-reactor-response-encode/"/>
     <id>http://yangbingdong.com/2017/with-reactor-response-encode/</id>
     <published>2017-11-30T00:55:12.000Z</published>
-    <updated>2019-01-04T09:17:19.915Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
@@ -473,7 +473,7 @@
     <link href="http://yangbingdong.com/2017/new-in-spring-framework-5/"/>
     <id>http://yangbingdong.com/2017/new-in-spring-framework-5/</id>
     <published>2017-11-21T23:35:38.000Z</published>
-    <updated>2019-01-04T09:17:19.895Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
@@ -503,7 +503,7 @@
     <link href="http://yangbingdong.com/2017/design-pattern-uml-and-six-principle/"/>
     <id>http://yangbingdong.com/2017/design-pattern-uml-and-six-principle/</id>
     <published>2017-10-18T01:22:07.000Z</published>
-    <updated>2019-01-04T09:17:19.879Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
@@ -532,7 +532,7 @@
     <link href="http://yangbingdong.com/2017/note-of-linux-command/"/>
     <id>http://yangbingdong.com/2017/note-of-linux-command/</id>
     <published>2017-09-20T10:05:10.000Z</published>
-    <updated>2019-01-04T09:17:19.899Z</updated>
+    <updated>2019-02-25T08:03:10.882Z</updated>
     
     <summary type="html">
     
@@ -557,7 +557,7 @@
     <link href="http://yangbingdong.com/2017/docker-learning/"/>
     <id>http://yangbingdong.com/2017/docker-learning/</id>
     <published>2017-09-07T07:55:07.000Z</published>
-    <updated>2019-01-04T09:17:19.883Z</updated>
+    <updated>2019-02-14T08:26:13.011Z</updated>
     
     <summary type="html">
     
@@ -580,7 +580,7 @@
     <link href="http://yangbingdong.com/2017/java-8-tutorial/"/>
     <id>http://yangbingdong.com/2017/java-8-tutorial/</id>
     <published>2017-05-03T10:23:06.000Z</published>
-    <updated>2019-01-04T09:17:19.891Z</updated>
+    <updated>2019-01-11T08:00:15.000Z</updated>
     
     <summary type="html">
     
@@ -605,7 +605,7 @@
     <link href="http://yangbingdong.com/2017/self-hosted-build-ngrok-server/"/>
     <id>http://yangbingdong.com/2017/self-hosted-build-ngrok-server/</id>
     <published>2017-04-26T10:44:20.000Z</published>
-    <updated>2019-01-04T09:17:19.899Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
@@ -630,7 +630,7 @@
     <link href="http://yangbingdong.com/2017/nginx-noob-guide/"/>
     <id>http://yangbingdong.com/2017/nginx-noob-guide/</id>
     <published>2017-04-24T08:56:15.000Z</published>
-    <updated>2019-01-04T09:17:19.895Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
@@ -655,7 +655,7 @@
     <link href="http://yangbingdong.com/2017/use-vps-cross-wall-by-shadowsocks-under-ubuntu/"/>
     <id>http://yangbingdong.com/2017/use-vps-cross-wall-by-shadowsocks-under-ubuntu/</id>
     <published>2017-04-19T10:15:57.000Z</published>
-    <updated>2019-01-04T09:17:19.915Z</updated>
+    <updated>2019-02-26T10:57:13.982Z</updated>
     
     <summary type="html">
     
@@ -681,7 +681,7 @@
     <link href="http://yangbingdong.com/2017/java-call-by-value/"/>
     <id>http://yangbingdong.com/2017/java-call-by-value/</id>
     <published>2017-04-18T07:36:30.000Z</published>
-    <updated>2019-01-04T09:17:19.891Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
@@ -709,7 +709,7 @@
     <link href="http://yangbingdong.com/2017/note-of-learning-idea-under-ubuntu/"/>
     <id>http://yangbingdong.com/2017/note-of-learning-idea-under-ubuntu/</id>
     <published>2017-04-17T10:00:00.000Z</published>
-    <updated>2019-01-04T09:17:19.899Z</updated>
+    <updated>2019-03-04T01:57:36.474Z</updated>
     
     <summary type="html">
     
@@ -734,7 +734,7 @@
     <link href="http://yangbingdong.com/2017/jvm-knowledge-collect-01/"/>
     <id>http://yangbingdong.com/2017/jvm-knowledge-collect-01/</id>
     <published>2017-03-09T05:04:51.000Z</published>
-    <updated>2019-01-04T09:17:19.891Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
@@ -761,7 +761,7 @@
     <link href="http://yangbingdong.com/2017/java-dev-ten-mistake-and-some-advice/"/>
     <id>http://yangbingdong.com/2017/java-dev-ten-mistake-and-some-advice/</id>
     <published>2017-03-07T12:40:46.000Z</published>
-    <updated>2019-01-04T09:17:19.891Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
@@ -785,7 +785,7 @@
     <link href="http://yangbingdong.com/2017/build-blog-hexo-advanced/"/>
     <id>http://yangbingdong.com/2017/build-blog-hexo-advanced/</id>
     <published>2017-02-21T15:07:34.000Z</published>
-    <updated>2019-01-04T09:17:19.875Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
@@ -799,13 +799,13 @@
     
       <category term="Hexo" scheme="http://yangbingdong.com/tags/Hexo/"/>
     
-      <category term="Node.js" scheme="http://yangbingdong.com/tags/Node-js/"/>
+      <category term="Git" scheme="http://yangbingdong.com/tags/Git/"/>
     
       <category term="Github" scheme="http://yangbingdong.com/tags/Github/"/>
     
-      <category term="Coding" scheme="http://yangbingdong.com/tags/Coding/"/>
+      <category term="Node.js" scheme="http://yangbingdong.com/tags/Node-js/"/>
     
-      <category term="Git" scheme="http://yangbingdong.com/tags/Git/"/>
+      <category term="Coding" scheme="http://yangbingdong.com/tags/Coding/"/>
     
   </entry>
   
@@ -814,7 +814,7 @@
     <link href="http://yangbingdong.com/2017/ubuntu-dev-environment-to-build/"/>
     <id>http://yangbingdong.com/2017/ubuntu-dev-environment-to-build/</id>
     <published>2017-01-20T03:31:22.000Z</published>
-    <updated>2019-01-04T09:17:19.911Z</updated>
+    <updated>2019-02-14T08:27:00.242Z</updated>
     
     <summary type="html">
     
@@ -843,7 +843,7 @@
     <link href="http://yangbingdong.com/2017/note-of-learning-git/"/>
     <id>http://yangbingdong.com/2017/note-of-learning-git/</id>
     <published>2017-01-18T04:42:52.000Z</published>
-    <updated>2019-01-04T09:17:19.895Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
@@ -856,9 +856,9 @@
       <category term="Git/Github" scheme="http://yangbingdong.com/categories/Git-Github/"/>
     
     
-      <category term="Github" scheme="http://yangbingdong.com/tags/Github/"/>
-    
       <category term="Git" scheme="http://yangbingdong.com/tags/Git/"/>
+    
+      <category term="Github" scheme="http://yangbingdong.com/tags/Github/"/>
     
   </entry>
   
@@ -867,7 +867,7 @@
     <link href="http://yangbingdong.com/2017/build-blog-hexo-base/"/>
     <id>http://yangbingdong.com/2017/build-blog-hexo-base/</id>
     <published>2017-01-15T12:44:05.000Z</published>
-    <updated>2019-01-04T09:17:19.875Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
@@ -881,28 +881,28 @@
     
       <category term="Hexo" scheme="http://yangbingdong.com/tags/Hexo/"/>
     
-      <category term="Node.js" scheme="http://yangbingdong.com/tags/Node-js/"/>
+      <category term="Git" scheme="http://yangbingdong.com/tags/Git/"/>
     
       <category term="Github" scheme="http://yangbingdong.com/tags/Github/"/>
     
-      <category term="Coding" scheme="http://yangbingdong.com/tags/Coding/"/>
+      <category term="Node.js" scheme="http://yangbingdong.com/tags/Node-js/"/>
     
-      <category term="Git" scheme="http://yangbingdong.com/tags/Git/"/>
+      <category term="Coding" scheme="http://yangbingdong.com/tags/Coding/"/>
     
   </entry>
   
   <entry>
-    <title>Ubuntu主题美化、个性化设置与常用软件</title>
+    <title>Ubuntu主题美化与常用软件记录</title>
     <link href="http://yangbingdong.com/2017/ubuntu-todo-after-install/"/>
     <id>http://yangbingdong.com/2017/ubuntu-todo-after-install/</id>
     <published>2017-01-12T15:04:36.000Z</published>
-    <updated>2019-01-04T09:17:19.915Z</updated>
+    <updated>2019-03-04T05:03:59.529Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;https://cdn.yangbingdong.com/img/gnome/activities-overview.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;img src=&quot;https://cdn.yangbingdong.com/img/individuation/ubuntu-desktop.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt; &lt;strong&gt;&lt;em&gt;&lt;a href=&quot;https://www.ubuntu.com/download/desktop&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Ubuntu 18.04 LTS&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt; 版本回归GNOME环境, 果断升级…&lt;/p&gt;
+&lt;p&gt; 时间已经来到了9102年, 当初的&lt;strong&gt;&lt;em&gt;&lt;a href=&quot;https://www.ubuntu.com/download/desktop&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Ubuntu 18.04 LTS&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt; 版本已经回归GNOME环境, 各种主题优化教程也层出不穷了, 说明Ubuntu的使用人群也渐渐增加…&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
@@ -921,7 +921,7 @@
     <link href="http://yangbingdong.com/2017/ubuntu-myeclipse-crack/"/>
     <id>http://yangbingdong.com/2017/ubuntu-myeclipse-crack/</id>
     <published>2017-01-11T03:52:00.000Z</published>
-    <updated>2019-01-04T09:17:19.911Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
@@ -945,7 +945,7 @@
     <link href="http://yangbingdong.com/2017/hello-world/"/>
     <id>http://yangbingdong.com/2017/hello-world/</id>
     <published>2017-01-10T15:49:28.000Z</published>
-    <updated>2019-01-04T09:17:19.887Z</updated>
+    <updated>2019-01-04T09:17:19.000Z</updated>
     
     <summary type="html">
     
